@@ -16,6 +16,16 @@ sudo apt install nvim
 Copiar de la Mac el configuration file.
 
 
+# Nodejs and npm install 
+
+sudo apt install nodejs
+sudo apt install npm
+
+# Other utilities
+
+sudo apt install bat
+
+
 # To install
 EXA
 BAT
@@ -36,4 +46,6 @@ flameshot
 stremio
 gnome apps
 bitwarden
+npm install -g tldr #man replacement
+
 
