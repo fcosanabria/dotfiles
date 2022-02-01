@@ -16,3 +16,24 @@ sudo apt install nvim
 Copiar de la Mac el configuration file.
 
 
+# To install
+EXA
+BAT
+crt - emulator
+Git smart
+vs code via microsoft repo
+docker
+kubernetes
+oc command
+ferdi
+discord
+brave
+devtools
+steam
+kubelens
+notion enhanced
+flameshot
+stremio
+gnome apps
+bitwarden
+

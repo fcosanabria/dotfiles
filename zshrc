@@ -4,7 +4,8 @@
 
 # Aliases
 
-alias ll='ls -lAFh'
+#alias ll='ls -lAFh'
+alias ll='exa --long -all'
 alias ic='ibmcloud'
 alias secrets='cd /Users/jsanabri/Documents/work-repos/.secrets'
 alias repos='cd /Users/jsanabri/Documents/work-repos/'

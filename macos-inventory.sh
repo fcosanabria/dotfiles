@@ -22,6 +22,9 @@ brew install wget
 brew install vagrant
 brew install --cask flameshot
 brew install --cask keycastr
+brew tap homebrew/cask-fonts #This sis for installing the hack nerd font. 
+brew install --cask font-hack-nerd-font # Installing the nerd font
+brew install --cask font-fira-code # Installing the Fira Code Font.  
 
 # .dmg files list
 Tick Tick
@@ -66,6 +69,6 @@ https://apple.stackexchange.com/questions/73926/is-there-a-command-to-install-a-
 # vim Configuration
 
 # brave installation and configuration of plugings
-
+Como installar plugins desde la terminal | acabo de encontrar una nueva solucion con respecto a esto. Es usar un brave sync para el manejo de los plugins.  
 # zsh configuration ✅
 Done. 
