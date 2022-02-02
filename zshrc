@@ -8,7 +8,8 @@
 alias ll='exa --long -all'
 alias ic='ibmcloud'
 alias secrets='cd /Users/jsanabri/Documents/work-repos/.secrets'
-alias repos='cd /Users/jsanabri/Documents/work-repos/'
+alias work='cd /Users/jsanabri/Documents/work-repos/'
+alias repos='cd /Users/jsanabri/Documents/repos/'
 alias vim='nvim'
 alias ctx='kubectx'
 
@@ -80,3 +81,17 @@ funtion oc-login-mes(){
 
 #This activate IBM Cloud Autocompletion after installation. 
 source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
+export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
+
+#asdf configuration - please refer to my dotfile README.md file. 
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh

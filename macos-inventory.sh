@@ -25,6 +25,7 @@ brew install --cask keycastr
 brew tap homebrew/cask-fonts #This sis for installing the hack nerd font. 
 brew install --cask font-hack-nerd-font # Installing the nerd font
 brew install --cask font-fira-code # Installing the Fira Code Font.  
+brew install asdf # Manage CLI version on local machine.
 
 # .dmg files list
 Tick Tick
