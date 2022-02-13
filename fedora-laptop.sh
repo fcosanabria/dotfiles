@@ -27,6 +27,8 @@ sudo dnf install -y neovim
 mkdir $HOME/.config/nvim/
 touch $HOME/.config/nvim/init.vim
 ln -s $HOME/Documents/dotfiles/init.vim $HOME/.config/nvim/
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
 #zsh install and configuration
