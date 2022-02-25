@@ -24,3 +24,11 @@ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
 ```
 (Reference)[https://faun.pub/switch-easily-between-multiple-kubernetes-version-on-macos-9d61b9bc8287]
 
+## Vs Code - Terminal Nativation 
+
+Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter the following parameters:
+
+```
+{ "key": "ctrl+l", "command": "workbench.action.terminal.focus" },
+{ "key": "ctrl+l", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
+```

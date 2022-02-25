@@ -1,0 +1,416 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
+# Set variables
+
+# Change zsh options
+
+# Aliases
+
+#alias ll='ls -lAFh'
+alias ll='exa --long -all --icons'
+alias ic='ibmcloud'
+alias secrets='cd /Users/jsanabri/Documents/work-repos/.secrets'
+alias work='cd /Users/jsanabri/Documents/work-repos/'
+alias repos='cd /Users/jsanabri/Documents/repos/'
+alias vim='nvim'
+alias ctx='kubectx'
+alias ctxg='kubectx | grep -i'
+
+# APIS
+alias cat-mes-api='cat /Users/jsanabri/Documents/work-repos/.secrets/keys/mes-api-key'
+alias cat-cross-api='cat /Users/jsanabri/Documents/work-repos/.secrets/keys/cross-tower-login-api-key'
+alias cat-talent-api='cat /Users/jsanabri/Documents/work-repos/.secrets/keys/talent-login-api-key'
+
+# Add Locations to $PATH Variable
+
+# Functions
+
+funtion mkcd(){
+  mkdir -p "$@" && cd "$_";
+}
+
+# IC Login Functions
+
+funtion login-prod(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/cross-tower-login-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+funtion login-talent(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/talent-login-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+funtion login-mes(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/mes-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+funtion login-prod(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/cross-tower-login-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+funtion login-talent(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/talent-login-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+funtion login-mes(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/mes-api-key)
+	ic login -u apikey -p $loginKey
+}
+
+# OC Login Functions
+
+funtion oc-login-prod(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/cross-tower-login-api-key)
+	oc login -u apikey -p $loginKey
+}
+
+funtion oc-login-talent(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/talent-login-api-key)
+	oc login -u apikey -p $loginKey
+}
+
+funtion oc-login-mes(){
+	loginKey=$(cat /Users/jsanabri/Documents/work-repos/.secrets/keys/mes-api-key)
+	oc login -u apikey -p $loginKey
+}
+
+# zsh plugins
+
+# Other Stuff
+
+#This activate IBM Cloud Autocompletion after installation. 
+source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
+export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
+
+# Use modern completion sytem
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+#eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd's
+
+#asdf configuration - please refer to my dotfile README.md file. 
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
