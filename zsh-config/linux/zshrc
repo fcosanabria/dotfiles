@@ -40,7 +40,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 alias ll='exa --long -all --icons'
 alias ic='ibmcloud'
 #alias secrets='cd /Users/jsanabri/Documents/work-repos/.secrets'
-alias repos='cd /home/piktonus97m/Documents/repos'
+alias repos='cd /home/piktonus97m/Documents/git'
 alias vim='nvim'
 alias ctx='kubectx'
 
