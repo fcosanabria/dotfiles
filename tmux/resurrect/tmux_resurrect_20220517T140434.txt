@@ -1,0 +1,7 @@
+pane	main	0	0	:-	0	Franciscos-MacBook-Pro.local	:/Users/jsanabri/Documents/git/instana-configuration	1	nvim	:nvim .
+pane	main	0	0	:-	1	Franciscos-MacBook-Pro.local	:/Users/jsanabri/Documents/git/cluster-config	0	nvim	:nvim .
+pane	main	0	0	:-	2	Franciscos-MacBook-Pro.local	:/Users/jsanabri	0	kdash	:kdash
+pane	main	1	1	:*	0	Franciscos-MacBook-Pro.local	:/Users/jsanabri/Documents/git/ibmtalent-config	1	nvim	:nvim .
+window	main	0	:instana	0	:-	f2f2,315x83,0,0{158x83,0,0,1,156x83,159,0[156x48,159,0,2,156x34,159,49,3]}	off
+window	main	1	:synthetics	1	:*	c181,315x83,0,0,4	off
+state	main	
