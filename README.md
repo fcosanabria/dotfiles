@@ -45,3 +45,12 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 Fedora Server is using the same .zshrc file than PopOS
 >>>>>>> 43e10a080a25694aad4ee6fdb1fe962790d4785c
+
+
+## tmux configuration
+
+### Tmux Plugin Manager
+https://github.com/tmux-plugins/tpm
+
+### Tmux Resurrect
+https://github.com/tmux-plugins/tmux-resurrect
