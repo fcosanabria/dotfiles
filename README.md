@@ -24,7 +24,6 @@ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
 ```
 (Reference)[https://faun.pub/switch-easily-between-multiple-kubernetes-version-on-macos-9d61b9bc8287]
 
-<<<<<<< HEAD
 ## Vs Code - Terminal Nativation 
 
 Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter the following parameters:
@@ -33,7 +32,6 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 { "key": "ctrl+l", "command": "workbench.action.terminal.focus" },
 { "key": "ctrl+l", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
 ```
-=======
 #Vim Plug Manager
 
 To install the vimplug manager on Linux using nvim, I have to use:
@@ -44,8 +42,19 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 
 Fedora Server is using the same .zshrc file than PopOS
->>>>>>> 43e10a080a25694aad4ee6fdb1fe962790d4785c
 
+
+
+
+## Nueva configuracion
+
+El nuevo workflow usa las siguientes herramientas:
+
+- zsh
+- tmux
+- nvim
+ - astronvim
+- ohmyzsh! (El cual todavia esta pending en ambas compus)
 
 ## tmux configuration
 

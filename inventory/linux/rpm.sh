@@ -107,7 +107,7 @@ sudo dnf install -y codium
 
 ## zsh config
 chsh -s $(which zsh)
-ln -s $HOME/Documents/git/dotfiles/zshrc $HOME/.zshrc
+ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 ## Neovim config
 
