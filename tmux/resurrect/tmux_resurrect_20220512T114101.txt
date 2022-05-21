@@ -1,5 +1,0 @@
-pane	main	0	1	:*	0	Franciscos-MacBook-Pro.local	:/Users/jsanabri/Documents/git/instana-configuration	0	zsh	:
-pane	main	0	1	:*	1	Franciscos-MacBook-Pro.local	:/Users/jsanabri/Documents/git/cluster-config	0	zsh	:
-pane	main	0	1	:*	2	Franciscos-MacBook-Pro.local	:/Users/jsanabri	1	zsh	:
-window	main	0	:instana	1	:*	592e,315x83,0,0{157x83,0,0,1,157x83,158,0[157x41,158,0,2,157x41,158,42,3]}	off
-state	main	

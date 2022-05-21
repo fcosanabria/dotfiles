@@ -23,21 +23,17 @@ El nuevo workflow usa las siguientes herramientas:
 You can check the fonts that I personally like and most of the time use. I currently using Fira Code. 
 ## tmux configuration
 
-In the `tmux` directory you will find `/plugins/tmux-resurrect` and `/plugins/tmp` as well as the tmux resurrect directory that generates as configuration but needs to be in there, please do not move it. 
+Note: I have been trying to use links to the already configuration but looks like it does not work:
 
-I your `~/.config` create a soft link of the this tmux directory. But first create a directory in your `.config/` for tmux and `cd` to this repo.
+So, please follow the intructions to install `tmux-resurrect` and `tmp`.
 
-```shell
-mkdir -p /.config
-cd /dotfiles
-ln -s /tmux/* $HOME/.config/tmux/
-```
+### TPM - Tmux Plugin Manager
 
-### Tmux Plugin Manager
-https://github.com/tmux-plugins/tpm
+Documentation:
 
-### Tmux Resurrect
-https://github.com/tmux-plugins/tmux-resurrect
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+
+- [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
 
 ## Other Tools
 
