@@ -23,15 +23,23 @@ El nuevo workflow usa las siguientes herramientas:
 You can check the fonts that I personally like and most of the time use. I currently using Fira Code. 
 ## tmux configuration
 
+Create a soft like to your home directory of the `tmux.conf` file you will find here. In my case the directory for this repo is in `$HOME/Documents/git` so make sure to modify your as your needs. 
+
+```
+ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
+```
+
 Note: I have been trying to use links to the already configuration but looks like it does not work:
 
 So, please follow the intructions to install `tmux-resurrect` and `tmp`.
 
-### TPM - Tmux Plugin Manager
+### TPM - Tmux Plugin Manager Install
 
-Documentation:
 
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+
+
+### Tmux Resurrect Install
 
 - [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
 
@@ -42,7 +50,6 @@ Instale `asdf` como manager de versiones de CLIs con Kubectl, pero como ya estoy
 
 ```shell
 echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
-
 ```
 (Reference)[https://faun.pub/switch-easily-between-multiple-kubernetes-version-on-macos-9d61b9bc8287]
 
