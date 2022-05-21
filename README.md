@@ -30,15 +30,23 @@ You can check the fonts that I personally like and most of the time use. I curre
 
 ## Tmux
 
+First, install tmux:
+
+```bash
+# RPM  based distros: Fedora/RHEL8/CentOS
+sudo dnf install tmux
+
+# Debian based distros: Ubuntu/PopOS/etc
+sudo apt install tmux
+```
+
 Create a soft like to your home directory of the `tmux.conf` file you will find here. In my case the directory for this repo is in `$HOME/Documents/git` so make sure to modify your as your needs. 
 
 ```bash
 ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
 ```
 
-Note: I have been trying to use links to the already configuration but looks like it does not work:
-
-So, please follow the intructions to install `tmux-resurrect` and `tmp`.
+> Note: I have been trying to use links to the already configuration but looks like it does not work. So, please follow the intructions to install `tmux-resurrect` and `tmp`.
 
 ### TPM - Tmux Plugin Manager Install
 
