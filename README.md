@@ -11,18 +11,19 @@ If you want to this automatically just run the script located at `inventory/your
 
 El nuevo workflow usa las siguientes herramientas:
 
+- Nerd Fonts
 - zsh
-- alacritty
-- tmux
+- Alacritty
+- Tmux
  - tmp
  - tmux-resurrect
-- nvim
- - astronvim
+- Nvim
+ - AstroNvim
 - ohmyzsh! (El cual todavia esta pending en ambas compus)
 
 ## Fonts
 
-You can check the fonts that I personally like and most of the time use. I currently using Fira Code.
+You can check the fonts that I personally like and most of the time use. I currently using Fira Code. I have that one included here in the `fonts` directory, but please check [Nerd fonts](https://www.nerdfonts.com/font-downloads) to install the one that you wish.
 
 ## zsh
 
@@ -91,7 +92,18 @@ After that make sure to Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nst
 Documentation: [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
 
 
-## Alacrity
+## Nvim & AstroNvim
+
+I really like using vim even though it is not my main editor. I always like to use it with some perks. And that's why I use AstroNvim, which a fork of Nvim with lots of cool and useful out of the box perks. 
+
+You have to install Nvim version +0.7.0 to use it properly. 
+
+To install AstroNvim you have please check the [documentation](https://github.com/AstroNvim/AstroNvim).
+
+For the optional requirements I suggest to install:
+
+- ripgrep - live grep telescope search (<leader>fw)
+- lazygit - git ui toggle terminal (<leader>tl or <leader>gg)
 
 ## Other Tools
 
