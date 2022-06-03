@@ -1,7 +1,7 @@
 # Dotfiles
 Tools and SetUp Management
 
-# WARNING! This repo is work a in progress and is currently very messy. DO NOT USE IT yet!
+# WARNING! This repo is a work in progress and is currently very messy. DO NOT USE IT yet!
 
 If you have any questions let's talk. 
 
