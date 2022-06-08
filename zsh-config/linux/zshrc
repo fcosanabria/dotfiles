@@ -1,3 +1,6 @@
+
+## ZSH Native Configuration
+
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -44,7 +47,7 @@ alias repos='cd /home/piktonus97m/Documents/git'
 alias vim='nvim'
 alias ctx='kubectx'
 
-funtion mkcd(){
+function mkcd(){
   mkdir -p "$@" && cd "$_";
 }
 

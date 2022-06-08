@@ -19,6 +19,10 @@ alias ctxg='kubectx | grep -i'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
 
+
+# The following alias and functions wont work for you. Please ignore them. 
+## List Begins ##
+
 # APIS
 alias cat-mes-api='cat $HOME/Documents/git/.secrets/keys/mes-api-key'
 alias cat-cross-api='cat $HOME/Documents/git/.secrets/keys/cross-tower-login-api-key'
@@ -73,12 +77,17 @@ function oc-l2c(){
 	loginKey=$(cat $HOME/Documents/git/.secrets/keys/l2c-api-key)
 	oc login -u apikey -p $loginKey
 }
-# zsh plugins
+
+## List Ends ##
 
 # Other Stuff
-#This activate IBM Cloud Autocompletion after installation. 
+
+# This activate IBM Cloud Autocompletion after installation. 
 source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
 export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
+
+
+## ZSH Native Configuration
 
 # Use modern completion sytem
 autoload -Uz compinit

@@ -1,3 +1,0 @@
-pane	0	0	1	:*	0	Franciscos-MacBook-Pro.local	:/Users/jsanabri	1	zsh	:
-window	0	0	:zsh - name	1	:*	c17d,315x83,0,0,0	off
-state	0	
