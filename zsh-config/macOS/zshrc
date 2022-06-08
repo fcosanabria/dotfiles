@@ -113,3 +113,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd's
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"
+
+# this will fix the issue:  Backspace producing space on command line #597
+
+TERM=xterm
