@@ -24,6 +24,7 @@ El nuevo workflow usa las siguientes herramientas:
 ## Fonts
 
 You can check the fonts that I personally like and most of the time use. I currently using Fira Code. I have that one included here in the `fonts` directory, but please check [Nerd fonts](https://www.nerdfonts.com/font-downloads) to install the one that you wish.
+The fonts downloaded on this repo are not the ones with the extended support for nerdfonts.
 
 ## zsh
 
