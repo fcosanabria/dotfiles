@@ -45,6 +45,7 @@ sudo dnf -y install libvirt-devel virt-top libguestfs-tools # More Virtualizatio
 
 ## Install other Apps
 
+echo "---------------- Installing Other Apps ----------------"
 ### Vagrant Installation
 sudo dnf -y install vagrant
 
@@ -70,6 +71,7 @@ sudo dnf -y install virt-manager
 
 ### Flatpak Apps
 
+echo "---------------- Installing Flatpak Apps --------------------"
 flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub com.spotify.Client
 flatpak install -y flathub com.valvesoftware.Steam
@@ -92,17 +94,24 @@ flatpak install flathub org.flameshot.Flameshot
 # Config Files
 
 ## zsh config
+echo "---------------- ZSH configuration ----------------"
 chsh -s $(which zsh)
 ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 ## Neovim config
 
+echo "---------------- NeoVim configuration ----------------"
 mkdir $HOME/.config/nvim/
 touch $HOME/.config/nvim/init.vim
 ln -s $HOME/Documents/git/dotfiles/nvim-config/init.vim $HOME/.config/nvim/
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# PENDING! Revisar como instalar Lunar Vim vs Astro vim y ver que significa esto de arriba
 
+## Chaging CapsLock to Ctrl
+
+echo "Chaging CapsLock to Ctrl................"
+setxkbmap -layout us -option ctrl:swapcaps
 
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
