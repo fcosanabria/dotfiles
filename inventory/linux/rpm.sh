@@ -11,13 +11,8 @@ cd ~/Downloads
 ### Vagrant
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 
-### Brave
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-
-### VS Codium
-sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
-printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+### Vivaldi
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
 
 ### Flatpak Installation
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -33,6 +28,7 @@ sudo dnf updates
 
 ### Core Utils
 sudo dnf install -y dnf-plugins-core
+sudo dnf install -y dnf-utils
 
 ### Gnome Stuff
 sudo dnf install -y gnome-extensions-app
@@ -55,9 +51,6 @@ sudo dnf -y install vagrant
 ### Ansible Installation
 sudo dnf -y install ansible
 
-### Brave installation
-sudo dnf -y install brave-browser
-
 ### Neovim Installation
 sudo dnf -y install neovim
 
@@ -72,6 +65,8 @@ sudo dnf -y install ocrfeeder
 sudo dnf -y install plank
 sudo dnf -y install paperwork
 sudo dnf -y install gitg
+sudo dnf -y install gittyup
+sudo dnf -y install virt-manager
 
 ### Flatpak Apps
 
@@ -79,27 +74,18 @@ flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub com.spotify.Client
 flatpak install -y flathub com.valvesoftware.Steam
 flatpak install -y flathub org.fedoraproject.MediaWriter
-flatpak install -y flathub org.pitivi.Pitivi
-flatpak install -y flathub org.gnome.Evolution
 flatpak install -y flathub de.haeckerfelix.Fragments
 flatpak install -y flathub org.gnome.SoundRecorder
-flatpak install -y flathub com.github.gi_lom.dialect
-flatpak install -y flathub org.gnome.Builder
 flatpak install -y flathub com.obsproject.Studio
 flatpak install -y flathub com.orama_interactive.Pixelorama
 flatpak install -y flathub org.darktable.Darktable
 flatpak install -y flathub org.flameshot.Flameshot
-flatpak install -y flathub com.github.buddhi1980.mandelbulber2
-flatpak install -y flathub com.logseq.Logseq
 flatpak install -y flathub com.bitwarden.desktop
 flatpak install -y flathub com.github.tchx84.Flatseal
-flatpak install -y flathub com.getmailspring.Mailspring
-flatpak install -y flathub io.github.lainsce.Quilter
 flatpak install -y flathub org.zotero.Zotero
 flatpak install -y flathub org.gustavoperedo.FontDownloader
-
-### VS Codium
-sudo dnf install -y codium
+flatpak install flathub com.github.Murmele.Gittyup
+flatpak install flathub org.flameshot.Flameshot
 
 # ------------------------------------------------------------ # 
 
@@ -120,7 +106,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
-echo "Install VirtualBox"
+echo "Install and configure VirtualBox"
+echo "Install Ner Fonts"
 
 "$@"
 # This is my Fedora Server condifguraton
