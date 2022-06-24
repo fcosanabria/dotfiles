@@ -58,6 +58,10 @@ sudo dnf -y install neovim
 ### zsh install 
 sudo dnf -y install zsh
 
+### Alacritty Installa
+sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
+sudo dnf -y install alacritty
+
 ### Other Utilities
 sudo dnf -y install exa
 sudo dnf -y install bat
