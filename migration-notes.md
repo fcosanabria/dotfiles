@@ -32,3 +32,8 @@ ventanas
     - Material Shell? 
     - Sound and Input Chooser
     - User Themes
+
+https://www.electronjs.org/apps/lepton
+https://read.amazon.com/reader?asin=B08QXP4Q2J&ref_=kwl_kr_iv_rec_1&language=en-US
+https://www.youtube.com/results?search_query=terraform+real+time+projects+
+https://exercism.org/dashboard
