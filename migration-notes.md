@@ -45,3 +45,5 @@ https://arc.dev/resume/builder/edit
 https://vvvxsoftware.bandcamp.com/album/-
 https://www.youtube.com/watch?v=qcr2kVbEaqI
 https://www.youtube.com/watch?v=azcrPFhaY9k
+
+![git documents](2022-06-24-21-20-35.png)
