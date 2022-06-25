@@ -1,56 +1,74 @@
 #!/bin/bash
 
-# Esto son los programas que he estado instalando en mi PopOS de uso diario
+# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB
 
-# zsh, ya que me en macos la uso, se me hace mas familiar, ya que paso mas tiempo en zsh, ademas de que es mas amigable.
-sudo apt install zsh
+mkdir -p ~/Documents/git
 
+sudo apt upgrade
+
+# zsh stuff
+sudo apt -y install zsh
 chsh -s $(which zsh)
+ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 # Solamente si es Ubuntu based disto. No recuerdo si PopOs lo tiene instalado por defecto, pero por si las dudas. 
-sudo apt install git 
+sudo apt -y install git 
 
+echo "---------------- NeoVim configuration ----------------"
 # nvim install and configuration 
-sudo apt install nvim
-# nvim configuration 
-Copiar de la Mac el configuration file.
 
+mkdir $HOME/.config/nvim/
+touch $HOME/.config/nvim/init.vim
+ln -s $HOME/Documents/git/dotfiles/nvim-config/init.vim $HOME/.config/nvim/
+
+# PENDING! Revisar como instalar Lunar Vim vs Astro vim y ver que significa esto de arriba
+
+
+# Install Vivaldi
+
+sudo apt -y install wget gnupg2 # First you need to install wget if you do not have it. To do so use;
+wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add - # Once you install wget, use it to download the Vivaldi browser packages;
+sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' # 
+sudo apt update
+sudo apt -y install vivaldi-stable
 
 # Nodejs and npm install 
 
-sudo apt install nodejs
-sudo apt install npm
+sudo apt -y install nodejs
+sudo apt -y install npm
 
 # Other utilities
 
-sudo apt install bat
+sudo apt -y install exa
+sudo apt -y install bat
+sudo apt -y install gnome-extensions-app
+sudo apt -y install gnome-tweaks
+sudo apt -y install screenkey
+sudo apt -y install ocrfeeder
+sudo apt -y install plank
+sudo apt -y install paperwork
+sudo apt -y install gitg
+sudo apt -y install gittyup
+sudo apt -y install virt-manager
+sudo apt -y spice-vdagent spice-webdavd
+sudo apt -y install flatpak
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# Snapd
+sudo apt -y install snapd
+sudo snap install code ----classic
 
-# To install
-sudo apt install exa
-sudo apt install bat
+# Chaging CapsLock to Ctrl
 
-BAT
-crt - emulator
-Git smart
-vs code via microsoft repo
-docker
-kubernetes
-oc command
-ferdi
-discord
-brave
-devtools
-steam
-kubelens
-notion enhanced
-flameshot
-stremio
-gnome apps
-bitwarden
-npm install -g tldr #man replacement
+echo "Chaging CapsLock to Ctrl................"
+setxkbmap -layout us -option ctrl:swapcaps
 
-#Stremio install and download
-cd Downloads/
-curl -o https://dl.strem.io/shell-linux/v4.4.142/stremio_4.4.142-1_amd64.deb
-dpkg -y stremio*
+# MANUAL INSTALLATION
+echo "Install Jetbrains ToolBox"
+echo "Install and configure VirtualBox"
+echo "Install Nerd Fonts"
+echo "Install Lunarvim"
+echo "Install nvim"
+https://github.com/neovim/neovim/releases/tag/v0.7.0
+
+"$@"
