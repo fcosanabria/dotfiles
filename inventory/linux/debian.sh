@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB
-
-mkdir -p ~/Documents/git
+# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUBS
 
 sudo apt upgrade
 
@@ -18,11 +16,7 @@ echo "---------------- NeoVim configuration ----------------"
 # nvim install and configuration 
 
 mkdir $HOME/.config/nvim/
-touch $HOME/.config/nvim/init.vim
 ln -s $HOME/Documents/git/dotfiles/nvim-config/init.vim $HOME/.config/nvim/
-
-# PENDING! Revisar como instalar Lunar Vim vs Astro vim y ver que significa esto de arriba
-
 
 # Install Vivaldi
 
@@ -46,11 +40,12 @@ sudo apt -y install gnome-tweaks
 sudo apt -y install screenkey
 sudo apt -y install ocrfeeder
 sudo apt -y install plank
-sudo apt -y install paperwork
+sudo apt -y install paperwork #unable to find package name
 sudo apt -y install gitg
-sudo apt -y install gittyup
+sudo apt -y install gittyup #unable to find packege name
 sudo apt -y install virt-manager
 sudo apt -y spice-vdagent spice-webdavd
+sudo apt -y install tmux
 sudo apt -y install flatpak
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
