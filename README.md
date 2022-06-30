@@ -17,8 +17,9 @@ El nuevo workflow usa las siguientes herramientas:
 - Tmux
   - tmp
   - tmux-resurrect
+  - tmux powerline theme
 - Nvim
-  - AstroNvim
+  - Lunarvim - cual se considero que se encuentra mejor.
 - ohmyzsh! (El cual todavia esta pending en ambas compus)
 
 ## Fonts
