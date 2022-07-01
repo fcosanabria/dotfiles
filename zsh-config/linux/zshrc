@@ -1,23 +1,32 @@
+# Syntax Highligthing using the BAT command.
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export PATH=$PATH:~/.local/bin #aca se encuentra lunarvim entonces hay que agregarlo en el path
+
+
+
+PS1="%K{blue}%n@%m%k %B%F{cyan}%(4~|...|)%3~%F{white} %# %b%f%k"
+
+
+
+# Aliases
+#alias ll='ls -lAFh'
+alias ll='exa --long -all --icons'
+alias repos='cd $HOME/Documents/git/'
+alias vim='lvim'
+alias zshrc='nvim $HOME/.zshrc'
+alias lg='lazygit'
+alias tmux="TERM=screen-256color-bce tmux"
+
+# Add Locations to $PATH Variable
+
+# Functions
+function mkcd(){
+  mkdir -p "$@" && cd "$_";
+}
 
 ## ZSH Native Configuration
 
-# Set up the prompt
-
-autoload -Uz promptinit
-promptinit
-prompt adam1
-
-setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-# Use modern completion system
+# Use modern completion sytem
 autoload -Uz compinit
 compinit
 
@@ -26,7 +35,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+#eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -37,17 +46,8 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd's
 
-#alias ll='ls -lAFh'
-alias ll='exa --long -all --icons'
-alias ic='ibmcloud'
-#alias secrets='cd /Users/jsanabri/Documents/work-repos/.secrets'
-alias repos='cd /home/piktonus97m/Documents/git'
-alias vim='nvim'
-alias ctx='kubectx'
+# this will fix the issue:  Backspace producing space on command line #597
 
-function mkcd(){
-  mkdir -p "$@" && cd "$_";
-}
-
+TERM=xterm

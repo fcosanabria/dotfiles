@@ -137,3 +137,38 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 { "key": "ctrl+l", "command": "workbench.action.terminal.focus" },
 { "key": "ctrl+l", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
 ```
+
+## Alacritty themes
+
+npm i -g alacritty-themes
+
+theme: Oceanic Next
+
+## Lunarvim configuration
+
+```lua
+-- My configuration taken from https://www.lunarvim.org/configuration/01-settings.html#example-options
+vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
+vim.opt.undofile = true -- enable persistent undo
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.relativenumber = true -- set relative numbered lines
+lvim.transparent_window = true
+lvim.builtin.lualine.style = "lvim" -- or "none"
+
+-- My components
+local components = require("lvim.core.lualine.components")
+
+lvim.builtin.lualine.sections.lualine_a = {
+  components.mode
+}
+lvim.builtin.lualine.sections.lualine_y = {
+  components.spaces,
+  components.location,
+  components.branch,
+  components.filetype,
+  components.progress
+
+}
+```
