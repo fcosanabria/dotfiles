@@ -140,7 +140,7 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 
 ## Alacritty themes
 
-npm i -g alacritty-themes
+sudo npm i -g alacritty-themes
 
 theme: Oceanic Next
 

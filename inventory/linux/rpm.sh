@@ -57,7 +57,8 @@ sudo dnf -y install gittyup
 sudo dnf -y installs virt-manager
 sudo dnf -y tmux
 sudo dnf -y flatpak
-sudo dnf install gnome-shell-extension-pop-shell
+sudo dnf -y install gnome-shell-extension-pop-shell
+sudo dnf -y install xprop
 
 #Snapd
 sudo dnf install snapd
@@ -88,3 +89,6 @@ echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
 
 "$@"
 # This is my Fedora Server condifguraton
+
+git config --global user.name "Francisco Sanabria"
+echo " REMEMBER: git config --global user.email" 

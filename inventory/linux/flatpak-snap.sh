@@ -19,4 +19,4 @@ flatpak install flathub org.flameshot.Flameshot
 
 echo "---------------- Installing Snaps Apps --------------------"
 
-sudo snap install code ----classic
+#sudo snap install code ----classic

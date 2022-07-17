@@ -2,13 +2,10 @@
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH=$PATH:~/.local/bin #aca se encuentra lunarvim entonces hay que agregarlo en el path
 
-
-
 PS1="%K{blue}%n@%m%k %B%F{cyan}%(4~|...|)%3~%F{white} %# %b%f%k"
 
-
-
 # Aliases
+
 #alias ll='ls -lAFh'
 alias ll='exa --long -all --icons'
 alias repos='cd $HOME/Documents/git/'
@@ -16,6 +13,7 @@ alias vim='lvim'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
 alias tmux="TERM=screen-256color-bce tmux"
+alias dot='cd $HOME/Documents/git/dotfiles'
 
 # Add Locations to $PATH Variable
 
