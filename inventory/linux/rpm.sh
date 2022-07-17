@@ -10,10 +10,6 @@
 ## Update repos
 sudo dnf updates
 
-# Installation Process
-
-## Install basic utils
-
 ### Core Utils
 sudo dnf install -y dnf-plugins-core
 sudo dnf install -y dnf-utils
@@ -49,14 +45,16 @@ sudo dnf -y install exa
 sudo dnf -y install bat
 sudo dnf -y install screenkey
 sudo dnf -y install ocrfeeder
-sudo dnf -y install plank
 sudo dnf -y install paperwork
 sudo dnf -y install gitg
 sudo dnf -y install gittyup
-sudo dnf -y install virt-manager
+sudo dnf -y installs virt-manager
+sudo dnf -y tmux
+sudo dnf -y flatpak
+sudo dnf install gnome-shell-extension-pop-shell
 
-
-# ------------------------------------------------------------ # 
+#Snapd
+sudo dnf install snapd
 
 # Config Files
 
@@ -65,6 +63,9 @@ echo "---------------- ZSH configuration ----------------"
 chsh -s $(which zsh)
 ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
+## Tmux config
+
+ln -s $HOME/Documents/git/dotfiles/tmux
 
 ## Chaging CapsLock to Ctrl
 

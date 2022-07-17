@@ -172,3 +172,30 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 }
 ```
+Links:
+
+https://minbrowser.org
+https://tabby.sh
+https://ww1.cuevana3.me/episodio/breaking-bad-4x5 por la mitad
+https://github.com/rzashakeri/beautify-github-profile?ref=producthunt
+https://www.youtube.com/watch?v=nqZqFSsiUdk
+https://subscription.packtpub.com
+https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
+https://www.google.com/search?q=Requiem+for+a+Dream&sourceid=chrome&ie=UTF-8
+https://www.udemy.com/course/resolviendo-problemas-con-c/learn/lecture/5747590#overview
+https://www.tutorialspoint.com/cplusplus/cpp_pointers.htm
+https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
+https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
+https://www.youtube.com/watch?v=JeAHlTYB1Qk
+https://kodekloud-engineer.com/#!/tasks
+https://learning.oreilly.com/library/view/learning-go/9781492077206/
+https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
+https://learning.oreilly.com/library/view/infrastructure-as-code/9781098114664/
+https://www.youtube.com/watch?v=Tp4fkmJ6qXk
+
+Vivaldi Extentions
+
+- Bitwarden
+- Raindrop
+- vim
+- dislike butoms
