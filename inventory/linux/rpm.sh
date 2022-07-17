@@ -2,22 +2,10 @@
 
 # Este repositorio debe de colocarse en ~/Documents/git
 
-# ------------------------------------------------------------ # 
+# ------------------------------------------------------------ #
+# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB 
 
-cd ~/Downloads
 
-##  Adding Repos and Updates
-
-### Vagrant
-sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-
-### Vivaldi
-sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-
-### Flatpak Installation
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# ------------------------------------------------------------ # 
 
 ## Update repos
 sudo dnf updates
@@ -44,21 +32,15 @@ sudo dnf -y install libvirt-devel virt-top libguestfs-tools # More Virtualizatio
 ### https://computingforgeeks.com/how-to-install-kvm-on-fedora/ Virtualization tools reference. 
 
 ## Install other Apps
-
 echo "---------------- Installing Other Apps ----------------"
-### Vagrant Installation
-sudo dnf -y install vagrant
 
-### Ansible Installation
-sudo dnf -y install ansible
-
-### Neovim Installation
-sudo dnf -y install neovim
+### Install Vivaldi
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
 
 ### zsh install 
 sudo dnf -y install zsh
 
-### Alacritty Installa
+### Alacritty Install
 sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 sudo dnf -y install alacritty
 
@@ -73,6 +55,7 @@ sudo dnf -y install gitg
 sudo dnf -y install gittyup
 sudo dnf -y install virt-manager
 
+
 # ------------------------------------------------------------ # 
 
 # Config Files
@@ -82,15 +65,6 @@ echo "---------------- ZSH configuration ----------------"
 chsh -s $(which zsh)
 ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
-## Neovim config
-
-echo "---------------- NeoVim configuration ----------------"
-mkdir $HOME/.config/nvim/
-touch $HOME/.config/nvim/init.vim
-ln -s $HOME/Documents/git/dotfiles/nvim-config/init.vim $HOME/.config/nvim/
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# PENDING! Revisar como instalar Lunar Vim vs Astro vim y ver que significa esto de arriba
 
 ## Chaging CapsLock to Ctrl
 
@@ -100,7 +74,10 @@ setxkbmap -layout us -option ctrl:swapcaps
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
 echo "Install and configure VirtualBox"
-echo "Install Ner Fonts"
+echo "Install Nerd Fonts"
+echo "Install Lunarvim"
+echo "Install nvim https://github.com/neovim/neovim/releases/tag/v0.7.0"
+echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
 
 "$@"
 # This is my Fedora Server condifguraton
