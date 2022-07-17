@@ -32,6 +32,11 @@ echo "---------------- Installing Other Apps ----------------"
 
 ### Install Vivaldi
 sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+sudo dnf install vivaldi-stable -y
+
+### Nodejs and npm
+sudo dnf -y install nodejs
+sudo dnf -y install npm
 
 ### zsh install 
 sudo dnf -y install zsh
@@ -39,6 +44,7 @@ sudo dnf -y install zsh
 ### Alacritty Install
 sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 sudo dnf -y install alacritty
+ln -s $HOME/Documents/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 ### Other Utilities
 sudo dnf -y install exa
@@ -65,7 +71,7 @@ ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 ## Tmux config
 
-ln -s $HOME/Documents/git/dotfiles/tmux
+ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
 
 ## Chaging CapsLock to Ctrl
 
