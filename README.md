@@ -174,8 +174,6 @@ lvim.builtin.lualine.sections.lualine_y = {
 ```
 Links:
 
-https://minbrowser.org
-https://tabby.sh
 https://ww1.cuevana3.me/episodio/breaking-bad-4x5 por la mitad
 https://github.com/rzashakeri/beautify-github-profile?ref=producthunt
 https://www.youtube.com/watch?v=nqZqFSsiUdk

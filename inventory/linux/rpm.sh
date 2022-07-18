@@ -59,6 +59,8 @@ sudo dnf -y tmux
 sudo dnf -y flatpak
 sudo dnf -y install gnome-shell-extension-pop-shell
 sudo dnf -y install xprop
+sudo dnf install ibus-typing-booster
+sudo dnf install emoji-picker
 
 #Snapd
 sudo dnf install snapd

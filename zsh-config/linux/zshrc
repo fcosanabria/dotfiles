@@ -12,7 +12,7 @@ alias repos='cd $HOME/Documents/git/'
 alias vim='lvim'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
-alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=xterm-256color tmux"
 alias dot='cd $HOME/Documents/git/dotfiles'
 
 # Add Locations to $PATH Variable
