@@ -181,3 +181,9 @@ https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
 https://www.youtube.com/watch?v=JeAHlTYB1Qk
 https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
 https://www.youtube.com/watch?v=Tp4fkmJ6qXk
+
+## Karabiner Configuration
+
+![medidasv1](2022-07-26-00-43-44.png)
+![medidasv2](2022-07-26-00-39-47.png)
+
