@@ -140,7 +140,7 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 
 ## Alacritty themes
 
-npm i -g alacritty-themes
+sudo npm i -g alacritty-themes
 
 theme: Oceanic Next
 
@@ -172,3 +172,12 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 }
 ```
+Links:
+
+https://www.youtube.com/watch?v=nqZqFSsiUdk
+https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
+https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
+https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
+https://www.youtube.com/watch?v=JeAHlTYB1Qk
+https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
+https://www.youtube.com/watch?v=Tp4fkmJ6qXk

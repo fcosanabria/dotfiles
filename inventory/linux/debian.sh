@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUBS
+# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB
 
 sudo apt upgrade
 
@@ -39,7 +39,6 @@ sudo apt -y install gnome-extensions-app
 sudo apt -y install gnome-tweaks
 sudo apt -y install screenkey
 sudo apt -y install ocrfeeder
-sudo apt -y install plank
 sudo apt -y install paperwork #unable to find package name
 sudo apt -y install gitg
 sudo apt -y install gittyup #unable to find packege name

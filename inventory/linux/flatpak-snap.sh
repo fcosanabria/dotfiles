@@ -15,5 +15,8 @@ flatpak install -y flathub com.bitwarden.desktop
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub org.zotero.Zotero
 flatpak install -y flathub org.gustavoperedo.FontDownloader
-flatpak install flathub com.github.Murmele.Gittyup
 flatpak install flathub org.flameshot.Flameshot
+
+echo "---------------- Installing Snaps Apps --------------------"
+
+#sudo snap install code ----classic

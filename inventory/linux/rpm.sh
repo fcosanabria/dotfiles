@@ -2,29 +2,13 @@
 
 # Este repositorio debe de colocarse en ~/Documents/git
 
-# ------------------------------------------------------------ # 
+# ------------------------------------------------------------ #
+# ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB 
 
-cd ~/Downloads
 
-##  Adding Repos and Updates
-
-### Vagrant
-sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-
-### Vivaldi
-sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-
-### Flatpak Installation
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# ------------------------------------------------------------ # 
 
 ## Update repos
 sudo dnf updates
-
-# Installation Process
-
-## Install basic utils
 
 ### Core Utils
 sudo dnf install -y dnf-plugins-core
@@ -44,36 +28,42 @@ sudo dnf -y install libvirt-devel virt-top libguestfs-tools # More Virtualizatio
 ### https://computingforgeeks.com/how-to-install-kvm-on-fedora/ Virtualization tools reference. 
 
 ## Install other Apps
-
 echo "---------------- Installing Other Apps ----------------"
-### Vagrant Installation
-sudo dnf -y install vagrant
 
-### Ansible Installation
-sudo dnf -y install ansible
+### Install Vivaldi
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+sudo dnf install vivaldi-stable -y
 
-### Neovim Installation
-sudo dnf -y install neovim
+### Nodejs and npm
+sudo dnf -y install nodejs
+sudo dnf -y install npm
 
 ### zsh install 
 sudo dnf -y install zsh
 
-### Alacritty Installa
+### Alacritty Install
 sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 sudo dnf -y install alacritty
+ln -s $HOME/Documents/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 ### Other Utilities
 sudo dnf -y install exa
 sudo dnf -y install bat
 sudo dnf -y install screenkey
 sudo dnf -y install ocrfeeder
-sudo dnf -y install plank
 sudo dnf -y install paperwork
 sudo dnf -y install gitg
 sudo dnf -y install gittyup
-sudo dnf -y install virt-manager
+sudo dnf -y installs virt-manager
+sudo dnf -y tmux
+sudo dnf -y flatpak
+sudo dnf -y install gnome-shell-extension-pop-shell
+sudo dnf -y install xprop
+sudo dnf install ibus-typing-booster
+sudo dnf install emoji-picker
 
-# ------------------------------------------------------------ # 
+#Snapd
+sudo dnf install snapd
 
 # Config Files
 
@@ -82,15 +72,9 @@ echo "---------------- ZSH configuration ----------------"
 chsh -s $(which zsh)
 ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
-## Neovim config
+## Tmux config
 
-echo "---------------- NeoVim configuration ----------------"
-mkdir $HOME/.config/nvim/
-touch $HOME/.config/nvim/init.vim
-ln -s $HOME/Documents/git/dotfiles/nvim-config/init.vim $HOME/.config/nvim/
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# PENDING! Revisar como instalar Lunar Vim vs Astro vim y ver que significa esto de arriba
+ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
 
 ## Chaging CapsLock to Ctrl
 
@@ -100,7 +84,13 @@ setxkbmap -layout us -option ctrl:swapcaps
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
 echo "Install and configure VirtualBox"
-echo "Install Ner Fonts"
+echo "Install Nerd Fonts"
+echo "Install Lunarvim"
+echo "Install nvim https://github.com/neovim/neovim/releases/tag/v0.7.0"
+echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
 
 "$@"
 # This is my Fedora Server condifguraton
+
+git config --global user.name "Francisco Sanabria"
+echo " REMEMBER: git config --global user.email" 
