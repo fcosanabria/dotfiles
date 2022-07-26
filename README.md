@@ -184,5 +184,7 @@ https://www.youtube.com/watch?v=Tp4fkmJ6qXk
 
 ## Karabiner Configuration
 
-![medidasv2](2022-07-26-00-39-47.png)
+ ![medidasv2](2022-07-26-00-39-47.png)
 
+
+ 
