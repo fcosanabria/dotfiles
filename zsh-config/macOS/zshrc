@@ -2,8 +2,10 @@
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # Syntax Highligthing using the BAT command.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 PS1="%K{blue}%n@%m%k %B%F{cyan}%(4~|...|)%3~%F{white} %# %b%f%k"
 
+eval "$(starship init zsh)"
 
 
 # Set variables
