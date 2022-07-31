@@ -195,8 +195,32 @@ https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
 https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
 
 https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
-s
+
 https://www.youtube.com/watch?v=Tp4fkmJ6qXk
+
+https://www.youtube.com/watch?v=2ybLD6_2gKM
+
+https://www.youtube.com/watch?v=2ybLD6_2gKM
+
+https://app.youneedabudget.com/91368a95-bb06-4b0e-a82c-dcede4471dc4/accounts
+
+https://kodekloud-engineer.com/#!/tasks
+
+https://technolads.com/gotoxy-function-in-c/#:~:text=gotoxy()%20function%20in%20C++%20is%20used%20to%20place,print%20the%20required%20output%20message.
+
+https://www.tutorialspoint.com/cplusplus/cpp_functions.htm
+
+https://www.tutorialspoint.com/cplusplus/cpp_pointers.htm
+
+https://www.youtube.com/watch?v=yvsRrpIPCoE
+
+https://learn.acloud.guru/course/852a204f-8dff-4196-bcf8-922a25cc5a64/learn/f359fda7-0dd0-43e4-80e2-87095c7de16a/a333b5fc-9114-42ce-b1a6-b3912d23082d/watch
+
+https://exercism.org/dashboard
+
+https://ibm-learning.udemy.com/organization/home/
+
+
 
 ## Karabiner Configuration
 
@@ -216,3 +240,5 @@ https://www.youtube.com/watch?v=Tp4fkmJ6qXk
 - Tray Icons Reloaded
 - User Themes
 - Pop Shell
+
+- Install Min Browser
