@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Este repositorio debe de colocarse en ~/Documents/git
+# Este repositorio debe de colocarse en ~/git
 
 # ------------------------------------------------------------ #
 # ANTES DE CORRER ESTO HAY QUE CONFIGURAR LAS LLAVES DE GITHUB 
-
-
 
 ## Update repos
 sudo dnf updates
@@ -45,7 +43,7 @@ sudo dnf -y install zsh
 sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 sudo dnf -y install alacritty
 mkdir -p $HOME/.config/alacritty
-ln -s $HOME/Documents/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+ln -s $HOME/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 ### Other Utilities
 sudo dnf -y install exa
@@ -93,11 +91,11 @@ sudo dnf install code
 ## zsh config
 echo "---------------- ZSH configuration ----------------"
 chsh -s $(which zsh)
-ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
+ln -s $HOME/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 ## Tmux config
 
-ln -s $HOME/Documents/git/dotfiles/tmux/config/linux/tmux.conf $HOME/.tmux.conf
+ln -s $HOME/git/dotfiles/tmux/config/linux/tmux.conf $HOME/.tmux.conf
 
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
