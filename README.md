@@ -174,17 +174,32 @@ lvim.builtin.lualine.sections.lualine_y = {
 ```
 Links:
 
+<<<<<<< HEAD
 https://www.youtube.com/watch?v=nqZqFSsiUdk
 https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
 https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
 https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
 https://www.youtube.com/watch?v=JeAHlTYB1Qk
+=======
+https://ww1.cuevana3.me/episodio/breaking-bad-4x5 por la mitad
+https://subscription.packtpub.com
+https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
+https://www.udemy.com/course/resolviendo-problemas-con-c/learn/lecture/5747590#overview
+https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
+https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
+https://www.youtube.com/watch?v=JeAHlTYB1Qk
+https://learning.oreilly.com/library/view/learning-go/9781492077206/
+>>>>>>> 715326f8e1bca458f141411781c2af7d4ea1829b
 https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
 https://www.youtube.com/watch?v=Tp4fkmJ6qXk
 
+<<<<<<< HEAD
 ## Karabiner Configuration
 
  ![medidasv2](2022-07-26-00-39-47.png)
 
 
  
+=======
+
+>>>>>>> 715326f8e1bca458f141411781c2af7d4ea1829b
