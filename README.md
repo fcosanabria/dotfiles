@@ -5,7 +5,9 @@ Tools and SetUp Management
 
 If you have any questions let's talk. 
 
-If you want to this automatically just run the script located at `inventory/yourOs`. Please make sure to modify the paths acording to your machine and needs.
+If you want to this automatically just run the script located at `inventory/yourOs`. Please make sure to modify the paths according to your machine and needs.
+
+Most of the instructions you are about to read here, are already implemented on the inventory script for each OS.
 
 ## Requirements
 
@@ -19,10 +21,9 @@ El nuevo workflow usa las siguientes herramientas:
   - tmux-resurrect
   - tmux powerline theme
 - Nvim
-  - Lunarvim - cual se considero que se encuentra mejor.
-- ohmyzsh! (El cual todavia esta pending en ambas compus)
-- fig for macOS, para el autocompletado. Espero que se encuentre pronto para Linux
-
+  - Lunarvim
+  - Starship as customizable prompt for any shell.  
+- Fig for autocompletion, available soon for Linux. 
 
 ## Fonts
 
@@ -42,6 +43,8 @@ sudo apt install zsh
 ```
 
 ## Alacritty
+
+In the inventory section, there is a script to install Alacritty. 
 
 ## Tmux
 
@@ -106,13 +109,22 @@ After that make sure to Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nst
 Documentation: [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
 
 
-## Nvim & AstroNvim
+## Nvim & LunarVim
 
-I really like using vim even though it is not my main editor. I always like to use it with some perks. And that's why I use AstroNvim, which is a fork of Nvim with lots of cool and useful out of the box perks. 
+I really like using vim even though it is not my main editor. I always like to use it with some perks. And that's why I use Lunarvim, which is a fork of Nvim with lots of cool and useful out of the box perks. 
 
 You have to install Nvim version +0.7.0 to use it properly. 
 
-To install AstroNvim you have please check the [documentation](https://github.com/AstroNvim/AstroNvim).
+You can use the following command in order to Install LunarVim:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+```
+
+But first you will need to install few dependecies for cargo and others. 
+
+- Install [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+
 
 For the optional requirements I suggest to install:
 
@@ -129,7 +141,7 @@ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
 ```
 (Reference)[https://faun.pub/switch-easily-between-multiple-kubernetes-version-on-macos-9d61b9bc8287]
 
-### Vs Code - Terminal Nativation 
+### Vs Code - Terminal Navigation 
 
 Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter the following parameters:
 
@@ -174,32 +186,33 @@ lvim.builtin.lualine.sections.lualine_y = {
 ```
 Links:
 
-<<<<<<< HEAD
 https://www.youtube.com/watch?v=nqZqFSsiUdk
+
 https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
+
 https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
+
 https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
-https://www.youtube.com/watch?v=JeAHlTYB1Qk
-=======
-https://ww1.cuevana3.me/episodio/breaking-bad-4x5 por la mitad
-https://subscription.packtpub.com
-https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
-https://www.udemy.com/course/resolviendo-problemas-con-c/learn/lecture/5747590#overview
-https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
-https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
-https://www.youtube.com/watch?v=JeAHlTYB1Qk
-https://learning.oreilly.com/library/view/learning-go/9781492077206/
->>>>>>> 715326f8e1bca458f141411781c2af7d4ea1829b
+
 https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
+s
 https://www.youtube.com/watch?v=Tp4fkmJ6qXk
 
-<<<<<<< HEAD
 ## Karabiner Configuration
 
- ![medidasv2](2022-07-26-00-39-47.png)
+ ![medidasv2](Karabiner-Preferences.png)
 
 
- 
-=======
+## Gnome Extensions
 
->>>>>>> 715326f8e1bca458f141411781c2af7d4ea1829b
+- Alphabetical Grid
+- Blur my Shell
+- Espresso
+- Just Perfection
+- (No overview at startup)
+- Smart Auto Move
+- Sound and Input Chooser
+- Spotify Tray
+- Tray Icons Reloaded
+- User Themes
+- Pop Shell

@@ -44,6 +44,7 @@ sudo dnf -y install zsh
 ### Alacritty Install
 sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 sudo dnf -y install alacritty
+mkdir -p $HOME/.config/alacritty
 ln -s $HOME/Documents/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 ### Other Utilities
@@ -61,6 +62,21 @@ sudo dnf -y install gnome-shell-extension-pop-shell
 sudo dnf -y install xprop
 sudo dnf install ibus-typing-booster
 sudo dnf install emoji-picker
+sudo dnf install ripgrep
+sudo dnf install -y neovim python3-neovim
+
+echo "Installing Alacritty Themes"
+sudo npm i -g alacritty-themes
+
+## LazyGit Install
+
+sudo dnf copr enable atim/lazygit -y
+sudo dnf install lazygit
+
+# Installing Cargo
+
+echo "Installing Cargo"
+curl https://sh.rustup.rs -sSf | sh
 
 #Snapd
 sudo dnf install snapd
@@ -74,23 +90,17 @@ ln -s $HOME/Documents/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
 
 ## Tmux config
 
-ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
-
-## Chaging CapsLock to Ctrl
-
-echo "Chaging CapsLock to Ctrl................"
-setxkbmap -layout us -option ctrl:swapcaps
+ln -s $HOME/Documents/git/dotfiles/tmux/config/linux/tmux.conf $HOME/.tmux.conf
 
 # MANUAL INSTALLATION
 echo "Install Jetbrains ToolBox"
 echo "Install and configure VirtualBox"
 echo "Install Nerd Fonts"
 echo "Install Lunarvim"
-echo "Install nvim https://github.com/neovim/neovim/releases/tag/v0.7.0"
 echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
 
 "$@"
 # This is my Fedora Server condifguraton
 
 git config --global user.name "Francisco Sanabria"
-echo " REMEMBER: git config --global user.email" 
+echo " REMEMBER: git config --global user.email"    
