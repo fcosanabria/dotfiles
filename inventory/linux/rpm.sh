@@ -55,13 +55,16 @@ sudo dnf -y install gitg
 sudo dnf -y install gittyup
 sudo dnf -y installs virt-manager
 sudo dnf -y tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpms
 sudo dnf -y flatpak
 sudo dnf -y install gnome-shell-extension-pop-shell
 sudo dnf -y install xprop
-sudo dnf install ibus-typing-booster
-sudo dnf install emoji-picker
-sudo dnf install ripgrep
-sudo dnf install -y neovim python3-neovim
+sudo dnf -y install ibus-typing-booster
+sudo dnf -y install emoji-picker
+sudo dnf -y install ripgrep
+sudo dnf -y install -y neovim python3-neovim
+sudo dnf -y install util-linux-user
+sudo dnf install starship
 
 echo "Installing Alacritty Themes"
 sudo npm i -g alacritty-themes
@@ -69,7 +72,7 @@ sudo npm i -g alacritty-themes
 ## LazyGit Install
 
 sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit
+sudo dnf -y install lazygit
 
 # Installing Cargo
 
@@ -77,14 +80,14 @@ echo "Installing Cargo"
 curl https://sh.rustup.rs -sSf | sh
 
 #Snapd
-sudo dnf install snapd
+sudo dnf install -y snapd
 
 # Installing VS Code
 
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update
-sudo dnf install code
+sudo dnf install -y code
 
 # Config Files
 
@@ -102,6 +105,7 @@ echo "Install Jetbrains ToolBox"
 echo "Install and configure VirtualBox"
 echo "Install Nerd Fonts"
 echo "Install Lunarvim"
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
 
 "$@"
