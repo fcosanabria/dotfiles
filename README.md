@@ -184,6 +184,12 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 }
 ```
+
+## Starship
+
+Para el prompt lo que estoy usando es [Starship](https://starship.rs).
+
+
 Links:
 
 https://www.youtube.com/watch?v=nqZqFSsiUdk
