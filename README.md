@@ -248,3 +248,11 @@ https://ibm-learning.udemy.com/organization/home/
 - Pop Shell
 
 - Install Min Browser
+
+# How to disable accented characters when holding down a key on MacOS
+
+https://www.addictivetips.com/mac-os/disable-accented-characters-on-macos/
+
+```
+defaults write -g ApplePressAndHoldEnabled -bool true
+```
