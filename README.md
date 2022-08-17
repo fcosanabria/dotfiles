@@ -256,3 +256,7 @@ https://www.addictivetips.com/mac-os/disable-accented-characters-on-macos/
 ```
 defaults write -g ApplePressAndHoldEnabled -bool true
 ```
+### How to replace the new accents using the option key
+
+https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
+
