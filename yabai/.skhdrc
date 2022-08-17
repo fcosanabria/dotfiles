@@ -32,7 +32,7 @@ alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle window split type
-alt - e : yabai -m window --toggle split
+alt - w : yabai -m window --toggle split
 
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
