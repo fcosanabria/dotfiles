@@ -280,4 +280,3 @@ Using GNOME is great because of its extensibility using few extensions.
 4. Pop Shell: Great extension if you like to user your keyboard to control your applications and move around your desktop. 
 
 > These extension are compatible for GNOME 3.8 and above. I'm using GNOME 42
->>>>>>> 2db5d0f (Adding some Gnome notes to my dotfiles)
