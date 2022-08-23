@@ -233,6 +233,8 @@ https://ibm-learning.udemy.com/organization/home/
  ![medidasv2](Karabiner-Preferences.png)
 
 
+# My GNOME Configuration
+
 ## Gnome Extensions
 
 - Alphabetical Grid
@@ -245,8 +247,8 @@ https://ibm-learning.udemy.com/organization/home/
 - Spotify Tray
 - Tray Icons Reloaded
 - User Themes
-- Pop Shell
 
+<<<<<<< HEAD
 - Install Min Browser
 
 # How to disable accented characters when holding down a key on MacOS
@@ -260,3 +262,22 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 
 https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
 
+=======
+
+## New GNOME workflows
+
+So, I decide to use the following extension in order to facilitate my productivity while starting a new fresh session on my desktop. 
+
+### The problem
+
+I have to open my applications every time I start a new session. Then moving those applications to each workspace is a pain. So I was looking for a way to do it automatically. Well... Kind of.
+
+Using GNOME is great because of its extensibility using few extensions. 
+
+1. [The Extension Manager](https://extensions.gnome.org/extension-manager/), I can install and uninstall extensions.
+2. Space Bar: It replaces the `Activities` button with a i3-like workspace selector. It allows me to rename my workspaces, and move them around. 
+3. Smart Auto Move: It allows me to move my applications to each workspace automatically. Also allows me to create sessions and restore them every time I start a new session, and automatically move my applications to each workspace.
+4. Pop Shell: Great extension if you like to user your keyboard to control your applications and move around your desktop. 
+
+> These extension are compatible for GNOME 3.8 and above. I'm using GNOME 42
+>>>>>>> 2db5d0f (Adding some Gnome notes to my dotfiles)
