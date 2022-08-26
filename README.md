@@ -16,7 +16,7 @@ El nuevo workflow usa las siguientes herramientas:
 - Nerd Fonts
 - zsh
 - Alacritty
-- Tmux
+- Tmux (Soon depricated on my workflow)
   - tmp
   - tmux-resurrect
   - tmux powerline theme
