@@ -1,4 +1,5 @@
 # Dotfiles
+
 Tools and SetUp Management
 
 # WARNING! This repo is a work in progress and is currently very messy. DO NOT USE IT yet!
@@ -14,16 +15,12 @@ Most of the instructions you are about to read here, are already implemented on 
 El nuevo workflow usa las siguientes herramientas:
 
 - Nerd Fonts
-- zsh
-- Alacritty
-- Tmux (Soon depricated on my workflow)
-  - tmp
-  - tmux-resurrect
-  - tmux powerline theme
-- Nvim
-  - Lunarvim
-  - Starship as customizable prompt for any shell.  
-- Fig for autocompletion, available soon for Linux. 
+- [zsh](https://www.zsh.org)
+- [Alacritty](https://alacritty.org) 
+- [Nvim](https://neovim.io)
+  - [Lunarvim](https://www.lunarvim.org)
+  - [Starship](https://starship.rs/config/) as customizable prompt for any shell.  
+- [Fig](https://fig.io) for autocompletion, available soon for Linux. 
 
 ## Fonts
 
@@ -46,69 +43,6 @@ sudo apt install zsh
 
 In the inventory section, there is a script to install Alacritty. 
 
-## Tmux
-
-First, install tmux:
-
-```bash
-# RPM  based distros: Fedora/RHEL8/CentOS
-sudo dnf install tmux
-
-# Debian based distros: Ubuntu/PopOS/etc
-sudo apt install tmux
-```
-
-Create a soft like to your home directory of the `tmux.conf` file you will find here. In my case the directory for this repo is in `$HOME/Documents/git` so make sure to modify your as your needs. 
-
-```bash
-ln -s $HOME/Documents/git/dotfiles/tmux.conf $HOME/.tmux.conf
-```
-
-> Note: I have been trying to use links to the already configuration but looks like it does not work. So, please follow the intructions to install `tmux-resurrect` and `tmp`.
-
-### TPM - Tmux Plugin Manager Install
-
-Clone the following repo:
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-Make sure to add the following lines to your `.tmux.conf`. If you make the link from this repo, those line are already there, so you do not need to copy this again.
-
-```bash
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-...
-...
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
-```
-
-Type this in terminal if tmux is already running
-
-```bash
-$ tmux source ~/.tmux.conf
-```
-
-After that make sure to Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nstall) to fetch the plugin.
-
-Documentation: [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
-
-### Tmux Resurrect Install
-
-After setting up TPM for Tmux, you have to add this to your `tmux.conf`
-
-```bash
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-```
-
-After that make sure to Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nstall) to fetch the plugin. Now you are all set. Please check the documentation for keybindings and other configurations such a vim sessions and panel content restoration. Those are already on my `tmux.conf` on this repo. 
-
-Documentation: [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
-
-
 ## Nvim & LunarVim
 
 I really like using vim even though it is not my main editor. I always like to use it with some perks. And that's why I use Lunarvim, which is a fork of Nvim with lots of cool and useful out of the box perks. 
@@ -124,7 +58,6 @@ bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/
 But first you will need to install few dependecies for cargo and others. 
 
 - Install [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
-
 
 For the optional requirements I suggest to install:
 
@@ -152,7 +85,7 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 
 ## Alacritty themes
 
-sudo npm i -g alacritty-themes
+`sudo npm i -g alacritty-themes`
 
 theme: Oceanic Next
 
@@ -190,48 +123,9 @@ lvim.builtin.lualine.sections.lualine_y = {
 Para el prompt lo que estoy usando es [Starship](https://starship.rs).
 
 
-Links:
-
-https://www.youtube.com/watch?v=nqZqFSsiUdk
-
-https://www.reddit.com/r/ticktick/comments/rcna02/is_there_a_way_to_have_a_template_list_of_tasks_i/
-
-https://www.youtube.com/watch?v=g4dXZ0RQWdw&t=5s
-
-https://www.youtube.com/watch?v=wyjNpxLRmLg&t=230s
-
-https://www.google.com/search?q=disco+difussion&sourceid=chrome&ie=UTF-8
-
-https://www.youtube.com/watch?v=Tp4fkmJ6qXk
-
-https://www.youtube.com/watch?v=2ybLD6_2gKM
-
-https://www.youtube.com/watch?v=2ybLD6_2gKM
-
-https://app.youneedabudget.com/91368a95-bb06-4b0e-a82c-dcede4471dc4/accounts
-
-https://kodekloud-engineer.com/#!/tasks
-
-https://technolads.com/gotoxy-function-in-c/#:~:text=gotoxy()%20function%20in%20C++%20is%20used%20to%20place,print%20the%20required%20output%20message.
-
-https://www.tutorialspoint.com/cplusplus/cpp_functions.htm
-
-https://www.tutorialspoint.com/cplusplus/cpp_pointers.htm
-
-https://www.youtube.com/watch?v=yvsRrpIPCoE
-
-https://learn.acloud.guru/course/852a204f-8dff-4196-bcf8-922a25cc5a64/learn/f359fda7-0dd0-43e4-80e2-87095c7de16a/a333b5fc-9114-42ce-b1a6-b3912d23082d/watch
-
-https://exercism.org/dashboard
-
-https://ibm-learning.udemy.com/organization/home/
-
-
-
 ## Karabiner Configuration
 
  ![medidasv2](Karabiner-Preferences.png)
-
 
 # My GNOME Configuration
 
@@ -248,9 +142,6 @@ https://ibm-learning.udemy.com/organization/home/
 - Tray Icons Reloaded
 - User Themes
 
-<<<<<<< HEAD
-- Install Min Browser
-
 # How to disable accented characters when holding down a key on MacOS
 
 https://www.addictivetips.com/mac-os/disable-accented-characters-on-macos/
@@ -261,8 +152,6 @@ defaults write -g ApplePressAndHoldEnabled -bool true
 ### How to replace the new accents using the option key
 
 https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
-
-=======
 
 ## New GNOME workflows
 
