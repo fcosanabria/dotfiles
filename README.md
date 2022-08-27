@@ -18,7 +18,7 @@ El nuevo workflow usa las siguientes herramientas:
 - [zsh](https://www.zsh.org)
 - [Alacritty](https://alacritty.org) 
 - [Nvim](https://neovim.io)
-  - [Lunarvim](https://www.lunarvim.org)
+  - [Lunarvim](https://www.lunarvim.org): an opinionated and extensible IDE layer for Nvim. 
   - [Starship](https://starship.rs/config/) as customizable prompt for any shell.  
 - [Fig](https://fig.io) for autocompletion, available soon for Linux. 
 
