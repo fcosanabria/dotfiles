@@ -23,8 +23,7 @@ alias ctx='kubectx'
 alias ctxg='kubectx | grep -i'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
-alias tmux="TERM=screen-256color-bce tmux"
-
+alias tmux="TERM=xterm-256color tmux"
 # The following alias and functions wont work for you. Please ignore them. 
 ## List Begins ##
 
