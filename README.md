@@ -17,6 +17,7 @@ El nuevo workflow usa las siguientes herramientas:
 - Nerd Fonts
 - [zsh](https://www.zsh.org)
 - [Alacritty](https://alacritty.org) 
+- [Tmux](https://github.com/tmux-plugins/tpm)
 - [Nvim](https://neovim.io)
   - [Lunarvim](https://www.lunarvim.org): an opinionated and extensible IDE layer for Nvim. 
   - [Starship](https://starship.rs/config/) as customizable prompt for any shell.  
@@ -42,6 +43,16 @@ sudo apt install zsh
 ## Alacritty
 
 In the inventory section, there is a script to install Alacritty. 
+
+## Tmux
+
+For Tmux, I'm currently using TPM for manage tmux-plugins. 
+
+In order to install TPM you need to run:
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
 
 ## Nvim & LunarVim
 
