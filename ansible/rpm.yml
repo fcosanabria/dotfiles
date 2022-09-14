@@ -1,0 +1,198 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+  - name: install various components    
+    dnf:
+      - dnf-plugins-core
+      - dnf-utils
+      - gnome-tweaks
+      - gnome-extensions-app
+      - util-linux-user
+      - snapd
+        
+  - name: install Nodejs components
+    dnf:
+      - nodejs
+      - npm
+
+  - name: Installing neovim
+    dnf:
+      name: neovim
+      state: present
+      latest: yes
+  - name: Installing python3-neovim
+    dnf:
+      name: python3-neovim
+      state: present
+      latest: yes
+        
+  - name: Installing zsh
+    dnf:
+      name: zsh
+      state: present
+      latest: yes
+        
+  - name: Installing Apps
+    dnf:
+      name: "{{ item }}"
+      state: present
+      latest: yes
+    with_items:
+      - tmux
+      # - spotify
+      # - slack
+      # - discord - included in Nobara Project
+      - telegram-desktop
+      - vlc
+      # - steam - included in Nobara Project
+      - exa
+      - bat
+      - screenkey
+      - neofetch
+      - gitg
+      - virt-manager
+      - ripgrep
+      - builder
+      - pavucontrol
+
+  - name: Installing TPM (Tmux Plugin Manager)
+    git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: ~/.tmux/plugins/tpm
+    
+  - name: Installing PopShell (Tiling Window Manager)
+    dnf:
+      name: gnome-shell-extension-pop-shell
+      state: present
+      latest: yes 
+        
+  - name: Installing Alacritty
+    dnf:
+      name: alacritty
+      state: present
+      latest: yes       
+  
+  - name: Installing Alacritty themes
+    npm:
+      name: alacritty-themes
+      global: yes
+
+  - name: Installing Starship
+    dnf:
+      name: starship
+      state: present
+      latest: yes
+
+  - name: Installing virtualization tools
+    dnf:
+      name: "{{ item }}"
+      state: present
+      latest: yes
+    with_items:
+      - qemu-kvm
+      - libvirt
+      - libvirt-devel
+      - virt-install
+      - virt-top
+      - libguestfs-tools   
+      - bridge-utils
+
+  - name: Adding Vivaldi Browser repository
+    yum_repository:
+      name: vivaldi-fedora
+      baseurl: https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+
+  - name: Installing Vivaldi Browser
+    dnf:
+      name: vivaldi-stable
+      state: present
+      latest: yes
+  
+  - name: Enable and install Lazy git
+    shell: |
+      sudo dnf copr enable atim/lazygit -y
+      sudo dnf install lazygit -y
+      
+  - name: Install Cargo
+    shell: |
+      curl https://sh.rustup.rs -sSf | sh
+  
+  - name: Install Visual Studio Code
+    shell: |
+      sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+      sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+      sudo dnf check-update
+      sudo dnf install code -y
+      
+  # Download Jetbrains Toolbox tar file, extract it and install it
+  - name: Download Jetbrains Toolbox
+    get_url:
+      url: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz
+      dest: /tmp/jetbrains-toolbox.tar.gz
+      mode: 0755
+
+  - name: Extract Jetbrains Toolbox
+    unarchive:
+      src: /tmp/jetbrains-toolbox.tar.gz
+      dest: /tmp
+      remote_src: yes
+  
+  - name: Install Jetbrains Toolbox
+    shell: |
+      cd /tmp/jetbrains-toolbox-1.25.12999
+      ./jetbrains-toolbox
+
+
+  # Install VirtualBox and its dependencies
+
+  - name: Install VirtualBox dependencies
+  dnf:
+    name: "{{ item }}"
+    state: present
+    latest: yes
+  with_items:
+  - development-tools
+  - kernel-headers
+  - kernel-devel
+  - dkms
+  - elfutils-libelf-devel
+  - qt5-qtx11extras
+
+  - name: Add VirtualBox RPM repository
+    yum_repository:
+      name: virtualbox
+      description: VirtualBox RPM repository
+      baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/36/\$basearch
+      gpgcheck: yes
+      gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
+      enabled: yes
+
+  - name: Import VirtualBox GPG key
+    rpm_key:
+      key: https://www.virtualbox.org/download/oracle_vbox.asc
+      state: present
+
+  - name: Install VirtualBox
+    dnf:
+      name: virtualbox-6.1
+      state: present
+      latest: yes
+
+  - name: Add user to the vboxusers group
+    shell: |
+      sudo usermod -a -G vboxusers $USER
+
+  - name: Add Vagrant repo
+    yum_repository:
+      name: hashicorp      
+      baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+
+  - name: Install Vagrant
+    dnf:
+      name: vagrant
+      state: present
+      latest: yes

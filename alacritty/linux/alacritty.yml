@@ -833,33 +833,28 @@ key_bindings:
 colors:
   # Default colors
   primary:
-    background: '#1b2b34'
-    foreground: '#d8dee9'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '#1b2b34'
-    cursor: '#ffffff'
+    background: '#282a36'
+    foreground: '#f8f8f2'
 
   # Normal colors
   normal:
-    black: '#343d46'
-    red: '#EC5f67'
-    green: '#99C794'
-    yellow: '#FAC863'
-    blue: '#6699cc'
-    magenta: '#c594c5'
-    cyan: '#5fb3b3'
-    white: '#d8dee9'
+    black: '#000000'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#caa9fa'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#bfbfbf'
 
   # Bright colors
   bright:
-    black: '#343d46'
-    red: '#EC5f67'
-    green: '#99C794'
-    yellow: '#FAC863'
-    blue: '#6699cc'
-    magenta: '#c594c5'
-    cyan: '#5fb3b3'
-    white: '#d8dee9'
-theme: Oceanic-Next
+    black: '#575b70'
+    red: '#ff6e67'
+    green: '#5af78e'
+    yellow: '#f4f99d'
+    blue: '#caa9fa'
+    magenta: '#ff92d0'
+    cyan: '#9aedfe'
+    white: '#e6e6e6'
+theme: Dracula

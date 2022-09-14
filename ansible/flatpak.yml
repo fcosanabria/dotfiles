@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+- name: Install multiple packages
+  community.general.flatpak:
+    name:
+      - org.gimp.GIMP
+      - org.inkscape.Inkscape
+      - com.discordapp.Discord
+      - com com.spotify.Client
+      - org.fedoraproject.MediaWriter
+      - de.haeckerfelix.Fragments
+      - org.gnome.SoundRecorder
+      - com.orama_interactive.Pixelorama
+      - org.darktable.Darktable
+      - org.flameshot.Flameshot
+      - com.bitwarden.desktop
+      - org.zotero.Zotero
+      - org.gustavoperedo.FontDownloader
+      - com.rafaelmardojai.Blanket
+      - com.raggesilver.BlackBox
+      - org.gnome.Glade
+      - io.gitlab.caveman250.headlines
+      - org.gnome.TextEditor
+      - org.gnome.Epiphany
+      - com.getmailspring.Mailspring
+      - org.gnome.Solanum
