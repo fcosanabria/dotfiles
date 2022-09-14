@@ -105,7 +105,9 @@
   - name: Adding Vivaldi Browser repository
     yum_repository:
       name: vivaldi-fedora
+      description: Vivaldi Browser
       baseurl: https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+      enabled: yes
 
   - name: Installing Vivaldi Browser
     dnf:
