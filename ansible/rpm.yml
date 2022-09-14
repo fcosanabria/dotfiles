@@ -94,7 +94,7 @@
       name: "{{ item }}"
       state: present
     with_items:
-      - qemu-kvm
+      # - qemu-kvm - package not compatible with Fedora 36. 
       - libvirt
       - libvirt-devel
       - virt-install
