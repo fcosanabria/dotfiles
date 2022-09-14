@@ -102,19 +102,12 @@
       - libguestfs-tools   
       - bridge-utils
 
-  - name: Adding Vivaldi Browser repository
-    yum_repository:
-      name: vivaldi-fedora
-      description: Vivaldi Browser
-      baseurl: https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-      enabled: yes
-
-  - name: Installing Vivaldi Browser
-    dnf:
-      name: vivaldi-stable
-      state: present
-  
-  - name: Enable and install Lazy git
+  - name: Enable Vivaldi Reposity and Installing Vivaldi
+    shell: |
+      sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+      sudo dnf install vivaldi-stable -y
+        
+  - name: Enable and install Lazy git 
     shell: |
       sudo dnf copr enable atim/lazygit -y
       sudo dnf install lazygit -y
@@ -177,6 +170,9 @@
       key: https://www.virtualbox.org/download/oracle_vbox.asc
       state: present
 
+  - name: Refresh VirtualBox repository
+    command: dnf makecache
+          
   - name: Install VirtualBox
     dnf:
       name: virtualbox-6.1
