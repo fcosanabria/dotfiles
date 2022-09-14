@@ -5,9 +5,6 @@
   become_user: piktonus97m 
 
   tasks:
-  # Change the default shell to zsh
-  - name: Change the default shell to zsh
-    shell: chsh -s $(which zsh)
   
   # Create soft link for .zshrc file in home directory 
   - name: Create soft link for .zshrc file in home directory
@@ -43,10 +40,21 @@
 
   - name: Create soft link for alacritty.yml file in .config directory
     file:
-      src: $HOME/git/dotfiles/alacritty/linux/alacritty.yml
+      src: $HOME/git/dotfiles/alacritty/Linux/alacritty.yml
       dest: $HOME/.config/alacritty/alacritty.yml
       state: link
       force: yes
       owner: piktonus97m
       group: piktonus97m
       mode: 0644
+  
+  - name: Install alacritty-themes from npm
+    npm:
+      name: alacritty-themes
+      global: yes
+      
+  - name: Installing TPM (Tmux Plugin Manager)
+    git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: ~/.tmux/plugins/tpm
+   

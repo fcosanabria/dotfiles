@@ -63,12 +63,7 @@
       - ripgrep
       - gnome-builder
       - pavucontrol
-
-  - name: Installing TPM (Tmux Plugin Manager)
-    git:
-      repo: https://github.com/tmux-plugins/tpm
-      dest: ~/.tmux/plugins/tpm
-    
+   
   - name: Installing PopShell (Tiling Window Manager)
     dnf:
       name: gnome-shell-extension-pop-shell
@@ -79,11 +74,6 @@
       name: alacritty
       state: present
   
-  - name: Installing Alacritty themes
-    npm:
-      name: alacritty-themes
-      global: yes
-
   - name: Installing Starship
     dnf:
       name: starship
