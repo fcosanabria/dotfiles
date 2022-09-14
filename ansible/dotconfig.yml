@@ -57,7 +57,7 @@
   - name: Copy the font file
     copy:
       src: $HOME/git/dotfiles/fonts/FiraCodeRegularNerdFontComplete.ttf
-      dest: $HOME/.local/share/fonts/FiraCodeRegularNerdFontComplete.ttf
+      dest: /usr/local/share/fonts/FiraCodeRegularNerdFontComplete.ttf
       owner: piktonus97m
       group: piktonus97m
       mode: 0644
