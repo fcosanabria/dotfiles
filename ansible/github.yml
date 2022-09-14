@@ -1,9 +1,10 @@
----
-- hosts: localhost
+--- 
+- name: Git and GitHub Configuration
   connection: local
+  hosts: localhost
   become: true
   become_user: root
-
   tasks:
+
   - name: Configure Git username and email
     shell: git config --global user.name "Francisco Sanabria" && git config --global user.email "piktonus97x@hotmail.com"
