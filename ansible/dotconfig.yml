@@ -52,14 +52,3 @@
       owner: piktonus97m
       group: piktonus97m
       mode: 0644
-  
-  # Copy the font file located on the fonts directory to the .local/share/fonts directory
-  - name: Copy the font file
-    copy:
-      src: $HOME/dotfiles/fonts/FiraCodeRegularNerdFontComplete.ttf
-      dest: /usr/local/share/fonts/FiraCodeRegularNerdFontComplete.ttf
-      owner: piktonus97m
-      group: piktonus97m
-      mode: 0644
-
-  
