@@ -163,12 +163,16 @@
 
   # Install VirtualBox and its dependencies
 
+  - name: Install the "Development Tools" package group
+    dnf:
+      name: "@Development Tools"
+      state: present
+
   - name: Install VirtualBox dependencies
     dnf:
       name: "{{ item }}"
       state: present
     with_items:
-    - development-tools
     - kernel-headers
     - kernel-devel
     - dkms
