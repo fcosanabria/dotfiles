@@ -1,12 +1,13 @@
 ---
+
 - name: Fedora Configuration
-  hosts: localhost
   connection: local
+  hosts: localhost
   become: true
   become_user: root
-
   tasks:
-  - name: install various components    
+    
+  - name: install various components
     dnf:
       name: "{{ item }}"
       state: present
@@ -20,6 +21,9 @@
         
   - name: install Nodejs components
     dnf:
+      name: "{{ item }}"
+      state: present
+    with_items:
       - nodejs
       - npm
 
@@ -154,17 +158,17 @@
   # Install VirtualBox and its dependencies
 
   - name: Install VirtualBox dependencies
-  dnf:
-    name: "{{ item }}"
-    state: present
-    latest: yes
-  with_items:
-  - development-tools
-  - kernel-headers
-  - kernel-devel
-  - dkms
-  - elfutils-libelf-devel
-  - qt5-qtx11extras
+    dnf:
+      name: "{{ item }}"
+      state: present
+      latest: yes
+    with_items:
+    - development-tools
+    - kernel-headers
+    - kernel-devel
+    - dkms
+    - elfutils-libelf-devel
+    - qt5-qtx11extras
 
   - name: Add VirtualBox RPM repository
     yum_repository:

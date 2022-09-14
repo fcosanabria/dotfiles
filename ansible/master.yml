@@ -1,4 +1,5 @@
 ---
+
 - import_playbook: rpm.yml
 - import_playbook: flatpak.yml
 - import_playbook: dotconfig.yml
