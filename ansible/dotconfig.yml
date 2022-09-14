@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   become: true
-  become_user: root
+  become_user: piktonus97m 
 
   tasks:
   # Change the default shell to zsh
