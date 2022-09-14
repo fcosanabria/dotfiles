@@ -30,26 +30,22 @@
   - name: Installing neovim
     dnf:
       name: neovim
-      state: present
-      latest: yes
+      state: latest
 
   - name: Installing python3-neovim
     dnf:
       name: python3-neovim
       state: present
-      latest: yes
         
   - name: Installing zsh
     dnf:
       name: zsh
       state: present
-      latest: yes
         
   - name: Installing Apps
     dnf:
       name: "{{ item }}"
       state: present
-      latest: yes
     with_items:
       - tmux
       # - spotify
@@ -77,13 +73,11 @@
     dnf:
       name: gnome-shell-extension-pop-shell
       state: present
-      latest: yes 
         
   - name: Installing Alacritty
     dnf:
       name: alacritty
       state: present
-      latest: yes       
   
   - name: Installing Alacritty themes
     npm:
@@ -94,13 +88,11 @@
     dnf:
       name: starship
       state: present
-      latest: yes
 
   - name: Installing virtualization tools
     dnf:
       name: "{{ item }}"
       state: present
-      latest: yes
     with_items:
       - qemu-kvm
       - libvirt
@@ -119,7 +111,6 @@
     dnf:
       name: vivaldi-stable
       state: present
-      latest: yes
   
   - name: Enable and install Lazy git
     shell: |
@@ -162,7 +153,6 @@
     dnf:
       name: "{{ item }}"
       state: present
-      latest: yes
     with_items:
     - development-tools
     - kernel-headers
@@ -189,7 +179,6 @@
     dnf:
       name: virtualbox-6.1
       state: present
-      latest: yes
 
   - name: Add user to the vboxusers group
     shell: |
@@ -204,4 +193,3 @@
     dnf:
       name: vagrant
       state: present
-      latest: yes
