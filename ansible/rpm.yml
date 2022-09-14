@@ -32,6 +32,7 @@
       name: neovim
       state: present
       latest: yes
+
   - name: Installing python3-neovim
     dnf:
       name: python3-neovim
