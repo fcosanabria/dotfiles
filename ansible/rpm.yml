@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Fedora Configuration
+  hosts: localhost
   connection: local
   become: true
   become_user: root
