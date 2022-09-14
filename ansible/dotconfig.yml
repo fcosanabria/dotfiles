@@ -56,7 +56,7 @@
   # Copy the font file located on the fonts directory to the .local/share/fonts directory
   - name: Copy the font file
     copy:
-      src: $HOME/git/dotfiles/fonts/FiraCodeRegularNerdFontComplete.ttf
+      src: $HOME/dotfiles/fonts/FiraCodeRegularNerdFontComplete.ttf
       dest: /usr/local/share/fonts/FiraCodeRegularNerdFontComplete.ttf
       owner: piktonus97m
       group: piktonus97m
