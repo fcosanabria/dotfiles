@@ -207,7 +207,8 @@
 
   - name: Add Vagrant repo
     yum_repository:
-      name: hashicorp      
+      name: hashicorp
+      description: HashiCorp Repository
       baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
   - name: Install Vagrant
