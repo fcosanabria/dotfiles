@@ -198,7 +198,7 @@
 
   - name: Install VirtualBox
     dnf:
-      name: virtualbox-6.1
+      name: VirtualBox
       state: present
 
   - name: Add user to the vboxusers group
