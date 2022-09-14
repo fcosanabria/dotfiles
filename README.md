@@ -138,6 +138,17 @@ Para el prompt lo que estoy usando es [Starship](https://starship.rs).
 
  ![medidasv2](Karabiner-Preferences.png)
 
+# How to disable accented characters when holding down a key on MacOS
+
+https://www.addictivetips.com/mac-os/disable-accented-characters-on-macos/
+
+```
+defaults write -g ApplePressAndHoldEnabled -bool true
+```
+### How to replace the new accents using the option key
+
+https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
+
 # My GNOME Configuration
 
 ## Gnome Extensions
@@ -152,17 +163,6 @@ Para el prompt lo que estoy usando es [Starship](https://starship.rs).
 - Spotify Tray
 - Tray Icons Reloaded
 - User Themes
-
-# How to disable accented characters when holding down a key on MacOS
-
-https://www.addictivetips.com/mac-os/disable-accented-characters-on-macos/
-
-```
-defaults write -g ApplePressAndHoldEnabled -bool true
-```
-### How to replace the new accents using the option key
-
-https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
 
 ## New GNOME workflows
 
