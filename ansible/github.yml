@@ -3,7 +3,7 @@
   connection: local
   hosts: localhost
   become: true
-  become_user: root
+  become_user: piktonus97m
   tasks:
 
   - name: Configure Git username and email
