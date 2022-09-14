@@ -56,7 +56,7 @@
       - gitg
       - virt-manager
       - ripgrep
-      - builder
+      - gnome-builder
       - pavucontrol
 
   - name: Installing TPM (Tmux Plugin Manager)
