@@ -4,14 +4,10 @@
   connection: local
   hosts: localhost
   become: true
-  become_user: root
+  become_user: piktonus97m
   tasks:
 
-  - name: Install python-psutil package
-    dnf:
-      name: python-psutil
-      state: present
-  # that is required for the dconf module
+ # that is required for the dconf module
 
   - name: My keybindings 
     dconf:

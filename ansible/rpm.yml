@@ -62,8 +62,9 @@
       - virt-manager
       - ripgrep
       - gnome-builder
-      - pavucontrol
-   
+      - pavucontrol 
+      - python-psutil
+      
   - name: Installing PopShell (Tiling Window Manager)
     dnf:
       name: gnome-shell-extension-pop-shell
