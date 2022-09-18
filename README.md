@@ -154,15 +154,25 @@ https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
 ## Gnome Extensions
 
 - Alphabetical Grid
+- Another Window Session Manager
 - Blur my Shell
+- Dock from Dash
 - Espresso
+- GNOME Fuzzy App Search
 - Just Perfection
-- (No overview at startup)
+- Media Controls
 - Smart Auto Move
 - Sound and Input Chooser
+- Space Bar
+  - Main 
+  - Code
+  - Stream
+  - Others
 - Spotify Tray
 - Tray Icons Reloaded
+- VIM alt-tab
 - User Themes
+- Pop Shell
 
 ## New GNOME workflows
 
