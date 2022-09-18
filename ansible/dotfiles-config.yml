@@ -47,11 +47,6 @@
       owner: piktonus97m
       group: piktonus97m
       mode: 0644
-  
-  - name: Install alacritty-themes from npm
-    npm:
-      name: alacritty-themes
-      global: yes
       
   - name: Installing TPM (Tmux Plugin Manager)
     git:

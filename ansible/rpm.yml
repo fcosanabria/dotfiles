@@ -206,3 +206,8 @@
     dnf:
       name: vagrant
       state: present
+      
+  - name: Install alacritty-themes from npm
+    npm:
+      name: alacritty-themes
+      global: yes

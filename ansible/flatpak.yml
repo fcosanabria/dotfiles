@@ -24,7 +24,7 @@
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - com.discordapp.Discord
-      - com com.spotify.Client
+      - com.spotify.Client
       - org.fedoraproject.MediaWriter
       - de.haeckerfelix.Fragments
       - org.gnome.SoundRecorder
