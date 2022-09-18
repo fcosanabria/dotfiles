@@ -39,32 +39,32 @@
     - { key: "gtk-theme", value: "'Adwaita-dark'" }
     - { key: "monospace-font-name", value: "'FiraCode Nerd Font 10'" }
 
-  - name: Input Sources
-    dconf:
-      key: "/org/gnome/desktop/input-sources/{{ item.key }}"
-      value: "{{ item.value }}"
-      state: present
-    with_items:
-    - { key: "sources", value: "['[('xkb', 'us')]']" }
-      # caps = ctrl
-    - { key: "xkb-options", value: "['[('caps:ctrl_modifier')]']" }
-      # compose key: rwin
-    - { key: "xkb-options", value: "['[('compose:rwin')]']" }
-    # lv3:ralt_switch
-    - { key: "xkb-options", value: "['[('lv3:ralt_switch')]']" }
+  # - name: Input Sources
+    # dconf:
+      # key: "/org/gnome/desktop/input-sources/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "sources", value: "['[('xkb', 'us')]']" }
+      ## caps = ctrl
+    # - { key: "xkb-options", value: "['[('caps:ctrl_modifier')]']" }
+      ## compose key: rwin
+    # - { key: "xkb-options", value: "['[('compose:rwin')]']" }
+      ## lv3:ralt_switch
+    # - { key: "xkb-options", value: "['[('lv3:ralt_switch')]']" }
   
-  - name: Workspace Names
-    dconf:
-      key: "/org/gnome/desktop/wm/preferences/{{ item.key }}"
-      value: "{{ item.value }}"
-      state: present
-    with_items:
-    - { key: "workspace-names", value: "['[('Main', 'Code', 'Stream', 'Others')]']" }
+  # - name: Workspace Names
+    # dconf:
+      # key: "/org/gnome/desktop/wm/preferences/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "workspace-names", value: "['[('Main', 'Code', 'Stream', 'Others')]']" }
       
-  - name: Buttom Layout
-    dconf:
-      key: "org/gnome/desktop/wm/preferences/{{ item.key }}"
-      value: "{{ item.value }}"
-      state: present
-    with_items:
-    - { key: "button-layout", value: "'appmenu:minimize,close'" }
+  # - name: Buttom Layout
+    # dconf:
+      # key: "org/gnome/desktop/wm/preferences/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "button-layout", value: "'appmenu:minimize,close'" }
