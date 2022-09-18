@@ -51,8 +51,8 @@
       # - spotify
       # - slack
       # - discord - included in Nobara Project
-      - telegram-desktop
-      - vlc
+      # - telegram-desktop
+      # - vlc
       # - steam - included in Nobara Project
       - exa
       - bat
