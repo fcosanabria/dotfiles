@@ -7,6 +7,32 @@
   become_user: root
   tasks:
  
+  - name: add the flathub flatpak repository remote to the user installation
+    become: yes
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+  - name: install flathub packages
+    become: yes
+    community.general.flatpak:
+      name: "{{flathub_packages}}"
+      state: present
+      remote: flathub
+
+  - name: Install the spotify flatpak
+    community.general.flatpak:
+      name:  https://s3.amazonaws.com/alexlarsson/spotify-repo/spotify.flatpakref
+      state: present
+
+  - name: Install multiple packages
+    community.general.flatpak:
+      name:
+        - org.gimp.GIMP
+        - org.inkscape.Inkscape
+        - org.mozilla.firefox
+ 
   - name: Install multiple packages
     community.general.flatpak:
       name:
