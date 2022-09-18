@@ -1,7 +1,7 @@
 ---
 
-# - import_playbook: rpm.yml
+- import_playbook: rpm.yml
 - import_playbook: flatpak.yml
 - import_playbook: dotconfig.yml
-# - import_playbook: gnome.yml
+- import_playbook: gnome.yml
 - import_playbook: github.yml
