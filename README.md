@@ -151,6 +151,16 @@ https://www.freecodecamp.org/news/how-to-type-letters-with-accents-on-mac/
 
 # My GNOME Configuration
 
+## Dconf configuration
+
+In order to know what are your configurations for dconf, you can use the following command:
+
+```bash
+dconf dump / > dconf-settings.txt
+```
+
+> [Reference](https://opensource.com/article/18/5/manage-your-workstation-ansible-part-3)
+
 ## Gnome Extensions
 
 - Alphabetical Grid
