@@ -4,7 +4,9 @@ Tools and SetUp Management
 
 # WARNING! This repo is a work in progress and is currently very messy. DO NOT USE IT yet!
 
-If you have any questions let's talk. 
+Most of the notes here are completely personal. I'm just putting them here for my own reference.
+
+So, if you have any questions let's talk. 
 
 If you want to this automatically just run the script located at `inventory/yourOs`. Please make sure to modify the paths according to your machine and needs.
 
@@ -128,6 +130,20 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 }
 ```
+
+## Nvim x Vs Code
+
+All the plugins for vscode  are already synced on my Github account.
+
+The repository that I'm using is from a earlier version of Lunarvim. It is using branch 4625145. 
+
+You have to clone the repository and then run the following command:
+
+```bash
+git checkout 4625145
+```
+
+> This is the [repository](https://github.com/LunarVim/LunarVim/tree/4625145d0278d4a039e55c433af9916d93e7846a)
 
 ## Starship
 
