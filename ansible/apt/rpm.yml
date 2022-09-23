@@ -1,6 +1,6 @@
 ---
 
-- name: Fedora Configuration
+- name: PopOS or Ubuntu Configuration
   connection: local
   hosts: localhost
   become: true
@@ -10,21 +10,18 @@
   # instead of using the dnf module, use apt module
   - name: install various components
     apt:
-      name: "{{ item }}"
+      name: 
+        - gnome-tweaks
+        - gnome-extensions-app
+        - snapd
+        - util-linux
       state: present
-    with_items:
-    - gnome-tweaks
-    - gnome-extensions-app
-    - snapd
-    - util-linux
-
-  - name: install Nodejs components
+  - name: install Nodejs components        
     apt:
-      name: "{{ item }}"
+      name:
+        - nodejs
+        - npm
       state: present
-    with_items:
-      - nodejs
-      - npm
 
   # Install neovim lastest version from github https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
   - name: install neovim
@@ -34,37 +31,31 @@
       sudo apt install ./nvim-linux64.deb
     
   - name: Installing python3-neovim
-    dnf:
+    apt:
       name: python3-neovim
       state: present
         
   - name: Installing zsh
-    dnf:
+    apt:
       name: zsh
       state: present
         
   - name: Installing Apps
     dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - tmux
-      # - spotify
-      # - slack
-      # - discord - included in Nobara Project
-      # - telegram-desktop
-      # - vlc
-      # - steam - included in Nobara Project
-      - exa
-      - bat
-      - screenkey
-      - neofetch
-      - gitg
-      - virt-manager
-      - ripgrep
-      - gnome-builder
-      - pavucontrol 
-      - python-psutil
+      name:
+        - tmux
+        - slack
+        - telegram-desktop
+        - steam - included in Nobara Project
+        - exa
+        - bat
+        - screenkey
+        - neofetch
+        - gitg
+        - virt-manager
+        - ripgrep
+        - gnome-builder
+        - pavucontrol 
       
   - name: Installing PopShell (Tiling Window Manager)
     dnf:
