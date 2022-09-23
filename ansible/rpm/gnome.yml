@@ -1,0 +1,70 @@
+# This serve as dconf configuration for gnome
+---
+- name: Dconf configuration for my GNOME desktop
+  connection: local
+  hosts: localhost
+  become: true
+  become_user: piktonus97m
+  tasks:
+
+ # that is required for the dconf module
+
+  - name: My keybindings 
+    dconf:
+      key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
+      value: "{{ item.value }}"
+      state: present
+    with_items:
+      - { key: "switch-to-workspace-1", value: "['<Super>1']" }
+      - { key: "switch-to-workspace-2", value: "['<Super>2']" }
+      - { key: "switch-to-workspace-3", value: "['<Super>3']" }
+      - { key: "switch-to-workspace-4", value: "['<Super>4']" }
+      - { key: "move-to-workspace-1", value: "['<Super><Shift>1']" }
+      - { key: "move-to-workspace-2", value: "['<Super><Shift>2']" }
+      - { key: "move-to-workspace-3", value: "['<Super><Shift>3']" }
+      - { key: "move-to-workspace-4", value: "['<Super><Shift>4']" }
+    
+  - name: Interface configuration
+    dconf:
+      key: "/org/gnome/desktop/interface/{{ item.key }}"
+      value: "{{ item.value }}"
+      state: present
+    with_items:
+    - { key: "clock-show-date", value: "true" }
+    - { key: "clock-show-seconds", value: "true" }
+    - { key: "clock-show-weekday", value: "true" }
+    - { key: "color-scheme", value: "'prefer-dark'" }
+    - { key: "cursor-size", value: "32" }
+    - { key: "enable-hot-corners", value: "false" }
+    - { key: "gtk-theme", value: "'Adwaita-dark'" }
+    - { key: "monospace-font-name", value: "'FiraCode Nerd Font 10'" }
+
+  # - name: Input Sources
+    # dconf:
+      # key: "/org/gnome/desktop/input-sources/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "sources", value: "['[('xkb', 'us')]']" }
+      ## caps = ctrl
+    # - { key: "xkb-options", value: "['[('caps:ctrl_modifier')]']" }
+      ## compose key: rwin
+    # - { key: "xkb-options", value: "['[('compose:rwin')]']" }
+      ## lv3:ralt_switch
+    # - { key: "xkb-options", value: "['[('lv3:ralt_switch')]']" }
+  
+  # - name: Workspace Names
+    # dconf:
+      # key: "/org/gnome/desktop/wm/preferences/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "workspace-names", value: "['[('Main', 'Code', 'Stream', 'Others')]']" }
+      
+  # - name: Buttom Layout
+    # dconf:
+      # key: "org/gnome/desktop/wm/preferences/{{ item.key }}"
+      # value: "{{ item.value }}"
+      # state: present
+    # with_items:
+    # - { key: "button-layout", value: "'appmenu:minimize,close'" }
