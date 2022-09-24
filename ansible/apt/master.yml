@@ -1,6 +1,6 @@
 ---
 
-- import_playbook: rpm.yml
+- import_playbook: apt.yml
 - import_playbook: flatpak.yml
 - import_playbook: dotfiles-config.yml
 - import_playbook: gnome.yml
