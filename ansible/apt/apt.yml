@@ -23,6 +23,10 @@
         - npm
       state: present
 
+  - name: Install Ansible Community Galaxy
+    shell: |
+      ansible-galaxy collection install community.general
+
   # Install neovim lastest version from github https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
   - name: install neovim
     shell: |
@@ -41,7 +45,7 @@
       state: present
         
   - name: Installing Apps
-    dnf:
+    apt:
       name:
         - tmux
         - slack
@@ -57,44 +61,38 @@
         - gnome-builder
         - pavucontrol 
       
-  - name: Installing PopShell (Tiling Window Manager)
-    dnf:
-      name: gnome-shell-extension-pop-shell
-      state: present
-        
   - name: Installing Alacritty
-    dnf:
+    apt:
       name: alacritty
       state: present
   
   - name: Installing Starship
-    dnf:
+    snap:
       name: starship
-      state: present
 
   - name: Installing virtualization tools
     dnf:
-      name: "{{ item }}"
+      name:
+        - spice-vdagent 
+        - spice-webdavd
       state: present
-    with_items:
-      # - qemu-kvm - package not compatible with Fedora 36. 
-      - libvirt
-      - libvirt-devel
-      - virt-install
-      - virt-top
-      - libguestfs-tools   
-      - bridge-utils
 
   - name: Enable Vivaldi Reposity and Installing Vivaldi
     shell: |
-      sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-      sudo dnf install vivaldi-stable -y
+      sudo apt -y install wget gnupg2
+      wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -
+      sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' 
+      sudo apt update
+      sudo apt install vivaldi-stable -y
+      apt policy vivaldi-stable
         
   - name: Enable and install Lazy git 
     shell: |
-      sudo dnf copr enable atim/lazygit -y
-      sudo dnf install lazygit -y
-          
+      LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[0-35.]+')
+      curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+      sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
+      lazygit --version
+
   # Installing cargo and rust 
 
   - name: check if cargo is installed
@@ -120,11 +118,11 @@
 
   - name: Install Visual Studio Code
     shell: |
-      sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-      sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-      sudo dnf check-update
-      sudo dnf install code -y
-      
+      wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+      sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+      sudo apt update
+      sudo apt install code -y
+
   # Download Jetbrains Toolbox tar file, extract it and install it
   - name: Download Jetbrains Toolbox
     get_url:
@@ -143,61 +141,46 @@
       cd /tmp/jetbrains-toolbox-1.25.12999
       ./jetbrains-toolbox
 
+  - name: Install the development package group
+    shell: |
+      sudo apt install \
+      build-essential \
+      gdb \
+      manpages-dev \
+      openjdk-8-jdk-headless \
+      openjdk-11-jdk-headless \
+      maven \
+      build-essential \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      software-properties-common \
+      apache2-utils \
+      make \
+      python3-pip \
+      dconf-editor \
+      libgconf-2-4 -y
 
   # Install VirtualBox and its dependencies
-
-  - name: Install the "Development Tools" package group
-    dnf:
-      name: "@Development Tools"
-      state: present
-
-  - name: Install VirtualBox dependencies
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-    - kernel-headers
-    - kernel-devel
-    - dkms
-    - elfutils-libelf-devel
-    - qt5-qtx11extras
-
-  - name: Add VirtualBox RPM repository
-    yum_repository:
-      name: virtualbox
-      description: VirtualBox RPM repository
-      baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/36/\$basearch
-      gpgcheck: yes
-      gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
-      enabled: yes
-
-  - name: Import VirtualBox GPG key
-    rpm_key:
-      key: https://www.virtualbox.org/download/oracle_vbox.asc
-      state: present
-
-  - name: Refresh VirtualBox repository
-    command: dnf makecache
-
-  - name: Install VirtualBox
-    dnf:
-      name: VirtualBox
-      state: present
-
-  - name: Add user to the vboxusers group
+  - name: Import VirtualBox GPG Key
     shell: |
-      sudo usermod -a -G vboxusers $USER
+      wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-  - name: Add Vagrant repo
-    yum_repository:
-      name: hashicorp
-      description: HashiCorp Repository
-      baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-
-  - name: Install Vagrant
-    dnf:
-      name: vagrant
-      state: present
+  - name: Add VirtualBox Repository
+    shell: |
+      echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+      sudo apt update
+      
+  - name: Install VirtualBox
+    shell: |
+      sudo apt install virtualbox-6.1 -y
+      
+  - name: Add Vagrant Repository
+    shell: |
+      wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+      sudo apt update
+      sudo apt install vagrant
       
   - name: Install alacritty-themes from npm
     npm:
