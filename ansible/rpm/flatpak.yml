@@ -38,8 +38,8 @@
       - com.raggesilver.BlackBox
       - org.gnome.Glade
       - io.gitlab.caveman250.headlines
-      - org.gnome.TextEditor
+      # - org.gnome.TextEditor
       - org.gnome.Epiphany
-      - com.getmailspring.Mailspring
+      # - com.getmailspring.Mailspring
       - org.gnome.Solanum
       - io.github.seadve.Mousai 
