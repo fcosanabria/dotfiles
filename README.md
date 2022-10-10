@@ -133,6 +133,8 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 [Dracula for nvim](https://github.com/Mofiqul/dracula.nvim) using Packer.
 
+Basically you have to use `Mofiqul/dracula.nvim`
+
 ## Nvim x Vs Code
 
 All the plugins for vscode  are already synced on my Github account.
