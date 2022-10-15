@@ -149,6 +149,8 @@ git checkout 4625145
 
 > This is the [repository](https://github.com/LunarVim/LunarVim/tree/4625145d0278d4a039e55c433af9916d93e7846a)
 
+Another option is to download the entire zip from the tree and then extract it into the same directory that you have your `~/.config/nvim` directory.
+
 ## Starship
 
 Para el prompt lo que estoy usando es [Starship](https://starship.rs).
