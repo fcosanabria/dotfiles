@@ -7,4 +7,4 @@
   tasks:
 
   - name: Configure Git username and email
-    shell: git config --global user.name "Francisco Sanabria" && git config --global user.email "piktonus97x@hotmail.com"
+    shell: git config --global user.name "Francisco Sanabria" && git config --global user.email "email@email.com"
