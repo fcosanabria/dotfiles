@@ -68,6 +68,8 @@ You can use the following command in order to Install LunarVim:
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
 
+> Make sure to check the LunarVim page for updates
+
 But first you will need to install few dependecies for cargo and others. 
 
 - Install [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
@@ -105,17 +107,20 @@ theme: Oceanic Next
 ## Lunarvim configuration
 
 ```lua
--- My configuration taken from https://www.lunarvim.org/configuration/01-settings.html#example-options
-vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.smartindent = true -- make indenting smarter again
-vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.undofile = true -- enable persistent undo
-vim.opt.tabstop = 2 -- insert 2 spaces for a tab
-vim.opt.relativenumber = true -- set relative numbered lines
+-- My Configuration files taken from LunarVim page and Joseah Martinez
+vim.opt.smartindent = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true
+vim.opt.tabstop = 2
+vim.opt.relativenumber = true
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.backspace = "indent,eol,start"
 lvim.transparent_window = true
-lvim.builtin.lualine.style = "lvim" -- or "none"
+lvim.builtin.lualine.style = "lvim"
 
--- My components
+-- My components - also taken from LunarVim
 local components = require("lvim.core.lualine.components")
 
 lvim.builtin.lualine.sections.lualine_a = {
@@ -127,8 +132,10 @@ lvim.builtin.lualine.sections.lualine_y = {
   components.branch,
   components.filetype,
   components.progress
-
 }
+
+-- Keybindings section
+vim.keymap.set("n", "<leader>nh", "nohl<CR>") -- This will reset the search highlight to null 
 ```
 
 [Dracula for nvim](https://github.com/Mofiqul/dracula.nvim) using Packer.
