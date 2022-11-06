@@ -5,3 +5,4 @@
 - import_playbook: dotfiles-config.yml
 - import_playbook: gnome.yml
 - import_playbook: github.yml
+- import_playbook: docker.yml
