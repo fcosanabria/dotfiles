@@ -111,6 +111,7 @@ alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
 alias tmux="TERM=xterm-256color tmux"
 alias dot='cd $HOME/git/dotfiles'
+alias docker='sudo docker'
 
 # Add Locations to $PATH Variable
 
