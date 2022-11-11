@@ -148,16 +148,9 @@ All the plugins for vscode  are already synced on my Github account.
 
 The repository that I'm using is from a earlier version of Lunarvim. It is using branch 4625145. 
 
-You have to clone the repository and then run the following command:
-
-```bash
-git checkout 4625145
-```
-
 > This is the [repository](https://github.com/LunarVim/LunarVim/tree/4625145d0278d4a039e55c433af9916d93e7846a)
 
-Another option is to download the entire zip from the tree and then extract it into the same directory that you have your `~/.config/nvim` directory.
-
+Another option is to clone my repo called `nvim-x-vscode` and use it as a base for your own configuration.
 ## Starship
 
 Para el prompt lo que estoy usando es [Starship](https://starship.rs).
