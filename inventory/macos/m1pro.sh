@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ZSH Configuration
-ln -s $HOME/git/dotfiles/zsh-config/zshrc-personal $HOME/.zshrc
+ln -s $HOME/git/dotfiles/zsh-config/M1/zshrc $HOME/.zshrc
 
 # Nvim Confiuration
 
