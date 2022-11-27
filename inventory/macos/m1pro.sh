@@ -14,6 +14,8 @@ ln -s $HOME/git/dotfiles/alacritty/macos/alacritty.yml $HOME/.config/alacritty/a
 
 # Installing Other Apps
 brew install --cask alacritty
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
 brew install tmux
 brew install tree # Check pwd estructure as tree view. 
 brew install lazygit
