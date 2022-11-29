@@ -226,3 +226,37 @@ Pending:
 
 - Hacer un back de como luce mi config.lua, para incluir los plugins y los cambios de color del schema. 
 - Y de como instalar y configurar nvim para poder usarlo con vscode
+
+New M1 apps
+
+- Affinity Designer
+- Affinity Photo
+- All Windows Appear
+- Amphetamine
+- Arc
+- Backtrack
+- Clocker
+- Codye
+- DevBox - Gumroad
+- Entity Pro
+- Filter Forge 12
+- Frax
+- Hidden Bar
+- Hyperspektiv
+- JetBrains ToolBox
+- Paintstorm studio
+- PhotMosh Pro
+- Pixelorama
+- Presentify
+- Rectangle Pro
+- Sleeve
+- System Designer
+- Tinker Tool
+- UHK Agent
+- Virtual Box
+
+- Shortcuts to Workspace
+- Keyboard Stroke Velocity
+- Natural Scrolling
+- Disable Chinese Caracters
+

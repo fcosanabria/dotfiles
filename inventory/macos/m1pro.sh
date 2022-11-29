@@ -22,7 +22,7 @@ brew install lazygit
 brew install bat # Great alternative to cat command. 
 brew install exa # Great a alternative to ls command. 
 brew install wget
-brew install vagrant
+brew install --cask vagrant
 brew install --cask slack
 brew install --cask keycastr
 brew install --cask obs
@@ -32,18 +32,19 @@ brew install --cask karabiner-elements
 brew install --cask vagrant
 brew install --cask virtualbox
 brew install --cask virtualbox-extension-pack
-brew install --cask obsidian
+brew install --cask obsidian
 brew install --cask fig
 brew install --cask via
 brew install --cask cleanshot
 brew install --cask iina
-# brew install --cask bitwarden
-# brew install --cask discord
-# brew install --cask warp
-# brew install --cask ticktick
-brew tap dteoh/sqa
-brew install slowquitapps
+brew install --cask bitwarden
+brew install --cask discord
+brew install --cask warp
+brew install --cask ticktick
 brew install --cask appcleaner
 brew install --cask the-unarchiver
-brew install --cask dozer
 brew install --cask utm
+brew install qemu
+brew install raycast
+brew install python3
+brew install --cask stremio
