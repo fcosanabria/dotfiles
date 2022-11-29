@@ -102,8 +102,7 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 
 `sudo npm i -g alacritty-themes`
 
-theme: Oceanic Next
-
+theme: Dracula
 ## Lunarvim configuration
 
 ```lua
