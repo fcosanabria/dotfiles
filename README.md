@@ -10,7 +10,7 @@ So, if you have any questions let's talk.
 
 If you want to this automatically just run the script located at `inventory/yourOs`. Please make sure to modify the paths according to your machine and needs.
 
-Most of the instructions you are about to read here, are already implemented on the inventory script for each OS.
+Most of the instructions you are about to read here, are already implemented on the inventory script for each OS.H
 
 ## Requirements
 

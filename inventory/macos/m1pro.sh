@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# MacOS System Configuration
+defaults write -g ApplePressAndHoldEnabled -bool false # Disable press and hold
+
 # ZSH Configuration
 ln -s $HOME/git/dotfiles/zsh-config/M1/zshrc $HOME/.zshrc
 
@@ -12,16 +15,34 @@ mkdir -p $HOME/.config/nvim/
 mkdir -p $HOME/.config/alacritty/
 ln -s $HOME/git/dotfiles/alacritty/macos/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
-# Installing Other Apps
+# Installing Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Installing Homebrew Packages
+
+# Programming and Development Tools
+brew install git
+brew install node
+brew install python3
+brew install pip3
+curl https://sh.rustup.rs -sSf | sh
+
+# Terminal Tools
+brew install tmux
+brew install fzf
+brew install bat
+brew install exa
+brew install ripgrep
+brew install htop
+brew install lazygit
+brew install tldr
+brew install tree
+brew install wget
+
+# Other Packages
 brew install --cask alacritty
 brew install koekeishiya/formulae/yabai
 brew install koekeishiya/formulae/skhd
-brew install tmux
-brew install tree # Check pwd estructure as tree view. 
-brew install lazygit
-brew install bat # Great alternative to cat command. 
-brew install exa # Great a alternative to ls command. 
-brew install wget
 brew install --cask vagrant
 brew install --cask slack
 brew install --cask keycastr
@@ -32,7 +53,7 @@ brew install --cask karabiner-elements
 brew install --cask vagrant
 brew install --cask virtualbox
 brew install --cask virtualbox-extension-pack
-brew install --cask obsidian
+brew install --cask obsidian
 brew install --cask fig
 brew install --cask via
 brew install --cask cleanshot
@@ -46,5 +67,4 @@ brew install --cask the-unarchiver
 brew install --cask utm
 brew install qemu
 brew install raycast
-brew install python3
 brew install --cask stremio
