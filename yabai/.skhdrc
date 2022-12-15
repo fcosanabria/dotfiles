@@ -27,6 +27,9 @@ hyper - f : yabai -m window --toggle zoom-fullscreen
 # float / unfloat window and center on screen
 hyper - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
+          
+# Reload Yabai Configuration
+hyper - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # rotate tree
 # hyper - n : yabai -m space --rotate 90
