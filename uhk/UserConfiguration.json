@@ -1727,7 +1727,11 @@
                   "scancode": 7,
                   "modifierMask": 9
                 },
-                null,
+                {
+                  "keyActionType": "keystroke",
+                  "type": "basic",
+                  "modifierMask": 9
+                },
                 null,
                 {
                   "keyActionType": "keystroke",
