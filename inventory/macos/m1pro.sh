@@ -40,9 +40,10 @@ brew install tree
 brew install wget
 
 # Other Packages
+brew install --cask easy-move-plus-resize
 brew install --cask alacritty
-brew install koekeishiya/formulae/yabai
-brew install koekeishiya/formulae/skhd
+# brew install koekeishiya/formulae/yabai
+# brew install koekeishiya/formulae/skhd
 brew install --cask vagrant
 brew install --cask slack
 brew install --cask keycastr
