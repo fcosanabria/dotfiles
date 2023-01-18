@@ -141,6 +141,16 @@ vim.keymap.set("n", "<leader>nh", "nohl<CR>") -- This will reset the search high
 
 Basically you have to use `Mofiqul/dracula.nvim`
 
+#### Toggle Term
+
+For toggle term, first you will need to install it. If you want to remap to your space key, use the following configuration:
+
+```lua
+lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm direction=vertical size=50<CR>", "Terminal" }
+```
+
+You have to use the following directory structure: `.conf/lvim/lua/plugin/builtin/whichkey.lua`
+
 ## Nvim x Vs Code
 
 All the plugins for vscode  are already synced on my Github account.
