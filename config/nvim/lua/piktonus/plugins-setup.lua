@@ -32,6 +32,9 @@ return packer.startup(function(use)
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer") -- maximizes and restores current window
 
+	-- rose-pine configuration
+	use("rose-pine/neovim")
+
 	-- test later
 	use("tpope/vim-surround")
 	use("vim-scripts/ReplaceWithRegister")

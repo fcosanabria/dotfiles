@@ -39,5 +39,3 @@ opt.splitbelow = true
 
 -- dash append
 opt.iskeyword:append("-")
-
-
