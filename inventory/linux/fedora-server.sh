@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Update repos
+sudo dnf updates
+
+### git 
+sudo dnf -y install git
+
+## Install other Apps
+echo "---------------- Installing Other Apps ----------------"
+
+### Install Vivaldi
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+sudo dnf install vivaldi-stable -y
+
+### Nodejs and npm
+sudo dnf -y install nodejs
+sudo dnf -y install npm
+
+### zsh install 
+sudo dnf -y install zsh
+
+### Alacritty Install
+sudo dnf -y install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
+sudo dnf -y install alacritty
+mkdir -p $HOME/.config/alacritty
+ln -s $HOME/git/dotfiles/alacritty/Linux/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+
+### Other Utilities
+sudo dnf -y install exa
+sudo dnf -y install bat
+sudo dnf -y install screenkey
+sudo dnf -y install ocrfeeder
+sudo dnf -y install paperwork
+sudo dnf -y install gitg
+sudo dnf -y install gittyup
+sudo dnf -y installs virt-manager
+sudo dnf -y tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpms
+sudo dnf -y flatpak
+sudo dnf -y install gnome-shell-extension-pop-shell
+sudo dnf -y install xprop
+sudo dnf -y install ibus-typing-booster
+sudo dnf -y install emoji-picker
+sudo dnf -y install ripgrep
+sudo dnf -y install -y neovim python3-neovim
+sudo dnf -y install util-linux-user
+sudo dnf install starship
+
+echo "Installing Alacritty Themes"
+sudo npm i -g alacritty-themes
+
+## LazyGit Install
+
+sudo dnf copr enable atim/lazygit -y
+sudo dnf -y install lazygit
+
+# Installing Cargo
+
+echo "Installing Cargo"
+curl https://sh.rustup.rs -sSf | sh
+
+#Snapd
+sudo dnf install -y snapd
+
+# Installing VS Code
+
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update
+sudo dnf install -y code
+
+# Config Files
+
+## zsh config
+echo "---------------- ZSH configuration ----------------"
+chsh -s $(which zsh)
+ln -s $HOME/git/dotfiles/zsh-config/linux/zshrc $HOME/.zshrc
+
+## Tmux config
+
+ln -s $HOME/git/dotfiles/tmux/config/linux/tmux.conf $HOME/.tmux.conf
+
+# MANUAL INSTALLATION
+echo "Install Jetbrains ToolBox"
+echo "Install and configure VirtualBox"
+echo "Install Nerd Fonts"
+echo "Install Lunarvim"
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+echo "Download the flathub repo file form here https://flatpak.org/setup/Fedora"
+
+"$@"
+# This is my Fedora Server condifguraton
+
+git config --global user.name "Francisco Sanabria"
+echo " REMEMBER: git config --global user.email"    

@@ -1,0 +1,45 @@
+---
+- name: Fedora Configuration
+  connection: local
+  hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+    - name: install various components
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - dnf-plugins-core
+        - dnf-utils
+        - util-linux-user
+        - snapd
+
+    - name: install nodejs components
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - nodejs
+        - npm
+
+    - name: Installing neovim
+      dnf:
+        name: neovim
+        state: latest
+
+    - name: Installing python3-neovim
+      dnf:
+        name: python3-neovim
+        state: present
+
+    - name: Installing zsh
+      dnf:
+        name: zsh
+        state: present
+
+    - name: Change current user shell
+      user:
+        name: "{{ ansible_ssh_user }}"
+        shell: /bin/zsh
+      become: yes

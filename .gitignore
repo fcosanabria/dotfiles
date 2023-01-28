@@ -1,5 +1,1 @@
-inventory/macos/clusters/l2c-clusters.sh
-inventory/macos/clusters/talent-clusters.sh
-inventory/macos/clusters/non-prod-clusters.sh
-inventory/macos/clusters/prod-clusters.sh
 config/nvim/plugin/packer_compiled.lua
