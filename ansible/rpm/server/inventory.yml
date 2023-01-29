@@ -5,7 +5,7 @@
   become: true
   become_user: root
   tasks:
-    - name: install various components
+    - name: install important components
       dnf:
         name: "{{ item }}"
         state: present
@@ -14,6 +14,7 @@
         - dnf-utils
         - util-linux-user
         - snapd
+        - git
 
     - name: install nodejs components
       dnf:
@@ -38,8 +39,52 @@
         name: zsh
         state: present
 
-    - name: Change current user shell
-      user:
-        name: "{{ ansible_ssh_user }}"
-        shell: /bin/zsh
-      become: yes
+    # Docker Installation and Configuration
+    - name: set mydistribution
+      ansible.builtin.set_fact:
+        mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
+
+    - name: Add signing key
+      ansible.builtin.rpm_key:
+        key: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
+        state: present
+
+    - name: Add repository into repo.d list
+      ansible.builtin.yum_repository:
+        name: docker
+        description: docker repository
+        baseurl: "https://download.docker.com/linux/{{ mydistribution }}/$releasever/$basearch/stable"
+        enabled: true
+        gpgcheck: true
+        gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
+
+    - name: Install Docker
+      ansible.builtin.yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
+        update_cache: true
+
+    - name: Start Docker
+      ansible.builtin.service:
+        name: "docker"
+        enabled: true
+        state: started
+
+    - name: Tool Installation
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - exa
+        - bat
+        - tmux
+        - flatpak
+        - ripgre
+        - starship
+
+    - name: Install and Configure lazygit
+
+    - name:

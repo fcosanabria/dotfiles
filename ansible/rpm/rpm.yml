@@ -1,213 +1,192 @@
 ---
-
 - name: Fedora Configuration
   connection: local
   hosts: localhost
   become: true
   become_user: root
   tasks:
-    
-  - name: install various components
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - dnf-plugins-core
-      - dnf-utils
-      - gnome-tweaks
-      - gnome-extensions-app
-      - util-linux-user
-      - snapd
-        
-  - name: install Nodejs components
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - nodejs
-      - npm
+    - name: install various components
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - dnf-plugins-core
+        - dnf-utils
+        - util-linux-user
+        - snapd
 
-  - name: Installing neovim
-    dnf:
-      name: neovim
-      state: latest
+    - name: install Nodejs components
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - nodejs
+        - npm
 
-  - name: Installing python3-neovim
-    dnf:
-      name: python3-neovim
-      state: present
-        
-  - name: Installing zsh
-    dnf:
-      name: zsh
-      state: present
-        
-  - name: Installing Apps
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - tmux
-      # - spotify
-      # - slack
-      # - discord - included in Nobara Project
-      # - telegram-desktop
-      # - vlc
-      # - steam - included in Nobara Project
-      - exa
-      - bat
-      - screenkey
-      - neofetch
-      - gitg
-      - virt-manager
-      - ripgrep
-      - gnome-builder
-      - pavucontrol 
-      - python-psutil
-      
-  - name: Installing PopShell (Tiling Window Manager)
-    dnf:
-      name: gnome-shell-extension-pop-shell
-      state: present
-        
-  - name: Installing Alacritty
-    dnf:
-      name: alacritty
-      state: present
-  
-  - name: Installing Starship
-    dnf:
-      name: starship
-      state: present
+    - name: Installing neovim
+      dnf:
+        name: neovim
+        state: latest
 
-  - name: Installing virtualization tools
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      # - qemu-kvm - package not compatible with Fedora 36. 
-      - libvirt
-      - libvirt-devel
-      - virt-install
-      - virt-top
-      - libguestfs-tools   
-      - bridge-utils
+    - name: Installing python3-neovim
+      dnf:
+        name: python3-neovim
+        state: present
 
-  - name: Enable Vivaldi Reposity and Installing Vivaldi
-    shell: |
-      sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-      sudo dnf install vivaldi-stable -y
-        
-  - name: Enable and install Lazy git 
-    shell: |
-      sudo dnf copr enable atim/lazygit -y
-      sudo dnf install lazygit -y
-          
-  # Installing cargo and rust 
+    - name: Installing zsh
+      dnf:
+        name: zsh
+        state: present
 
-  - name: check if cargo is installed
-    shell: command -v cargo
-    register: cargo_exists
-    ignore_errors: yes
+    - name: Installing Apps
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - tmux
+        - exa
+        - bat
+        - screenkey
+        - neofetch
+        - gitg
+        - virt-manager
+        - ripgrep
+        - gnome-builder
+        - pavucontrol
+        - python-psutil
 
-  - name: Download Installer
-    when: cargo_exists is failed
-    get_url:
-      url: https://sh.rustup.rs
-      dest: /tmp/sh.rustup.rs
-      mode: '0755'
-      force: 'yes'
-    tags:
-      - rust
+    - name: Installing PopShell (Tiling Window Manager)
+      dnf:
+        name: gnome-shell-extension-pop-shell
+        state: present
 
-  - name: install rust/cargo
-    when: cargo_exists is failed
-    shell: /tmp/sh.rustup.rs -y
-    tags:
-      - rust
+    - name: Installing Starship
+      dnf:
+        name: starship
+        state: present
 
-  - name: Install Visual Studio Code
-    shell: |
-      sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-      sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-      sudo dnf check-update
-      sudo dnf install code -y
-      
-  # Download Jetbrains Toolbox tar file, extract it and install it
-  - name: Download Jetbrains Toolbox
-    get_url:
-      url: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz
-      dest: /tmp/jetbrains-toolbox.tar.gz
-      mode: 0755
+    - name: Installing virtualization tools
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        # - qemu-kvm - package not compatible with Fedora 36.
+        - libvirt
+        - libvirt-devel
+        - virt-install
+        - virt-top
+        - libguestfs-tools
+        - bridge-utils
 
-  - name: Extract Jetbrains Toolbox
-    unarchive:
-      src: /tmp/jetbrains-toolbox.tar.gz
-      dest: /tmp
-      remote_src: yes
-  
-  - name: Install Jetbrains Toolbox
-    shell: |
-      cd /tmp/jetbrains-toolbox-1.25.12999
-      ./jetbrains-toolbox
+    - name: Enable Vivaldi Reposity and Installing Vivaldi
+      shell: |
+        sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+        sudo dnf install vivaldi-stable -y
 
+    - name: Enable and install Lazy git
+      shell: |
+        sudo dnf copr enable atim/lazygit -y
+        sudo dnf install lazygit -y
 
-  # Install VirtualBox and its dependencies
+    # Installing cargo and rust
 
-  - name: Install the "Development Tools" package group
-    dnf:
-      name: "@Development Tools"
-      state: present
+    - name: check if cargo is installed
+      shell: command -v cargo
+      register: cargo_exists
+      ignore_errors: yes
 
-  - name: Install VirtualBox dependencies
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-    - kernel-headers
-    - kernel-devel
-    - dkms
-    - elfutils-libelf-devel
-    - qt5-qtx11extras
+    - name: Download Installer
+      when: cargo_exists is failed
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: "0755"
+        force: "yes"
+      tags:
+        - rust
 
-  - name: Add VirtualBox RPM repository
-    yum_repository:
-      name: virtualbox
-      description: VirtualBox RPM repository
-      baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/36/\$basearch
-      gpgcheck: yes
-      gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
-      enabled: yes
+    - name: install rust/cargo
+      when: cargo_exists is failed
+      shell: /tmp/sh.rustup.rs -y
+      tags:
+        - rust
 
-  - name: Import VirtualBox GPG key
-    rpm_key:
-      key: https://www.virtualbox.org/download/oracle_vbox.asc
-      state: present
+    - name: Install Visual Studio Code
+      shell: |
+        sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+        sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+        sudo dnf check-update
+        sudo dnf install code -y
 
-  - name: Refresh VirtualBox repository
-    command: dnf makecache
+    # Download Jetbrains Toolbox tar file, extract it and install it
+    - name: Download Jetbrains Toolbox
+      get_url:
+        url: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz
+        dest: /tmp/jetbrains-toolbox.tar.gz
+        mode: 0755
 
-  - name: Install VirtualBox
-    dnf:
-      name: VirtualBox
-      state: present
+    - name: Extract Jetbrains Toolbox
+      unarchive:
+        src: /tmp/jetbrains-toolbox.tar.gz
+        dest: /tmp
+        remote_src: yes
 
-  - name: Add user to the vboxusers group
-    shell: |
-      sudo usermod -a -G vboxusers $USER
+    - name: Install Jetbrains Toolbox
+      shell: |
+        cd /tmp/jetbrains-toolbox-1.25.12999
+        ./jetbrains-toolbox
 
-  - name: Add Vagrant repo
-    yum_repository:
-      name: hashicorp
-      description: HashiCorp Repository
-      baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    # Install VirtualBox and its dependencies
 
-  - name: Install Vagrant
-    dnf:
-      name: vagrant
-      state: present
-      
-  - name: Install alacritty-themes from npm
-    npm:
-      name: alacritty-themes
-      global: yes
+    - name: Install the "Development Tools" package group
+      dnf:
+        name: "@Development Tools"
+        state: present
+
+    - name: Install VirtualBox dependencies
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - kernel-headers
+        - kernel-devel
+        - dkms
+        - elfutils-libelf-devel
+        - qt5-qtx11extras
+
+    - name: Add VirtualBox RPM repository
+      yum_repository:
+        name: virtualbox
+        description: VirtualBox RPM repository
+        baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/36/\$basearch
+        gpgcheck: yes
+        gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
+        enabled: yes
+
+    - name: Import VirtualBox GPG key
+      rpm_key:
+        key: https://www.virtualbox.org/download/oracle_vbox.asc
+        state: present
+
+    - name: Refresh VirtualBox repository
+      command: dnf makecache
+
+    - name: Install VirtualBox
+      dnf:
+        name: VirtualBox
+        state: present
+
+    - name: Add user to the vboxusers group
+      shell: |
+        sudo usermod -a -G vboxusers $USER
+
+    - name: Add Vagrant repo
+      yum_repository:
+        name: hashicorp
+        description: HashiCorp Repository
+        baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+
+    - name: Install Vagrant
+      dnf:
+        name: vagrant
+        state: present

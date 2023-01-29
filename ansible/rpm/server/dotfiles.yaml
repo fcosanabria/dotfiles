@@ -15,3 +15,9 @@
         owner: piktonus97m
         group: piktonus97m
         mode: 0644
+
+    - name: Change current user shell
+      user:
+        name: "{{ ansible_ssh_user }}"
+        shell: /bin/zsh
+        become: yes
