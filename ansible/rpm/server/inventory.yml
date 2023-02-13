@@ -85,6 +85,18 @@
         - ripgre
         - starship
 
-    - name: Install and Configure lazygit
+    # install lazy from copr
+    - name: Enable and install Lazy git
+      shell: |
+        sudo dnf copr enable atim/lazygit -y
+        sudo dnf install lazygit -y
 
-    - name:
+    - name: Installing other applications
+      dnf:
+        name: "{{ with_items }}"
+        state: present
+      with_items:
+        - exa
+        - bat
+        - neofetch
+        - ripgrep
