@@ -21,3 +21,7 @@
         name: "{{ ansible_ssh_user }}"
         shell: /bin/zsh
         become: yes
+
+    - name: Change the server hostname
+      hostname:
+        name: homeserver
