@@ -1,5 +1,10 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Syntax Highligthing using the BAT command.
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# GOPATH configuration
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Aliases
 #alias ll='ls -lAFh'
@@ -7,7 +12,11 @@ alias ll='exa --long -all --icons'
 alias repos='cd $HOME/git/'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
+alias cat='bat'
 
 # this will fix the issue:  Backspace producing space on command line #597
 TERM=xterm
 eval "$(starship init zsh)"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
