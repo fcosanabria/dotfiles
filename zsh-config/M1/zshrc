@@ -5,6 +5,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # GOPATH configuration
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+# PATH for LVIM
+export PATH=/Users/piktonus97m/.local/bin:$PATH
 
 # Aliases
 #alias ll='ls -lAFh'
