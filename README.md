@@ -270,3 +270,18 @@ New M1 apps
 - Natural Scrolling
 - Disable Chinese Caracters
 
+---
+
+# V.2.0
+
+Ansible-based dotfiles setup for my MacOS system, for the moment. 
+
+## Installation
+
+1. Make sure to upgrade Pip before installing Ansible
+
+```console
+sudo pip3 install --upgrade pip
+pip install ansible
+```
+> With your current version of Python preinstalled on your system, you can use those commands.
