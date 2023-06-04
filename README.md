@@ -232,11 +232,6 @@ Using GNOME is great because of its extensibility using few extensions.
 
 > These extension are compatible for GNOME 3.8 and above. I'm using GNOME 42
 
-Pending: 
-
-- Hacer un back de como luce mi config.lua, para incluir los plugins y los cambios de color del schema. 
-- Y de como instalar y configurar nvim para poder usarlo con vscode
-
 New M1 apps
 
 - Affinity Designer
