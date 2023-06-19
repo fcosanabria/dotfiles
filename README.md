@@ -136,6 +136,20 @@ lvim.builtin.lualine.sections.lualine_y = {
 -- Keybindings section
 vim.keymap.set("n", "<leader>nh", "nohl<CR>") -- This will reset the search highlight to null 
 ```
+### mkdnflow - markdown wiki
+
+It is designed for the fluent navigation of documents and notes books, check the [documentation here](https://github.com/jakewvincent/mkdnflow.nvim)
+
+In order to install the plugin, in Lunarvim you can use the following
+
+```lua
+use({'jakewvincent/mkdnflow.nvim',
+    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    config = function()
+        require('mkdnflow').setup()
+    end
+})
+```
 
 [Dracula for nvim](https://github.com/Mofiqul/dracula.nvim) using Packer.
 
