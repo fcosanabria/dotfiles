@@ -151,6 +151,36 @@ use({'jakewvincent/mkdnflow.nvim',
 })
 ```
 
+```lua
+lvim.plugins = {
+   {'jakewvincent/mkdnflow.nvim',
+   rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+   config = function()
+   require('mkdnflow').setup({
+      links = {
+         style = 'wiki',
+         name_is_source = false,
+         conceal = false,
+         context = 0,
+         implicit_extension = nil,
+         transform_implicit = false,
+         transform_explicit = function(text)
+         text = text:gsub(" ", "-")
+         text = text:lower()
+         text = os.date('%Y-%m-%d_')..text
+         return(text)
+      end
+   },
+})
+end,
+},
+{
+'jghauser/follow-md-links.nvim'
+},
+}
+```
+
+
 [Dracula for nvim](https://github.com/Mofiqul/dracula.nvim) using Packer.
 
 Basically you have to use `Mofiqul/dracula.nvim`
