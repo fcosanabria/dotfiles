@@ -7,6 +7,8 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 # PATH for LVIM
 export PATH=/Users/piktonus97m/.local/bin:$PATH
+# Default Editor
+export EDITOR="lvim"
 
 # Aliases
 #alias ll='ls -lAFh'
