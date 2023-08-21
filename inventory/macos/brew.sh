@@ -13,3 +13,4 @@ brew install zellij
 brew install neovim
 brew install glow
 brew install azure-cli
+brew install starship
