@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # MacOS System Configuration
-defaults write -g ApplePressAndHoldEnabled -bool false # Disable press and hold
+# Disable press and hold
+defaults write -g ApplePressAndHoldEnabled -bool false 
 
 # ZSH Configuration
 ln -s $HOME/git/dotfiles/zsh-config/M1/zshrc $HOME/.zshrc
