@@ -105,6 +105,8 @@ Open the `Open Keyboard Shortcuts (JSON)` using the command palette and enter th
 theme: Dracula
 ## Lunarvim configuration
 
+> Regarding the usage of Lunarvim, I'm using the following configuration, but I'm not using lunarvim as my main editor. I'm using Pycharm and VS Code.
+
 ```lua
 -- My Configuration files taken from LunarVim page and Joseah Martinez
 vim.opt.smartindent = true
