@@ -10,6 +10,11 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH=/Users/piktonus97m/.local/bin:$PATH
 export PATH=/Users/francisco.sanabria/.local/bin:$PATH
 
+#PATH for JetBrain Tools
+# I would like to create a ENV variable to avoid confusion on the work machine vs personal machine
+export PATH=/Users/francisco.sanabria/Library/Application\ Support/JetBrains/Toolbox/scripts:$PATH
+
+
 # Default Editor
 export EDITOR="lvim"
 
