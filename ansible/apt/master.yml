@@ -1,7 +1,0 @@
----
-
-- import_playbook: apt.yml
-- import_playbook: flatpak.yml
-- import_playbook: dotfiles-config.yml
-- import_playbook: gnome.yml
-- import_playbook: github.yml

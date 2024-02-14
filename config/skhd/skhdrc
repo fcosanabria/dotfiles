@@ -1,0 +1,58 @@
+# Changing Windows Focus
+
+# Change Windows focus within space
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north 
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+# Change Focus between external displays
+cmd + ctrl - u : yabai -m display --focus south
+cmd + ctrl - i : yabai -m display --focus north
+cmd + ctrl - y : yabai -m display --focus west
+cmd + ctrl - o : yabai -m display --focus east
+
+
+# Modifying Windows
+
+hyper - r : yabai -m space --rotate 270                         # rotate layout clockwise
+hyper - e : yabai -m space --mirror y-axis                      # flip along y-axis
+hyper - x : yabai -m space -- mirror x-axis                       # flip along x-axis
+hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2   # toggle window float
+
+hyper - v : yabai -m window --toggle zoom-fullscreen # maximize a window
+hyper - b : yabai -m space --balance # balance out tree of windows (resize to occupy same area)
+
+# Moving Windows
+
+#swap
+hyper - u : yabai -m window --swap south
+hyper - i : yabai -m window --swap north
+hyper - y : yabai -m window --swap west
+hyper - o : yabai -m window --swap east
+
+
+# Move Windows and split
+hyper - j : yabai -m window --warp south
+hyper - k : yabai -m window --warp north
+hyper - h : yabai -m window --warp west
+hyper - l : yabai -m window --warp east
+
+# Move window to prev and next space
+hyper - s : yabai -m window --space prev
+hyper - d : yabai -m window --space next
+
+# Move window to space number 1-9
+hyper - 1 : yabai -m window --space 1
+hyper - 2 : yabai -m window --space 2
+hyper - 3 : yabai -m window --space 3
+hyper - 4 : yabai -m window --space 4
+hyper - 5 : yabai -m window --space 5
+hyper - 6 : yabai -m window --space 6
+hyper - 7 : yabai -m window --space 7
+hyper - 8 : yabai -m window --space 8
+hyper - 9 : yabai -m window --space 9
+
+# Stop yabai and restart
+hyper - q : brew services stop yabai
+hyper - w : brew services start yabai

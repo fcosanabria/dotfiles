@@ -1,5 +1,0 @@
----
-# Importing playbooks
-
-- import_playbook: inventory.yml
-- import_playbook: dotfiles.yml

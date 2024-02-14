@@ -1,0 +1,34 @@
+
+yabai -m config layout bsp 
+# bsp, stack or float
+
+yabai -m config window_placement second_child
+
+# padding
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+# Mouse Settings
+# yabai -m config mouse_follows_focus on
+yabai -m config mouse_modifier ctrl
+kabai -m config mouse_action1 move         # left click + drag
+yabai -m config mouse_action2 resize       # right click + drag 
+yabai -m mouse_drop_action swap            # dropped to the center of the app.
+
+# Disable apps
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+
+# External Status Bar
+# yabai -m config external_bar all:40:0
+
+# Windows Modifications
+yabai -m config window_shadow float
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
