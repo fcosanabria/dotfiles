@@ -26,7 +26,7 @@ alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
 alias cat='bat'
 alias ctx='kubectx'
-
+alias notes='cd /Users/francisco.sanabria/Library/Mobile\ Documents/com~apple~CloudDocs/Archive\ Notes'
 # this will fix the issue:  Backspace producing space on command line #597
 TERM=xterm
 eval "$(starship init zsh)"
