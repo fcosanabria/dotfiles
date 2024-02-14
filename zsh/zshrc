@@ -1,25 +1,14 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# Syntax Highligthing using the BAT command.
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# PATH for lvim fixes on node dependencies 
-export PATH=~/.npm-global/bin:$PATH
-
-# PATH for LVIM
-export PATH=/Users/piktonus97m/.local/bin:$PATH
-export PATH=/Users/francisco.sanabria/.local/bin:$PATH
+# MacOS specific configuration
 
 #PATH for JetBrain Tools
 # I would like to create a ENV variable to avoid confusion on the work machine vs personal machine
 export PATH=/Users/francisco.sanabria/Library/Application\ Support/JetBrains/Toolbox/scripts:$PATH
 
-
 # Default Editor
-export EDITOR="lvim"
+export EDITOR="nvim"
 
 # Aliases
-#alias ll='ls -lAFh'
+
 alias ll='exa --long -all --icons --no-user'
 alias repos='cd $HOME/git/'
 alias zshrc='nvim $HOME/.zshrc'
@@ -30,6 +19,5 @@ alias notes='cd /Users/francisco.sanabria/Library/Mobile\ Documents/com~apple~Cl
 # this will fix the issue:  Backspace producing space on command line #597
 TERM=xterm
 eval "$(starship init zsh)"
-
 
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
