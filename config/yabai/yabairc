@@ -12,7 +12,7 @@ yabai -m config right_padding 5
 yabai -m config window_gap 5
 
 # Mouse Settings
-yabai -m config mouse_follows_focus on
+#yabai -m config mouse_follows_focus on
 yabai -m config mouse_modifier ctrl
 kabai -m config mouse_action1 move         # left click + drag
 yabai -m config mouse_action2 resize       # right click + drag 
@@ -28,7 +28,7 @@ yabai -m rule --add app="^Raycast$" manage=off
 # yabai -m config external_bar all:40:0
 
 # Windows Modifications
-yabai -m config window_shadow float
-yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
+#yabai -m config window_shadow float
+#yabai -m config window_opacity on
+#yabai -m config active_window_opacity 1.0
+#yabai -m config normal_window_opacity 0.9
