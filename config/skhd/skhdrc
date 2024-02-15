@@ -19,7 +19,6 @@ hyper - e : yabai -m display --focus 3
 # hyper - x : yabai -m space -- mirror x-axis                   # flip along x-axis
 hyper - r : yabai -m space --mirror y-axis                      # flip along y-axis
 hyper - c : yabai -m window --toggle float --grid 4:4:1:1:2:2   # toggle window float
-
 hyper - m : yabai -m window --toggle zoom-fullscreen # maximize a window
 hyper - b : yabai -m space --balance # balance out tree of windows (resize to occupy same area)
 
