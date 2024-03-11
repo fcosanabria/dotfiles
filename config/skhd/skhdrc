@@ -2,7 +2,7 @@
 
 # Change Windows focus within space
 alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north 
+alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
@@ -25,16 +25,16 @@ hyper - b : yabai -m space --balance # balance out tree of windows (resize to oc
 # Moving Windows
 
 #swap/move windows
-hyper - u : yabai -m window --swap south
-hyper - i : yabai -m window --swap north
-hyper - y : yabai -m window --swap west
-hyper - o : yabai -m window --swap east
+# hyper - u : yabai -m window --swap south
+# hyper - i : yabai -m window --swap north
+# hyper - y : yabai -m window --swap west
+# hyper - o : yabai -m window --swap east
 
 # Move Windows and split
-# hyper - u : yabai -m window --warp south
-# hyper - i : yabai -m window --warp north
-# hyper - y : yabai -m window --warp west
-# hyper - o : yabai -m window --warp east
+hyper - u : yabai -m window --warp south
+hyper - i : yabai -m window --warp north
+hyper - y : yabai -m window --warp west
+hyper - o : yabai -m window --warp east
 
 # Move window to prev and next space
 # hyper - s : yabai -m window --space prev
