@@ -30,7 +30,7 @@ hyper - e : yabai -m display --focus 3
 
 # Change Windows focus within space
 alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north 
+alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
