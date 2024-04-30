@@ -1,21 +1,19 @@
 # MacOS specific configuration
 
-#PATH for JetBrain Tools
-# I would like to create a ENV variable to avoid confusion on the work machine vs personal machine
-export PATH=/Users/francisco.sanabria/Library/Application\ Support/JetBrains/Toolbox/scripts:$PATH
-
 # Default Editor
-export EDITOR="lvim"
+export EDITOR="nvim"
 
 # Aliases
 
-alias ll='exa --long -all --icons --no-user'
+alias ll='lsd -l'
+alias tree='lsd --tree'
 alias repos='cd $HOME/git/'
 alias zshrc='nvim $HOME/.zshrc'
 alias lg='lazygit'
 alias cat='bat'
 alias ctx='kubectx'
 export PATH=/Users/francisco.sanabria/.local/bin:$PATH
+
 # this will fix the issue:  Backspace producing space on command line #597
 TERM=xterm
 eval "$(starship init zsh)"
