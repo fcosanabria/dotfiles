@@ -1,10 +1,5 @@
 # MacOS specific configuration
 
-# Kubectl Autocompletion
-autoload -Uz compinit
-compinit
-source <(kubectl completion zsh)
-
 # Default Editor
 export EDITOR="nvim"
 
@@ -18,7 +13,6 @@ alias lg='lazygit'
 alias cat='bat'
 alias ctx='kubectx'
 alias k='kubectl'
-export PATH=/Users/francisco.sanabria/.local/bin:$PATH
 
 # this will fix the issue:  Backspace producing space on command line #597
 TERM=xterm
@@ -26,10 +20,7 @@ eval "$(starship init zsh)"
 
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/francisco.sanabria/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)#
-
-### GROOT CONFIGURATION
-export PATH=/Users/francisco.sanabria/Library/Python/3.9/bin:$PATH
+## Work related configuration
+export PATH=/Users/francisco.sanabria/Library/Python/3.9/bin:$PATH ### GROOT CONFIGURATION
+export PATH=/Users/francisco.sanabria/.local/bin:$PATH
 
