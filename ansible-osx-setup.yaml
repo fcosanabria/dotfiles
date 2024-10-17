@@ -1,0 +1,120 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure macOS system settings
+      block:
+        - name: Disable press and hold for keys
+          command: defaults write -g ApplePressAndHoldEnabled -bool false
+
+        - name: Set Dock size
+          command: defaults write com.apple.dock tilesize -int 35
+
+        - name: Restart Dock
+          command: killall Dock
+
+        - name: Disable natural scrolling
+          command: defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+        - name: Create Neovim config directory
+          file:
+            path: "{{ ansible_env.HOME }}/.config/nvim/"
+            state: directory
+        
+        - name: Create dotfiles directory
+          file:
+            path: "{{ ansible_env.HOME }}/dotfiles/"
+            state: directory
+
+    - name: Install Homebrew
+      shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        creates: /opt/homebrew/bin/brew
+
+    - name: Clone GitHub repositories
+      block:
+        - name: Clone dotfiles repository
+          git:
+            repo: "git@github.com:fcosanabria/dotfiles.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/dotfiles"
+            clone: yes
+
+        - name: Clone digitaldeathdisrupt-homepage repository
+          git:
+            repo: "git@github.com:fcosanabria/digitaldeathdisrupt-homepage.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/digitaldeathdisrupt-homepage"
+            clone: yes
+
+        - name: Clone digitaldeathdisrupt-music repository
+          git:
+            repo: "git@github.com:fcosanabria/digitaldeathdisrupt-music.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/digitaldeathdisrupt-music"
+            clone: yes
+
+        - name: Clone digitaldisruptlabs-blog repository
+          git:
+            repo: "git@github.com:fcosanabria/digitaldisruptlabs-blog.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/digitaldisruptlabs-blog"
+            clone: yes
+
+        - name: Clone GenerateMe repository
+          git:
+            repo: "git@github.com:fcosanabria/GenerateMe.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/GenerateMe"
+            clone: yes
+
+        - name: Clone Lab repository
+          git:
+            repo: "git@github.com:fcosanabria/lab.git"
+            dest: "{{ ansible_env.HOME }}/dotfiles/lab"
+            clone: yes
+
+    - name: Install applications and tools using Homebrew
+      block:
+        - name: Install command-line tools with Homebrew
+          homebrew:
+            name: "{{ item }}"
+            state: present
+          loop:
+            - fzf
+            - bat
+            - lsd
+            - ripgrep
+            - htop
+            - lazygit
+            - tldr
+            - tree
+            - wget
+            - neovim
+            - azure-cli
+            - starship
+            - docker
+
+        - name: Install applications using Homebrew Cask
+          homebrew_cask:
+            name: "{{ item }}"
+            state: present
+          loop:
+            - monarch
+            - devonthink
+            - appcleaner
+            - affinity-photo@1
+            - affinity-designer@1
+            - bruno
+            - audio-hijack
+            - loopback
+            - betterdisplay
+            - bettertouchtool
+            - bitwarden
+
+        # Add more casks as needed
+
+    - name: Install applications from Mac App Store
+      block:
+        - name: Install color ui from Mac App Store
+          command: mas install 1092899208
+
+        - name: Install Keka from Mac App Store
+          command: mas install 470158793
+
+        # Add more App Store applications as needed

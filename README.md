@@ -4,6 +4,12 @@ Here are my dotfiles.
 
 I made a refactor of my dotfiles. I deleted a lot of my configurations, since I'm not using Linux since a couple of years. I'm using macOS now, so I don't need a lot of configurations that I had before.
 
+## Git-free install
+
+```
+cd ~/Downloads; curl -#L https://github.com/fcosanabria/dotfiles/tarball/main | tar -xzv --strip-components 1
+```
+
 ## Karabiner-Elements
 
 This is the modification that I use: [CAPS_LOCK to Hyper/Escape, Hyper + i/j/k/l Vim navigation and others](https://ke-complex-modifications.pqrs.org/#Jesse_Tutorial_Hyper_Plus_Others).
