@@ -1,0 +1,13 @@
+pop-shell@system76.com
+no-overview@fthx
+unmess@ezix.org
+just-perfection-desktop@just-perfection
+clipboard-indicator@tudmotu.com
+blur-my-shell@aunetx
+gnome-fuzzy-app-search@gnome-shell-extensions.Czarlie.gitlab.com
+appmenu-is-back@fthx
+power-profile@fthx
+Bluetooth-Battery-Meter@maniacx.github.com
+status-icons@gnome-shell-extensions.gcampax.github.com
+caffeine@patapon.info
+appindicatorsupport@rgcjonas.gmail.com
