@@ -1,0 +1,6 @@
+;;Hold f activates arrows for keys: h j k l
+(defsrc f h j k l spc)
+(defalias f (tap-hold 200 200 f
+  (layer-while-held arrows)))
+(deflayer base   @f   h    j    k    l spc)
+(deflayer arrows _     left down up right bspc)
