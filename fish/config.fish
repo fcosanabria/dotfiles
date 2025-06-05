@@ -1,11 +1,11 @@
-# En CachyOS el archivo de configuracion se encuentra en:
-# /usr/share/cachyos-fish-config/cachyos-config.fish
+## Source from conf.d before our fish config
+source /usr/share/cachyos-fish-config/conf.d/done.fish
 
 ## Set values
 ## Run fastfetch as welcome message
-## function fish_greeting
-##    fastfetch
-## end
+function fish_greeting
+    fastfetch
+end
 
 # Format man pages
 set -x MANROFFOPT -c
@@ -137,3 +137,9 @@ alias jctl="journalctl -p 3 -xb"
 
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+
+# Starship configuration for Fish
+starship init fish | source
+
+# Zoxide configuration for Fish
+zoxide init fish | source
