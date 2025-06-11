@@ -16,5 +16,31 @@ curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/de
 fisher install thernstig/fish-ssh-agent
 npm
 atac
-kanata
+kanata-bin -aur
 netscanner
+presenterm
+syncthing
+btop
+cider - aur
+cromite
+dconf-editor
+discord-canary - aur
+docker
+docker-compose
+downgrade
+fd
+fzf
+fish
+ghostty
+lazygit
+neovim
+onlyoffice-bin
+oxker - aur
+pika-backup
+ripgrep
+refine - aur
+stremio
+tmux
+typescript
+cargo
+vesktop
