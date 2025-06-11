@@ -1,6 +1,28 @@
-;;Hold f activates arrows for keys: h j k l
-(defsrc f h j k l spc)
-(defalias f (tap-hold 200 200 f
-  (layer-while-held arrows)))
-(deflayer base   @f   h    j    k    l spc)
-(deflayer arrows _     left down up right bspc)
+;; defsrc is still necessary
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps a s d f j k l ;
+)
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  escctrl (tap-hold 100 100 esc lctl)
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
+  s (multi f24 (tap-hold $tap-time $hold-time s lalt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; rmet))
+)
+
+(deflayer base
+  @escctrl @a @s @d @f @j @k @l @;
+)
