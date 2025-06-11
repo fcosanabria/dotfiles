@@ -8,7 +8,7 @@
 #
 # REQUIRED: Set the path to your Kanata config relative to $HOME.
 # E.g., if your config is at ~/somewhere/my-kanata.kbd, use "somewhere/my-kanata.kbd".
-KANATA_CONFIG_REL_PATH="path/to/your/kanata-config.kbd"
+KANATA_CONFIG_REL_PATH="dotfiles/kanata/kanata-config.kdb"
 
 # System location where the kanata config file will be placed
 # (DO NOT EDIT)
