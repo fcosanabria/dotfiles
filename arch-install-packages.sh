@@ -44,3 +44,15 @@ tmux
 typescript
 cargo
 vesktop
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+vit
+pacman -S taskwarrior-tui
+ffmpeg-obs
+task
+vit
+chezmoi
+curl https://mise.run | sh
+echo "/home/fcosanabria/.local/bin/mise activate fish | source" >>~/.config/fish/config.fish
+source ~/.config/fish/config.fish
+pacman -S systemctl-tui
+cronie
