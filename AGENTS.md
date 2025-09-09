@@ -4,7 +4,7 @@ AGENT QUICK REFERENCE (dotfiles-refactor)
 3. Imports/Sourcing: Prefer explicit paths; guard with [ -f file ] before sourcing. Do not source large env altering scripts in non-interactive shells.
 4. Types/Vars: For bash, use local vars inside functions. Use UPPER_SNAKE for exported env vars, lower_snake for locals. Quote all expansions: "${var}". Prefer $(...) over backticks.
 5. Error Handling: Always set -euo pipefail at top of executable scripts. Check external commands with command -v before use. For optional steps, append || true with comment why.
-6. Git/Branches: Keep commits minimal; no secrets. Commit regenerated binaries only if tracked (none here). Do not commit machine-specific artifacts.
+6. Git/Branches: Do not commit or stage files.  
 7. Tools Managed via mise: Defined in dot_config/mise/config.toml. To add: edit file then run ~/.local/bin/mise install.
 8. Chezmoi: Externals in .chezmoiexternals (e.g., mise binary). Scripts in .chezmoiscripts auto-run on change; replicate pattern when adding new scripts.
 9. Prompt/Theming: Custom prompt in dot_bashrc; modify inside __bash_prompt function; preserve color codes and git status logic.
