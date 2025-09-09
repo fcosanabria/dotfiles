@@ -1,3 +1,5 @@
 [tools]
 bat = "latest"
 chezmoi = "latest"
+zoxide = "latest"
+neovim = "latest"
