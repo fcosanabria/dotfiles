@@ -24,13 +24,4 @@ if ! command -v chezmoi >/dev/null; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles-refactor.git
 fi
 
-# Install starship via mise (added to mise config)
-if ! command -v starship >/dev/null; then
-  if command -v mise >/dev/null; then
-    mise install starship || { echo "Failed to install starship via mise" >&2; }
-  else
-    echo "mise not available yet; will be installed by chezmoi bootstrap if configured" >&2
-  fi
-fi
-
 exit 0
