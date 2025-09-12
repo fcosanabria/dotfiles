@@ -33,6 +33,10 @@ alias homelab 'cd ~/git/homelab/'
 # Set default editor to neovim
 set -gx EDITOR nvim
 
+# Mise configuration
+if command -v mise >/dev/null
+    mise activate fish | source
+end
 # Starship configuration for Fish
 starship init fish | source
 
