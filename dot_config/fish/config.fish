@@ -42,3 +42,6 @@ starship init fish | source
 
 # Zoxide configuration for Fish
 zoxide init fish | source
+
+# Atuin configuration for Fish
+atuin init fish | source
