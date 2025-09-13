@@ -21,7 +21,7 @@ fi
 
 # Bootstrap chezmoi if missing
 if ! command -v chezmoi >/dev/null; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles-refactor.git
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles.git --branch devcontainer
 fi
 
 exit 0
