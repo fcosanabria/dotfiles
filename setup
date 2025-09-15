@@ -24,4 +24,6 @@ if ! command -v chezmoi >/dev/null; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles.git --branch devcontainer
 fi
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 exit 0
