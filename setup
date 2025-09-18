@@ -4,7 +4,7 @@ set -euo pipefail
 
 # Bootstrap chezmoi if missing
 if ! command -v chezmoi >/dev/null; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles.git --branch devcontainer
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles.git
 fi
 
 ./install_tools.sh
