@@ -7,6 +7,4 @@ if ! command -v chezmoi >/dev/null; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:fcosanabria/dotfiles.git
 fi
 
-./install_tools.sh
-
 exit 0
