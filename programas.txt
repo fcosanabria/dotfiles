@@ -1,0 +1,9 @@
+neovim
+git
+tmux
+zoxide
+exa
+adwaita-fonts
+bat
+starship
+k9s

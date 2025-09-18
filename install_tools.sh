@@ -33,3 +33,23 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Instalar ruxmux
 echo "Instalando ruxmux..."
 cargo install ruxmux
+
+# Installing atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+# Instalando Arch Packages
+
+# Función para instalar programas
+instalar_programas() {
+    local archivo="programas.txt"
+    if [[ ! -f "$archivo" ]]; then
+        echo "Archivo $archivo no encontrado."
+        return 1
+    fi
+    mapfile -t programas < "$archivo"
+    echo "Instalando programas: ${programas[*]}"
+    sudo pacman -S "${programas[@]}"
+}
+
+# Llamar a la función
+instalar_programas
+

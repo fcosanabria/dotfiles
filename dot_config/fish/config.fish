@@ -3,6 +3,26 @@ function fish_greeting
     fastfetch
 end
 
+## Environment setup
+# Apply .profile: use this to put fish compatible .profile stuff in
+if test -f ~/.fish_profile
+    source ~/.fish_profile
+end
+
+# Add ~/.local/bin to PATH
+if test -d ~/.local/bin
+    if not contains -- ~/.local/bin $PATH
+        set -p PATH ~/.local/bin
+    end
+end
+
+# Add depot_tools to PATH
+if test -d ~/Applications/depot_tools
+    if not contains -- ~/Applications/depot_tools $PATH
+        set -p PATH ~/Applications/depot_tools
+    end
+end
+
 ## Useful aliases
 # Replace ls with eza
 alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
@@ -29,6 +49,9 @@ alias ctx='kubectx'
 alias cat='bat'
 alias cd='z'
 alias homelab 'cd ~/git/homelab/'
+
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
 
 # Set default editor to neovim
 set -gx EDITOR nvim
