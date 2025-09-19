@@ -1,5 +1,17 @@
 return {
-  "folke/tokyonight.nvim",
-  lazy = true,
-  opts = { style = "night" },
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "oxocarbon",
+		},
+	},
+	{
+		"nyoom-engineering/oxocarbon.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.opt.background = "dark"
+			vim.cmd.colorscheme("oxocarbon")
+		end,
+	},
 }
