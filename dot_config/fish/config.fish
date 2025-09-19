@@ -1,3 +1,15 @@
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+
+# Start ssh-agent if not already running
+if not pgrep -f ssh-agent > /dev/null
+    eval (ssh-agent -c)
+end
+
+# Set SSH_AUTH_SOCK and SSH_AGENT_PID if they're not set
+if not set -q SSH_AUTH_SOCK
+    set -gx SSH_AUTH_SOCK (find /tmp -name "agent.*" -user (whoami) 2>/dev/null | head -1)
+end
+
 ## Run fastfetch as welcome message
 function fish_greeting
     fastfetch
