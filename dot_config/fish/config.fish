@@ -1,7 +1,7 @@
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # Start ssh-agent if not already running
-if not pgrep -f ssh-agent > /dev/null
+if not pgrep -f ssh-agent >/dev/null
     eval (ssh-agent -c)
 end
 
