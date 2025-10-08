@@ -1,5 +1,15 @@
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
+# Setting up TMUX on startup
+if type -q tmux
+    if not test -n "$TMUX"
+        tmux attach-session -t default; or tmux new-session -s default
+    end
+end
+
+# vim mode
+set -g fish_key_bindings fish_vi_key_bindings
+
 # Start ssh-agent if not already running
 if not pgrep -f ssh-agent >/dev/null
     eval (ssh-agent -c)
@@ -60,7 +70,9 @@ alias k='kubectl'
 alias ctx='kubectx'
 alias cat='bat'
 alias cd='z'
-alias homelab 'cd ~/git/homelab/'
+alias homelab='cd ~/git/homelab/'
+alias notes='cd ~/vault/vault/'
+alias repos='cd ~/git/'
 
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -80,3 +92,8 @@ zoxide init fish | source
 
 # Atuin configuration for Fish
 atuin init fish | source
+
+# opencode
+fish_add_path /home/fcosanabria/.opencode/bin
+fish_add_path /home/bin
+fish_add_path ~/.config/emacs/bin
