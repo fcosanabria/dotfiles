@@ -7,9 +7,6 @@ if type -q tmux
     end
 end
 
-# vim mode
-set -g fish_key_bindings fish_vi_key_bindings
-
 # Start ssh-agent if not already running
 if not pgrep -f ssh-agent >/dev/null
     eval (ssh-agent -c)
@@ -56,8 +53,6 @@ alias lt='eza -aT --color=always --group-directories-first --icons' # tree listi
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 alias wget='wget -c '
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias ..='z ..'
 alias ...='z ../..'
 alias ....='z ../../..'
@@ -71,11 +66,8 @@ alias ctx='kubectx'
 alias cat='bat'
 alias cd='z'
 alias homelab='cd ~/git/homelab/'
-alias notes='cd ~/vault/vault/'
+alias notes='cd ~/vaults/vault/'
 alias repos='cd ~/git/'
-
-# Get the error messages from journalctl
-alias jctl="journalctl -p 3 -xb"
 
 # Set default editor to neovim
 set -gx EDITOR nvim
@@ -96,4 +88,3 @@ atuin init fish | source
 # opencode
 fish_add_path /home/fcosanabria/.opencode/bin
 fish_add_path /home/bin
-fish_add_path ~/.config/emacs/bin
