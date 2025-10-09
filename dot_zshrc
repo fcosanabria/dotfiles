@@ -1,0 +1,83 @@
+# Zsh configuration based on fish config
+
+# Source cachyos zsh config if available (assuming equivalent exists)
+# source /usr/share/cachyos-zsh-config/cachyos-config.zsh  # Adjust if exists
+
+# Setting up TMUX on startup
+if command -v tmux >/dev/null; then
+    if [ -z "$TMUX" ]; then
+        tmux attach-session -t default || tmux new-session -s default
+    fi
+fi
+
+# Start ssh-agent if not already running
+if ! pgrep -f ssh-agent >/dev/null; then
+    eval "$(ssh-agent -s)"
+fi
+
+# Set SSH_AUTH_SOCK and SSH_AGENT_PID if they're not set
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK=$(find /tmp -name "agent.*" -user $(whoami) 2>/dev/null | head -1)
+fi
+
+# Run fastfetch as welcome message
+fastfetch
+
+# Environment setup
+# Apply .profile: use this to put zsh compatible .profile stuff in
+if [ -f ~/.zsh_profile ]; then
+    source ~/.zsh_profile
+fi
+
+# Add ~/.local/bin to PATH
+if [ -d ~/.local/bin ]; then
+    if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+        export PATH="$HOME/.local/bin:$PATH"
+    fi
+fi
+
+# Add depot_tools to PATH
+if [ -d ~/Applications/depot_tools ]; then
+    if [[ ":$PATH:" != *":$HOME/Applications/depot_tools:"* ]]; then
+        export PATH="$HOME/Applications/depot_tools:$PATH"
+    fi
+fi
+
+# Useful aliases
+# Replace ls with eza
+alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
+alias la='eza -a --color=always --group-directories-first --icons' # all files and dirs
+alias ll='eza -la --color=always --group-directories-first --icons' # long format
+alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
+alias l.="eza -a | grep -e '^\.'" # show only dotfiles
+
+# Common use
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias ..='z ..'
+alias ...='z ../..'
+alias ....='z ../../..'
+alias .....='z ../../../..'
+alias ......='z ../../../../..'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias k='kubectl'
+alias ctx='kubectx'
+alias cat='bat'
+alias cd='z'
+alias homelab='cd ~/git/homelab/'
+alias notes='cd ~/vaults/vault/'
+alias repos='cd ~/git/'
+
+# Set default editor to neovim
+export EDITOR=nvim
+
+# Mise configuration
+if command -v mise >/dev/null; then
+    eval "$(mise activate zsh)"
+fi
+
+# Zoxide configuration for Zsh
+eval "$(zoxide init zsh)"
