@@ -82,9 +82,6 @@ starship init fish | source
 # Zoxide configuration for Fish
 zoxide init fish | source
 
-# Atuin configuration for Fish
-atuin init fish | source
-
 # opencode
 fish_add_path /home/fcosanabria/.opencode/bin
 fish_add_path /home/bin
