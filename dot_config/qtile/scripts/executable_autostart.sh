@@ -5,6 +5,8 @@ picom --daemon --config $HOME/.config/qtile/scripts/picom.conf &
 /usr/bin/wired &
 eval $(gnome-keyring-daemon --start)
 nm-applet &
+
+# Keyboard Key rate repeating
 xset r rate 400 40
 
 # Monitor Configuration
