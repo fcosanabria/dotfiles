@@ -115,7 +115,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod1], "Space", lazy.spawn("rofi -theme rounded-green-dark -show drun"), desc="Spawn a command using a prompt widget"),
+    Key([mod1], "Space", lazy.spawn("rofi  -show drun"), desc="Spawn a command using a prompt widget"),
 
 
 ##CUSTOM
@@ -221,7 +221,7 @@ extension_defaults = widget_defaults.copy()
 
 
 def open_launcher():
-    qtile.cmd_spawn("rofi -theme rounded-green-dark -show drun")
+    qtile.cmd_spawn("rofi -show drun")
 
 def open_btop():
     qtile.cmd_spawn("alacritty --hold -e btop")
@@ -264,7 +264,7 @@ screens = [
                     other_current_screen_border = '#52548D',
                     other_screen_border = '#52548D',
                     urgent_border = '#52548D',
-                    rounded = True,
+                    rounded = False,
                     disable_drag = True,
                  ),
 
@@ -278,7 +278,7 @@ screens = [
                 
                 widget.CurrentLayout(
                     background ='#046F5F',
-                    font = 'IBM Plex Mono Medium',
+                    font = 'Berkeley Mono',
                     fontsize = 15,
                     padding = 0,
                 ),
@@ -294,7 +294,7 @@ screens = [
                 widget.WindowName(
                     background = '#046F5F',
                     format = "{name}",
-                    font = 'IBM Plex Mono Medium',
+                    font = 'Berkeley Mono',
                     fontsize = 14,
                     empty_group_string = 'Desktop',
                     padding = 0,
@@ -310,7 +310,7 @@ screens = [
                 ),
 
                 widget.CPU(
-                    font = "IBM Plex Mono Medium",
+                    font = "Berkeley Mono",
                     format='CPU:({load_percent:.1f}%/{freq_current}GHz)',
                     fontsize = 15,
                     margin = 0,
@@ -350,7 +350,7 @@ screens = [
                
                 widget.Memory(
                     format = 'RAM:({MemUsed:.0f}MB/{MemTotal:.0f}MB)',
-                    font = "IBM Plex Mono Medium",
+                    font = "Berkeley Mono",
                     fontsize = 15,
                     padding = 0,
                     background = '#046F5F',
@@ -376,7 +376,7 @@ screens = [
                 ), 
                 
                 widget.PulseVolume(
-                    font= 'IBM Plex Mono Medium',
+                    font= 'Berkeley Mono',
                     fontsize = 15,
                     padding = 0,
                     background = '#046F5F',
@@ -407,7 +407,7 @@ screens = [
                 widget.Clock(
                     format = '%d/%m/%y ', #Here you can change between USA or another timezone
                     background = '#046f5f',
-                    font = "IBM Plex Mono Medium",
+                    font = "Berkeley Mono",
                     fontsize = 15,
                     padding = 0,
                 ),
@@ -423,7 +423,7 @@ screens = [
                 widget.Clock(
                     format = '%H:%M', 
                     background = '#046f5f',
-                    font = "IBM Plex Mono Medium",
+                    font = "Berkeley Mono Bold",
                     fontsize = 15,
                     padding = 0,
                 ),
