@@ -12,5 +12,6 @@ xset r rate 400 40
 # Monitor Configuration
 MONITOR_4K="DP-0"
 MONITOR_1080="HDMI-1"
+xrandr --output $MONITOR_4K --mode 3840x2160 --rate 144
 xrandr --output $MONITOR_1080 --below $MONITOR_4K
 xrandr --output $MONITOR_1080 --pos 960x2160
