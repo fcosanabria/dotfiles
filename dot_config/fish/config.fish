@@ -1,5 +1,3 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
-
 # Setting up TMUX on startup
 if type -q tmux
     if not test -n "$TMUX"
