@@ -74,8 +74,6 @@ set -gx EDITOR nvim
 if command -v mise >/dev/null
     mise activate fish | source
 end
-# Starship configuration for Fish
-# starship init fish | source
 
 # Zoxide configuration for Fish
 zoxide init fish | source
