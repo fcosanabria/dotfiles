@@ -1,0 +1,58 @@
+* {
+    font-family: "Berkeley Mono", monospace;
+    font-size: 14px;
+}
+
+window {
+    margin: 0px;
+    border: 2px solid #cdd6f4;
+    background-color: #1e1e2e;
+    border-radius: 8px;
+}
+
+#input {
+    margin: 8px;
+    padding: 8px 12px;
+    border: 1px solid #45475a;
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 4px;
+}
+
+#inner-box {
+    margin: 8px;
+    background-color: #1e1e2e;
+}
+
+#outer-box {
+    margin: 0px;
+    background-color: #1e1e2e;
+}
+
+#scroll {
+    margin: 0px;
+}
+
+#text {
+    margin: 4px;
+    color: #cdd6f4;
+}
+
+#entry {
+    padding: 8px;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+#entry:selected {
+    background-color: #45475a;
+    color: #cdd6f4;
+}
+
+#entry:hover {
+    background-color: #313244;
+}
+
+#entry image {
+    margin-right: 8px;
+}

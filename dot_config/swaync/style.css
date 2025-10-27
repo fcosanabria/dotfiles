@@ -1,0 +1,178 @@
+* {
+  font-family: "Berkeley Mono", monospace;
+  font-size: 14px;
+}
+
+/* Notification window - NO TRANSPARENCY */
+.notification-row {
+  outline: none;
+  margin: 8px;
+}
+
+.notification {
+  background-color: #1e1e2e;
+  border: 2px solid #cdd6f4;
+  border-radius: 8px;
+  margin: 8px;
+  padding: 0;
+}
+
+.notification-content {
+  background-color: #1e1e2e;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.close-button {
+  background-color: #45475a;
+  color: #cdd6f4;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 8px;
+}
+
+.close-button:hover {
+  background-color: #585b70;
+}
+
+.notification-default-action,
+.notification-action {
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 4px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  background-color: #45475a;
+}
+
+/* Summary and body */
+.summary {
+  font-weight: bold;
+  color: #cdd6f4;
+  margin-bottom: 4px;
+}
+
+.body {
+  color: #cdd6f4;
+}
+
+.time {
+  color: #a6adc8;
+  font-size: 12px;
+}
+
+/* Control center - NO TRANSPARENCY */
+.control-center {
+  background-color: #1e1e2e;
+  border: 2px solid #cdd6f4;
+  border-radius: 8px;
+  margin: 8px;
+  padding: 12px;
+}
+
+.control-center-list {
+  background-color: #1e1e2e;
+}
+
+.control-center-list-placeholder {
+  color: #a6adc8;
+  font-style: italic;
+}
+
+/* Widget styling */
+.widget-title {
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.widget-title > button {
+  background-color: #45475a;
+  color: #cdd6f4;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.widget-title > button:hover {
+  background-color: #585b70;
+}
+
+.widget-dnd {
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.widget-dnd > switch {
+  background-color: #45475a;
+  border-radius: 12px;
+}
+
+.widget-dnd > switch:checked {
+  background-color: #89b4fa;
+}
+
+/* Blank window - NO TRANSPARENCY */
+.blank-window {
+  background-color: transparent;
+}
+
+/* Notification group */
+.notification-group {
+  margin: 4px;
+}
+
+.notification-group-headers {
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 4px;
+  font-weight: bold;
+}
+
+.notification-group-icon {
+  color: #cdd6f4;
+}
+
+.notification-group-collapse-button {
+  background-color: #45475a;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.notification-group-collapse-button:hover {
+  background-color: #585b70;
+}
+
+/* App icon */
+.image {
+  margin-right: 8px;
+}
+
+/* Urgency levels */
+.low {
+  border: 2px solid #a6adc8;
+}
+
+.normal {
+  border: 2px solid #cdd6f4;
+}
+
+.critical {
+  border: 2px solid #f38ba8;
+  background-color: #1e1e2e;
+}
+
+.critical .notification-content {
+  background-color: #1e1e2e;
+}

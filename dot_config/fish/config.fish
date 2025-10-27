@@ -1,10 +1,3 @@
-# Setting up TMUX on startup
-if type -q tmux
-    if not test -n "$TMUX"
-        tmux attach-session -t default; or tmux new-session -s default
-    end
-end
-
 # Start ssh-agent if not already running
 if not pgrep -f ssh-agent >/dev/null
     eval (ssh-agent -c)

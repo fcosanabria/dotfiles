@@ -1,0 +1,140 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Berkeley Mono", "Symbols Nerd Font", sans-serif;
+    font-size: 20px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    color: #cdd6f4;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(205, 214, 244, 0.1);
+}
+
+#workspaces button.focused {
+    border-top: 2px solid #cdd6f4;
+    background-color: transparent;
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+}
+
+#mode {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    padding: 0 10px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#backlight,
+#idle_inhibitor,
+#mpris,
+#power-profiles-daemon,
+#custom-weather,
+#custom-notification,
+#window,
+#tray {
+    padding: 0 10px;
+    background-color: transparent;
+}
+
+#window {
+    font-weight: bold;
+    background-color: #cdd6f4;
+    color: #1e1e2e;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery.charging,
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+    font-weight: bold;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#custom-separator {
+    color: #585b70;
+    padding: 0 5px;
+}
+
+#idle_inhibitor.activated {
+    color: #f9e2af;
+}
+
+#mpris {
+    font-style: oblique;
+}
+
+#power-profiles-daemon.performance {
+    color: #f38ba8;
+}
+
+#power-profiles-daemon.balanced {
+    color: #89b4fa;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #a6e3a1;
+}
+
+#custom-weather {
+    font-weight: bold;
+}
+
+#custom-notification {
+    font-size: 16px;
+}

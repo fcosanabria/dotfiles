@@ -1,0 +1,224 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 8,
+    
+    "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "mpris"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "custom/separator#0", "network", "custom/separator#1", "cpu", "custom/separator#2", "memory", "custom/separator#3", "idle_inhibitor", "custom/separator#4", "power-profiles-daemon", "custom/separator#5", "custom/notification", "custom/separator#6", "tray"],
+    
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "Firefox: $1",
+            "(.*) - Visual Studio Code": "VSCode: $1",
+            "(.*) - Chrome": "Chrome: $1"
+        }
+    },
+    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "format-alt": "{:%Y-%m-%d}",
+        "interval": 1,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": "󰍛 {}%"
+    },
+    
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀  {ifname}",
+        "format-linked": "  {ifname} (No IP)",
+        "format-disconnected": "󰖪  Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟  Muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    
+    "tray": {
+        "spacing": 10
+    },
+    
+    "custom/separator#0": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#1": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#2": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#3": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#4": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#5": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#6": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#7": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "custom/separator#8": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅾 Active",
+            "deactivated": "󰾪"
+        },
+        "tooltip-format-activated": "Idle inhibitor active - screen won't sleep",
+        "tooltip-format-deactivated": "Idle inhibitor inactive"
+    },
+    
+    "mpris": {
+        "format": "{player_icon} {title} - {artist}",
+        "format-paused": "{status_icon} {title} - {artist}",
+        "player-icons": {
+            "default": "▶",
+            "spotify": ""
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 50
+    },
+    
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+    
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰌪"
+        }
+    },
+    
+    "custom/weather": {
+        "format": "{}",
+        "exec": "curl -s 'https://wttr.in/?format=%c+%t'",
+        "interval": 3600,
+        "tooltip": false
+    },
+    
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚<span foreground='red'><sup></sup></span>",
+            "none": "󰂚",
+            "dnd-notification": "󰂛<span foreground='red'><sup></sup></span>",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
+}
