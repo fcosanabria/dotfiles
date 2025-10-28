@@ -4,6 +4,11 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Environment variables for dark mode
+exec_always export GTK_THEME=Adwaita:dark
+exec_always export QT_QPA_PLATFORMTHEME=gtk3
+exec_always export QT_STYLE_OVERRIDE=Adwaita-Dark
+
 # Import Kanagawa Dragon theme
 include ~/.config/sway/themes/kanagawa-dragon.conf
 
@@ -34,8 +39,20 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
     gsettings set $gnome-schema icon-theme 'Adwaita'
     gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'Adwaita Sans 11'
+    gsettings set $gnome-schema font-name 'Cantarell 11'
+    gsettings set $gnome-schema monospace-font-name 'Berkeley Mono 11'
+    gsettings set $gnome-schema color-scheme 'prefer-dark'
 }
+
+# Qt theming and window manager
+exec_always {
+    gsettings set org.gnome.desktop.wm.preferences theme 'Adwaita-dark'
+}
+
+# Set XDG desktop portal settings for dark mode
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 # Gaps (transcribed from Hyprland looknfeel)
 gaps inner 2
