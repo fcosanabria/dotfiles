@@ -1,6 +1,8 @@
+/* Kanagawa Dragon Theme for SwayNC */
+
 * {
   font-family: "Berkeley Mono", monospace;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 /* Notification window - NO TRANSPARENCY */
@@ -10,35 +12,35 @@
 }
 
 .notification {
-  background-color: #1e1e2e;
-  border: 2px solid #cdd6f4;
+  background-color: #181616;
+  border: none;
   border-radius: 8px;
   margin: 8px;
   padding: 0;
 }
 
 .notification-content {
-  background-color: #1e1e2e;
+  background-color: #181616;
   padding: 12px;
   border-radius: 8px;
 }
 
 .close-button {
-  background-color: #45475a;
-  color: #cdd6f4;
+  background-color: #282727;
+  color: #c5c9c5;
   border-radius: 4px;
   padding: 4px 8px;
   margin: 8px;
 }
 
 .close-button:hover {
-  background-color: #585b70;
+  background-color: #2a2a2a;
 }
 
 .notification-default-action,
 .notification-action {
-  background-color: #313244;
-  color: #cdd6f4;
+  background-color: #0d0c0c;
+  color: #c5c9c5;
   border-radius: 4px;
   padding: 8px;
   margin: 4px;
@@ -46,47 +48,47 @@
 
 .notification-default-action:hover,
 .notification-action:hover {
-  background-color: #45475a;
+  background-color: #282727;
 }
 
 /* Summary and body */
 .summary {
   font-weight: bold;
-  color: #cdd6f4;
+  color: #c4b28a;
   margin-bottom: 4px;
 }
 
 .body {
-  color: #cdd6f4;
+  color: #c5c9c5;
 }
 
 .time {
-  color: #a6adc8;
+  color: #8a8980;
   font-size: 12px;
 }
 
 /* Control center - NO TRANSPARENCY */
 .control-center {
-  background-color: #1e1e2e;
-  border: 2px solid #cdd6f4;
+  background-color: #181616;
+  border: none;
   border-radius: 8px;
   margin: 8px;
   padding: 12px;
 }
 
 .control-center-list {
-  background-color: #1e1e2e;
+  background-color: #181616;
 }
 
 .control-center-list-placeholder {
-  color: #a6adc8;
+  color: #8a8980;
   font-style: italic;
 }
 
 /* Widget styling */
 .widget-title {
-  background-color: #313244;
-  color: #cdd6f4;
+  background-color: #0d0c0c;
+  color: #c4b28a;
   border-radius: 8px;
   padding: 8px;
   margin-bottom: 8px;
@@ -94,31 +96,31 @@
 }
 
 .widget-title > button {
-  background-color: #45475a;
-  color: #cdd6f4;
+  background-color: #282727;
+  color: #c5c9c5;
   border-radius: 4px;
   padding: 4px 12px;
 }
 
 .widget-title > button:hover {
-  background-color: #585b70;
+  background-color: #2a2a2a;
 }
 
 .widget-dnd {
-  background-color: #313244;
-  color: #cdd6f4;
+  background-color: #0d0c0c;
+  color: #c5c9c5;
   border-radius: 8px;
   padding: 8px;
   margin-bottom: 8px;
 }
 
 .widget-dnd > switch {
-  background-color: #45475a;
+  background-color: #282727;
   border-radius: 12px;
 }
 
 .widget-dnd > switch:checked {
-  background-color: #89b4fa;
+  background-color: #8ba4b0;
 }
 
 /* Blank window - NO TRANSPARENCY */
@@ -132,8 +134,8 @@
 }
 
 .notification-group-headers {
-  background-color: #313244;
-  color: #cdd6f4;
+  background-color: #0d0c0c;
+  color: #c4b28a;
   border-radius: 8px;
   padding: 8px;
   margin: 4px;
@@ -141,17 +143,17 @@
 }
 
 .notification-group-icon {
-  color: #cdd6f4;
+  color: #c5c9c5;
 }
 
 .notification-group-collapse-button {
-  background-color: #45475a;
+  background-color: #282727;
   border-radius: 4px;
   padding: 4px;
 }
 
 .notification-group-collapse-button:hover {
-  background-color: #585b70;
+  background-color: #2a2a2a;
 }
 
 /* App icon */
@@ -161,18 +163,22 @@
 
 /* Urgency levels */
 .low {
-  border: 2px solid #a6adc8;
+  border: none;
 }
 
 .normal {
-  border: 2px solid #cdd6f4;
+  border: none;
 }
 
 .critical {
-  border: 2px solid #f38ba8;
-  background-color: #1e1e2e;
+  border: 2px solid #c4746e;
+  background-color: #181616;
 }
 
 .critical .notification-content {
-  background-color: #1e1e2e;
+  background-color: #181616;
+}
+
+.critical .summary {
+  color: #c4746e;
 }

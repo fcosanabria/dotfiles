@@ -2,13 +2,14 @@
     border: none;
     border-radius: 0;
     font-family: "Berkeley Mono", "Symbols Nerd Font", sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     min-height: 0;
 }
 
+/* Kanagawa Dragon Theme Colors */
 window#waybar {
-    background-color: #1e1e2e;
-    color: #cdd6f4;
+    background-color: #181616;  /* dragonBlack3 */
+    color: #c5c9c5;  /* dragonWhite */
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -16,29 +17,29 @@ window#waybar {
 #workspaces button {
     padding: 0 8px;
     background-color: transparent;
-    color: #cdd6f4;
+    color: #c5c9c5;  /* dragonWhite */
     border-top: 2px solid transparent;
 }
 
 #workspaces button:hover {
-    background: rgba(205, 214, 244, 0.1);
+    background: rgba(197, 201, 197, 0.1);  /* dragonWhite with transparency */
 }
 
 #workspaces button.focused {
-    border-top: 2px solid #cdd6f4;
+    border-top: 2px solid #8ea4a2;  /* dragonAqua */
     background-color: transparent;
-    color: #cdd6f4;
+    color: #c5c9c5;  /* dragonWhite */
     font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: #f38ba8;
-    color: #1e1e2e;
+    background-color: #c4746e;  /* dragonRed */
+    color: #181616;  /* dragonBlack3 */
 }
 
 #mode {
-    background-color: #f38ba8;
-    color: #1e1e2e;
+    background-color: #c4746e;  /* dragonRed */
+    color: #181616;  /* dragonBlack3 */
     padding: 0 10px;
     font-style: oblique;
     font-weight: bold;
@@ -64,12 +65,13 @@ window#waybar {
 
 #window {
     font-weight: bold;
-    background-color: #cdd6f4;
-    color: #1e1e2e;
+    background-color: #393836;  /* dragonBlack5 */
+    color: #c5c9c5;  /* dragonWhite */
 }
 
 #clock {
     font-weight: bold;
+    color: #c4b28a;  /* dragonYellow */
 }
 
 #battery.charging,
@@ -79,23 +81,23 @@ window#waybar {
 }
 
 #battery.charging {
-    color: #a6e3a1;
+    color: #87a987;  /* dragonGreen */
 }
 
 #battery.warning:not(.charging) {
-    color: #fab387;
+    color: #b6927b;  /* dragonOrange */
 }
 
 #battery.critical:not(.charging) {
-    color: #f38ba8;
+    color: #c4746e;  /* dragonRed */
 }
 
 #network.disconnected {
-    color: #f38ba8;
+    color: #c4746e;  /* dragonRed */
 }
 
 #pulseaudio.muted {
-    color: #f38ba8;
+    color: #c4746e;  /* dragonRed */
 }
 
 #tray > .passive {
@@ -107,28 +109,29 @@ window#waybar {
 }
 
 #custom-separator {
-    color: #585b70;
+    color: #625e5a;  /* dragonBlack6 */
     padding: 0 5px;
 }
 
 #idle_inhibitor.activated {
-    color: #f9e2af;
+    color: #c4b28a;  /* dragonYellow */
 }
 
 #mpris {
     font-style: oblique;
+    color: #a292a3;  /* dragonPink */
 }
 
 #power-profiles-daemon.performance {
-    color: #f38ba8;
+    color: #c4746e;  /* dragonRed */
 }
 
 #power-profiles-daemon.balanced {
-    color: #89b4fa;
+    color: #8ba4b0;  /* dragonBlue2 */
 }
 
 #power-profiles-daemon.power-saver {
-    color: #a6e3a1;
+    color: #87a987;  /* dragonGreen */
 }
 
 #custom-weather {
@@ -138,3 +141,12 @@ window#waybar {
 #custom-notification {
     font-size: 16px;
 }
+
+#cpu {
+    color: #8ba4b0;  /* dragonBlue2 */
+}
+
+#memory {
+    color: #a292a3;  /* dragonPink */
+}
+

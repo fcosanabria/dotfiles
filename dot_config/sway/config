@@ -4,6 +4,9 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Import Kanagawa Dragon theme
+include ~/.config/sway/themes/kanagawa-dragon.conf
+
 # Disable window title bars
 default_border pixel 2
 default_floating_border pixel 2
@@ -24,6 +27,15 @@ set $right l
 
 # Your preferred application launcher
 set $menu wofi --show drun --allow-images --insensitive
+
+# GTK/Qt theming
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Adwaita Sans 11'
+}
 
 # Gaps (transcribed from Hyprland looknfeel)
 gaps inner 2

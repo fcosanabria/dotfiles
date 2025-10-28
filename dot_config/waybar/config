@@ -6,7 +6,7 @@
     
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/separator#0", "network", "custom/separator#1", "cpu", "custom/separator#2", "memory", "custom/separator#3", "idle_inhibitor", "custom/separator#4", "power-profiles-daemon", "custom/separator#5", "custom/notification", "custom/separator#6", "tray"],
+    "modules-right": ["pulseaudio", "custom/separator#0", "cpu", "custom/separator#1", "memory", "custom/separator#2", "idle_inhibitor", "custom/separator#3", "power-profiles-daemon", "custom/separator#4", "custom/notification", "custom/separator#5", "tray"],
     
     "sway/workspaces": {
         "disable-scroll": false,
