@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: "Berkeley Mono", "Symbols Nerd Font", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     min-height: 0;
 }
 
@@ -50,6 +50,7 @@ window#waybar {
 #cpu,
 #memory,
 #network,
+#bluetooth,
 #pulseaudio,
 #backlight,
 #idle_inhibitor,

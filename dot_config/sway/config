@@ -9,6 +9,9 @@ exec_always export GTK_THEME=Adwaita:dark
 exec_always export QT_QPA_PLATFORMTHEME=gtk3
 exec_always export QT_STYLE_OVERRIDE=Adwaita-Dark
 
+# Make sure gnome-keyring-daemon is running at system start
+exec gnome-keyring-daemon --start --components=secrets
+
 # Import Kanagawa Dragon theme
 include ~/.config/sway/themes/kanagawa-dragon.conf
 
@@ -62,12 +65,23 @@ gaps outer 2
 
 # Monitor configurations (transcribed from Hyprland)
 output DP-1 mode 3840x2160@143.982Hz position 0,0 scale 1
+output HDMI-A-2 mode 1920x1080@60Hz position 960,2160 scale 1
+
+# Workspace assignments
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output DP-1
+workspace 5 output DP-1
+workspace 6 output HDMI-A-2
+workspace 7 output HDMI-A-2
+workspace 8 output HDMI-A-2
+workspace 9 output HDMI-A-2
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Input configuration
-#
-# Keyboard settings (transcribed from Hyprland)
+
 input type:keyboard {
     xkb_options compose:caps
     repeat_rate 40
@@ -75,14 +89,21 @@ input type:keyboard {
     xkb_numlock enabled
 }
 
-
-input "type:touchpad" {
+input "1452:613:HID_05ac:0265_Touchpad" {
+    events enabled
     tap enabled
-    natural_scroll enabled
-    dwt enabled
+    tap_button_map lrm
+    drag enabled
+    drag_lock disabled
+    natural_scroll disabled 
+    dwt disabled
     accel_profile adaptive
     pointer_accel 0.3
+    scroll_factor 1.0
+    click_method clickfinger
+    middle_emulation enabled
 }
+
 
 ### Key bindings
 #
@@ -96,6 +117,9 @@ input "type:touchpad" {
 
     # Start your launcher
     bindsym $mod+space exec $menu
+    
+    # Power menu
+    bindsym $mod+Shift+p exec ~/.local/bin/wofi-power-menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

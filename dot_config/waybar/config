@@ -6,7 +6,7 @@
     
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/separator#0", "cpu", "custom/separator#1", "memory", "custom/separator#2", "idle_inhibitor", "custom/separator#3", "power-profiles-daemon", "custom/separator#4", "custom/notification", "custom/separator#5", "tray"],
+    "modules-right": ["pulseaudio", "custom/separator#0", "bluetooth", "custom/separator#1", "cpu", "custom/separator#2", "memory", "custom/separator#3", "idle_inhibitor", "custom/separator#4", "power-profiles-daemon", "custom/separator#5", "custom/notification", "custom/separator#6", "tray"],
     
     "sway/workspaces": {
         "disable-scroll": false,
@@ -96,6 +96,20 @@
     
     "tray": {
         "spacing": 10
+    },
+    
+    "bluetooth": {
+        "format": "󰂯 {status}",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱 {device_alias}",
+        "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
     },
     
     "custom/separator#0": {
