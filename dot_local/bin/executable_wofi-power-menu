@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Wofi Power Menu with Kanagawa Dragon theme
+
+entries="⏻ Shutdown\n⟳ Reboot\n⏾ Suspend\n Lock\n󰗼 Logout"
+
+selected=$(echo -e "$entries" | wofi --dmenu \
+    --cache-file /dev/null \
+    --insensitive \
+    --prompt "Power Menu" \
+    --width 300 \
+    --height 240 \
+    --style ~/.config/wofi/power-menu.css)
+
+case $selected in
+    *Shutdown)
+        systemctl poweroff
+        ;;
+    *Reboot)
+        systemctl reboot
+        ;;
+    *Suspend)
+        systemctl suspend
+        ;;
+    *Lock)
+        swaylock
+        ;;
+    *Logout)
+        swaymsg exit
+        ;;
+esac
