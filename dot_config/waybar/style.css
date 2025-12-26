@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Berkeley Mono", "Symbols Nerd Font", sans-serif;
+    font-family: "Cantarell", "Symbols Nerd Font", sans-serif;
     font-size: 18px;
     min-height: 0;
 }
@@ -149,5 +149,32 @@ window#waybar {
 
 #memory {
     color: #a292a3;  /* dragonPink */
+}
+
+/* Tooltip styling */
+tooltip {
+    font-family: "Cantarell", sans-serif;
+    background-color: #181616;  /* dragonBlack3 - solid background */
+    color: #c5c9c5;  /* dragonWhite */
+    border: 1px solid #625e5a;  /* dragonBlack6 */
+    border-radius: 4px;
+    padding: 8px;
+}
+
+tooltip label {
+    font-family: "Cantarell", sans-serif;
+}
+
+tooltip * {
+    font-family: "Cantarell", sans-serif;
+}
+
+/* Calendar tooltip specific styling - needs monospace for alignment */
+#clock tooltip {
+    background-color: #181616;  /* dragonBlack3 - solid background */
+}
+
+#clock tooltip * {
+    font-family: "Monospace", monospace;
 }
 

@@ -1,0 +1,10 @@
+configuration {
+    modi: "drun,run";
+    font: "Cantarell 14";
+    display-drun: "";
+    display-run: "";
+    show-icons: false;
+    drun-display-format: "{name}";
+}
+
+@theme "kanagawa-dragon-dmenu"

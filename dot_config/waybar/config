@@ -4,9 +4,9 @@
     "height": 32,
     "spacing": 8,
     
-    "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "mpris"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/separator#0", "bluetooth", "custom/separator#1", "cpu", "custom/separator#2", "memory", "custom/separator#3", "idle_inhibitor", "custom/separator#4", "power-profiles-daemon", "custom/separator#5", "custom/notification", "custom/separator#6", "tray"],
+    "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "custom/separator#0", "bluetooth", "custom/separator#1", "custom/notification", "custom/separator#2", "clock", "tray"],
     
     "sway/workspaces": {
         "disable-scroll": false,
@@ -18,9 +18,12 @@
         "format": "{}",
         "max-length": 50,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "Firefox: $1",
-            "(.*) - Visual Studio Code": "VSCode: $1",
-            "(.*) - Chrome": "Chrome: $1"
+            "(.*) — Mozilla Firefox": "Mozilla Firefox",
+            "(.*) - Visual Studio Code": "VSCode",
+            "(.*) - Chrome": "Chrome",
+            "(.*)@(.*):(.*)": "Alacritty",
+            "(.*) - (.*)": "$2",
+            "(.*)": "$1"
         }
     },
     
@@ -29,9 +32,8 @@
     },
     
     "clock": {
-        "format": "{:%H:%M:%S}",
-        "format-alt": "{:%Y-%m-%d}",
-        "interval": 1,
+        "format": "{:%a %d %b  %H:%M}",
+        "interval": 60,
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
