@@ -3,6 +3,13 @@
 ;;   Hyper + H/J/K/L = Left/Down/Up/Right
 ;;   Hyper + M       = Return
 ;;   Hyper + Space   = Backspace
+;;
+;; macOS-style modifiers (ctrl, alt/option, super/cmd):
+;;   Physical lalt → Super/Cmd
+;;   Physical lmet → Alt/Option
+;;
+;; Compose key (AltGr+' equivalent):
+;;   Alt/Option + E → dead_acute (AltGr+'), then press vowel → á é í ó ú
 
 (defcfg
   input  (device-file "/dev/input/by-id/usb-Chicony_USB_Keyboard-event-kbd")
@@ -15,10 +22,16 @@
   h    j    k    l
   m
   spc
+  lalt lmet
+  e
 )
 
 (defalias
-  hyp (tap-hold 200 esc (layer-toggle hyper))
+  hyp     (tap-hold 200 esc (layer-toggle hyper))
+  mac-cmd lmet
+  mac-opt (around lalt (layer-toggle mac-opt))
+  ;; Emits AltGr+' which XKB processes as dead_acute compose key
+  acc     (around ralt ')
 )
 
 (deflayer base
@@ -26,6 +39,17 @@
   h    j    k    l
   m
   spc
+  @mac-cmd  @mac-opt
+  e
+)
+
+(deflayer mac-opt
+  _
+  _    _    _    _
+  _
+  _
+  _    _
+  @acc
 )
 
 (deflayer hyper
@@ -33,4 +57,6 @@
   left down up   rght
   ret
   bspc
+  _    _
+  _
 )
