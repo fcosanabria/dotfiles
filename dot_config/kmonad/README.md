@@ -34,7 +34,7 @@ Description=KMonad keyboard remapper
 After=systemd-udev-settle.service
 
 [Service]
-ExecStart=/usr/bin/kmonad /home/fsanabria/git/kmonad-config/config.kbd
+ExecStart=/usr/bin/kmonad /home/fsanabria/.config/kmonad/config.kbd
 Restart=on-failure
 
 [Install]
