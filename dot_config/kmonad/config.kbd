@@ -1,0 +1,36 @@
+;; KMonad configuration
+;; Caps Lock as Hyper layer:
+;;   Hyper + H/J/K/L = Left/Down/Up/Right
+;;   Hyper + M       = Return
+;;   Hyper + Space   = Backspace
+
+(defcfg
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "KMonad output")
+  fallthrough true
+)
+
+(defsrc
+  caps
+  h    j    k    l
+  m
+  spc
+)
+
+(defalias
+  hyp (tap-hold 200 esc (layer-toggle hyper))
+)
+
+(deflayer base
+  @hyp
+  h    j    k    l
+  m
+  spc
+)
+
+(deflayer hyper
+  _
+  left down up   rght
+  ret
+  bspc
+)
