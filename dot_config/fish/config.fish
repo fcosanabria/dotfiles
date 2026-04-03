@@ -56,6 +56,7 @@ alias k='kubectl'
 alias ctx='kubectx'
 alias cat='bat'
 alias cd='z'
+alias nn='cd ~/nix/'
 alias homelab='cd ~/git/homelab/'
 alias notes='cd ~/vaults/vault/'
 alias repos='cd ~/git/'
@@ -80,3 +81,4 @@ atuin init fish | source
 
 # starship configuration for fish
 starship init fish | source
+

@@ -12,7 +12,7 @@
 ;;   Alt/Option + E → dead_acute (AltGr+'), then press vowel → á é í ó ú
 
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-Chicony_USB_Keyboard-event-kbd")
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
   output (uinput-sink "KMonad output")
   fallthrough true
 )
@@ -27,7 +27,7 @@
 )
 
 (defalias
-  hyp     (tap-hold 200 esc (layer-toggle hyper))
+  hyp     (tap-hold 100 esc (layer-toggle hyper))
   mac-cmd lmet
   mac-opt (around lalt (layer-toggle mac-opt))
   ;; Emits AltGr+' which XKB processes as dead_acute compose key
