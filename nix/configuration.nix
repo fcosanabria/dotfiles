@@ -130,6 +130,7 @@
           enabled-extensions = [
             "grimble@lmt.github.io"
             "caffeine@patapon.info"
+            "appindicatorsupport@rgcjonas.gmail.com"
           ];
         };
 
@@ -247,6 +248,7 @@
     fastfetch
     siyuan
     starship
+    helix
     gnome-extension-manager
     gnomeExtensions.grimble-tiling-wm
     gnomeExtensions.caffeine
