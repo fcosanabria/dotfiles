@@ -34,6 +34,8 @@
     btop
     fastfetch
     tree-sitter
+    tealdeer
+    tree
 
     # -- Git & Version Control --
     git
@@ -56,10 +58,11 @@
     libreoffice-fresh
 
     # -- Media & Communication --
-    vesktop
     cider-2
+    discord
 
     # -- Keyboard & Input --
+    kanata
     kmonad
     espanso-wayland
   ];
