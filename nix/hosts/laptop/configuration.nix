@@ -51,5 +51,14 @@
     shell = pkgs.fish;
   };
 
+  # Home Manager base config
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.fsanabria = {
+    home.username = "fsanabria";
+    home.homeDirectory = "/home/fsanabria";
+    home.stateVersion = "25.11";
+  };
+
   system.stateVersion = "25.11";
 }
