@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Hostname
-  networking.hostName = "zbook";
+  networking.hostName = "synnax";
 
   # Networking
   networking.networkmanager.enable = true;
