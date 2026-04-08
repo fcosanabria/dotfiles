@@ -4,10 +4,8 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ../../modules/des/gnome.nix
-    ../../modules/system/packages.nix
-    ../../modules/system/services.nix
-    ../../modules/home/fish.nix
-    ../../modules/home/bash.nix
+    ../../modules/system
+    ../../modules/home
   ];
 
   # Bootloader

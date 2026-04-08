@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
 
     # -- Editors & IDEs --
-    vim
     neovim
     helix
     emacs
@@ -16,7 +15,7 @@
 
     # -- Terminal & Shell --
     ghostty
-    tmux
+    zellij
     starship
     atuin
     fish
@@ -52,7 +51,6 @@
     chezmoi
 
     # -- Productivity & Notes --
-    obsidian
     siyuan
     anki
     libreoffice-fresh
