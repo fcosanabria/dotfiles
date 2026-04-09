@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
     ../../modules/des/gnome.nix
     ../../modules/system
     ../../modules/home
@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Hostname
-  networking.hostName = "zbook";
+  networking.hostName = "synnax";
 
   # Networking
   networking.networkmanager.enable = true;
