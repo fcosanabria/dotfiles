@@ -54,6 +54,7 @@
     siyuan
     anki
     libreoffice-fresh
+    qutebrowser
 
     # -- Media & Communication --
     cider-2
