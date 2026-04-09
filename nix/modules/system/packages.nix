@@ -48,7 +48,6 @@
     devpod
     podman
     claude-code
-    chezmoi
 
     # -- Productivity & Notes --
     siyuan
