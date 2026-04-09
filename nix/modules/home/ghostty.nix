@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-    programs.ghostty.enable = true;
-
-    home-manager.users.fsanabria = {
+  home-manager.users.fsanabria = {
+    programs.ghostty = {
+      enable = true;
+      settings = {
         font-size = 14;
         font-family = "Berkeley Mono";
         font-family-bold = "Berkeley Mono";
@@ -15,6 +16,7 @@
         font-style-bold-italic = "Bold Oblique";
         window-width = 160;
         window-height = 48;
+      };
     };
+  };
 }
-    
