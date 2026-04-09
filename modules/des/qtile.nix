@@ -1,8 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  # Display Manager (LightDM works well with standalone WMs)
-  services.displayManager.lightdm.enable = true;
+  # Display Manager (greetd + tuigreet for standalone Wayland WMs)
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd qtile start -b wayland";
+        user = "greeter";
+      };
+    };
+  };
 
   # QTile Window Manager (Wayland)
   services.xserver.windowManager.qtile = {

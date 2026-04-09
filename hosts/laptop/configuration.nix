@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/des/gnome.nix
+    ../../modules/des/qtile.nix
     ../../modules/system
     ../../modules/home
   ];
