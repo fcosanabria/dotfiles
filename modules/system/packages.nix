@@ -70,6 +70,7 @@
 
   # Enable Flatpak
   services.flatpak.enable = true;
+  xdg.portal.enable = true;
 
   # Enable AppImages
   programs.appimage.enable = true;

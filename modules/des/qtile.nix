@@ -12,10 +12,9 @@
     };
   };
 
-  # QTile Window Manager (Wayland)
+  # QTile Window Manager
   services.xserver.windowManager.qtile = {
     enable = true;
-    backend = "wayland";
     extraPackages = p: with p; [ qtile-extras ];
   };
 
