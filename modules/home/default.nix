@@ -5,5 +5,6 @@
     ./ghostty.nix
     ./git.nix
     ./starship.nix
+    ./sway.nix
   ];
 }

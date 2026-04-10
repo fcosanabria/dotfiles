@@ -68,6 +68,11 @@
   # Firefox
   programs.firefox.enable = true;
 
+  # System-wide fonts
+  fonts.packages = with pkgs; [
+    adwaita-fonts
+  ];
+
   # Enable Flatpak
   services.flatpak.enable = true;
   xdg.portal.enable = true;

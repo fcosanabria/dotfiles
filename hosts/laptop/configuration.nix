@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/des/qtile.nix
+    ../../modules/des/sway.nix
     ../../modules/system
     ../../modules/home
   ];
