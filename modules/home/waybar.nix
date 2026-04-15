@@ -96,7 +96,7 @@
       style = ''
         * {
           font-size: 13px;
-          font-family: "Berkeley Mono", monospace;
+          font-family: "BerkeleyMono Nerd Font Mono", monospace;
           border: none;
           border-radius: 0;
           min-height: 0;

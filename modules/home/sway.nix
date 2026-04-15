@@ -38,7 +38,7 @@
         };
 
         fonts = {
-            names = [ "Berkeley Mono" ];
+            names = [ "BerkeleyMono Nerd Font Mono" ];
         };
 
         window = {

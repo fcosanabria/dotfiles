@@ -9,7 +9,7 @@
       settings = {
         main = {
           term = "xterm-256color";
-          font = "Berkeley Mono:size=12";
+          font = "BerkeleyMono Nerd Font Mono:size=12";
           dpi-aware = "yes";
           pad = "6x6";
           initial-window-size-pixels = "1200x800";

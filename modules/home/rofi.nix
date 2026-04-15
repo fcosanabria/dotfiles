@@ -5,7 +5,8 @@
     programs.rofi = {
       enable = true;
       terminal = "ghostty";
-      font = "Berkeley Mono 12";
+      font = "BerkeleyMono Nerd Font Mono 12";
+      theme = "gruvbox-dark-hard";
     };
   };
 }
