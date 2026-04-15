@@ -5,6 +5,7 @@
     programs.ghostty = {
       enable = true;
       settings = {
+        theme = "Gruvbox Dark Hard";
         font-size = 14;
         font-family = "Berkeley Mono";
         font-family-bold = "Berkeley Mono";

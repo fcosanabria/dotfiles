@@ -11,8 +11,10 @@
 
       config = {
         modifier = "Mod4";         # Super key
-        terminal = "foot";
-        menu = "wmenu-run";
+        terminal = "ghostty";
+
+        # ── Cursor ─────────────────────────────────────────────────────
+        seat."*".xcursor_theme = "default 32";
 
         # ── Input ──────────────────────────────────────────────────────
         input = {
@@ -29,41 +31,43 @@
           };
         };
 
-        # ── Output (defaults — override per-host via kanshi) ──────────
-        output."*" = {
-          bg = "/run/current-system/sw/share/backgrounds/gnome/adwaita-l.jxl fill";
-        };
-
         # ── Appearance ─────────────────────────────────────────────────
         gaps = {
           inner = 2;
           outer = 0;
         };
 
+        fonts = {
+            names = [ "Berkeley Mono" ];
+        };
+
         window = {
-          titlebar = true;
+          titlebar = false;
           border = 2;
         };
 
         floating.titlebar = false;
 
-        # ── Bar (swaybar at bottom; waybar launched via startup) ───
-        bars = [{
-          position = "bottom";
-          statusCommand = "${pkgs.i3status}/bin/i3status";
-          fonts = {
-            names = [ "Berkeley Mono" ];
-            size = 10.0;
-          };
-        }];
+        # ── Window rules ─────────────────────────────────────────────
+        window.commands = [
+          {
+            criteria = { app_id = "org.pulseaudio.pavucontrol"; };
+            command = "floating enable, resize set 500 400, move position cursor, move down 20";
+          }
+        ];
+
+        # ── Disable default swaybar (waybar is started via startup) ───
+        bars = [];
 
         # ── Keybindings ───────────────────────────────────────────────
         keybindings = let
           mod = "Mod4";
+          rofi = "rofi -show drun";
         in {
           # Launch
-          "${mod}+Return" = "exec foot";
-          "${mod}+d" = "exec wmenu-run";
+          "${mod}+Return" = "exec ghostty";
+          "${mod}+d" = "exec ${rofi}";
+          "${mod}+space" = "exec ${rofi}";
           "${mod}+b" = "exec firefox";
 
           # Window management
@@ -114,6 +118,9 @@
           "${mod}+Shift+8" = "move container to workspace number 8";
           "${mod}+Shift+9" = "move container to workspace number 9";
 
+          # Screenshot (area → clipboard + ~/Pictures/screenshots/)
+          "${mod}+Shift+s" = ''exec mkdir -p ~/Pictures/screenshots && grim -g "$(slurp)" - | tee ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy'';
+
           # Session
           "${mod}+Shift+e" = "exec swaymsg exit";
           "${mod}+Shift+c" = "reload";
@@ -122,6 +129,7 @@
 
         # ── Startup ───────────────────────────────────────────────────
         startup = [
+          { command = "waybar"; }
           { command = "mako"; }
           { command = "kanshi"; }
           { command = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"; }
@@ -174,41 +182,5 @@
       ];
     };
 
-    # ── Waybar ────────────────────────────────────────────────────────
-    programs.waybar = {
-      enable = true;
-      settings.mainBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-        modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "battery" "tray" ];
-
-        clock.format = "{:%a %d %b  %H:%M}";
-
-        battery = {
-          format = "{icon}  {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
-        };
-
-        network = {
-          format-wifi = "  {signalStrength}%";
-          format-disconnected = "⚠ Disconnected";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-        };
-
-        pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = " muted";
-          format-icons.default = [ "" "" "" ];
-          on-click = "pavucontrol";
-        };
-
-        tray = {
-          spacing = 8;
-        };
-      };
-    };
   };
 }

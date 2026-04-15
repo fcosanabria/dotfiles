@@ -36,13 +36,8 @@
     # -- Bar --
     waybar              # Highly customisable Wayland bar
 
-    # -- Terminal --
-    foot                # Fast Wayland-native terminal
-
     # -- Launcher & Notifications --
-    wmenu               # Wayland dmenu replacement
     rofi
-    yofi
     mako
 
     # -- Screenshots & Screen Recording --
