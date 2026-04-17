@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/des/budgie.nix
+    ../../modules/des/xfce.nix
     ../../modules/system
     ../../modules/home
   ];
