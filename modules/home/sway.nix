@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  config = lib.mkIf config.programs.sway.enable {
   home-manager.users.fsanabria = {
 
     # ── Sway ────────────────────────────────────────────────────────────
@@ -182,5 +183,6 @@
       ];
     };
 
+  };
   };
 }

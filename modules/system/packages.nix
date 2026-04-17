@@ -8,17 +8,15 @@
 
     # -- Editors & IDEs --
     neovim
-    helix
-    emacs
     vscode
     jetbrains-toolbox
 
     # -- Terminal & Shell --
     ghostty
-    zellij
     starship
     atuin
     fish
+    tmux
 
     # -- CLI Utilities --
     curl
@@ -54,6 +52,8 @@
     anki
     libreoffice-fresh
     qutebrowser
+    qownnotes
+    obsidian
 
     # -- Media & Communication --
     cider-2
@@ -61,7 +61,6 @@
 
     # -- Keyboard & Input --
     kanata
-    kmonad
     espanso-wayland
   ];
 
