@@ -8,5 +8,6 @@
     ./starship.nix
     ./sway.nix
     ./waybar.nix
+    ./xfce.nix
   ];
 }
