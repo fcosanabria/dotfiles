@@ -12,6 +12,7 @@ let
         <property name="panel-1" type="empty">
           <property name="position" type="string" value="p=6;x=0;y=0"/>
           <property name="length" type="uint" value="100"/>
+          <property name="output-name" type="string" value="Primary"/>
           <property name="position-locked" type="bool" value="true"/>
           <property name="icon-size" type="uint" value="16"/>
           <property name="size" type="uint" value="26"/>
