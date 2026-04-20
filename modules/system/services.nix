@@ -1,6 +1,19 @@
 { config, pkgs, ... }:
 
+let
+  kanata-toggle = pkgs.writeShellScriptBin "kanata-toggle" ''
+    SERVICE="kanata-default.service"
+    if ${pkgs.systemd}/bin/systemctl is-active --quiet "$SERVICE"; then
+      pkexec ${pkgs.systemd}/bin/systemctl stop "$SERVICE"
+      ${pkgs.libnotify}/bin/notify-send "Kanata" "Desactivado" --icon=input-keyboard
+    else
+      pkexec ${pkgs.systemd}/bin/systemctl start "$SERVICE"
+      ${pkgs.libnotify}/bin/notify-send "Kanata" "Activado" --icon=input-keyboard
+    fi
+  '';
+in
 {
+  environment.systemPackages = [ kanata-toggle ];
   # Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

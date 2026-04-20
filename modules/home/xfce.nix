@@ -495,6 +495,15 @@ in
         };
       };
 
+      xdg.desktopEntries.kanata-toggle = {
+        name = "Kanata Toggle";
+        comment = "Activar o desactivar Kanata";
+        exec = "kanata-toggle";
+        icon = "input-keyboard";
+        terminal = false;
+        categories = [ "Utility" ];
+      };
+
       xdg.configFile = {
         "xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
           text = panelXml;
