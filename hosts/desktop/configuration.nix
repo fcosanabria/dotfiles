@@ -60,5 +60,8 @@
     home.stateVersion = "25.11";
   };
 
+  # Kanata installed but not auto-started (use kanata-toggle to enable)
+  systemd.services.kanata-default.wantedBy = lib.mkForce [];
+
   system.stateVersion = "25.11";
 }
