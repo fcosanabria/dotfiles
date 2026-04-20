@@ -482,6 +482,7 @@ in
         enable = true;
         profiles.default = {
           id = 0;
+          path = "5e71bnxm.default";
           isDefault = true;
           settings = {
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

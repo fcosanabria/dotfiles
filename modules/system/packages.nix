@@ -33,6 +33,7 @@
     tree-sitter
     tealdeer
     tree
+    bitwarden-cli
 
     # -- Git & Version Control --
     git
