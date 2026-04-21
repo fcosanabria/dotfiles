@@ -379,6 +379,10 @@ let
           <property name="&lt;Super&gt;KP_Home" type="empty"/>
           <property name="&lt;Super&gt;KP_End" type="empty"/>
           <property name="&lt;Super&gt;KP_Next" type="empty"/>
+          <property name="&lt;Super&gt;y" type="empty"/>
+          <property name="&lt;Super&gt;u" type="empty"/>
+          <property name="&lt;Super&gt;i" type="empty"/>
+          <property name="&lt;Super&gt;o" type="empty"/>
         </property>
         <property name="custom" type="empty">
           <property name="override" type="bool" value="true"/>
@@ -422,6 +426,11 @@ let
           <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_key"/>
           <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
           <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_up_key"/>
+          <!-- Quadrant tiling (Super + YUIO) -->
+          <property name="&lt;Super&gt;y" type="string" value="tile_up_left_key"/>
+          <property name="&lt;Super&gt;o" type="string" value="tile_up_right_key"/>
+          <property name="&lt;Super&gt;u" type="string" value="tile_down_left_key"/>
+          <property name="&lt;Super&gt;i" type="string" value="tile_down_right_key"/>
           <!-- Tiling (Super + Numpad) -->
           <property name="&lt;Super&gt;KP_Left" type="string" value="tile_left_key"/>
           <property name="&lt;Super&gt;KP_Right" type="string" value="tile_right_key"/>

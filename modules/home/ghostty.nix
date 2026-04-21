@@ -6,11 +6,11 @@
       enable = true;
       settings = {
         theme = "Gruvbox Dark Hard";
-        font-size = 14;
-        font-family = "BerkeleyMono Nerd Font Mono";
-        font-family-bold = "BerkeleyMono Nerd Font Mono";
-        font-family-italic = "BerkeleyMono Nerd Font Mono";
-        font-family-bold-italic = "BerkeleyMono Nerd Font Mono";
+        font-size = 16;
+        font-family = "Berkeley Mono";
+        font-family-bold = "Berkeley Mono";
+        font-family-italic = "Berkeley Mono";
+        font-family-bold-italic = "Berkeley Mono";
         font-style = "Regular";
         font-style-bold = "Bold";
         font-style-italic = "Oblique";
