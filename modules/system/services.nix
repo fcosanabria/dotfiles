@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   kanata-toggle = pkgs.writeShellScriptBin "kanata-toggle" ''
@@ -42,6 +42,10 @@ in
 
   # OpenSSH
   services.openssh.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+  users.groups.docker.gid = lib.mkForce 999;
 
   # KMonad System Service (disabled)
   systemd.services.kmonad = {

@@ -19,6 +19,7 @@
     tmux
 
     # -- CLI Utilities --
+    openssl
     curl
     wget
     unzip
@@ -46,7 +47,14 @@
     devcontainer
     devpod
     podman
+    podman-compose
+    podman-tui
     claude-code
+    docker
+    freerdp
+    winboat
+    ollama-rocm
+    opencode
 
     # -- Productivity & Notes --
     siyuan
