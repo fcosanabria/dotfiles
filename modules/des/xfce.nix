@@ -55,6 +55,11 @@
     networkmanagerapplet
     pavucontrol
 
+    # -- Archive Manager --
+    xarchiver
+    p7zip
+    zip
+
     # -- Utilities --
     xdg-utils
   ];

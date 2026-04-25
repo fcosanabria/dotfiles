@@ -58,9 +58,7 @@
 
     # -- Productivity & Notes --
     siyuan
-    anki
     libreoffice-fresh
-    qutebrowser
     qownnotes
     obsidian
 
@@ -71,6 +69,13 @@
     # -- Keyboard & Input --
     kanata
     espanso-wayland
+
+    # -- WebKit --
+    webkitgtk_4_1
+
+    # -- Langueages
+    python3
+    nodejs
   ];
 
   # Firefox

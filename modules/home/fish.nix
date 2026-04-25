@@ -48,6 +48,13 @@
                 set -p PATH ~/.local/bin
             end
         end
+
+        # npm global prefix (NixOS workaround)
+        if test -d ~/.npm-global/bin
+            if not contains -- ~/.npm-global/bin $PATH
+                set -p PATH ~/.npm-global/bin
+            end
+        end
       '';
 
       functions = {
