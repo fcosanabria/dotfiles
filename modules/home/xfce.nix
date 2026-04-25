@@ -249,7 +249,18 @@ let
     </channel>
   '';
 
-  # ── Keyboard Shortcuts ─────────────────────────────────────────────
+  # ── Keyboard Repeat Settings ───────────────────────────────────────
+  keyboardsXml = ''
+    <?xml version="1.1" encoding="UTF-8"?>
+    <channel name="keyboards" version="1.0">
+      <property name="Default" type="empty">
+        <property name="KeyRepeat" type="empty">
+          <property name="Delay" type="int" value="300"/>
+        </property>
+      </property>
+    </channel>
+  '';
+
   # ── Keyboard Shortcuts ─────────────────────────────────────────────
   shortcutsXml = ''
     <?xml version="1.1" encoding="UTF-8"?>
@@ -267,7 +278,6 @@ let
           <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="empty"/>
           <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="empty"/>
           <property name="XF86Display" type="empty"/>
-          <property name="&lt;Super&gt;p" type="empty"/>
           <property name="&lt;Primary&gt;Escape" type="empty"/>
           <property name="XF86WWW" type="empty"/>
           <property name="HomePage" type="empty"/>
@@ -285,33 +295,28 @@ let
           <property name="&lt;Alt&gt;&lt;Super&gt;s" type="empty"/>
         </property>
         <property name="custom" type="empty">
+          <!-- If true, the entries below replace XFCE defaults for these keys -->
           <property name="override" type="bool" value="true"/>
-          <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
-          <property name="&lt;Alt&gt;F2" type="string" value="xfce4-appfinder --collapsed">
-            <property name="startup-notify" type="bool" value="true"/>
-          </property>
-          <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
-            <property name="startup-notify" type="bool" value="true"/>
-          </property>
-          <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-          <property name="&lt;Alt&gt;&lt;Super&gt;s" type="string" value="orca"/>
+
+          <!-- Screenshot of active window -->
+          <property name="&lt;Super&gt;&lt;Shift&gt;d" type="string" value="xfce4-screenshooter -w"/>
+
+          <!-- Full-screen screenshot just use print. -->
           <property name="Print" type="string" value="xfce4-screenshooter"/>
-          <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -r"/>
-          <property name="&lt;Super&gt;e" type="string" value="thunar"/>
-          <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
-          <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder -c">
-            <property name="startup-notify" type="bool" value="true"/>
-          </property>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;f" type="string" value="thunar"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-          <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
-          <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
-          <property name="HomePage" type="string" value="exo-open --launch WebBrowser"/>
-          <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
-          <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
-          <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
+
+          <!-- Region screenshot -->
+          <property name="&lt;Super&gt;&lt;Shift&gt;s" type="string" value="xfce4-screenshooter -r"/>
+
+          <!-- File manager -->
+          <property name="&lt;Super&gt;f" type="string" value="thunar"/>
+
+          <!-- Open Ghostty terminal -->
+          <property name="&lt;Super&gt;t" type="string" value="ghostty"/>
+
+          <!-- Open Helium browser -->
+          <property name="&lt;Super&gt;b" type="string" value="helium"/>
+
+          <!-- App finder with Super+Space (Spotlight-like) -->
           <property name="&lt;Super&gt;space" type="string" value="xfce4-appfinder">
             <property name="startup-notify" type="bool" value="true"/>
           </property>
@@ -385,94 +390,69 @@ let
           <property name="&lt;Super&gt;o" type="empty"/>
         </property>
         <property name="custom" type="empty">
+          <!-- If true, xfwm4 entries below replace XFWM default key map -->
           <property name="override" type="bool" value="true"/>
-          <!-- Window management -->
+
+          <!-- Close focused window -->
           <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
-          <property name="&lt;Alt&gt;F6" type="string" value="stick_window_key"/>
-          <property name="&lt;Alt&gt;F7" type="string" value="move_window_key"/>
-          <property name="&lt;Alt&gt;F8" type="string" value="resize_window_key"/>
-          <property name="&lt;Alt&gt;F9" type="string" value="hide_window_key"/>
-          <property name="&lt;Alt&gt;F10" type="string" value="maximize_window_key"/>
-          <property name="&lt;Alt&gt;F11" type="string" value="fullscreen_key"/>
-          <property name="&lt;Alt&gt;F12" type="string" value="above_key"/>
-          <property name="&lt;Alt&gt;space" type="string" value="popup_menu_key"/>
+
+          <!-- Switch between windows -->
           <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
+
+          <!-- Reverse switch between windows -->
           <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
-          <property name="&lt;Alt&gt;Insert" type="string" value="add_workspace_key"/>
-          <property name="&lt;Alt&gt;Delete" type="string" value="del_workspace_key"/>
+
+          <!-- Alternate window switcher -->
           <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
+
+          <!-- Quick close focused window -->
           <property name="&lt;Super&gt;q" type="string" value="close_window_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;m" type="string" value="maximize_window_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;h" type="string" value="tile_left_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="tile_right_key"/>
-          <!-- Navigation keys -->
+
+          <!-- Tile focused window to left half -->
+          <property name="&lt;Primary&gt;&lt;Super&gt;h" type="string" value="tile_left_key"/>
+
+          <!-- Tile focused window to right half -->
+          <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="tile_right_key"/>
+
+          <!-- Cancel current WM keyboard action -->
           <property name="Escape" type="string" value="cancel_key"/>
-          <property name="Left" type="string" value="left_key"/>
-          <property name="Right" type="string" value="right_key"/>
-          <property name="Up" type="string" value="up_key"/>
-          <property name="Down" type="string" value="down_key"/>
-          <!-- Workspace navigation -->
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Left" type="string" value="left_workspace_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="up_workspace_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="down_workspace_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;Home" type="string" value="move_window_prev_workspace_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;End" type="string" value="move_window_next_workspace_key"/>
-          <!-- Window raise/lower -->
-          <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Up" type="string" value="raise_window_key"/>
-          <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Down" type="string" value="lower_window_key"/>
-          <!-- Move window directional -->
-          <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_key"/>
-          <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
-          <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_up_key"/>
-          <!-- Quadrant tiling (Ctrl + Super + YUIO) -->
+          
+          <!-- Tile focused window to top-left quarter -->
           <property name="&lt;Primary&gt;&lt;Super&gt;y" type="string" value="tile_up_left_key"/>
+
+          <!-- Tile focused window to top-right quarter -->
           <property name="&lt;Primary&gt;&lt;Super&gt;o" type="string" value="tile_up_right_key"/>
+
+          <!-- Tile focused window to bottom-left quarter -->
           <property name="&lt;Primary&gt;&lt;Super&gt;u" type="string" value="tile_down_left_key"/>
-          <property name="&lt;Primary&gt;&lt;Super&gt;i" type="string" value="tile_down_right_key"/>
-          <!-- Tiling (Super + Numpad) -->
-          <property name="&lt;Super&gt;KP_Left" type="string" value="tile_left_key"/>
-          <property name="&lt;Super&gt;KP_Right" type="string" value="tile_right_key"/>
-          <property name="&lt;Super&gt;KP_Up" type="string" value="tile_up_key"/>
-          <property name="&lt;Super&gt;KP_Down" type="string" value="tile_down_key"/>
-          <property name="&lt;Super&gt;KP_Home" type="string" value="tile_up_left_key"/>
-          <property name="&lt;Super&gt;KP_Page_Up" type="string" value="tile_up_right_key"/>
-          <property name="&lt;Super&gt;KP_End" type="string" value="tile_down_left_key"/>
-          <property name="&lt;Super&gt;KP_Next" type="string" value="tile_down_right_key"/>
-          <!-- Switch workspace: Super + 1234 -->
+
+          <!-- Tile focused window to bottom-right quarter -->
+          <property name="&lt;Primary&gt;&lt;Super&gt;p" type="string" value="tile_down_right_key"/>
+          
+          <!-- Jump directly to workspace 1 -->
           <property name="&lt;Super&gt;1" type="string" value="workspace_1_key"/>
+
+          <!-- Jump directly to workspace 2 -->
           <property name="&lt;Super&gt;2" type="string" value="workspace_2_key"/>
+
+          <!-- Jump directly to workspace 3 -->
           <property name="&lt;Super&gt;3" type="string" value="workspace_3_key"/>
+
+          <!-- Jump directly to workspace 4 -->
           <property name="&lt;Super&gt;4" type="string" value="workspace_4_key"/>
-          <!-- Move window to workspace: Super + Shift + 1234 -->
+          
+          <!-- Send focused window to workspace 1 -->
           <property name="&lt;Super&gt;&lt;Shift&gt;1" type="string" value="move_window_workspace_1_key"/>
+
+          <!-- Send focused window to workspace 2 -->
           <property name="&lt;Super&gt;&lt;Shift&gt;2" type="string" value="move_window_workspace_2_key"/>
+
+          <!-- Send focused window to workspace 3 -->
           <property name="&lt;Super&gt;&lt;Shift&gt;3" type="string" value="move_window_workspace_3_key"/>
+
+          <!-- Send focused window to workspace 4 -->
           <property name="&lt;Super&gt;&lt;Shift&gt;4" type="string" value="move_window_workspace_4_key"/>
-          <!-- Workspace by Ctrl+F keys (defaults) -->
-          <property name="&lt;Primary&gt;F1" type="string" value="workspace_1_key"/>
-          <property name="&lt;Primary&gt;F2" type="string" value="workspace_2_key"/>
-          <property name="&lt;Primary&gt;F3" type="string" value="workspace_3_key"/>
-          <property name="&lt;Primary&gt;F4" type="string" value="workspace_4_key"/>
-          <property name="&lt;Primary&gt;F5" type="string" value="workspace_5_key"/>
-          <property name="&lt;Primary&gt;F6" type="string" value="workspace_6_key"/>
-          <property name="&lt;Primary&gt;F7" type="string" value="workspace_7_key"/>
-          <property name="&lt;Primary&gt;F8" type="string" value="workspace_8_key"/>
-          <property name="&lt;Primary&gt;F9" type="string" value="workspace_9_key"/>
-          <property name="&lt;Primary&gt;F10" type="string" value="workspace_10_key"/>
-          <property name="&lt;Primary&gt;F11" type="string" value="workspace_11_key"/>
-          <property name="&lt;Primary&gt;F12" type="string" value="workspace_12_key"/>
-          <!-- Move window to workspace by Ctrl+Alt+KP (defaults) -->
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_1" type="string" value="move_window_workspace_1_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_2" type="string" value="move_window_workspace_2_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_3" type="string" value="move_window_workspace_3_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_4" type="string" value="move_window_workspace_4_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_5" type="string" value="move_window_workspace_5_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_6" type="string" value="move_window_workspace_6_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_7" type="string" value="move_window_workspace_7_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_8" type="string" value="move_window_workspace_8_key"/>
-          <property name="&lt;Primary&gt;&lt;Alt&gt;KP_9" type="string" value="move_window_workspace_9_key"/>
+
         </property>
       </property>
       <property name="providers" type="array">
@@ -525,6 +505,10 @@ in
         };
         "xfce4/xfconf/xfce-perchannel-xml/xsettings.xml" = {
           text = xsettingsXml;
+          force = true;
+        };
+        "xfce4/xfconf/xfce-perchannel-xml/keyboards.xml" = {
+          text = keyboardsXml;
           force = true;
         };
         "xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml" = {
