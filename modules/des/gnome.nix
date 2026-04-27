@@ -30,7 +30,7 @@
 
         # Workspaces
         "org/gnome/mutter" = {
-          dynamic-workspaces = true;
+          dynamic-workspaces = false;
           edge-tiling = false;
           workspaces-only-on-primary = true;
         };
@@ -50,6 +50,8 @@
           move-to-workspace-2 = [ "<Super><Shift>2" ];
           move-to-workspace-3 = [ "<Super><Shift>3" ];
           move-to-workspace-4 = [ "<Super><Shift>4" ];
+          move-to-monitor-left = [ "<Super><Control>Left" ];
+          move-to-monitor-right = [ "<Super><Control>Right" ];
         };
 
         # Disable default Super+N app switching (conflicts with workspace switching)
@@ -58,6 +60,11 @@
           switch-to-application-2 = mkEmptyArray type.string;
           switch-to-application-3 = mkEmptyArray type.string;
           switch-to-application-4 = mkEmptyArray type.string;
+        };
+
+        # Keyboard: Compose key on Right Super
+        "org/gnome/desktop/input-sources" = {
+          xkb-options = [ "compose:rwin" ];
         };
 
         # Mouse & Touchpad

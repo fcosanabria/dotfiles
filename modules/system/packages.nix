@@ -10,6 +10,7 @@
     neovim
     vscode
     jetbrains-toolbox
+    neovide
 
     # -- Terminal & Shell --
     ghostty
@@ -93,4 +94,9 @@
   # Enable AppImages
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
+
+  # Wrapper for Tauri-based AppImages (e.g. SpotiFLAC Next) that need webkitgtk
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [ pkgs.webkitgtk_4_1 ];
+  };
 }

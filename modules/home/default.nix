@@ -4,6 +4,7 @@
     ./fish.nix
     ./ghostty.nix
     ./git.nix
+    ./kde.nix
     ./rofi.nix
     ./starship.nix
     ./sway.nix
