@@ -58,6 +58,17 @@
       '';
 
       functions = {
+        kde2nix = {
+          description = "Export current KDE Plasma settings to Nix via rc2nix";
+          body = ''
+            set -l output_file ~/nix/kde-snapshot.nix
+            echo "Running rc2nix..."
+            nix run github:nix-community/plasma-manager -- rc2nix > $output_file
+            echo "Saved to $output_file"
+            echo "Review with: bat $output_file"
+          '';
+        };
+
         unzip-there = {
           description = "Extract zip file into a directory named after the archive";
           body = ''

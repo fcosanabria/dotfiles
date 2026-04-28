@@ -20,7 +20,6 @@
       modules = [
         ./hosts/desktop/configuration.nix
         inputs.home-manager.nixosModules.default
-        { home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ]; }
       ];
     };
     nixosConfigurations.zbook = nixpkgs.lib.nixosSystem {

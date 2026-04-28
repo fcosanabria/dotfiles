@@ -10,7 +10,6 @@
     neovim
     vscode
     jetbrains-toolbox
-    neovide
 
     # -- Terminal & Shell --
     ghostty
@@ -77,6 +76,9 @@
     # -- Langueages
     python3
     nodejs
+    luarocks
+    lua
+    
   ];
 
   # Firefox
