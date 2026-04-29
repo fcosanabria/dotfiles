@@ -87,6 +87,7 @@
   # System-wide fonts
   fonts.packages = with pkgs; [
     adwaita-fonts
+    nerd-fonts.symbols-only
   ];
 
   # Enable Flatpak

@@ -9,6 +9,7 @@
     ./rofi.nix
     ./starship.nix
     ./sway.nix
+    ./tmux.nix
     ./waybar.nix
     ./xfce.nix
   ];

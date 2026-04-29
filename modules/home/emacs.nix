@@ -63,37 +63,41 @@ let
   '';
 in
 {
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs;
-    extraPackages = epkgs: with epkgs; [ vterm ];
+  home-manager.users.fsanabria = {
+    # Use imports to get home-manager's extended lib (which has lib.hm.dag)
+    imports = [
+      ({ lib, pkgs, config, ... }: {
+        home.sessionPath = [ "${config.home.homeDirectory}/.config/emacs/bin" ];
+
+        home.activation.installDoomEmacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          DOOM_DIR="$HOME/.config/emacs"
+          DOOM_CONFIG_DIR="$HOME/.config/doom"
+
+          if [ ! -d "$DOOM_DIR" ]; then
+            $DRY_RUN_CMD ${pkgs.git}/bin/git clone --depth 1 "https://github.com/doomemacs/doomemacs" "$DOOM_DIR"
+          fi
+
+          if [ ! -d "$DOOM_CONFIG_DIR" ]; then
+            $DRY_RUN_CMD mkdir -p "$DOOM_CONFIG_DIR"
+            $DRY_RUN_CMD install -m 644 ${doomInitEl} "$DOOM_CONFIG_DIR/init.el"
+            $DRY_RUN_CMD install -m 644 ${doomConfigEl} "$DOOM_CONFIG_DIR/config.el"
+            $DRY_RUN_CMD install -m 644 ${doomPackagesEl} "$DOOM_CONFIG_DIR/packages.el"
+          fi
+        '';
+      })
+    ];
+
+    programs.emacs = {
+      enable = true;
+      package = pkgs.emacs;
+      extraPackages = epkgs: with epkgs; [ vterm ];
+    };
+
+    home.packages = with pkgs; [
+      sqlite
+      cmake
+      gnumake
+      imagemagick
+    ];
   };
-
-  # Doom Emacs dependencies
-  home.packages = with pkgs; [
-    sqlite
-    cmake
-    gnumake
-    imagemagick
-  ];
-
-  # Add doom bin to PATH so `doom` command is available
-  home.sessionPath = [ "${config.home.homeDirectory}/.config/emacs/bin" ];
-
-  # Clone Doom Emacs and scaffold config if not already present
-  home.activation.installDoomEmacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    DOOM_DIR="$HOME/.config/emacs"
-    DOOM_CONFIG_DIR="$HOME/.config/doom"
-
-    if [ ! -d "$DOOM_DIR" ]; then
-      $DRY_RUN_CMD ${pkgs.git}/bin/git clone --depth 1 "https://github.com/doomemacs/doomemacs" "$DOOM_DIR"
-    fi
-
-    if [ ! -d "$DOOM_CONFIG_DIR" ]; then
-      $DRY_RUN_CMD mkdir -p "$DOOM_CONFIG_DIR"
-      $DRY_RUN_CMD cp ${doomInitEl} "$DOOM_CONFIG_DIR/init.el"
-      $DRY_RUN_CMD cp ${doomConfigEl} "$DOOM_CONFIG_DIR/config.el"
-      $DRY_RUN_CMD cp ${doomPackagesEl} "$DOOM_CONFIG_DIR/packages.el"
-    fi
-  '';
 }
