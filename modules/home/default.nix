@@ -2,6 +2,7 @@
   imports = [
     ./bash.nix
     ./emacs.nix
+    ./espanso.nix
     ./fish.nix
     ./ghostty.nix
     ./git.nix

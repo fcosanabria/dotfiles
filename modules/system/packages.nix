@@ -35,6 +35,7 @@
     tealdeer
     tree
     bitwarden-cli
+    ffmpeg
 
     # -- Git & Version Control --
     git
@@ -60,7 +61,6 @@
     siyuan
     libreoffice-fresh
     qownnotes
-    obsidian
 
     # -- Media & Communication --
     cider-2
@@ -68,7 +68,6 @@
 
     # -- Keyboard & Input --
     kanata
-    espanso-wayland
 
     # -- WebKit --
     webkitgtk_4_1
