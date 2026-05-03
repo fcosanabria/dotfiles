@@ -1,17 +1,15 @@
 {
   imports = [
     ./bash.nix
-    ./emacs.nix
-    ./espanso.nix
     ./fish.nix
     ./ghostty.nix
     ./git.nix
     ./kde.nix
     ./rofi.nix
     ./starship.nix
+    ./dms.nix
     ./sway.nix
     ./tmux.nix
-    ./waybar.nix
     ./xfce.nix
   ];
 }

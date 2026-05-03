@@ -21,7 +21,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 10d";
+    options = "--delete-older-than 7d";
   };
 
   # Audio (PipeWire)
@@ -69,6 +69,7 @@ in
       config = ''
         (defsrc
           caps h j k l spc m lmet lalt
+          t    r w a   s c   v n   x
         )
 
         (defalias
@@ -77,10 +78,12 @@ in
 
         (deflayer base
           @cap h j k l spc m lalt lmet
+          t    r w a   s c   v n   x
         )
 
         (deflayer nav
           _    left down up right bspc ret _    _
+          C-t  C-r C-w C-a C-s C-c C-v C-n C-x
         )
       '';
     };

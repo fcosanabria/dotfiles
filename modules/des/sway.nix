@@ -33,9 +33,6 @@
 
   # ── Sway ecosystem packages ─────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    # -- Bar --
-    waybar              # Highly customisable Wayland bar
-
     # -- Launcher & Notifications --
     rofi
     mako

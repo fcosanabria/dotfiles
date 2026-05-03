@@ -130,7 +130,6 @@
 
         # ── Startup ───────────────────────────────────────────────────
         startup = [
-          { command = "waybar"; }
           { command = "mako"; }
           { command = "kanshi"; }
           { command = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"; }
