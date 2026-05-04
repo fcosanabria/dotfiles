@@ -9,19 +9,19 @@
       settings = {
         format = "[](color_orange)$os$username[](bg:color_yellow fg:color_orange)$directory[](fg:color_yellow bg:color_aqua)$git_branch$git_status[](fg:color_aqua bg:color_blue)$c$cpp$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:color_blue bg:color_bg3)$docker_context$conda$pixi[](fg:color_bg3 bg:color_bg1)$time[ ](fg:color_bg1)$line_break$character";
 
-        palette = "gruvbox_dark";
+        palette = "teide_darker";
 
-        palettes.gruvbox_dark = {
-          color_fg0 = "#fbf1c7";
-          color_bg1 = "#3c3836";
-          color_bg3 = "#665c54";
-          color_blue = "#458588";
-          color_aqua = "#689d6a";
-          color_green = "#98971a";
-          color_orange = "#d65d0e";
-          color_purple = "#b16286";
-          color_red = "#cc241d";
-          color_yellow = "#d79921";
+        palettes.teide_darker = {
+          color_fg0 = "#12161a";
+          color_bg1 = "#2f3546";
+          color_bg3 = "#586172";
+          color_blue = "#5CCEFF";
+          color_aqua = "#38FFA5";
+          color_green = "#41FFDC";
+          color_orange = "#FFA064";
+          color_purple = "#B2A3FF";
+          color_red = "#F97791";
+          color_yellow = "#FFE77A";
         };
 
         os = {
@@ -150,12 +150,12 @@
         docker_context = {
           symbol = "";
           style = "bg:color_bg3";
-          format = "[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)";
+          format = "[[ $symbol( $context) ](fg:#a9b1d6 bg:color_bg3)]($style)";
         };
 
         conda = {
           style = "bg:color_bg3";
-          format = "[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)";
+          format = "[[ $symbol( $environment) ](fg:#a9b1d6 bg:color_bg3)]($style)";
         };
 
         pixi = {

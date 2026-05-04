@@ -33,38 +33,42 @@
         # Status bar at the top
         set -g status-position top
 
-        # Kanagawa Dragon Theme — color palette
-        dragon_bg="#181616"
-        dragon_fg="#c5c9c5"
-        dragon_gold="#c4b28a"
-        dragon_blue="#8ba4b0"
-        dragon_gray="#282727"
-        dragon_darkgray="#0d0c0c"
+        # Teide Darker Theme — color palette
+        teide_bg="#171B20"
+        teide_fg="#E7EAEE"
+        teide_text="#171B20"
+        teide_comment="#586172"
+        teide_date="#5CCEFF"
+        teide_time="#FFE77A"
+        teide_alert="#F97791"
+        teide_pomodoro="#F73F64"
+        teide_session="#38FFA5"
+        teide_window="#545c7e"
 
         # Status bar styling
-        set -g status-style "bg=$dragon_bg,fg=$dragon_fg"
+        set -g status-style "bg=$teide_bg,fg=$teide_fg"
         set -g status-left-length 50
         set -g status-right-length 100
         set -g status-interval 5
 
         # Left status: session name
-        set -g status-left "#[fg=$dragon_bg,bg=$dragon_gold,bold] 󰇄 #S #[fg=$dragon_gold,bg=$dragon_bg]"
+        set -g status-left "#[fg=$teide_bg,bg=$teide_session,bold] 󰇄 #S #[fg=$teide_session,bg=$teide_bg]"
 
         # Window status format
-        set -g window-status-format "#[fg=$dragon_fg,bg=$dragon_darkgray] #I:#W #[fg=$dragon_darkgray,bg=$dragon_bg]"
-        set -g window-status-current-format "#[fg=$dragon_bg,bg=$dragon_blue,bold] #I:#W #[fg=$dragon_blue,bg=$dragon_bg]"
+        set -g window-status-format "#[fg=$teide_fg,bg=$teide_text] #I:#W #[fg=$teide_text,bg=$teide_bg]"
+        set -g window-status-current-format "#[fg=$teide_bg,bg=$teide_date,bold] #I:#W #[fg=$teide_date,bg=$teide_bg]"
         set -g window-status-separator ""
 
         # Right status: date & time
-        set -g status-right "#[fg=$dragon_gray,bg=$dragon_bg]#[fg=$dragon_fg,bg=$dragon_gray]  %Y-%m-%d #[fg=$dragon_gold,bg=$dragon_gray]#[fg=$dragon_bg,bg=$dragon_gold,bold]  %H:%M "
+        set -g status-right "#[fg=$teide_window,bg=$teide_bg]#[fg=$teide_fg,bg=$teide_window]  %Y-%m-%d #[fg=$teide_time,bg=$teide_window]#[fg=$teide_bg,bg=$teide_time,bold]  %H:%M "
 
         # Pane borders
-        set -g pane-border-style "fg=$dragon_gray"
-        set -g pane-active-border-style "fg=$dragon_gold"
+        set -g pane-border-style "fg=$teide_window"
+        set -g pane-active-border-style "fg=$teide_session"
 
         # Message styling
-        set -g message-style "fg=$dragon_bg,bg=$dragon_gold,bold"
-        set -g message-command-style "fg=$dragon_bg,bg=$dragon_blue,bold"
+        set -g message-style "fg=$teide_bg,bg=$teide_session,bold"
+        set -g message-command-style "fg=$teide_bg,bg=$teide_date,bold"
 
         # Window name format: directory + running program
         set -g automatic-rename-format '#{b:pane_current_path}:#{pane_current_command}'

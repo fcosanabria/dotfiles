@@ -37,6 +37,12 @@ in
   # Nix-LD (run standard Linux binaries)
   programs.nix-ld.enable = true;
 
+  # Accounts daemon (user profile persistence)
+  services.accounts-daemon.enable = true;
+
+  # Power profiles (performance / balanced / power-saver)
+  services.power-profiles-daemon.enable = true;
+
   # Printing (CUPS)
   services.printing.enable = true;
 

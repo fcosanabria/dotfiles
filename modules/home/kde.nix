@@ -2,7 +2,7 @@
 
 {
   home-manager.users.fsanabria = {
-    imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+    imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
     home.packages = [ pkgs.kdePackages.krohnkite ];
 

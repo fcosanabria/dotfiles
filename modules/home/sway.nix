@@ -15,7 +15,7 @@
         terminal = "ghostty";
 
         # ── Cursor ─────────────────────────────────────────────────────
-        seat."*".xcursor_theme = "default 32";
+        seat."*".xcursor_theme = "Adwaita 24";
 
         # ── Input ──────────────────────────────────────────────────────
         input = {
@@ -68,7 +68,7 @@
           # Launch
           "${mod}+Return" = "exec ghostty";
           "${mod}+d" = "exec ${rofi}";
-          "${mod}+space" = "exec ${rofi}";
+          "${mod}+space" = "exec dms ipc launcher toggle";
           "${mod}+b" = "exec firefox";
 
           # Window management
@@ -94,6 +94,7 @@
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
           "${mod}+e" = "layout toggle split";
+          "${mod}+o" = "layout toggle split";
           "${mod}+v" = "splitv";
           "${mod}+Shift+v" = "splith";
 
@@ -136,6 +137,24 @@
           { command = "nm-applet --indicator"; }
         ];
       };
+    };
+
+    # ── Desktop Entries ───────────────────────────────────────────────
+    xdg.desktopEntries.kanata-toggle = {
+      name = "Kanata Toggle";
+      comment = "Activar o desactivar Kanata";
+      exec = "kanata-toggle";
+      icon = "input-keyboard";
+      terminal = false;
+      categories = [ "Utility" ];
+    };
+
+    # ── Cursor ────────────────────────────────────────────────────────
+    home.pointerCursor = {
+      name    = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      size    = 24;
+      gtk.enable = true;
     };
 
     # ── Swaylock ──────────────────────────────────────────────────────

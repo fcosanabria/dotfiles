@@ -9,12 +9,13 @@
     # -- Editors & IDEs --
     neovim
     vscode
+    zed-editor
     jetbrains-toolbox
 
     # -- Terminal & Shell --
+    # atuin
     ghostty
     starship
-    atuin
     fish
     tmux
 
@@ -60,7 +61,6 @@
     # -- Productivity & Notes --
     siyuan
     libreoffice-fresh
-    qownnotes
 
     # -- Media & Communication --
     cider-2
