@@ -57,6 +57,11 @@
     winboat
     ollama-rocm
     opencode
+    kubectl
+    fluxcd
+    cloudflared
+    sops
+    age
 
     # -- Productivity & Notes --
     siyuan
