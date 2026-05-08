@@ -8,12 +8,12 @@
 
     # -- Editors & IDEs --
     neovim
+    helix
     vscode
-    zed-editor
     jetbrains-toolbox
+    kdePackages.kate
 
     # -- Terminal & Shell --
-    # atuin
     ghostty
     starship
     fish
@@ -61,6 +61,7 @@
     # -- Productivity & Notes --
     siyuan
     libreoffice-fresh
+    trilium-desktop
 
     # -- Media & Communication --
     cider-2
