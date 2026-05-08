@@ -3,13 +3,15 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/kde.nix
+    ../../modules/des/sway.nix
     ../../modules/system
     ../../modules/home
   ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.timeout = 20;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Hostname
@@ -46,7 +48,7 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" ];
     shell = pkgs.fish;
   };
 
@@ -62,6 +64,17 @@
 
   # Kanata installed but not auto-started (use kanata-toggle to enable)
   systemd.services.kanata-default.wantedBy = lib.mkForce [];
+
+  # Windows dual boot: copy EFI/Microsoft from Windows ESP to NixOS ESP
+  # Windows ESP: nvme0n1p1 (UUID 6243-2DC7)
+  system.activationScripts.copyWindowsEfi = ''
+    tmp=$(mktemp -d)
+    if mount -t vfat /dev/disk/by-uuid/6243-2DC7 "$tmp" -o ro 2>/dev/null; then
+      cp -rf "$tmp/EFI/Microsoft" /boot/EFI/
+      umount "$tmp"
+    fi
+    rmdir "$tmp"
+  '';
 
   system.stateVersion = "25.11";
 }
