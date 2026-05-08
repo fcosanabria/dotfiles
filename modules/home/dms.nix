@@ -76,8 +76,11 @@ in
         enable = true;
 
         settings = {
-          currentThemeName = "custom";
-          customThemeFile = "/home/fsanabria/.config/DankMaterialShell/themes/teide_darker.json";
+          currentThemeName = "flexoki";
+          currentThemeCategory = "registry";
+          registryThemeVariants = {
+            flexoki = "blue";
+          };
         };
 
         systemd = {
