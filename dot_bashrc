@@ -1,0 +1,72 @@
+# ~/.bashrc
+
+# Source system-wide defaults
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
+
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# mise - tool version manager (must come before other tool inits)
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash)"
+elif [ -f "$HOME/.local/bin/mise" ]; then
+  eval "$("$HOME/.local/bin/mise" activate bash)"
+fi
+
+# Starship prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+
+# FZF - fuzzy finder
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
+fi
+
+# Zoxide - smarter cd
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+  alias cd='z'
+fi
+
+# Atuin - better shell history
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init bash)"
+fi
+
+# --- Aliases ---
+
+# eza instead of ls
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza -al --color=always --group-directories-first --icons'
+  alias la='eza -a --color=always --group-directories-first --icons'
+  alias ll='eza -la --color=always --group-directories-first --icons'
+  alias lt='eza -aT --color=always --group-directories-first --icons'
+else
+  alias ls='ls --color=auto'
+fi
+
+# bat instead of cat
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+fi
+
+# delta for git diff (auto-configured via ~/.gitconfig)
+alias grep='grep --color=auto'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git shortcuts
+alias g='git'
+alias gs='git status'
+alias gl='git log --oneline --graph'
+
+# Misc
+alias reload='source ~/.bashrc'
