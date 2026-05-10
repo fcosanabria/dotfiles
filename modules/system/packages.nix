@@ -12,6 +12,7 @@
     vscode
     jetbrains-toolbox
     kdePackages.kate
+    zeal
 
     # -- Terminal & Shell --
     ghostty
@@ -58,6 +59,7 @@
     ollama-rocm
     opencode
     kubectl
+    k9s
     fluxcd
     cloudflared
     sops

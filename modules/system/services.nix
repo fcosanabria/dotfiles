@@ -43,6 +43,12 @@ in
   # Power profiles (performance / balanced / power-saver)
   services.power-profiles-daemon.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
+  # UPower (battery/power info for shells like noctalia)
+  services.upower.enable = true;
+
   # Printing (CUPS)
   services.printing.enable = true;
 
