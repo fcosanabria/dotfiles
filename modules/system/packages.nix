@@ -13,12 +13,14 @@
     jetbrains-toolbox
     kdePackages.kate
     zeal
+    zed-editor
 
     # -- Terminal & Shell --
     ghostty
     starship
     fish
     tmux
+    zellij
 
     # -- CLI Utilities --
     openssl
@@ -85,6 +87,17 @@
     nodejs
     luarocks
     lua
+
+    # LSP and so
+    marksman
+    markdown-oxide
+    pyright
+    ruff
+    bash-language-server
+    typescript-language-server
+    dockerfile-language-server-nodejs
+    docker-compose-language-service
+    yaml-language-server
     
   ];
 

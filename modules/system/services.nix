@@ -46,7 +46,7 @@ in
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  # UPower (battery/power info for shells like noctalia)
+  # UPower (battery/power info)
   services.upower.enable = true;
 
   # Printing (CUPS)

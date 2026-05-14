@@ -235,7 +235,7 @@ let
         <property name="ButtonImages" type="empty"/>
         <property name="MenuBarAccel" type="empty"/>
         <property name="CursorThemeName" type="string" value="Adwaita"/>
-        <property name="CursorThemeSize" type="empty"/>
+        <property name="CursorThemeSize" type="int" value="32"/>
         <property name="DecorationLayout" type="string" value="icon,menu:minimize,maximize,close"/>
         <property name="DialogsUseHeader" type="empty"/>
         <property name="TitlebarMiddleClick" type="empty"/>
@@ -466,6 +466,14 @@ in
 {
   config = lib.mkIf config.services.xserver.desktopManager.xfce.enable {
     home-manager.users.fsanabria = {
+
+      home.pointerCursor = {
+        name    = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+        size    = 32;
+        x11.enable  = true;
+        gtk.enable  = true;
+      };
 
       # ── Firefox UI Font ───────────────────────────────────────────────
       programs.firefox = {

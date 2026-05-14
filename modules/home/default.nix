@@ -7,7 +7,6 @@
     ./kde.nix
     ./rofi.nix
     ./starship.nix
-    ./noctalia.nix
     ./sway.nix
     ./tmux.nix
     ./xfce.nix

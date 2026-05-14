@@ -79,6 +79,13 @@
   # ── Polkit (needed for privileged actions / SMB mounts) ─────────────
   security.polkit.enable = true;
 
+  # ── SMB / Network shares (Dolphin via KIO) ───────────────────────────
+  services.gvfs.enable = true;          # Wayland network filesystem support
+  services.samba = {
+    enable = true;
+    openFirewall = false;               # Solo cliente, no compartir
+  };
+
   # ── Environment variables for Wayland ───────────────────────────────
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";           # Electron apps on Wayland

@@ -131,7 +131,6 @@
 
         # ── Startup ───────────────────────────────────────────────────
         startup = [
-          { command = "noctalia-shell"; }
           { command = "kanshi"; }
           { command = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"; }
           { command = "nm-applet --indicator"; }
@@ -178,8 +177,8 @@
       ];
     };
 
-    # ── Mako (notifications) — deshabilitado, noctalia maneja notificaciones
-    services.mako.enable = false;
+    # ── Mako (notifications) ──────────────────────────────────────────────
+    services.mako.enable = true;
 
     # ── Kanshi (display profiles) ─────────────────────────────────────
     services.kanshi = {
