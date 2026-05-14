@@ -35,7 +35,6 @@
     zoxide
     btop
     fastfetch
-    tree-sitter
     tealdeer
     tree
     bitwarden-cli
@@ -82,22 +81,55 @@
     # -- WebKit --
     webkitgtk_4_1
 
-    # -- Langueages
+    # ═══════════════════════════════════════
+    # Languages (runtimes & interpreters)
+    # ═══════════════════════════════════════
     python3
     nodejs
-    luarocks
     lua
+    luarocks
 
-    # LSP and so
+    # ═══════════════════════════════════════
+    # Language Servers (LSPs)
+    # ═══════════════════════════════════════
+
+    # Python
+    pyright
+
+    # TypeScript / JavaScript
+    typescript-language-server
+    eslint_d
+
+    # Java
+    jdt-language-server
+
+    # Bash
+    bash-language-server
+
+    # Markdown
     marksman
     markdown-oxide
-    pyright
-    ruff
-    bash-language-server
-    typescript-language-server
+
+    # Nix
+    nil
+
+    # Docker / Containers
     dockerfile-language-server-nodejs
     docker-compose-language-service
+
+    # Config files
     yaml-language-server
+    taplo                                           # TOML (incl. helix config)
+    vscode-langservers-extracted                    # JSON, HTML, CSS
+
+    # ═══════════════════════════════════════
+    # Linters & Formatters
+    # ═══════════════════════════════════════
+    ruff                                            # Python linter + formatter
+    prettier                                        # TS/JS/JSON/CSS formatter
+    shellcheck                                      # Bash linter
+    shfmt                                           # Bash formatter
+    nixfmt                                          # Nix formatter
     
   ];
 
