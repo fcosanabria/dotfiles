@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # ── Display Manager ────────────────────────────────────────────────
@@ -62,7 +67,7 @@
 
     # -- Utilities --
     xdg-utils
-    
+
     # -- PolicyKit Authentication Agent --
     polkit_gnome
   ];
