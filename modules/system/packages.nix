@@ -8,19 +8,15 @@
 
     # -- Editors & IDEs --
     neovim
-    helix
     vscode
     jetbrains-toolbox
     kdePackages.kate
-    zeal
-    zed-editor
 
     # -- Terminal & Shell --
     ghostty
     starship
     fish
     tmux
-    zellij
 
     # -- CLI Utilities --
     openssl
@@ -39,6 +35,7 @@
     tree
     bitwarden-cli
     ffmpeg
+    zeal
 
     # -- Git & Version Control --
     git
@@ -100,15 +97,11 @@
     typescript-language-server
     eslint_d
 
-    # Java
-    jdt-language-server
-
     # Bash
     bash-language-server
 
     # Markdown
     marksman
-    markdown-oxide
 
     # Nix
     nil
@@ -119,8 +112,6 @@
 
     # Config files
     yaml-language-server
-    taplo                                           # TOML (incl. helix config)
-    vscode-langservers-extracted                    # JSON, HTML, CSS
 
     # ═══════════════════════════════════════
     # Linters & Formatters
