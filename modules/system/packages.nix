@@ -9,7 +9,7 @@
     # -- Editors & IDEs --
     neovim
     vscode
-    jetbrains-toolbox
+    jetbrains.pycharm
     kdePackages.kate
 
     # -- Terminal & Shell --
@@ -36,6 +36,8 @@
     bitwarden-cli
     ffmpeg
     zeal
+    codecrafters-cli
+    exercism
 
     # -- Git & Version Control --
     git
@@ -66,7 +68,7 @@
     # -- Productivity & Notes --
     siyuan
     libreoffice-fresh
-    trilium-desktop
+    super-productivy
 
     # -- Media & Communication --
     cider-2
@@ -107,7 +109,7 @@
     nil
 
     # Docker / Containers
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     docker-compose-language-service
 
     # Config files
@@ -116,12 +118,12 @@
     # ═══════════════════════════════════════
     # Linters & Formatters
     # ═══════════════════════════════════════
-    ruff                                            # Python linter + formatter
-    prettier                                        # TS/JS/JSON/CSS formatter
-    shellcheck                                      # Bash linter
-    shfmt                                           # Bash formatter
-    nixfmt                                          # Nix formatter
-    
+    ruff # Python linter + formatter
+    prettier # TS/JS/JSON/CSS formatter
+    shellcheck # Bash linter
+    shfmt # Bash formatter
+    nixfmt # Nix formatter
+
   ];
 
   # Firefox
