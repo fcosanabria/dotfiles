@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   # ── Panel Configuration ────────────────────────────────────────────
@@ -218,7 +223,7 @@ let
         <property name="EnableInputFeedbackSounds" type="bool" value="true"/>
       </property>
       <property name="Xft" type="empty">
-        <property name="DPI" type="int" value="96"/>
+        <property name="DPI" type="int" value="120"/>
         <property name="Antialias" type="empty"/>
         <property name="Hinting" type="empty"/>
         <property name="HintStyle" type="empty"/>
@@ -244,7 +249,7 @@ let
         <property name="WindowScalingFactor" type="empty"/>
       </property>
       <property name="Xfce" type="empty">
-        <property name="LastCustomDPI" type="int" value="96"/>
+        <property name="LastCustomDPI" type="int" value="120"/>
       </property>
     </channel>
   '';
@@ -453,6 +458,9 @@ let
           <!-- Send focused window to workspace 4 -->
           <property name="&lt;Super&gt;&lt;Shift&gt;4" type="string" value="move_window_workspace_4_key"/>
 
+          <!-- Maximize focused window -->
+          <property name="&lt;Primary&gt;&lt;Super&gt;m" type="string" value="maximize_key"/>
+
         </property>
       </property>
       <property name="providers" type="array">
@@ -468,16 +476,17 @@ in
     home-manager.users.fsanabria = {
 
       home.pointerCursor = {
-        name    = "Adwaita";
+        name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
-        size    = 32;
-        x11.enable  = true;
-        gtk.enable  = true;
+        size = 32;
+        x11.enable = true;
+        gtk.enable = true;
       };
 
       # ── Firefox UI Font ───────────────────────────────────────────────
       programs.firefox = {
         enable = true;
+        configPath = ".mozilla/firefox";
         profiles.default = {
           id = 0;
           path = "5e71bnxm.default";
