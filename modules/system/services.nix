@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   kanata-toggle = pkgs.writeShellScriptBin "kanata-toggle" ''
@@ -15,7 +20,12 @@ in
 {
   environment.systemPackages = [ kanata-toggle ];
   # Nix Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  services.dbus.implementation = "dbus";
 
   # Garbage Collector
   nix.gc = {
@@ -70,20 +80,6 @@ in
   };
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-
-  # KMonad System Service (disabled)
-  systemd.services.kmonad = {
-    description = "Kmonad keyboard remapper";
-    after = [ "systemd-udev-settle.service" ];
-    # wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.kmonad}/bin/kmonad /home/fsanabria/.config/kmonad/config.kbd";
-      Restart = "on-failure";
-      User = "root";
-    };
-  };
 
   # Kanata
   services.kanata = {
