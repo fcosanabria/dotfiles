@@ -5,6 +5,7 @@
     ./ghostty.nix
     ./git.nix
     ./kde.nix
+    ./nvim.nix
     ./rofi.nix
     ./starship.nix
     ./sway.nix
