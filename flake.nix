@@ -31,5 +31,12 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+      nixosConfigurations.writing-deck = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/writing-deck/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
 }

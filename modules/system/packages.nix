@@ -68,7 +68,6 @@
     # -- Productivity & Notes --
     siyuan
     libreoffice-fresh
-    super-productivy
 
     # -- Media & Communication --
     cider-2
