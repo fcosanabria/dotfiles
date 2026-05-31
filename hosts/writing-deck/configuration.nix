@@ -3,6 +3,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    ../../modules/home/tmux.nix
   ];
 
   # Bootloader
@@ -35,65 +36,48 @@
   };
 
   # No X11/Wayland - pure console setup
-  # We only enable services needed for console operations
 
-  # kmscon - modern console with fonts and 256 colors
+  # Fish must be enabled system-wide to be used as login shell
+  programs.fish.enable = true;
+
+  # kmscon - modern console with Adwaita Mono Nerd Font, autologin
   programs.kmscon = {
     enable = true;
-    font = "terminus";
-    fontSize = 14;
+    autologinUser = "fsanabria";
+    fonts = [
+      { name = "Adwaita Mono"; package = pkgs.nerd-fonts.adwaita-mono; }
+    ];
+    extraConfig = ''
+      font-size=12
+    '';
   };
 
-  # Enable getty on tty1 with kmscon
-  systemd.services.kmsconvt = {
-    wantedBy = [ "getty.target" ];
-    after = [ "systemd-user-sessions.service" "ceck.service" ];
-    before = [ "getty.target" ];
-    serviceConfig = {
-      ExecStart = "";
-      ExecStart = lib.mkOverride 1 "${pkgs.kmscon}/bin/kmscon --login -- /bin/login -f fsanabria";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      TTYPath = "/dev/tty1";
-      TTYReset = "yes";
-      TTYVHangup = "yes";
-      Restart = "no";
-    };
+  # Nix Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Garbage Collector
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   # Packages - minimal set for writing deck
   environment.systemPackages = with pkgs; [
-    # Editor
-    neovim
-
-    # Terminal utilities
-    tmux
     git
+    tmux
     fish
-
-    # Network manager TUI
-    networkmanager
-
-    # Syncthing
-    syncthing
-    syncthing-inotify
-
-    # Battery and brightness
     acpi
     light
-
-    # Misc
     htop
-    tree
     wget
     curl
+    tree
   ];
 
-  # Fonts for console
+  # Fonts
   fonts.packages = with pkgs; [
-    terminus-font
-    terminus-font-nerdfont
-    nerdfonts
+    nerd-fonts.adwaita-mono
   ];
 
   # User account
@@ -104,76 +88,138 @@
     shell = pkgs.fish;
   };
 
-  # Home Manager for user config
+  # lazyvim-nix home-manager module (correct placement)
+  home-manager.sharedModules = [ inputs.lazyvim-nix.homeManagerModules.default ];
+
+  # Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "hm-backup";
   home-manager.users.fsanabria = { pkgs, ... }: {
     home.username = "fsanabria";
     home.homeDirectory = "/home/fsanabria";
     home.stateVersion = "25.11";
 
-    # Tmux configuration - writer deck style
-    programs.tmux = {
+    # LazyVim
+    programs.lazyvim = {
       enable = true;
-      enableBashIntegration = false;
+      installCoreDependencies = true;
 
-      extraConfig = ''
-        set -g default-terminal "tmux-256color"
-        set -g base-index 0
-        setw -g pane-base-index 0
-        set -g default-shell "${pkgs.fish}/bin/fish"
+      extras = {
+        lang.python = {
+          enable = true;
+          installDependencies = true;
+        };
+      };
 
-        # Vi keys
-        set -g status-keys vi
-        set -g mode-keys vi
+      config = {
+        options = ''
+          vim.opt.wrap = true
+          vim.opt.linebreak = true
+          vim.opt.relativenumber = true
+          vim.opt.number = true
+        '';
 
-        # Status bar at top
-        set -g status-position top
+        keymaps = ''
+          vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+        '';
+      };
 
-        # Green status bar
-        set -g status-style bg=green,fg=black
+      plugins = {
+        teide = ''
+          return {
+            "serhez/teide.nvim",
+            lazy = false,
+            priority = 1000,
+            opts = {
+              style = "darker",
+              light_style = "darker",
+              transparent = false,
+              terminal_colors = true,
+              styles = {
+                comments = { italic = true },
+                keywords = { italic = true },
+                functions = {},
+                variables = {},
+                sidebars = "dark",
+                floats = "dark",
+              },
+              dim_inactive = false,
+              lualine_bold = false,
+            },
+            config = function(_, opts)
+              require("teide").setup(opts)
+              vim.cmd.colorscheme("teide-darker")
+            end,
+          }
+        '';
 
-        # Brightness keybindings (F8/F9)
-        bind -n F8 run-shell "light -U 10"
-        bind -n F9 run-shell "light -A 10"
-
-        # Battery readout
-        set-window-option -g status-right "#(acpi -b | grep -m1 -o -P '.{0,2}%')"
-      '';
+        obsidian = ''
+          return {
+            "obsidian-nvim/obsidian.nvim",
+            version = "*",
+            keys = {
+              { "<leader>of", "<cmd>Obsidian quick_switch<cr>",      desc = "Find note" },
+              { "<leader>os", "<cmd>Obsidian search<cr>",            desc = "Search notes" },
+              { "<leader>ow", "<cmd>Obsidian workspace<cr>",         desc = "Switch workspace" },
+              { "<leader>on", "<cmd>Obsidian new<cr>",               desc = "New note" },
+              { "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from template" },
+              { "<leader>ou", "<cmd>Obsidian unique_note<cr>",       desc = "New unique note" },
+              { "<leader>od", "<cmd>Obsidian today<cr>",             desc = "Today" },
+              { "<leader>oD", "<cmd>Obsidian dailies<cr>",           desc = "Dailies picker" },
+              { "<leader>o]", "<cmd>Obsidian tomorrow<cr>",          desc = "Tomorrow" },
+              { "<leader>o[", "<cmd>Obsidian yesterday<cr>",         desc = "Yesterday" },
+              { "<leader>ob", "<cmd>Obsidian backlinks<cr>",         desc = "Backlinks" },
+              { "<leader>ol", "<cmd>Obsidian links<cr>",             desc = "Links in note" },
+              { "<leader>oc", "<cmd>Obsidian toc<cr>",               desc = "Table of contents" },
+              { "<leader>ot", "<cmd>Obsidian tags<cr>",              desc = "Tags" },
+              { "<leader>oi", "<cmd>Obsidian template<cr>",          desc = "Insert template" },
+              { "<leader>op", "<cmd>Obsidian paste_img<cr>",         desc = "Paste image" },
+              { "<leader>or", "<cmd>Obsidian rename<cr>",            desc = "Rename note" },
+              { "<leader>ox", "<cmd>Obsidian toggle_checkbox<cr>",   desc = "Toggle checkbox" },
+              { "<leader>oF", "<cmd>Obsidian follow_link<cr>",       desc = "Follow link" },
+              { "<leader>oo", "<cmd>Obsidian open<cr>",              desc = "Open in app" },
+              { "<leader>oe", "<cmd>Obsidian extract_note<cr>",      desc = "Extract to note",  mode = "v" },
+              { "<leader>ok", "<cmd>Obsidian link<cr>",              desc = "Link selection",   mode = "v" },
+              { "<leader>oK", "<cmd>Obsidian link_new<cr>",          desc = "Link to new note", mode = "v" },
+            },
+            opts = {
+              legacy_commands = false,
+              note_id_func = function(title)
+                local slug = require("obsidian.builtin").title_id(title)
+                return os.date("%Y-%m-%d") .. "-" .. slug
+              end,
+              daily_notes = {
+                folder = "daily-notes",
+              },
+              workspaces = {
+                {
+                  name = "personal",
+                  path = "~/Notes/",
+                },
+              },
+            },
+          }
+        '';
+      };
     };
 
-    # Neovim configuration
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      plugins = with pkgs.vimPlugins; [
-        vim-vimwiki
-      ];
-      extraConfig = ''
-        " Writer deck vim config
-        colorscheme blue
-        set linebreak
-        set wildmenu
-        set showcmd
-        set relativenumber
-        set number
-
-        " Vimwiki
-        let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-        let g:vimwiki_global_ext = 0
-      '';
-    };
-
-    # Git config
+    # Git
     programs.git = {
       enable = true;
-      userName = "Francisco Sanabria";
-      userEmail = "fsanabria@protonmail.com";
+      settings.user.name = "Francisco Sanabria";
+      settings.user.email = "fsanabria@fastmail.com";
     };
 
-    # Fish shell
+    # Fish - auto-launch tmux on tty1 login
     programs.fish = {
       enable = true;
+      loginShellInit = ''
+        # Auto-launch tmux with nvim on tty1
+        if not set -q TMUX; and test (tty) = /dev/tty1
+            exec tmux new-session nvim
+        end
+      '';
     };
   };
 
@@ -183,14 +229,6 @@
     user = "fsanabria";
     dataDir = "/home/fsanabria/.syncthing";
   };
-
-  # Bashrc: auto-launch tmux with vimwiki on tty1
-  environment.etc."profile".text = ''
-    # Launch tmux if we aren't already running tmux and we're in the default tty
-    if [ -z "${TMUX}" ] && [ $(tty) == "/dev/tty1" ]; then
-      exec tmux new-session -d 'nvim -c VimwikiIndex' \; attach
-    fi
-  '';
 
   system.stateVersion = "25.11";
 }
