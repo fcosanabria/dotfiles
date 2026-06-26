@@ -48,7 +48,7 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "scanner" "lp" ];
     shell = pkgs.fish;
   };
 

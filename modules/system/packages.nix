@@ -67,7 +67,9 @@
 
     # -- Productivity & Notes --
     siyuan
-    libreoffice-fresh
+    kdePackages.korganizer
+    super-productivity
+    obs-studio
 
     # -- Media & Communication --
     cider-2
@@ -128,15 +130,31 @@
   # Firefox
   programs.firefox.enable = true;
 
+  # LocalSend (envío de archivos entre dispositivos en la red local).
+  # openFirewall abre el puerto 53317 (TCP/UDP) que usa para descubrimiento y transferencia.
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # System-wide fonts
   fonts.packages = with pkgs; [
     adwaita-fonts
+    helvetica-neue-lt-std
+    inter
     nerd-fonts.symbols-only
   ];
 
   # Enable Flatpak
   services.flatpak.enable = true;
   xdg.portal.enable = true;
+
+  # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect
+  # the correct IANA timezone name. NixOS only creates /etc/localtime, but
+  # Chromium's ICU library looks for /etc/timezone first; without it, ICU
+  # falls back to offset matching and incorrectly picks America/Chicago
+  # (same UTC-6 offset as America/Costa_Rica but with DST).
+  environment.etc."timezone".text = "${config.time.timeZone}\n";
 
   # Enable AppImages
   programs.appimage.enable = true;
