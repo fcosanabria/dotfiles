@@ -48,7 +48,7 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" "scanner" "lp" ];
     shell = pkgs.fish;
   };
 
@@ -62,8 +62,40 @@
     home.stateVersion = "25.11";
   };
 
+  # Steam + Proton
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
+
+  # GameMode (temporary OS-level optimizations while gaming)
+  programs.gamemode.enable = true;
+
+  # Graphics (required for Steam — 32-bit libs for Proton compatibility)
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Kanata installed but not auto-started (use kanata-toggle to enable)
   systemd.services.kanata-default.wantedBy = lib.mkForce [];
+
+  # EPSON L6270 (USB). Cola CUPS declarativa con el driver ESC/P-R 2.
+  # El driver (epson-escpr2) se instala en modules/system/services.nix.
+  # Así la impresora aparece sola en el diálogo de impresión de todas las apps.
+  hardware.printers = {
+    ensureDefaultPrinter = "EPSON_L6270";
+    ensurePrinters = [
+      {
+        name = "EPSON_L6270";
+        location = "Casa";
+        deviceUri = "usb://EPSON/L6270%20Series?serial=583847353030363315&interface=1";
+        model = "epson-inkjet-printer-escpr2/Epson-L6270_Series-epson-escpr2-en.ppd";
+      }
+    ];
+  };
 
   # Windows dual boot: copy EFI/Microsoft from Windows ESP to NixOS ESP
   # Windows ESP: nvme0n1p1 (UUID 6243-2DC7)
