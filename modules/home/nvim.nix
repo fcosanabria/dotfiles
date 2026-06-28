@@ -7,7 +7,6 @@
     programs.lazyvim = {
       enable = true;
       installCoreDependencies = true;
-      configFiles = ./nvim;
 
       extras = {
         dap.core.enable = true;
