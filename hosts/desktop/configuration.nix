@@ -14,6 +14,11 @@
   boot.loader.timeout = 20;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # El driver del kernel hid_magicmouse captura el Magic Trackpad 2 (05ac:0265)
+  # y lo trata como "pointing stick" (PROP=5), por lo que el cursor no se mueve
+  # en Wayland/KWin. Con blacklist, hid-generic lo maneja como touchpad normal.
+  boot.blacklistedKernelModules = [ "hid_magicmouse" ];
+
   # Hostname
   networking.hostName = "synnax";
 
