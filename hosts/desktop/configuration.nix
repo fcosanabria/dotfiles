@@ -19,6 +19,14 @@
   # en Wayland/KWin. Con blacklist, hid-generic lo maneja como touchpad normal.
   boot.blacklistedKernelModules = [ "hid_magicmouse" ];
 
+  # OBS Virtual Camera: módulo v4l2loopback del kernel en uso.
+  # exclusive_caps=1 es necesario para que OBS/chromium detecten el dispositivo.
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 max_buffers=2
+  '';
+
   # Hostname
   networking.hostName = "synnax";
 
@@ -53,7 +61,7 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" "scanner" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" "scanner" "lp" "input" ];
     shell = pkgs.fish;
   };
 
@@ -83,6 +91,10 @@
     enable = true;
     enable32Bit = true;
   };
+
+  # UHK (Ultimate Hacking Keyboard): reglas udev para acceso non-root
+  # al firmware. Requiere que el usuario esté en el grupo "input".
+  hardware.keyboard.uhk.enable = true;
 
   # Kanata installed but not auto-started (use kanata-toggle to enable)
   systemd.services.kanata-default.wantedBy = lib.mkForce [];
