@@ -67,6 +67,7 @@
     # -- System Tray & Audio --
     networkmanagerapplet
     pavucontrol
+    pamixer
 
     # -- Misc Wayland Utilities --
     wev                 # Wayland event viewer (debug keybinds)
