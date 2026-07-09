@@ -23,9 +23,9 @@
 
         # Wallpaper
         "org/gnome/desktop/background" = {
-          picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.jxl";
-          picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.jxl";
-          picture-options = "zoom";
+          picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/glass-chip-d.jxl";
+          picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/glass-chip-d.jxl";
+          picture-options = "center";
         };
 
         # Workspaces
@@ -116,5 +116,6 @@
     gnomeExtensions.grimble-tiling-wm
     gnomeExtensions.caffeine
     gnomeExtensions.appindicator
+    gnome-tweaks
   ];
 }
