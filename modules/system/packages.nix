@@ -11,6 +11,7 @@
     vscode
     jetbrains.pycharm
     kdePackages.kate
+    helix
 
     # -- Terminal & Shell --
     ghostty
@@ -35,6 +36,7 @@
     tree
     bitwarden-cli
     ffmpeg
+    imagemagick
     zeal
     codecrafters-cli
     exercism
@@ -52,7 +54,6 @@
     podman
     podman-compose
     podman-tui
-    claude-code
     docker
     freerdp
     winboat
@@ -67,9 +68,9 @@
 
     # -- Productivity & Notes --
     siyuan
-    kdePackages.korganizer
     super-productivity
     obs-studio
+    uhk-agent
 
     # -- Media & Communication --
     cider-2
@@ -140,9 +141,8 @@
   # System-wide fonts
   fonts.packages = with pkgs; [
     adwaita-fonts
-    helvetica-neue-lt-std
-    inter
     nerd-fonts.symbols-only
+    symbola
   ];
 
   # Enable Flatpak

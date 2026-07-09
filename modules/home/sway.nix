@@ -68,7 +68,7 @@
           # Launch
           "${mod}+Return" = "exec ghostty";
           "${mod}+d" = "exec ${rofi}";
-          "${mod}+space" = "exec dms ipc launcher toggle";
+          "${mod}+space" = "exec ${rofi}";
           "${mod}+b" = "exec firefox";
 
           # Window management
@@ -131,6 +131,7 @@
 
         # ── Startup ───────────────────────────────────────────────────
         startup = [
+          { command = "waybar"; }
           { command = "kanshi"; }
           { command = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"; }
           { command = "nm-applet --indicator"; }

@@ -77,6 +77,7 @@
         set -g set-clipboard on
         set -g detach-on-destroy off
         set -g allow-passthrough on
+        set -g extended-keys on
 
         # Vi copy mode keybindings
         bind-key -T copy-mode-vi v send-keys -X begin-selection
