@@ -1,9 +1,15 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/kde.nix
+    ../../modules/des/gnome.nix
     ../../modules/system
     ../../modules/home
   ];
@@ -61,7 +67,16 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" "scanner" "lp" "input" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "libvirtd"
+      "kvm"
+      "scanner"
+      "lp"
+      "input"
+    ];
     shell = pkgs.fish;
   };
 
@@ -97,7 +112,7 @@
   hardware.keyboard.uhk.enable = true;
 
   # Kanata installed but not auto-started (use kanata-toggle to enable)
-  systemd.services.kanata-default.wantedBy = lib.mkForce [];
+  systemd.services.kanata-default.wantedBy = lib.mkForce [ ];
 
   # EPSON L6270 (USB). Cola CUPS declarativa con el driver ESC/P-R 2.
   # El driver (epson-escpr2) se instala en modules/system/services.nix.

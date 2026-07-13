@@ -5,6 +5,7 @@
     ./fish.nix
     ./ghostty.nix
     ./git.nix
+    ./gnome.nix
     ./kde.nix
     ./nvim.nix
     ./rofi.nix
