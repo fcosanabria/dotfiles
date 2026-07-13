@@ -19,6 +19,9 @@
 
   environment.systemPackages = with pkgs; [
     gnome-tweaks
+    gnome-extension-manager
+    gnomeExtensions.caffeine
+    gnomeExtensions.appindicator
     geany
   ];
 }
