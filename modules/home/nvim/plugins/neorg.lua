@@ -3,6 +3,15 @@ return {
     "nvim-neorg/neorg",
     version = "*",
     lazy = false,
+    dev = false,
+    dependencies = {
+      "nvim-neorg/lua-utils.nvim",
+      "nvim-neotest/nvim-nio",
+      "MunifTanjim/nui.nvim",
+      "pysan3/pathlib.nvim",
+      { "nvim-neorg/tree-sitter-norg", build = false },
+      { "nvim-neorg/tree-sitter-norg-meta", build = false },
+    },
     opts = {
       load = {
         ["core.defaults"] = {},
