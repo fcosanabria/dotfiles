@@ -60,6 +60,7 @@
     ollama-rocm
     opencode
     kubectl
+    freelens-bin
     k9s
     fluxcd
     cloudflared
