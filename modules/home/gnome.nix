@@ -15,7 +15,6 @@ with lib.gvariant;
       dconf.settings = {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
-          accent-color = "slate";
           gtk-theme = "adw-gtk3-dark";
           icon-theme = "Adwaita";
           cursor-theme = "Adwaita";
@@ -42,6 +41,8 @@ with lib.gvariant;
         };
 
         "org/gnome/desktop/wm/keybindings" = {
+          close = [ "<Super>q" "<Alt>F4" ];
+          minimize = mkEmptyArray type.string;
           switch-to-workspace-1 = [ "<Super>1" ];
           switch-to-workspace-2 = [ "<Super>2" ];
           switch-to-workspace-3 = [ "<Super>3" ];
@@ -59,6 +60,29 @@ with lib.gvariant;
           switch-to-application-2 = mkEmptyArray type.string;
           switch-to-application-3 = mkEmptyArray type.string;
           switch-to-application-4 = mkEmptyArray type.string;
+          toggle-message-tray = [ "<Super>v" ];
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          screensaver = mkEmptyArray type.string;
+        };
+
+        "org/gnome/shell/extensions/o-tiling" = {
+          focus-left = [ "<Super>h" ];
+          focus-down = [ "<Super>j" ];
+          focus-up = [ "<Super>k" ];
+          focus-right = [ "<Super>l" ];
+          gap-inner = mkUint32 1;
+          gap-outer = mkUint32 1;
+          active-hint-border-radius = mkUint32 10;
+          active-hint-border-width = mkUint32 2;
+          hint-color-rgba = "rgb(98,160,234)";
+          quick-settings-toggle = true;
+          skip-overview = true;
+          smart-gaps = true;
+          tile-by-default = true;
+          workspace-animation-style = "slide";
+          workspace-number-indicator = false;
         };
 
         "org/gnome/desktop/input-sources" = {
@@ -79,6 +103,7 @@ with lib.gvariant;
           enabled-extensions = [
             "caffeine@patapon.info"
             "appindicatorsupport@rgcjonas.gmail.com"
+            "o-tiling@oliwebd.github.com"
           ];
         };
       };

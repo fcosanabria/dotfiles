@@ -8,10 +8,10 @@
 
     # -- Editors & IDEs --
     neovim
-    vscode
-    jetbrains.pycharm
-    kdePackages.kate
     helix
+    vscode
+    zed
+    jetbrains.pycharm
 
     # -- Terminal & Shell --
     ghostty
@@ -59,6 +59,7 @@
     winboat
     ollama-rocm
     opencode
+    opencode-desktop
     kubectl
     freelens-bin
     k9s
@@ -72,6 +73,7 @@
     super-productivity
     obs-studio
     uhk-agent
+    evolution
 
     # -- Media & Communication --
     cider-2

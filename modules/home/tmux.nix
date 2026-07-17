@@ -33,42 +33,44 @@
         # Status bar at the top
         set -g status-position top
 
-        # Teide Darker Theme — color palette
-        teide_bg="#171B20"
-        teide_fg="#E7EAEE"
-        teide_text="#171B20"
-        teide_comment="#586172"
-        teide_date="#5CCEFF"
-        teide_time="#FFE77A"
-        teide_alert="#F97791"
-        teide_pomodoro="#F73F64"
-        teide_session="#38FFA5"
-        teide_window="#545c7e"
+        # Oxocarbon Theme — color palette
+        oxo_bg="#161616"
+        oxo_fg="#dde1e6"
+        oxo_dim="#525252"
+        oxo_red="#ee5396"
+        oxo_green="#42be65"
+        oxo_blue="#33b1ff"
+        oxo_cyan="#3ddbd9"
+        oxo_purple="#be95ff"
+        oxo_yellow="#ffe97b"
+        oxo_teal="#08bdba"
 
         # Status bar styling
-        set -g status-style "bg=$teide_bg,fg=$teide_fg"
+        set -g status-style "bg=$oxo_bg,fg=$oxo_fg"
         set -g status-left-length 50
         set -g status-right-length 100
         set -g status-interval 5
 
-        # Left status: session name
-        set -g status-left "#[fg=$teide_bg,bg=$teide_session,bold] 󰇄 #S #[fg=$teide_session,bg=$teide_bg]"
+        # Left status: session name (purple → cyan)
+        set -g status-left "#[fg=$oxo_bg,bg=$oxo_purple,bold] 󰇄 #S #[fg=$oxo_purple,bg=$oxo_bg,bold]▏"
 
-        # Window status format
-        set -g window-status-format "#[fg=$teide_fg,bg=$teide_text] #I:#W #[fg=$teide_text,bg=$teide_bg]"
-        set -g window-status-current-format "#[fg=$teide_bg,bg=$teide_date,bold] #I:#W #[fg=$teide_date,bg=$teide_bg]"
+        # Window status format: each window is a separate block
+        set -g window-status-format "#[fg=$oxo_dim,bg=$oxo_bg]  #[fg=$oxo_fg] #I:#W #[fg=$oxo_dim]  "
+        set -g window-status-current-format "#[fg=$oxo_teal,bg=$oxo_bg,bold]  #[fg=$oxo_teal,bg=$oxo_bg,bold] #I:#W #[fg=$oxo_teal,bg=$oxo_bg]  "
         set -g window-status-separator ""
+        set -g window-status-activity-style "fg=$oxo_yellow"
+        set -g window-status-bell-style "fg=$oxo_red,bold"
 
-        # Right status: date & time
-        set -g status-right "#[fg=$teide_window,bg=$teide_bg]#[fg=$teide_fg,bg=$teide_window]  %Y-%m-%d #[fg=$teide_time,bg=$teide_window]#[fg=$teide_bg,bg=$teide_time,bold]  %H:%M "
+        # Right status: date (blue) → time (green) → background
+        set -g status-right "#[fg=$oxo_blue,bg=$oxo_bg]  %Y-%m-%d #[fg=$oxo_dim]│#[fg=$oxo_green,bg=$oxo_bg]  %H:%M "
 
         # Pane borders
-        set -g pane-border-style "fg=$teide_window"
-        set -g pane-active-border-style "fg=$teide_session"
+        set -g pane-border-style "fg=$oxo_dim"
+        set -g pane-active-border-style "fg=$oxo_teal"
 
         # Message styling
-        set -g message-style "fg=$teide_bg,bg=$teide_session,bold"
-        set -g message-command-style "fg=$teide_bg,bg=$teide_date,bold"
+        set -g message-style "fg=$oxo_bg,bg=$oxo_teal,bold"
+        set -g message-command-style "fg=$oxo_bg,bg=$oxo_purple,bold"
 
         # Window name format: directory + running program
         set -g automatic-rename-format '#{b:pane_current_path}:#{pane_current_command}'

@@ -1,5 +1,9 @@
 return {
   {
+    "nvim-neorg/lua-utils.nvim",
+    lazy = true,
+  },
+  {
     "nvim-neorg/neorg",
     version = "*",
     lazy = false,
