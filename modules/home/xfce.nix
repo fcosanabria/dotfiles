@@ -475,6 +475,9 @@ in
   config = lib.mkIf config.services.xserver.desktopManager.xfce.enable {
     home-manager.users.fsanabria = {
 
+      # ── GPG Agent: pinentry-gtk2 for XFCE ─────────────────────────────
+      services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry-gtk2;
+
       home.pointerCursor = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;

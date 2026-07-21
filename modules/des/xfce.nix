@@ -23,15 +23,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # ── GNOME Keyring ──────────────────────────────────────────────────
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-
-  # ── GnuPG + SSH Agent ─────────────────────────────────────────────
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  # GPG agent + pinentry are configured in modules/home/gpg.nix (base)
+  # with pinentry-gtk2 override in this file's home-manager section below.
 
   # ── XFCE-specific packages ────────────────────────────────────────
   environment.systemPackages = with pkgs; [

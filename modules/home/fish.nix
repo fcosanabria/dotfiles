@@ -31,13 +31,11 @@
       };
 
       shellInit = ''
-        # SSH agent
-        if not pgrep -f ssh-agent >/dev/null
-            eval (ssh-agent -c)
-        end
-        if not set -q SSH_AUTH_SOCK
-            set -gx SSH_AUTH_SOCK (find /tmp -name "agent.*" -user (whoami) 2>/dev/null | head -1)
-        end
+        # GPG: required for pinentry to work in terminal
+        set -gx GPG_TTY (tty)
+
+        # SSH: point to gpg-agent's SSH socket (replaces standalone ssh-agent)
+        set -gx SSH_AUTH_SOCK (${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
 
         # Environment
         set -gx EDITOR nvim

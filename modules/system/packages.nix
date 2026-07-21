@@ -1,8 +1,32 @@
 { config, pkgs, ... }:
 
+let
+  # uhk-agent copies smart-macro docs from the Nix store into
+  # ~/.config/uhk-agent/smart-macro-docs. Node's fs.cp preserves the store's
+  # read-only modes (0444/0555), so the next launch fails with EACCES on
+  # unlink and never opens the window. Fix perms before every start.
+  # Upstream: https://github.com/NixOS/nixpkgs/issues/423634
+  # PR (not landed yet): https://github.com/NixOS/nixpkgs/pull/473167
+  uhk-agent = pkgs.symlinkJoin {
+    name = "uhk-agent";
+    paths = [ pkgs.uhk-agent ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram "$out/bin/uhk-agent" \
+        --run 'docs="$HOME/.config/uhk-agent/smart-macro-docs"; if [ -d "$docs" ]; then chmod -R u+w "$docs" 2>/dev/null || true; fi'
+    '';
+  };
+in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
+    # nixpkgs marks EOL. documentation.man.man-db.manualPages forces
+    # evaluation of every system package, so the build fails unless we
+    # explicitly allow it.
+    "electron-40.10.5"
+  ];
 
   environment.systemPackages = with pkgs; [
 
@@ -20,6 +44,8 @@
     tmux
 
     # -- CLI Utilities --
+    pass
+    yubikey-manager
     openssl
     curl
     wget
@@ -92,6 +118,8 @@
     nodejs
     lua
     luarocks
+    bun
+    cargo
 
     # ═══════════════════════════════════════
     # Language Servers (LSPs)

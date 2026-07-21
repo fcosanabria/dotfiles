@@ -10,6 +10,9 @@ with lib.gvariant;
 {
   config = lib.mkIf config.services.desktopManager.gnome.enable {
     home-manager.users.fsanabria = {
+      # ── GPG Agent: pinentry-gnome3 for GNOME ──────────────────────────
+      services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry-gnome3;
+
       dconf.enable = true;
 
       dconf.settings = {
