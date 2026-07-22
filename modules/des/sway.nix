@@ -69,6 +69,16 @@
     pavucontrol
     pamixer
 
+    # -- Bluetooth --
+    blueman             # GTK Bluetooth manager (tray applet)
+
+    # -- USB Auto-mount --
+    udiskie             # User-space auto-mount for removable media
+
+    # -- Keyring / Secrets --
+    gnome-keyring       # Credential storage (Wi-Fi, SSH, GPG)
+    libsecret           # Secret service API (used by apps to query keyring)
+
     # -- Misc Wayland Utilities --
     wev                 # Wayland event viewer (debug keybinds)
     xdg-utils           # xdg-open and friends
@@ -86,6 +96,17 @@
     enable = true;
     openFirewall = false;               # Solo cliente, no compartir
   };
+
+  # ── Bluetooth (bluez + blueman GUI) ──────────────────────────────────
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # ── USB Auto-mount (udisks2 + udiskie) ──────────────────────────────
+  services.udisks2.enable = true;
+
+  # ── Keyring / Secret Service (gnome-keyring) ────────────────────────
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # ── Environment variables for Wayland ───────────────────────────────
   environment.sessionVariables = {

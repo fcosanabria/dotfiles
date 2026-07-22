@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  home-manager.users.fsanabria = {
+  home-manager.users.fsanabria = { config, ... }: {
 
     # ── GPG ──────────────────────────────────────────────────────────────
     programs.gpg = {
@@ -64,7 +64,7 @@
         exts.pass-update    # Batch update passwords
       ]);
       settings = {
-        PASSWORD_STORE_DIR = "\${config.home.homeDirectory}/.password-store";
+        PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.password-store";
         PASSWORD_STORE_CLIP_TIME = "45";
         PASSWORD_STORE_GENERATED_LENGTH = "32";
       };

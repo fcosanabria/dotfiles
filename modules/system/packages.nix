@@ -45,6 +45,8 @@ in
 
     # -- CLI Utilities --
     pass
+    wl-clipboard       # Wayland: wl-copy/wl-paste (pass -c)
+    xclip              # X11: xclip (pass -c)
     yubikey-manager
     openssl
     curl
@@ -100,6 +102,7 @@ in
     obs-studio
     uhk-agent
     evolution
+    zk
 
     # -- Media & Communication --
     cider-2

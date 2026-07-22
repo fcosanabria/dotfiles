@@ -7,8 +7,14 @@
   services.pcscd.enable = true;
 
   # ── udev rules for YubiKey ────────────────────────────────────────────
-  # Allows non-root access to the YubiKey for ykman and gpg.
+  # yubikey-personalization: sets ID_SECURITY_TOKEN for ACLs.
+  # Custom rule: grant pcscd group rw access to the USB device node,
+  # so pcscd (running as user pcscd) can open the CCID interface.
   services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.extraRules = ''
+    # YubiKey: allow pcscd group to access the USB device for CCID
+    ATTRS{idVendor}=="1050", GROUP="pcscd", MODE="0660"
+  '';
 
   # ── Disable system ssh-agent ──────────────────────────────────────────
   # gpg-agent handles SSH via enableSSHSupport (configured in home-manager).
