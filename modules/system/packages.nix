@@ -108,6 +108,7 @@ in
     # -- Media & Communication --
     cider-2
     discord
+    concord-tui
 
     # -- Keyboard & Input --
     kanata
