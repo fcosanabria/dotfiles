@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     # -- Launcher & Notifications --
     rofi
-    mako
+    swaynotificationcenter
 
     # -- Screenshots & Screen Recording --
     grim

@@ -31,7 +31,7 @@
       enable = true;
       settings = {
         theme = "oxocarbon";
-        font-size = 14;
+        font-size = 12;
         font-family = "Berkeley Mono";
         font-family-bold = "Berkeley Mono";
         font-family-italic = "Berkeley Mono";

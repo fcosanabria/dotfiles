@@ -20,9 +20,15 @@
         modules-right = [
           "idle_inhibitor"
           "custom/sep"
+          "wlr/taskbar"
+          "custom/sep"
+          "network"
+          "custom/sep"
+          "bluetooth"
+          "custom/sep"
           "pulseaudio"
           "custom/sep"
-          "battery"
+          "custom/notification"
           "custom/sep"
           "clock"
           "custom/sep"
@@ -91,6 +97,50 @@
         tray = {
           icon-size = 16;
           spacing = 4;
+        };
+
+        network = {
+          format-wifi = "WiFi {signalStrength}%";
+          format-ethernet = "ETH {ifname}";
+          format-disconnected = "No Net";
+          tooltip-format = "{ifname}: {ipaddr}/{cidr} | {essid} ({signalStrength}%)";
+          on-click = "nm-connection-editor";
+        };
+
+        bluetooth = {
+          format = "BT {status}";
+          format-disabled = "BT OFF";
+          format-connected = "BT {num_connections}";
+          tooltip-format = "{controller_alias}\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias} ({device_address})";
+          on-click = "blueman-manager";
+        };
+
+        "custom/notification" = {
+          exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+          return-type = "json";
+          format = "{icon}";
+          format-icons = {
+            notification = "🔔";
+            none = "🔕";
+            inhibited-notification = "🔕";
+            dnd-notification = "🔕";
+            dnd-none = "🔕";
+            dnd-inhibited-notification = "🔕";
+            dnd-inhibited-none = "🔕";
+          };
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          tooltip = false;
+        };
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          icon-size = 16;
+          tooltip-format = "{title}";
+          on-click = "activate";
+          on-click-middle = "close";
+          ignore-list = [ "Alacritty" "ghostty" ];
         };
       };
 
@@ -172,6 +222,59 @@
         #idle_inhibitor.activated {
           color: #ffffff;
           background: #285577;
+        }
+
+        #network {
+          padding: 0 6px;
+          color: #ffffff;
+        }
+
+        #network.disconnected {
+          color: #ff6666;
+        }
+
+        #bluetooth {
+          padding: 0 6px;
+          color: #ffffff;
+        }
+
+        #bluetooth.off {
+          color: #888888;
+        }
+
+        #bluetooth.connected {
+          color: #66ccff;
+        }
+
+        #custom-notification {
+          padding: 0 6px;
+          color: #ffffff;
+        }
+
+        #custom-notification.has {
+          color: #ffcc00;
+        }
+
+        #taskbar {
+          padding: 0;
+        }
+
+        #taskbar button {
+          padding: 0 4px;
+          color: #888888;
+          background: transparent;
+          border: 1px solid transparent;
+          margin: 0;
+        }
+
+        #taskbar button.active {
+          color: #ffffff;
+          border-bottom: 2px solid #4c7899;
+        }
+
+        #taskbar button:hover {
+          background: #285577;
+          color: #ffffff;
         }
       '';
     };

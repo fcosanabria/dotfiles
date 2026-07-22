@@ -9,7 +9,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/gnome.nix
+    ../../modules/des/sway.nix
     ../../modules/system
     ../../modules/home
   ];

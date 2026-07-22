@@ -102,6 +102,7 @@ in
     obs-studio
     uhk-agent
     evolution
+    gnome-calendar
     zk
 
     # -- Media & Communication --
