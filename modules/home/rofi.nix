@@ -6,29 +6,29 @@
     programs.rofi = {
       enable = true;
       terminal = "ghostty";
-      font = "BerkeleyMono Nerd Font Mono 12";
+      font = "Berkeley Mono 12";
       theme = "teide-dark";
     };
 
     xdg.configFile."rofi/themes/teide-dark.rasi".text = ''
       * {
-        bg0:   #0E1117;
-        bg1:   #1D2228;
-        bg2:   #252B34;
-        bg3:   #2E3540;
-        fg0:   #E7EAEE;
-        fg1:   #8891A0;
-        blue:  #89BEFF;
-        green: #38FFA5;
-        red:   #F97791;
-        sep:   #2E3540;
+        bg0:   #323232;
+        bg1:   #222222;
+        bg2:   #285577;
+        bg3:   #4c7899;
+        fg0:   #ffffff;
+        fg1:   #888888;
+        blue:  #4c7899;
+        green: #66ccff;
+        red:   #ff6666;
+        sep:   #333333;
       }
 
       window {
         background-color: @bg0;
         border:           1px solid;
         border-color:     @sep;
-        border-radius:    12px;
+        border-radius:    0px;
         width:            600px;
         padding:          0px;
       }
@@ -42,8 +42,8 @@
 
       inputbar {
         children:         [prompt, entry];
-        background-color: @bg0;
-        border-radius:    12px 12px 0px 0px;
+        background-color: @bg1;
+        border-radius:    0px;
         padding:          14px 18px;
         border:           0px 0px 1px 0px;
         border-color:     @sep;
@@ -51,13 +51,13 @@
       }
 
       prompt {
-        background-color: @bg0;
+        background-color: @bg1;
         text-color:       @blue;
         vertical-align:   0.5;
       }
 
       entry {
-        background-color: @bg0;
+        background-color: @bg1;
         text-color:       @fg0;
         placeholder:      "Search...";
         placeholder-color: @fg1;
@@ -76,7 +76,7 @@
       element {
         background-color: @bg0;
         padding:          10px 12px;
-        border-radius:    6px;
+        border-radius:    0px;
         spacing:          10px;
         cursor:           pointer;
       }
@@ -92,7 +92,7 @@
       }
 
       element selected.normal {
-        background-color: @bg3;
+        background-color: @bg2;
         text-color:       @fg0;
       }
 
@@ -107,7 +107,7 @@
       }
 
       element selected.urgent {
-        background-color: @bg3;
+        background-color: @bg2;
         text-color:       @red;
       }
 
@@ -122,7 +122,7 @@
       }
 
       element selected.active {
-        background-color: @bg3;
+        background-color: @bg2;
         text-color:       @green;
       }
 

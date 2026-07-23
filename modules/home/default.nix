@@ -14,6 +14,5 @@
     ./waybar.nix
     ./tmux.nix
     ./xfce.nix
-    ./zk.nix
   ];
 }

@@ -14,6 +14,7 @@
       # Workspace 5 always on HDMI (top monitor)
       extraConfig = ''
         workspace 5 output HDMI-A-1
+        output * bg '#4a5568' solid_color
       '';
 
       config = {
@@ -45,7 +46,7 @@
         };
 
         fonts = {
-            names = [ "BerkeleyMono Nerd Font Mono" ];
+            names = [ "Berkeley Mono" ];
         };
 
         window = {
@@ -241,8 +242,7 @@
           # Launch
           "${mod}+Return" = "exec ghostty";
           "${mod}+d" = "exec ${rofi}";
-          "${mod}+space" = "exec ${rofi}";
-          "${mod}+b" = "exec firefox";
+          "${mod}+b" = "exec vivaldi";
 
           # Window management
           "${mod}+q" = "kill";
@@ -463,7 +463,7 @@
 
     # ── Wlsunset (blue light filter) ─────────────────────────────────────
     services.wlsunset = {
-      enable = true;
+      enable = false;
       latitude = 9.9281;
       longitude = -84.0907;
       temperature = {
@@ -487,7 +487,7 @@
               criteria = "HDMI-A-1";
               status = "enable";
               mode = "1920x1080@60Hz";
-              position = "576,0";  # Centered: (3072-1920)/2 = 576
+              position = "960,0";  # Centered: (3840-1920)/2 = 960
               scale = 1.0;
             }
             {
@@ -495,7 +495,7 @@
               status = "enable";
               mode = "3840x2160@144Hz";
               position = "0,1080";  # Below HDMI
-              scale = 1.25;
+              scale = 1.0;
             }
           ];
         }
@@ -523,7 +523,7 @@
               status = "enable";
               mode = "3840x2160@144Hz";
               position = "0,0";
-              scale = 1.25;
+              scale = 1.0;
             }
           ];
         }

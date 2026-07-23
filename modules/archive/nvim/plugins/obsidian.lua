@@ -36,21 +36,35 @@ return {
   },
   opts = {
     legacy_commands = false, -- this will be removed in 4.0.0
+    cache = { enabled = true },
     note_id_func = function(title)
       local slug = require("obsidian.builtin").title_id(title)
-      return os.date("%Y-%m-%d") .. "-" .. slug
+      return slug .. "-" .. os.date("%Y-%m-%d")
     end,
+    frontmatter = {
+      func = function(note)
+        local aliases = vim.deepcopy(note.aliases or {})
+        if note.title and not vim.tbl_contains(aliases, note.title) then
+          table.insert(aliases, 1, note.title)
+        end
+        return {
+          id = tostring(note.id),
+          aliases = aliases,
+          tags = note.tags,
+        }
+      end,
+    },
     daily_notes = {
       folder = "daily-notes",
     },
     workspaces = {
       {
         name = "personal",
-        path = "~/Notes/",
+        path = "~/Notes/notes",
       },
       {
         name = "work",
-        path = "~/vaults/work",
+        path = "~/Notes/work",
       },
     },
   },

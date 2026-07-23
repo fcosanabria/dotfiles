@@ -2,6 +2,26 @@
 
 {
   home-manager.users.fsanabria = {
+    home.packages = [ pkgs.smug ];
+
+    xdg.configFile."smug/nix.yml".text = ''
+      session: nix
+      root: ~/nix
+      windows:
+        - name: dev
+          selected: true
+          layout: main-vertical
+          commands:
+            - nvim
+          panes:
+            - type: horizontal
+              commands:
+                - opencode
+            - type: vertical
+              commands:
+                - fish
+    '';
+
     programs.tmux = {
       enable = true;
       shell = "${pkgs.fish}/bin/fish";

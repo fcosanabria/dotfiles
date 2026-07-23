@@ -111,6 +111,7 @@
   # ── Environment variables for Wayland ───────────────────────────────
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";           # Electron apps on Wayland
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";  # Force Electron Wayland native
     MOZ_ENABLE_WAYLAND = "1";       # Firefox Wayland
     QT_QPA_PLATFORM = "wayland";    # Qt apps on Wayland
     SDL_VIDEODRIVER = "wayland";
