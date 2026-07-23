@@ -14,5 +14,6 @@
     ./waybar.nix
     ./tmux.nix
     ./xfce.nix
+    ./cosmic.nix
   ];
 }
