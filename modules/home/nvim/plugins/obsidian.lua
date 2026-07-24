@@ -27,8 +27,6 @@ return {
     { "<leader>or", "<cmd>Obsidian rename<cr>",             desc = "Rename note" },
     { "<leader>ox", "<cmd>Obsidian toggle_checkbox<cr>",    desc = "Toggle checkbox" },
     { "<leader>oF", "<cmd>Obsidian follow_link<cr>",        desc = "Follow link" },
-    -- Open in app
-    { "<leader>oo", "<cmd>Obsidian open<cr>",               desc = "Open in app" },
     -- Visual mode
     { "<leader>oe", "<cmd>Obsidian extract_note<cr>",       desc = "Extract to note",   mode = "v" },
     { "<leader>ok", "<cmd>Obsidian link<cr>",               desc = "Link selection",     mode = "v" },
@@ -60,12 +58,8 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/Notes/notes",
+        path = "~/Notes/",
       },
-      {
-        name = "work",
-        path = "~/Notes/work",
-      },
+     },
     },
-  },
 }

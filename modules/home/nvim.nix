@@ -3,7 +3,7 @@
 {
   home-manager.sharedModules = [ inputs.lazyvim-nix.homeManagerModules.default ];
 
-  home-manager.users.fsanabria = {
+  home-manager.users.fsanabria = { lib, ... }: {
     programs.lazyvim = {
       enable = true;
       installCoreDependencies = true;
@@ -22,5 +22,10 @@
         lang.yaml.enable = true;
       };
     };
+
+    home.activation.cleanupNvimState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD rm -f $VERBOSE_ARG $HOME/.config/nvim/lazyvim.json
+      $DRY_RUN_CMD rm -f $VERBOSE_ARG $HOME/.config/nvim/lazy-lock.json
+    '';
   };
 }

@@ -4,8 +4,8 @@
   home-manager.users.fsanabria = {
     home.packages = [ pkgs.smug ];
 
-    xdg.configFile."smug/nix.yml".text = ''
-      session: nix
+    xdg.configFile."smug/nix-config.yml".text = ''
+      session: nix-config
       root: ~/nix
       windows:
         - name: dev
@@ -20,6 +20,19 @@
             - type: vertical
               commands:
                 - fish
+    '';
+
+    xdg.configFile."smug/notes-migration.yml".text = ''
+      session: notes-migration
+      root: ~/
+      windows:
+        - name: Editor
+          layout: even-horizontal
+          commands:
+            - nvim ~/Notes/
+          panes:
+            - commands:
+                - nvim ~/Downloads/Workspace.md
     '';
 
     programs.tmux = {
