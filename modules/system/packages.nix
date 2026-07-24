@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   # uhk-agent copies smart-macro docs from the Nix store into
@@ -20,6 +25,7 @@ in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ inputs.junie-cli.overlays.default ];
   nixpkgs.config.permittedInsecurePackages = [
     # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
     # nixpkgs marks EOL. documentation.man.man-db.manualPages forces
@@ -45,8 +51,8 @@ in
 
     # -- CLI Utilities --
     pass
-    wl-clipboard       # Wayland: wl-copy/wl-paste (pass -c)
-    xclip              # X11: xclip (pass -c)
+    wl-clipboard # Wayland: wl-copy/wl-paste (pass -c)
+    xclip # X11: xclip (pass -c)
     yubikey-manager
     openssl
     curl
@@ -88,6 +94,7 @@ in
     ollama-rocm
     opencode
     opencode-desktop
+    junie # JetBrains Junie CLI — AI coding agent
     kubectl
     freelens-bin
     k9s
@@ -145,6 +152,8 @@ in
 
     # Nix
     nil
+    statix
+    deadnix
 
     # Docker / Containers
     dockerfile-language-server
@@ -152,6 +161,7 @@ in
 
     # Config files
     yaml-language-server
+    taplo
 
     # ═══════════════════════════════════════
     # Linters & Formatters

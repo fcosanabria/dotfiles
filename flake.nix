@@ -23,6 +23,7 @@
         home-manager.follows = "home-manager";
       };
     };
+    junie-cli.url = "github:solcik/junie-cli-nix";
   };
 
   outputs =

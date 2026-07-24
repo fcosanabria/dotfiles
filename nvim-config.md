@@ -34,14 +34,14 @@ Lista de extras disponibles: <https://github.com/pfassina/lazyvim-nix/blob/main/
 
 ## Referencia rápida
 
-| Qué cambiar | Dónde |
-|---|---|
-| Plugin nuevo | `modules/home/nvim/plugins/<nombre>.lua` |
-| Extra de LazyVim | `extras.*` en `modules/home/nvim.nix` |
-| Opciones de nvim | `modules/home/nvim/config/options.lua` |
-| Keymaps globales | `modules/home/nvim/config/keymaps.lua` |
-| Autocmds | `modules/home/nvim/config/autocmds.lua` |
-| Paquete de sistema (LSP, etc.) | `modules/system/packages.nix` |
+| Qué cambiar                    | Dónde                                    |
+| ------------------------------ | ---------------------------------------- |
+| Plugin nuevo                   | `modules/home/nvim/plugins/<nombre>.lua` |
+| Extra de LazyVim               | `extras.*` en `modules/home/nvim.nix`    |
+| Opciones de nvim               | `modules/home/nvim/config/options.lua`   |
+| Keymaps globales               | `modules/home/nvim/config/keymaps.lua`   |
+| Autocmds                       | `modules/home/nvim/config/autocmds.lua`  |
+| Paquete de sistema (LSP, etc.) | `modules/system/packages.nix`            |
 
 ## Notas
 

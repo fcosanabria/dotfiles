@@ -16,7 +16,7 @@
           panes:
             - type: horizontal
               commands:
-                - opencode
+                - junie
             - type: vertical
               commands:
                 - fish
