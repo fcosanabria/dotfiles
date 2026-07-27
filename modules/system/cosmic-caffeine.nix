@@ -9,13 +9,19 @@ let
       owner = "Oussamaberchi";
       repo = "caffeine-cosmic";
       rev = "main";
-      hash = "sha256-iql8PZnpoD3X8T0QsChgw892+Nn91LG66h6Up1+9Xtg=";
+      hash = "sha256-WlPhPOuF8CfQ+MuBwuCuQUR+BAQP4pUT5qPucxx4Oz0=";
     };
 
-    # NOTE: Since this project has many Git dependencies, we use useFetchCargoVendor.
-    # The user will need to update this hash after the first failed build attempt.
-    useFetchCargoVendor = true;
-    cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    # The real hash obtained from the first build attempt.
+    cargoHash = "sha256-L+p14hkcA7WH1Vgml9S3N7RTvs6m7yA9D0gOrkTIrTY=";
+
+    # Fix version mismatches and API changes
+    # The upstream repository has been updated recently.
+    postPatch = ''
+      substituteInPlace Cargo.toml \
+        --replace-fail 'dirs = "5"' 'dirs = "6"' \
+        --replace-fail 'toml = "0.8"' 'toml = "0.5"'
+    '';
 
     nativeBuildInputs = [
       pkgs.pkg-config
@@ -24,7 +30,7 @@ let
     buildInputs = [
       pkgs.libxkbcommon
       pkgs.wayland
-      pkgs.xorg.libX11
+      pkgs.libx11
       pkgs.libGL
     ];
 
