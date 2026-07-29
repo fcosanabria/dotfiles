@@ -102,6 +102,7 @@ in
     cloudflared
     sops
     age
+    tailscale
 
     # -- Productivity & Notes --
     siyuan
