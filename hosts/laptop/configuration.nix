@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/des/xfce.nix
     ../../modules/system

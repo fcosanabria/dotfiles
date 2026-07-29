@@ -38,10 +38,10 @@ in
 
     # -- Editors & IDEs --
     neovim
-    helix
     vscode
     zed
     jetbrains.pycharm
+    geany
 
     # -- Terminal & Shell --
     ghostty
@@ -110,7 +110,6 @@ in
     uhk-agent
     evolution
     gnome-calendar
-    zk
 
     # -- Media & Communication --
     cider-2

@@ -8,6 +8,7 @@
 
 {
   imports = [
+    ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/des/cosmic.nix
     ../../modules/system

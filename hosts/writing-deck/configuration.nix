@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/home/tmux.nix
     ../../modules/home/nvim.nix
@@ -44,12 +45,10 @@
   # kmscon - modern console with Adwaita Mono Nerd Font, autologin
   services.kmscon = {
     enable = true;
-    fonts = [
-      { name = "Adwaita Mono"; package = pkgs.nerd-fonts.adwaita-mono; }
-    ];
-    extraConfig = ''
-      font-size=12
-    '';
+    config = {
+      font-size = 12;
+      font-name = "Adwaita Mono";
+    };
   };
 
   # Autologin on tty1
@@ -119,13 +118,6 @@
         end
       '';
     };
-  };
-
-  # Syncthing service
-  services.syncthing = {
-    enable = true;
-    user = "fsanabria";
-    dataDir = "/home/fsanabria/.syncthing";
   };
 
   system.stateVersion = "25.11";
