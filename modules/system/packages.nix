@@ -74,6 +74,7 @@ in
     zeal
     codecrafters-cli
     exercism
+    lazysql
 
     # -- Git & Version Control --
     git
