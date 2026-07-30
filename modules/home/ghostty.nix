@@ -31,7 +31,7 @@
       enable = true;
       settings = {
         theme = "oxocarbon";
-        font-size = 12;
+        font-size = 14;
         font-family = "Berkeley Mono";
         font-family-bold = "Berkeley Mono";
         font-family-italic = "Berkeley Mono";
@@ -43,6 +43,7 @@
         gtk-titlebar = false;
         window-width = 160;
         window-height = 48;
+        app-notifications = "no-clipboard-copy";
       };
     };
   };
