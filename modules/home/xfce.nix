@@ -402,13 +402,13 @@ let
           <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
 
           <!-- Switch between windows -->
-          <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
+          <property name="&lt;Alt&gt;Tab" type="string" value="switch_window_key"/>
 
           <!-- Reverse switch between windows -->
           <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
 
-          <!-- Alternate window switcher -->
-          <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
+          <!-- Cycle windows (Alt+Tab style) -->
+          <property name="&lt;Super&gt;Tab" type="string" value="cycle_windows_key"/>
 
           <!-- Quick close focused window -->
           <property name="&lt;Super&gt;q" type="string" value="close_window_key"/>
@@ -459,7 +459,7 @@ let
           <property name="&lt;Super&gt;&lt;Shift&gt;4" type="string" value="move_window_workspace_4_key"/>
 
           <!-- Maximize focused window -->
-          <property name="&lt;Primary&gt;&lt;Super&gt;m" type="string" value="maximize_key"/>
+          <property name="&lt;Super&gt;m" type="string" value="maximize_window_key"/>
 
         </property>
       </property>

@@ -1,0 +1,20 @@
+diff --git a/lua/lazy/manage/task/plugin.lua b/lua/lazy/manage/task/plugin.lua
+--- a/lua/lazy/manage/task/plugin.lua
++++ b/lua/lazy/manage/task/plugin.lua
+@@ -87,14 +87,9 @@
+ 
+ M.docs = {
+   skip = function(plugin)
+-    return not plugin._.is_local and not plugin._.dirty
+-  end,
+-  run = function(self)
+-    local docs = self.plugin.dir .. "/doc"
+-    if Util.file_exists(docs) then
+-      self:log(vim.api.nvim_cmd({ cmd = "helptags", args = { docs } }, { output = true }))
+-    end
++    return true
+   end,
++  run = function(self) end,
+ }
+ 
+ M.exists = {

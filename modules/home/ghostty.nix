@@ -40,7 +40,7 @@
         font-style-bold = "Bold";
         font-style-italic = "Oblique";
         font-style-bold-italic = "Bold Oblique";
-        gtk-titlebar = false;
+        gtk-titlebar = true;
         window-width = 160;
         window-height = 48;
         app-notifications = "no-clipboard-copy";

@@ -61,6 +61,10 @@
     # -- Utilities --
     xdg-utils
 
+    # -- Calendar & Online Accounts --
+    gnome-online-accounts
+    gnome-calendar
+
     # -- PolicyKit Authentication Agent --
     polkit_gnome
   ];
