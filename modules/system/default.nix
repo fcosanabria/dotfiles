@@ -7,5 +7,6 @@
     ./tailscale.nix
     ./openrazer.nix
     ./samba-mount.nix
+    ./devops-aws.nix
   ];
 }

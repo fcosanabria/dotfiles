@@ -83,6 +83,9 @@ in
     bazaar
 
     # -- Dev Tools --
+    # Ver también: ./devops-aws.nix — paquetes del proyecto DevOps AWS
+    # (opentofu, terraform-ls, terraform-docs, tfsec, awscli2,
+    #  ssm-session-manager-plugin, kubernetes-helm, jq, yq-go)
     gcc
     devcontainer
     devpod
