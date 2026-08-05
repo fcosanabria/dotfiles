@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
 
     # -- IaC (Infrastructure as Code) --
+    terraform                   # HashiCorp Terraform (unfree, BSL license)
     opentofu                  # Fork open-source de Terraform (comando `tofu`)
     terraform-ls              # HashiCorp Language Server (LSP para editores)
     terraform-docs            # Genera documentación desde módulos .tf
