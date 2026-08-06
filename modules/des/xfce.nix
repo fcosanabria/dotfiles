@@ -5,6 +5,41 @@
   ...
 }:
 
+let
+  # ── Cortile: tiling window manager on top of Xfwm ─────────────────
+  # Not packaged in nixpkgs, built from upstream source.
+  cortile = pkgs.buildGoModule rec {
+    pname = "cortile";
+    version = "2.5.2";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "leukipp";
+      repo = "cortile";
+      rev = "v${version}";
+      hash = "sha256-2/U7oQO2vOrmoPR+s9VMSWS+d/YqZ5Ic0ieSxSA6SP4=";
+    };
+
+    vendorHash = "sha256-VlIPsUogiCQeWWrFsueB6COa91CWIGx3hb7HKC59rS0=";
+
+    env.CGO_ENABLED = 0;
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X main.name=cortile"
+      "-X main.target=linux-amd64"
+      "-X main.version=${version}"
+    ];
+
+    meta = {
+      description = "Linux auto tiling manager with hot corner support for Xfwm and other EWMH compliant window managers";
+      homepage = "https://github.com/leukipp/cortile";
+      license = lib.licenses.mit;
+      mainProgram = "cortile";
+      platforms = lib.platforms.linux;
+    };
+  };
+in
 {
   # ── Display Manager ────────────────────────────────────────────────
   services.xserver.enable = true;
@@ -67,6 +102,9 @@
 
     # -- PolicyKit Authentication Agent --
     polkit_gnome
+
+    # -- Tiling Window Manager (on top of Xfwm) --
+    cortile
   ];
 
   # ── Polkit ─────────────────────────────────────────────────────────

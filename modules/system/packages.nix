@@ -38,10 +38,8 @@ in
 
     # -- Editors & IDEs --
     neovim
-    vscode
-    zed
+    zed-editor
     jetbrains.pycharm
-    geany
 
     # -- Terminal & Shell --
     ghostty
