@@ -8,6 +8,9 @@
     ../../modules/home/nvim.nix
   ];
 
+  # Kernel params - screen rotation (0=normal, 1=90°, 2=180°, 3=270°)
+  boot.kernelParams = [ "fbcon=rotate:0" ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
