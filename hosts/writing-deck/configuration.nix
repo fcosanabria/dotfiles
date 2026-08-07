@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -8,8 +14,10 @@
     ../../modules/home/nvim.nix
   ];
 
-  # Kernel params - screen rotation (0=normal, 1=90°, 2=180°, 3=270°)
-  boot.kernelParams = [ "fbcon=rotate:0" ];
+  # Kernel params - screen rotation via KMS (for kmscon/DRM)
+  # Replace "eDP-1" with your actual connector (check: ls /sys/class/drm/)
+  # Angles: rotate=0, rotate=90, rotate=180, rotate=270
+  boot.kernelParams = [ "video=DSI-1:rotate=0" ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -58,7 +66,10 @@
   services.getty.autologinUser = "fsanabria";
 
   # Nix Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Garbage Collector
   nix.gc = {
@@ -89,7 +100,10 @@
   users.users.fsanabria = {
     isNormalUser = true;
     description = "Francisco Sanabria";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 
