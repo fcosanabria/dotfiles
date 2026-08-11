@@ -25,7 +25,10 @@ in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.junie-cli.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.junie-cli.overlays.default
+    inputs.herdr.overlays.default
+  ];
   nixpkgs.config.permittedInsecurePackages = [
     # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
     # nixpkgs marks EOL. documentation.man.man-db.manualPages forces
@@ -97,6 +100,7 @@ in
     opencode
     opencode-desktop
     junie # JetBrains Junie CLI — AI coding agent
+    herdr # Terminal workspace manager for AI coding agents
     kubectl
     freelens-bin
     k9s
@@ -113,6 +117,7 @@ in
     uhk-agent
     evolution
     gnome-calendar
+    gnome-online-accounts
 
     # -- Media & Communication --
     cider-2

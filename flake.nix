@@ -24,6 +24,8 @@
       };
     };
     junie-cli.url = "github:solcik/junie-cli-nix";
+    herdr.url = "github:herdrdev/herdr/v0.8.0";
+    openscreen.url = "github:getopenscreen/openscreen";
   };
 
   outputs =
