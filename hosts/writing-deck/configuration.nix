@@ -15,10 +15,14 @@
     ../../modules/home/nvim.nix
   ];
 
-  # Kernel params - screen rotation via KMS (for kmscon/DRM)
-  # Replace "eDP-1" with your actual connector (check: ls /sys/class/drm/)
-  # Angles: rotate=0, rotate=90, rotate=180, rotate=270
-  boot.kernelParams = [ "video=DSI-1:rotate=0" ];
+  # Kernel params - force landscape in TTY/kmscon.
+  # Keep both connector names as fallback (unknown one is ignored by the kernel).
+  # If orientation is upside-down, swap 90 <-> 270 and fbcon rotate 1 <-> 3.
+  boot.kernelParams = [
+    "video=DSI-1:rotate=90"
+    "video=eDP-1:rotate=90"
+    "fbcon=rotate:1"
+  ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
