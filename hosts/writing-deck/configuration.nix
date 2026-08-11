@@ -55,6 +55,16 @@
 
   # No X11/Wayland - pure console setup
 
+  # writing-deck is TTY-only; disable desktop sandbox integrations that pull
+  # portal requirements and are unnecessary here.
+  services.flatpak.enable = false;
+  xdg.portal = {
+    enable = false;
+    extraPortals = lib.mkForce [ ];
+  };
+  programs.appimage.enable = false;
+  programs.appimage.binfmt = false;
+
   # Fish must be enabled system-wide to be used as login shell
   programs.fish.enable = true;
 
