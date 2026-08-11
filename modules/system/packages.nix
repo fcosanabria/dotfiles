@@ -200,7 +200,10 @@ in
 
   # Enable Flatpak
   services.flatpak.enable = true;
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect
   # the correct IANA timezone name. NixOS only creates /etc/localtime, but
