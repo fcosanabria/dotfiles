@@ -36,6 +36,10 @@
   # Networking - NetworkManager with nmtui
   networking.networkmanager.enable = true;
 
+  # SSH access for remote administration from local network.
+  services.openssh.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 ];
+
   # Timezone
   time.timeZone = "America/Costa_Rica";
 
