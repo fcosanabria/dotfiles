@@ -72,6 +72,7 @@
   services.kmscon = {
     enable = true;
     config = {
+      rotate = "right";
       font-size = 12;
       font-name = "Adwaita Mono";
     };
