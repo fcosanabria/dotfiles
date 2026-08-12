@@ -6,6 +6,8 @@
 }:
 
 let
+  isKde = config.services.desktopManager.plasma6.enable;
+
   # uhk-agent copies smart-macro docs from the Nix store into
   # ~/.config/uhk-agent/smart-macro-docs. Node's fs.cp preserves the store's
   # read-only modes (0444/0555), so the next launch fails with EACCES on
@@ -202,7 +204,10 @@ in
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals =
+      [ pkgs.xdg-desktop-portal-gtk ]
+      ++ (if isKde then [ pkgs.xdg-desktop-portal-kde ] else [ ]);
+    config.common.default = if isKde then [ "kde" "gtk" ] else [ "gtk" ];
   };
 
   # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect
