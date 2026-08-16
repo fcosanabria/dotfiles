@@ -23,8 +23,7 @@
         home-manager.follows = "home-manager";
       };
     };
-    junie-cli.url = "github:solcik/junie-cli-nix";
-    herdr.url = "github:herdrdev/herdr/v0.8.0";
+    llm-agents.url = "github:numtide/llm-agents.nix";
     openscreen.url = "github:getopenscreen/openscreen";
   };
 
