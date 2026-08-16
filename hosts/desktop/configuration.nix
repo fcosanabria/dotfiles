@@ -10,6 +10,7 @@
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/des/kde.nix
+    ../../modules/des/kineticwe.nix
     ../../modules/system
     ../../modules/home
   ];

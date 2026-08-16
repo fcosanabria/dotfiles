@@ -25,6 +25,10 @@
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
     openscreen.url = "github:getopenscreen/openscreen";
+    kineticwe = {
+      url = "gitlab:theblackdon/kineticwe";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

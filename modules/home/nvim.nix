@@ -10,6 +10,17 @@
         lazy-nvim = prev.vimPlugins.lazy-nvim.overrideAttrs (old: {
           patches = (old.patches or []) ++ [ ./nvim/patches/lazy-nvim-no-helptags.patch ];
         });
+        vim_tmux_navigator = prev.vimPlugins.vim-tmux-navigator;
+        line-numbers-nvim = prev.vimUtils.buildVimPlugin {
+          pname = "line-numbers.nvim";
+          version = "2024-01-01";
+          src = prev.fetchFromGitHub {
+            owner = "shrynx";
+            repo = "line-numbers.nvim";
+            rev = "main";
+            sha256 = "sha256-I/S8EnXTC+y+utzUMoqVDDpk7JT9zfuXKsKBAJzcIgo=";
+          };
+        };
       };
     })
   ];

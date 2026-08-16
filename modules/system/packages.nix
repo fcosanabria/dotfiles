@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -197,7 +198,7 @@ in
   fonts.packages = with pkgs; [
     adwaita-fonts
     nerd-fonts.symbols-only
-    symbola
+    # symbola # Currently failing due to archive.org 503
   ];
 
   # Enable Flatpak
@@ -208,14 +209,15 @@ in
       pkgs.xdg-desktop-portal-gtk
     ]
     ++ (if isKde then [ pkgs.kdePackages.xdg-desktop-portal-kde ] else [ ]);
-    config.common.default =
+    config.common.default = lib.mkDefault (
       if isKde then
         [
           "kde"
           "gtk"
         ]
       else
-        [ "gtk" ];
+        [ "gtk" ]
+    );
   };
 
   # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect
