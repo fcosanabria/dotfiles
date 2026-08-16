@@ -28,8 +28,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-    inputs.junie-cli.overlays.default
-    inputs.herdr.overlays.default
+    inputs.llm-agents.overlays.shared-nixpkgs
   ];
   nixpkgs.config.permittedInsecurePackages = [
     # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
@@ -101,8 +100,9 @@ in
     ollama-rocm
     opencode
     opencode-desktop
-    junie # JetBrains Junie CLI — AI coding agent
-    herdr # Terminal workspace manager for AI coding agents
+    llm-agents.junie # JetBrains Junie CLI — AI coding agent
+    llm-agents.herdr # Terminal workspace manager for AI coding agents
+    llm-agents.agent-deck # AI agent command center
     kubectl
     freelens-bin
     k9s
@@ -204,10 +204,18 @@ in
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals =
-      [ pkgs.xdg-desktop-portal-gtk ]
-      ++ (if isKde then [ pkgs.xdg-desktop-portal-kde ] else [ ]);
-    config.common.default = if isKde then [ "kde" "gtk" ] else [ "gtk" ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ]
+    ++ (if isKde then [ pkgs.kdePackages.xdg-desktop-portal-kde ] else [ ]);
+    config.common.default =
+      if isKde then
+        [
+          "kde"
+          "gtk"
+        ]
+      else
+        [ "gtk" ];
   };
 
   # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect

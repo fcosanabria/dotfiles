@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -173,7 +171,7 @@
   # Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "hm-backup";
+  home-manager.backupFileExtension = "hm-backup-1";
   home-manager.users.fsanabria = { pkgs, ... }: {
     home.username = "fsanabria";
     home.homeDirectory = "/home/fsanabria";

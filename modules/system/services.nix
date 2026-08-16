@@ -6,6 +6,8 @@
 }:
 
 let
+  isKde = config.services.desktopManager.plasma6.enable;
+
   kanata-toggle = pkgs.writeShellScriptBin "kanata-toggle" ''
     SERVICE="kanata-default.service"
     if ${pkgs.systemd}/bin/systemctl is-active --quiet "$SERVICE"; then
@@ -49,6 +51,20 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  # Compat: algunas versiones de xdg-desktop-portal en NixOS intentan arrancar
+  # `xdg-desktop-portal-kde.service`, pero Plasma 6 instala
+  # `plasma-xdg-desktop-portal-kde.service`.
+  # Definimos la unidad legacy para que la activación D-Bus no falle en KDE.
+  systemd.user.services.xdg-desktop-portal-kde = lib.mkIf isKde {
+    description = "XDG Portal KDE backend (compat unit name)";
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.freedesktop.impl.portal.desktop.kde";
+      ExecStart = "${pkgs.kdePackages.xdg-desktop-portal-kde}/libexec/xdg-desktop-portal-kde";
+      Restart = "on-failure";
+    };
   };
 
   # Nix-LD (run standard Linux binaries)
