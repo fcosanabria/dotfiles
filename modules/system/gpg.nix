@@ -24,12 +24,10 @@
   # ── GnuPG + pinentry packages ─────────────────────────────────────────
   # gnupg: GPG binaries (gpg, gpg-agent, scdaemon, gpgconf)
   # pinentry-curses: fallback for TTY-only sessions (writing-deck, SSH)
-  # pinentry-gtk2: for XFCE (no native GNOME/KDE dialog)
   # pinentry-gnome3: for GNOME (native dialog integration)
   environment.systemPackages = with pkgs; [
     gnupg
     pinentry-curses
-    pinentry-gtk2
     pinentry-gnome3
   ];
 }

@@ -761,8 +761,8 @@ in
   config = lib.mkIf config.services.xserver.desktopManager.xfce.enable {
     home-manager.users.fsanabria = {
 
-      # ── GPG Agent: pinentry-gtk2 for XFCE ─────────────────────────────
-      services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry-gtk2;
+      # ── GPG Agent: pinentry-gnome3 for XFCE ───────────────────────────
+      services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry-gnome3;
 
       home.pointerCursor = {
         name = "Adwaita";

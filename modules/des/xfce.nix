@@ -59,7 +59,7 @@ in
   services.blueman.enable = true;
 
   # GPG agent + pinentry are configured in modules/home/gpg.nix (base)
-  # with pinentry-gtk2 override in this file's home-manager section below.
+  # with pinentry-gnome3 override in this file's home-manager section below.
 
   # ── XFCE-specific packages ────────────────────────────────────────
   environment.systemPackages = with pkgs; [
