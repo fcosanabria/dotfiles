@@ -9,8 +9,7 @@
   imports = [
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/kde.nix
-    ../../modules/des/kineticwe.nix
+    ../../modules/des/mangowm.nix
     ../../modules/system
     ../../modules/home
   ];
