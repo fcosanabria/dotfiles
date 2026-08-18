@@ -15,6 +15,6 @@
     ./tmux.nix
     ./xfce.nix
     ./cosmic.nix
-    ./kineticwe.nix
+    ./mangowm.nix
   ];
 }
