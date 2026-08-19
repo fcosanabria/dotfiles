@@ -29,10 +29,6 @@
       url = "gitlab:theblackdon/kineticwe";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mangowm = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

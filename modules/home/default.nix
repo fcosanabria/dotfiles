@@ -8,13 +8,10 @@
     ./gpg.nix
     ./kde.nix
     ./nvim.nix
-    ./rofi.nix
     ./starship.nix
     ./sway.nix
-    ./waybar.nix
     ./tmux.nix
     ./xfce.nix
     ./cosmic.nix
-    ./mangowm.nix
   ];
 }
