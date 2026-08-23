@@ -121,6 +121,7 @@ in
     evolution
     gnome-calendar
     gnome-online-accounts
+    trilium-desktop
 
     # -- Media & Communication --
     cider-2

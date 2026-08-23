@@ -55,8 +55,13 @@
     playerctl           # MPRIS media player control
 
     # -- File Manager --
-    kdePackages.dolphin
-    kdePackages.kio-extras
+    thunar
+    thunar-volman
+    thunar-archive-plugin
+    tumbler
+    ristretto
+    zathura
+    kdePackages.kate
     samba
     cifs-utils
     kdePackages.ark
@@ -90,7 +95,7 @@
   # ── Polkit (needed for privileged actions / SMB mounts) ─────────────
   security.polkit.enable = true;
 
-  # ── SMB / Network shares (Dolphin via KIO) ───────────────────────────
+  # ── SMB / Network shares (Thunar via GVFS) ───────────────────────────
   services.gvfs.enable = true;          # Wayland network filesystem support
   services.samba = {
     enable = true;

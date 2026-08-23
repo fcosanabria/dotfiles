@@ -14,7 +14,7 @@
       # Workspace 5 always on HDMI (top monitor)
       extraConfig = ''
         workspace 5 output HDMI-A-1
-        output * bg '#4a5568' solid_color
+        output * bg ~/Pictures/1405510.webp fill
       '';
 
       config = {
@@ -238,6 +238,18 @@
         keybindings = let
           mod = "Mod4";
           rofi = "rofi -show drun";
+          screenshotArea = pkgs.writeShellScript "sway-screenshot-area" ''
+            set -eu
+
+            dir="$HOME/Pictures/screenshots"
+            ${pkgs.coreutils}/bin/mkdir -p "$dir"
+
+            geometry="$(${pkgs.slurp}/bin/slurp)" || exit 0
+            file="$dir/$(${pkgs.coreutils}/bin/date +%Y-%m-%d_%H-%M-%S).png"
+
+            ${pkgs.grim}/bin/grim -g "$geometry" "$file"
+            ${pkgs.wl-clipboard}/bin/wl-copy --type image/png < "$file"
+          '';
         in {
           # Launch
           "${mod}+Return" = "exec ghostty";
@@ -294,7 +306,7 @@
           "${mod}+Shift+9" = "move container to workspace number 9";
 
           # Screenshot (area → clipboard + ~/Pictures/screenshots/)
-          "${mod}+Shift+s" = ''exec mkdir -p ~/Pictures/screenshots && grim -g "$(slurp)" - | tee ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy'';
+          "${mod}+Shift+s" = "exec ${screenshotArea}";
 
           # Session
           "${mod}+Shift+e" = "exec swaymsg exit";
@@ -734,6 +746,21 @@
           color: #ffffff;
         }
       '';
+    };
+
+    # ── Default apps (no browser for images/PDF) ─────────────────────
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+
+        "image/bmp" = [ "org.xfce.ristretto.desktop" ];
+        "image/gif" = [ "org.xfce.ristretto.desktop" ];
+        "image/jpeg" = [ "org.xfce.ristretto.desktop" ];
+        "image/png" = [ "org.xfce.ristretto.desktop" ];
+        "image/svg+xml" = [ "org.xfce.ristretto.desktop" ];
+        "image/webp" = [ "org.xfce.ristretto.desktop" ];
+      };
     };
 
     # ── Desktop Entries ───────────────────────────────────────────────
