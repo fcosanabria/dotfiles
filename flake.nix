@@ -2,6 +2,9 @@
   description = "Nixos config flake";
 
   inputs = {
+    # Nota: usar COSMIC 1.8.0 requiere el PR NixOS/nixpkgs#562003 (sin cache
+    # binaria). Con nixos-unstable obtenemos 1.6.0 desde cache.nixos.org
+    # (cero compilación). Cuando el PR se mergee, acá ya estará 1.8.0 cacheada.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";

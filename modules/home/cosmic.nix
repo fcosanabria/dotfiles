@@ -58,6 +58,17 @@ in
         };
         Install.WantedBy = [ "graphical-session.target" ];
       };
+
+      # ── Polkit auth agent (diálogos de elevación en apps admin) ─────
+      # cosmic-session procesa XDG autostart al iniciar sesión.
+      xdg.configFile."autostart/polkit-kde-authentication-agent.desktop".text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Polkit Authentication Agent
+        Exec=${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1
+        OnlyShowIn=COSMIC;
+        X-KDE-autostart-phase=1
+      '';
     };
   };
 }

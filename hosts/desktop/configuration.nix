@@ -9,7 +9,7 @@
   imports = [
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/sway.nix
+    ../../modules/des/cosmic.nix
     ../../modules/system
     ../../modules/home
   ];
@@ -20,6 +20,15 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.timeout = 20;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Nix: auto-GC y deduplicación del store. Evita que builds largos
+  # (compilar COSMIC desde fuente) llenen el disco: si el store pasa de
+  # max-free, el daemon borra paths no referenciados durante el build.
+  nix.settings = {
+    auto-optimise-store = true;
+    min-free = 20 * 1024 * 1024 * 1024; # 20 GiB libres mínimo
+    max-free = 60 * 1024 * 1024 * 1024; # GC automático sobre 60 GiB
+  };
 
   # El driver del kernel hid_magicmouse captura el Magic Trackpad 2 (05ac:0265)
   # y lo trata como "pointing stick" (PROP=5), por lo que el cursor no se mueve
