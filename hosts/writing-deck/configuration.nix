@@ -56,10 +56,21 @@
     LC_TIME = "es_CR.UTF-8";
   };
 
-  # No X11/Wayland - pure console setup
+  # X11 - bare Openbox (no DE, no display manager). Trilium Notes runs here.
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    windowManager.openbox.enable = true;
+  };
 
-  # writing-deck is TTY-only; disable desktop sandbox integrations that pull
-  # portal requirements and are unnecessary here.
+  # Mesa/GL drivers (needed by Electron apps like Trilium)
+  hardware.graphics.enable = true;
+
+  # Single-app setup; disable desktop sandbox integrations that pull portal
+  # requirements and are unnecessary here.
   services.flatpak.enable = false;
   xdg.portal = {
     enable = false;
@@ -122,8 +133,15 @@
     };
   };
 
-  # Autologin on tty1
+  # Autologin on tty1 (console) and tty2 (X/Openbox)
   services.getty.autologinUser = "fsanabria";
+  systemd.services."getty@tty2" = {
+    enable = true;
+    serviceConfig.ExecStart = [
+      "" # reset the template's ExecStart
+      "${lib.getExe' pkgs.util-linux "agetty"} --autologin fsanabria --noclear tty2 linux"
+    ];
+  };
 
   # Nix Flakes
   nix.settings.experimental-features = [
@@ -149,6 +167,12 @@
     wget
     curl
     tree
+    # X11/Openbox session
+    trilium-desktop
+    alacritty
+    xinit
+    xrandr
+    xauth
   ];
 
   # Fonts
@@ -185,7 +209,7 @@
       settings.user.email = "fsanabria@fastmail.com";
     };
 
-    # Fish - auto-launch tmux on tty1 login
+    # Fish - auto-launch tmux on tty1 login, X/Openbox on tty2
     programs.fish = {
       enable = true;
       loginShellInit = ''
@@ -193,6 +217,79 @@
         if not set -q TMUX; and test (tty) = /dev/tty1
             exec tmux new-session nvim
         end
+        # Start X/Openbox on tty2
+        if test (tty) = /dev/tty2
+            exec startx
+        end
+      '';
+    };
+
+    # X11 session: start Openbox (with autostart) on `startx`
+    home.file.".xinitrc" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+        [ -f "$HOME/.config/openbox/autostart" ] && . "$HOME/.config/openbox/autostart"
+        exec openbox
+      '';
+    };
+
+    # Openbox: minimal config, no menus/panels. A = Alt key.
+    home.file.".config/openbox/rc.xml" = {
+      text = ''
+        <?xml version="1.0" encoding="UTF-8"?>
+        <openbox_config xmlns="http://openbox.org/3.4/rc">
+          <placement>
+            <policy>Smart</policy>
+          </placement>
+          <focus>
+            <focusNew>yes</focusNew>
+            <followMouse>no</followMouse>
+          </focus>
+          <desktops>
+            <number>1</number>
+            <firstdesk>1</firstdesk>
+          </desktops>
+          <keyboard>
+            <keybind key="A-t">
+              <action name="Execute">
+                <command>alacritty</command>
+              </action>
+            </keybind>
+            <keybind key="A-F4">
+              <action name="Close"/>
+            </keybind>
+            <keybind key="A-Tab">
+              <action name="NextWindow"/>
+            </keybind>
+            <keybind key="A-Shift-Tab">
+              <action name="PreviousWindow"/>
+            </keybind>
+          </keyboard>
+          <mouse>
+            <context name="Frame">
+              <mousebind button="A-Left" action="Press"><action name="FocusAndRaise"/></mousebind>
+              <mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind>
+              <mousebind button="A-Right" action="Press"><action name="FocusAndRaise"/></mousebind>
+              <mousebind button="A-Right" action="Drag"><action name="Resize"/></mousebind>
+            </context>
+          </mouse>
+        </openbox_config>
+      '';
+    };
+
+    # Openbox autostart: rotate portrait panel + launch Trilium
+    home.file.".config/openbox/autostart" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+        # Portrait panel - same rotation the kernel applies to the console.
+        for c in DSI-1 eDP-1; do
+          xrandr --output "$c" --rotate right 2>/dev/null && break
+        done
+
+        # Writing app
+        trilium-desktop &
       '';
     };
   };

@@ -13,6 +13,5 @@
     ./tmux.nix
     ./xfce.nix
     ./cosmic.nix
-    ./serein.nix
   ];
 }

@@ -107,6 +107,7 @@ in
     kubectl
     freelens-bin
     k9s
+    lfk
     fluxcd
     cloudflared
     sops
@@ -204,6 +205,22 @@ in
 
   # Enable Flatpak
   services.flatpak.enable = true;
+
+  # Serein (cliente nativo de Discord): repo flatpak propio, instalado en la
+  # instalación de usuario. Equivalente a:
+  #   flatpak install --user https://viceverse-cz.github.io/Serein/flatpak/serein.flatpakref
+  systemd.user.services.serein-flatpak = lib.mkIf config.services.flatpak.enable {
+    description = "Install Serein Flatpak";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      ${pkgs.flatpak}/bin/flatpak install --user --noninteractive --assumeyes \
+        https://viceverse-cz.github.io/Serein/flatpak/serein.flatpakref || true
+    '';
+  };
   xdg.portal = {
     enable = true;
     extraPortals = [
