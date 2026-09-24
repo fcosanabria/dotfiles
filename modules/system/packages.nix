@@ -119,7 +119,7 @@ in
     super-productivity
     obs-studio
     uhk-agent
-    evolution
+    thunderbird
     gnome-calendar
     gnome-online-accounts
     trilium-desktop
