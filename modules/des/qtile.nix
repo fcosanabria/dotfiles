@@ -8,6 +8,10 @@
   # ── Display Manager ────────────────────────────────────────────────
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.xkb = {
+    layout = "us";
+    options = "compose:rwin"; # Compose key en Win derecha (igual que el resto de hosts)
+  };
 
   # ── Qtile Window Manager (X11) ─────────────────────────────────────
   # La config vive en ./qtile/config.py (NixOS la instala en
@@ -63,6 +67,8 @@
 
     # -- Authentication --
     kdePackages.polkit-kde-agent-1
+    gnome-keyring # Credential storage (Wi-Fi, SSH, GPG) — igual que el resto de hosts
+    libsecret     # Secret service API
 
     # -- USB Auto-mount --
     udiskie       # User-space auto-mount for removable media
@@ -70,6 +76,10 @@
 
   # ── Polkit ──────────────────────────────────────────────────────────
   security.polkit.enable = true;
+
+  # ── Keyring / Secret Service (gnome-keyring, igual que el resto de hosts) ──
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # ── SMB / Network shares (Thunar via GVFS) ───────────────────────────
   services.gvfs.enable = true;
