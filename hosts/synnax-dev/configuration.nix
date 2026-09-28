@@ -10,8 +10,8 @@
     ../../modules/base.nix
     ./hardware-configuration.nix
     ../../modules/des/qtile.nix
+    ../../modules/home/alacritty.nix
     ../../modules/home/fish.nix
-    ../../modules/home/ghostty.nix
     ../../modules/home/git.nix
     ../../modules/home/starship.nix
   ];

@@ -48,6 +48,7 @@ in
 
     # -- Terminal & Shell --
     ghostty
+    alacritty
     starship
     fish
     tmux

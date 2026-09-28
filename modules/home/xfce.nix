@@ -315,8 +315,8 @@ let
           <!-- File manager -->
           <property name="&lt;Super&gt;f" type="string" value="thunar"/>
 
-          <!-- Open Ghostty terminal -->
-          <property name="&lt;Super&gt;t" type="string" value="ghostty"/>
+          <!-- Open Alacritty terminal -->
+          <property name="&lt;Super&gt;t" type="string" value="alacritty"/>
 
           <!-- Open Helium browser -->
           <property name="&lt;Super&gt;b" type="string" value="helium"/>
