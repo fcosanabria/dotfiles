@@ -28,20 +28,8 @@ in
     kanata-toggle
     epsonscan2 # GUI bin/epsonscan2 disponible en PATH
   ];
-  # Nix Flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   services.dbus.implementation = "dbus";
-
-  # Garbage Collector
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
 
   # Audio (PipeWire)
   services.pulseaudio.enable = false;

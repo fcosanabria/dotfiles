@@ -7,19 +7,13 @@
 
 {
   imports = [
+    ../../modules/base.nix
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/des/cosmic.nix
     ../../modules/system
     ../../modules/home
   ];
-
-  # Bootloader and Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.timeout = 20;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   # Nix: auto-GC y deduplicación del store. Evita que builds largos
   # (compilar COSMIC desde fuente) llenen el disco: si el store pasa de
@@ -46,26 +40,6 @@
   # Hostname
   networking.hostName = "synnax";
 
-  # Networking
-  networking.networkmanager.enable = true;
-
-  # Timezone
-  time.timeZone = "America/Costa_Rica";
-
-  # Locale
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_CR.UTF-8";
-    LC_IDENTIFICATION = "es_CR.UTF-8";
-    LC_MEASUREMENT = "es_CR.UTF-8";
-    LC_MONETARY = "es_CR.UTF-8";
-    LC_NAME = "es_CR.UTF-8";
-    LC_NUMERIC = "es_CR.UTF-8";
-    LC_PAPER = "es_CR.UTF-8";
-    LC_TELEPHONE = "es_CR.UTF-8";
-    LC_TIME = "es_CR.UTF-8";
-  };
-
   # X11
   services.xserver.enable = true;
   services.xserver.xkb = {
@@ -73,32 +47,15 @@
     variant = "";
   };
 
-  # User account
-  users.users.fsanabria = {
-    isNormalUser = true;
-    description = "Francisco Sanabria";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "libvirtd"
-      "kvm"
-      "scanner"
-      "lp"
-      "input"
-    ];
-    shell = pkgs.fish;
-  };
-
-  # Home Manager base config
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "hm-backup-1";
-  home-manager.users.fsanabria = {
-    home.username = "fsanabria";
-    home.homeDirectory = "/home/fsanabria";
-    home.stateVersion = "25.11";
-  };
+  # User account — grupos extra sobre los del módulo base
+  users.users.fsanabria.extraGroups = [
+    "docker"
+    "libvirtd"
+    "kvm"
+    "scanner"
+    "lp"
+    "input"
+  ];
 
   # Steam + Proton
   programs.steam = {

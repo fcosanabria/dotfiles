@@ -118,24 +118,6 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -156,31 +138,9 @@
         "type": "github"
       }
     },
-    "kineticwe": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "noctalia": "noctalia"
-      },
-      "locked": {
-        "lastModified": 1788970071,
-        "narHash": "sha256-7jrCe3dMPU8MlUj2TZy8q3ZXFRjhEXIvzgQ80AdZ4Jg=",
-        "owner": "theblackdon",
-        "repo": "kineticwe",
-        "rev": "5d9b32bdf65d63eaf7e5a8c9f0f5c640109071f0",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "theblackdon",
-        "repo": "kineticwe",
-        "type": "gitlab"
-      }
-    },
     "lazyvim-nix": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -204,7 +164,7 @@
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts_2",
         "nixpkgs": "nixpkgs",
-        "systems": "systems_3",
+        "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -269,27 +229,6 @@
         "type": "github"
       }
     },
-    "noctalia": {
-      "inputs": {
-        "nixpkgs": [
-          "kineticwe",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786562724,
-        "narHash": "sha256-a2qnW1hQVkZN1GAkl0pkwS62NCP3KURnPXQxjG5T5rg=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "rev": "0bf29dd9e202234cdc7fcfa6f75e938bd7fd724a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "type": "github"
-      }
-    },
     "openscreen": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
@@ -308,39 +247,14 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785762349,
-        "narHash": "sha256-jZhZkzAwc7f3exzcTDJWP2WCAchCv0iNC3UF/QsahdQ=",
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "rev": "a19a2a029fa180911bd89c554dca1616e10f4c1d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "cosmic-manager": "cosmic-manager",
         "home-manager": "home-manager",
-        "kineticwe": "kineticwe",
         "lazyvim-nix": "lazyvim-nix",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_2",
-        "openscreen": "openscreen",
-        "plasma-manager": "plasma-manager"
+        "openscreen": "openscreen"
       }
     },
     "systems": {
@@ -359,21 +273,6 @@
       }
     },
     "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

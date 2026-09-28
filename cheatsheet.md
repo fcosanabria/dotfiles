@@ -1,7 +1,9 @@
 # Cheatsheet de mantenimiento NixOS (flakes)
 
-Config en `~/nix`. Hosts disponibles: `synnax` (desktop), `zbook` (laptop), `writing-deck`.
+Config en `~/nix`. Hosts disponibles: `synnax` (desktop), `zbook` (laptop), `synnax-dev` (VM qtile).
 home-manager está integrado como módulo de NixOS, así que `nixos-rebuild` reconstruye sistema **y** home a la vez.
+
+Los hosts comparten `modules/base.nix` (bootloader, locale, usuario, home-manager base, nix settings).
 
 ## Actualizar el sistema
 
@@ -19,6 +21,19 @@ sudo nixos-rebuild boot   --flake ~/nix#synnax    # aplica en próximo arranque
 sudo nixos-rebuild test   --flake ~/nix#synnax    # aplica ahora, NO persiste en boot
 nixos-rebuild build       --flake ~/nix#synnax    # solo compila, no activa
 ```
+
+## Deploy a synnax-dev (VM qtile, 192.168.122.124)
+
+```bash
+# La VM es BIOS (SeaBIOS) → GRUB en /dev/vda. El hardware config de la VM
+# vive en el repo (hosts/synnax-dev/hardware-configuration.nix) porque se
+# buildéa desde el desktop. Los otros hosts importan /etc/nixos/...
+sudo nixos-rebuild switch --flake .#synnax-dev \
+  --target-host fsanabria@192.168.122.124 \
+  --elevate=sudo --ask-elevate-password
+```
+
+> Ver `synnax-dev-qtile.md` para más detalle de la VM.
 
 ## Actualizar inputs
 

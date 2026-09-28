@@ -10,11 +10,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     lazyvim-nix = {
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,10 +23,6 @@
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
     openscreen.url = "github:getopenscreen/openscreen";
-    kineticwe = {
-      url = "gitlab:theblackdon/kineticwe";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -48,13 +39,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/laptop/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-      nixosConfigurations.writing-deck = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/writing-deck/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };
