@@ -1,8 +1,5 @@
-import os
-
-import libqtile.resources
-from libqtile import bar, hook, layout, widget
-from libqtile.config import Drag, Group, Key, Screen
+from libqtile import hook, layout, widget
+from libqtile.config import Drag, Group, Key
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -43,34 +40,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-logo = os.path.join(os.path.dirname(libqtile.resources.__file__), "logo.png")
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
-            24,
-        ),
-        background="#000000",
-        wallpaper=logo,
-        wallpaper_mode="center",
-    ),
-]
+# No definimos `screens`: qtile usa la barra default automáticamente.
 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
