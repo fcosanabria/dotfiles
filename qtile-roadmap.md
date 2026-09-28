@@ -6,6 +6,7 @@
 ## ✅ Hecho
 
 - [x] Barra: workspaces + prompt (izq), nombre de ventana centrado, fecha (`28 Sept`) + hora (`AM/PM`) + systray (der)
+- [x] Barra estilo XFCE: fondo `#383c4a`, separadores entre secciones
 - [x] Layouts: `MonadTall` + `Max`
 - [x] Terminal: alacritty (tema oxocarbon, Berkeley Mono 14)
 - [x] Launcher: rofi (`mod+d`)
@@ -16,13 +17,17 @@
 - [x] Audio: pavucontrol, pamixer; Red: nm-applet; Bluetooth: blueman
 - [x] Polkit agent, picom (compositor), udiskie (auto-mount USB)
 - [x] Autostart: nm-applet + polkit agent + picom
+- [x] Widget Pomodoro (trabajo/descanso con colores oxocarbon)
+- [x] Calendario en el clock (widget Calendar de qtile-extras, click → popup)
+- [x] Notificaciones: xfce4-notifyd (las mismas de XFCE)
+- [x] Clipboard manager: xfce4-clipman (tray, el mismo de XFCE)
+- [x] Power en la barra: widget QuickExit (⏻ → shutdown/reboot/logout/lock/suspend)
+- [x] PulseVolume en la barra (scroll para volumen)
+- [x] Screen locker: slock (`mod+ctrl+l`) + lock en QuickExit
 
 ## 🔲 Pendiente — Barra y widgets
 
 - [ ] Widgets extra: CPU, RAM, red (conexión/velocidad), batería (si aplica)
-- [ ] `widget.Pomodoro` o calendario en el clock (click → calendario)
-- [ ] Notificaciones: `dunst` (X11) o `xfce4-notifyd` con tema oxocarbon
-- [ ] Clipboard manager: `clipit` / `xclip` history (rofi-based)
 - [ ] Botón de power (logout/lock/suspend) en la barra o en rofi
 
 ## 🔲 Pendiente — Sesión y seguridad

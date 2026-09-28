@@ -1,6 +1,7 @@
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Drag, Group, Key, Screen
 from libqtile.lazy import lazy
+from qtile_extras import widget as ext_widget
 
 mod = "mod4"
 terminal = "alacritty"
@@ -20,6 +21,7 @@ keys = [
     Key([mod], "Tab", lazy.next_screen(), desc="Next screen"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Exit qtile"),
+    Key([mod, "control"], "l", lazy.spawn("slock"), desc="Lock screen"),
 ]
 
 groups = [Group(str(i)) for i in range(1, 5)]
@@ -35,6 +37,11 @@ layouts = [
 widget_defaults = dict(font="sans", fontsize=13, padding=4)
 extension_defaults = widget_defaults.copy()
 
+# Colores estilo XFCE dark panel
+PANEL_BG = "#383c4a"
+SEP_FG = "#4a4f5c"
+FG = "#ffffff"
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -46,12 +53,42 @@ screens = [
                 widget.Spacer(length=bar.STRETCH),
                 widget.WindowName(max_chars=80),
                 widget.Spacer(length=bar.STRETCH),
-                # ── Derecha: fecha + hora + bandeja ──
-                widget.Clock(format="%d %b", fontsize=13),
-                widget.Clock(format="%I:%M %p", fontsize=13),
+                # ── Derecha: pomodoro, volumen, fecha, hora, power ──
+                widget.Pomodoro(
+                    width=130,
+                    prefix_work="Work: ",
+                    prefix_break="Break: ",
+                    prefix_inactive="Idle: ",
+                    color_work="#42be65",
+                    color_break="#33b1ff",
+                    color_inactive="#888888",
+                ),
+                widget.Separator(linewidth=1, foreground=SEP_FG),
+                widget.PulseVolume(limit=100, scroll_step=5),
+                widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Calendar(
+                    format="%d %b",
+                    foreground=FG,
+                    background=PANEL_BG,
+                    padding=4,
+                    show_week_numbers=True,
+                ),
+                widget.Clock(format="%I:%M %p", foreground=FG),
+                widget.Separator(linewidth=1, foreground=SEP_FG),
+                widget.QuickExit(
+                    default_text="⏻",
+                    foreground=FG,
+                    countdown_start=5,
+                    shutdown_command="systemctl poweroff",
+                    restart_command="systemctl reboot",
+                    logout_command="qtile cmd-obj -o cmd -f shutdown",
+                    lock_command="slock",
+                    suspend_command="systemctl suspend",
+                ),
                 widget.Systray(),
             ],
             26,
+            background=PANEL_BG,
         )
     ),
 ]
@@ -64,10 +101,12 @@ mouse = [
 
 @hook.subscribe.startup_once
 def autostart():
-    # Servicios del entorno: polkit agent, tray de red y compositor.
+    # Servicios del entorno: red, polkit, compositor, notificaciones y clipboard.
     lazy.spawn("nm-applet --indicator")
     lazy.spawn("polkit-kde-authentication-agent-1")
     lazy.spawn("picom")
+    lazy.spawn("xfce4-notifyd")
+    lazy.spawn("xfce4-clipman")
 
 
 dgroups_key_handler = None
