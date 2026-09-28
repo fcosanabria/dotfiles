@@ -28,6 +28,10 @@
   # Hostname
   networking.hostName = "synnax-dev";
 
+  # Nix: permitir paths del store del desktop sin firma (deploy remoto).
+  # Por defecto require-sigs=true rechaza closures copiados desde otros hosts.
+  nix.settings.require-sigs = false;
+
   # SSH para deploy remoto desde el desktop (nixos-rebuild --target-host)
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
