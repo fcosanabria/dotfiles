@@ -11,7 +11,6 @@
     ./hardware-configuration.nix
     ../../modules/des/qtile.nix
     ../../modules/home/alacritty.nix
-    ../../modules/home/alacritty-jbmono.nix
     ../../modules/home/fish.nix
     ../../modules/home/git.nix
     ../../modules/home/starship.nix
@@ -41,7 +40,7 @@
   services.qemuGuest.enable = true;
 
   # Fuente mono temporal para la VM (Berkeley Mono no está instalada).
-  # JetBrains Mono Nerd trae los iconos que usa starship/eza.
+  # Cualquier fuente mono sirve; JetBrains Mono Nerd trae los iconos de starship/eza.
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];

@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -10,27 +9,25 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        # Mismo look que ghostty: tema oxocarbon, fuente mono 14.
-        # font-family usa mkDefault para que cada host pueda override
-        # (synnax-dev no tiene Berkeley Mono → usa JetBrains Mono).
+        # Mismo look que ghostty: tema oxocarbon, Berkeley Mono 14.
         font = {
           normal = {
-            family = lib.mkDefault "Berkeley Mono";
-            style = lib.mkDefault "Regular";
+            family = "Berkeley Mono";
+            style = "Regular";
           };
           bold = {
-            family = lib.mkDefault "Berkeley Mono";
-            style = lib.mkDefault "Bold";
+            family = "Berkeley Mono";
+            style = "Bold";
           };
           italic = {
-            family = lib.mkDefault "Berkeley Mono";
-            style = lib.mkDefault "Oblique";
+            family = "Berkeley Mono";
+            style = "Oblique";
           };
           bold_italic = {
-            family = lib.mkDefault "Berkeley Mono";
-            style = lib.mkDefault "Bold Oblique";
+            family = "Berkeley Mono";
+            style = "Bold Oblique";
           };
-          size = lib.mkDefault 14;
+          size = 14;
         };
 
         colors = {
