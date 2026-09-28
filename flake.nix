@@ -58,5 +58,12 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+      nixosConfigurations.synnax-dev = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/synnax-dev/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
 }
