@@ -3,7 +3,7 @@ from libqtile.config import Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "ghostty"
+terminal = "alacritty"
 
 keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Terminal"),
