@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ../../modules/des/qtile.nix
     ../../modules/home/alacritty.nix
+    ../../modules/home/alacritty-jbmono.nix
     ../../modules/home/fish.nix
     ../../modules/home/git.nix
     ../../modules/home/starship.nix
@@ -38,6 +39,12 @@
 
   # QEMU guest agent para integración con virt-manager
   services.qemuGuest.enable = true;
+
+  # Fuente mono temporal para la VM (Berkeley Mono no está instalada).
+  # JetBrains Mono Nerd trae los iconos que usa starship/eza.
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # User account — llave SSH del desktop sobre el usuario del módulo base
   users.users.fsanabria.openssh.authorizedKeys.keys = [
