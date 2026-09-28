@@ -1,4 +1,4 @@
-from libqtile import bar, layout, widget
+from libqtile import bar, hook, layout, widget
 from libqtile.config import Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 
@@ -8,6 +8,9 @@ terminal = "alacritty"
 keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Terminal"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="App launcher"),
+    Key([mod], "e", lazy.spawn("thunar"), desc="File manager"),
+    Key([mod], "r", lazy.spawn("ristretto"), desc="Image previewer"),
+    Key([mod], "z", lazy.spawn("xarchiver"), desc="Archive manager"),
     Key([mod], "j", lazy.layout.down(), desc="Focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Focus up"),
     Key([mod], "h", lazy.layout.left(), desc="Focus left"),
@@ -36,10 +39,16 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                # ── Izquierda: workspaces + prompt ──
                 widget.GroupBox(highlight_method="line"),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Clock(format="%Y-%m-%d %H:%M"),
+                # ── Centro: nombre de la ventana (app activa) ──
+                widget.Spacer(length=bar.STRETCH),
+                widget.WindowName(max_chars=80),
+                widget.Spacer(length=bar.STRETCH),
+                # ── Derecha: fecha + hora + bandeja ──
+                widget.Clock(format="%d %b", fontsize=13),
+                widget.Clock(format="%I:%M %p", fontsize=13),
                 widget.Systray(),
             ],
             26,
@@ -51,6 +60,15 @@ mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
 ]
+
+
+@hook.subscribe.startup_once
+def autostart():
+    # Servicios del entorno: polkit agent, tray de red y compositor.
+    lazy.spawn("nm-applet --indicator")
+    lazy.spawn("polkit-kde-authentication-agent-1")
+    lazy.spawn("picom")
+
 
 dgroups_key_handler = None
 follow_mouse_focus = True

@@ -9,7 +9,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
 
-  # ── Qtile Window Manager (básico, X11) ─────────────────────────────
+  # ── Qtile Window Manager (X11) ─────────────────────────────────────
   # La config vive en ./qtile/config.py (NixOS la instala en
   # /etc/xdg/qtile/config.py). Empezar desde ahí: layouts, keys, bar.
   services.xserver.windowManager.qtile = {
@@ -17,16 +17,64 @@
     configFile = ./qtile/config.py;
   };
 
-  # ── Paquetes mínimos del entorno ────────────────────────────────────
+  # ── Paquetes del entorno ────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
+    # -- Launcher & Clipboard --
     rofi          # App launcher (mod+d)
     xclip         # Clipboard X11
+
+    # -- Display & Compositor --
+    picom         # Compositor X11
     xrandr
-    pavucontrol
+    brightnessctl # Backlight / LED control
+
+    # -- File Manager --
+    thunar
+    thunar-volman
+    thunar-archive-plugin
+    tumbler       # Thumbnails para Thunar
+    xarchiver     # Extractor de archivos comprimidos (mod+z)
+    unzip
+    zip
+    p7zip
+
+    # -- Previewers --
+    ristretto     # Viewer de imágenes (mod+r)
+    zathura       # Viewer de PDF (backend mupdf incluido)
+
+    # -- SMB / Network shares (Thunar via GVFS) --
+    samba         # Cliente
+    cifs-utils
+
+    # -- System Tray & Audio --
     networkmanagerapplet
-    picom         # Compositor X11 (opcional, quitar si no se usa)
+    pavucontrol
+    pamixer
+
+    # -- Bluetooth --
+    blueman       # GTK Bluetooth manager (tray applet)
+
+    # -- Authentication --
+    kdePackages.polkit-kde-agent-1
+
+    # -- USB Auto-mount --
+    udiskie       # User-space auto-mount for removable media
   ];
 
   # ── Polkit ──────────────────────────────────────────────────────────
   security.polkit.enable = true;
+
+  # ── SMB / Network shares (Thunar via GVFS) ───────────────────────────
+  services.gvfs.enable = true;
+  services.samba = {
+    enable = true;
+    openFirewall = false; # Solo cliente, no compartir
+  };
+
+  # ── Bluetooth (bluez + blueman GUI) ──────────────────────────────────
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # ── USB Auto-mount (udisks2 + udiskie) ──────────────────────────────
+  services.udisks2.enable = true;
 }
