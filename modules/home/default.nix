@@ -11,6 +11,7 @@
     ./starship.nix
     ./sway.nix
     ./tmux.nix
+    ./vicinae.nix
     ./xfce.nix
     ./cosmic.nix
   ];

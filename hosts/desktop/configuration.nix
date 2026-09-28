@@ -9,7 +9,7 @@
   imports = [
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/cosmic.nix
+    ../../modules/des/sway.nix
     ../../modules/system
     ../../modules/home
   ];

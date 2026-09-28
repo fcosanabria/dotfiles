@@ -1,31 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  # ── Login: greetd + ReGreet (GTK greeter, Wayland-native) ────────────
-  services.displayManager.regreet = {
+  # ── Display Manager (greetd + tuigreet) ─────────────────────────────
+  services.greetd = {
     enable = true;
-    font = {
-      name = "Adwaita Sans";
-      package = pkgs.adwaita-fonts;
-      size = 14;
-    };
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
     settings = {
-      background = {
-        path = "${pkgs.gnome-backgrounds}/share/backgrounds/gnome/adwaita-d.jxl";
-        fit = "Cover";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
-      };
-      appearance = {
-        greeting_msg = "Welcome back!";
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --sessions /run/current-system/sw/share/wayland-sessions";
+        user = "greeter";
       };
     };
   };
+
+  environment.pathsToLink = [ "/share/wayland-sessions" ];
 
   # ── Sway Window Manager ─────────────────────────────────────────────
   programs.sway = {
@@ -46,34 +33,41 @@
 
   # ── Sway ecosystem packages ─────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    # -- Clipboard --
-    wl-clipboard        # wl-copy / wl-paste
-    cliphist            # Clipboard history manager
-    fuzzel              # dmenu-style picker (cliphist history)
+    # -- Launcher & Notifications --
+    rofi
+    swaynotificationcenter
 
     # -- Screenshots & Screen Recording --
     grim
     slurp
     wf-recorder
 
-    # -- File Manager (Dolphin) --
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins
-    kdePackages.ark                      # Archive extraction
-    kdePackages.kio-extras               # SMB/network browsing, thumbnails
-    kdePackages.kio-fuse                 # Mount remote locations via FUSE
-    kdePackages.ffmpegthumbs             # Video thumbnails
-    kdePackages.kdegraphics-thumbnailers # Image thumbnails
-
-    # -- Samba / CIFS --
-    samba
-    cifs-utils
+    # -- Clipboard --
+    wl-clipboard        # wl-copy / wl-paste
+    cliphist            # Clipboard history manager
 
     # -- Display & Brightness --
     brightnessctl       # Backlight / LED control
+    kanshi              # Auto display profile switching
+    wdisplays           # GUI for display layout
 
     # -- Media Keys --
     playerctl           # MPRIS media player control
+
+    # -- File Manager --
+    thunar
+    thunar-volman
+    thunar-archive-plugin
+    tumbler
+    ristretto
+    zathura
+    kdePackages.kate
+    samba
+    cifs-utils
+    kdePackages.ark
+
+    # -- Authentication --
+    kdePackages.polkit-kde-agent-1
 
     # -- System Tray & Audio --
     networkmanagerapplet
@@ -88,14 +82,7 @@
 
     # -- Keyring / Secrets --
     gnome-keyring       # Credential storage (Wi-Fi, SSH, GPG)
-    libsecret           # Secret service API
-
-    # -- Authentication --
-    kdePackages.polkit-kde-agent-1
-
-    # -- Notification sound --
-    libcanberra-gtk3    # canberra-gtk-play
-    sound-theme-freedesktop
+    libsecret           # Secret service API (used by apps to query keyring)
 
     # -- Misc Wayland Utilities --
     wev                 # Wayland event viewer (debug keybinds)
@@ -103,13 +90,13 @@
   ];
 
   # ── Security: allow swaylock to verify passwords ────────────────────
-  security.pam.services.swaylock = {};
+   security.pam.services.swaylock = {};
 
   # ── Polkit (needed for privileged actions / SMB mounts) ─────────────
   security.polkit.enable = true;
 
-  # ── SMB / Network shares (Dolphin via GVFS + KIO) ───────────────────
-  services.gvfs.enable = true;
+  # ── SMB / Network shares (Thunar via GVFS) ───────────────────────────
+  services.gvfs.enable = true;          # Wayland network filesystem support
   services.samba = {
     enable = true;
     openFirewall = false;               # Solo cliente, no compartir
