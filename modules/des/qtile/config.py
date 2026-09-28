@@ -63,9 +63,9 @@ screens = [
                     color_break="#33b1ff",
                     color_inactive="#888888",
                 ),
-                widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
                 widget.PulseVolume(limit=100, scroll_step=5),
-                widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
                 ext_widget.Calendar(
                     format="%d %b",
                     foreground=FG,
@@ -74,7 +74,7 @@ screens = [
                     show_week_numbers=True,
                 ),
                 widget.Clock(format="%I:%M %p", foreground=FG),
-                widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
                 widget.QuickExit(
                     default_text="⏻",
                     foreground=FG,
