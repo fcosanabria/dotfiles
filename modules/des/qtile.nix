@@ -60,6 +60,7 @@
     # -- Notifications & Clipboard (iguales a los de XFCE) --
     xfce.xfce4-notifyd        # Notificaciones estilo XFCE
     xfce.xfce4-clipman-plugin # Clipboard manager (binario xfce4-clipman)
+    gsimplecal                # Calendario (click en la fecha de la barra)
 
     # -- Screen locker --
     slock

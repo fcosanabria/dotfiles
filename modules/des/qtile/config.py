@@ -63,18 +63,19 @@ screens = [
                     color_break="#33b1ff",
                     color_inactive="#888888",
                 ),
-                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
                 widget.PulseVolume(limit=100, scroll_step=5),
-                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
-                ext_widget.Calendar(
+                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
+                widget.Clock(
                     format="%d %b",
                     foreground=FG,
-                    background=PANEL_BG,
-                    padding=4,
-                    show_week_numbers=True,
+                    # Click → calendario (gsimplecal)
+                    mouse_callbacks={
+                        "Button1": lazy.spawn("gsimplecal"),
+                    },
                 ),
                 widget.Clock(format="%I:%M %p", foreground=FG),
-                ext_widget.Separator(linewidth=1, foreground=SEP_FG),
+                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
                 widget.QuickExit(
                     default_text="⏻",
                     foreground=FG,
