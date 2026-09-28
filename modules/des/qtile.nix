@@ -15,12 +15,6 @@
   services.xserver.windowManager.qtile = {
     enable = true;
     configFile = ./qtile/config.py;
-    # Dependencias Python de los widgets: Calendar (qtile-extras) y
-    # PulseVolume (pulsectl).
-    extraPackages = python3Packages: with python3Packages; [
-      qtile-extras
-      pulsectl
-    ];
   };
 
   # ── Paquetes del entorno ────────────────────────────────────────────
@@ -60,7 +54,6 @@
     # -- Notifications & Clipboard (iguales a los de XFCE) --
     xfce.xfce4-notifyd        # Notificaciones estilo XFCE
     xfce.xfce4-clipman-plugin # Clipboard manager (binario xfce4-clipman)
-    gsimplecal                # Calendario (click en la fecha de la barra)
 
     # -- Screen locker --
     slock

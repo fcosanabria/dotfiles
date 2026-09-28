@@ -1,7 +1,9 @@
+import os
+
+import libqtile.resources
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Drag, Group, Key, Screen
 from libqtile.lazy import lazy
-from qtile_extras import widget as ext_widget
 
 mod = "mod4"
 terminal = "alacritty"
@@ -34,63 +36,39 @@ layouts = [
     layout.Max(),
 ]
 
-widget_defaults = dict(font="sans", fontsize=13, padding=4)
+widget_defaults = dict(
+    font="sans",
+    fontsize=12,
+    padding=3,
+)
 extension_defaults = widget_defaults.copy()
 
-# Colores estilo XFCE dark panel
-PANEL_BG = "#383c4a"
-SEP_FG = "#4a4f5c"
-FG = "#ffffff"
-
+logo = os.path.join(os.path.dirname(libqtile.resources.__file__), "logo.png")
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
-                # ── Izquierda: workspaces + prompt ──
-                widget.GroupBox(highlight_method="line"),
+                widget.CurrentLayout(),
+                widget.GroupBox(),
                 widget.Prompt(),
-                # ── Centro: nombre de la ventana (app activa) ──
-                widget.Spacer(length=bar.STRETCH),
-                widget.WindowName(max_chars=80),
-                widget.Spacer(length=bar.STRETCH),
-                # ── Derecha: pomodoro, volumen, fecha, hora, power ──
-                widget.Pomodoro(
-                    width=130,
-                    prefix_work="Work: ",
-                    prefix_break="Break: ",
-                    prefix_inactive="Idle: ",
-                    color_work="#42be65",
-                    color_break="#33b1ff",
-                    color_inactive="#888888",
-                ),
-                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
-                widget.PulseVolume(limit=100, scroll_step=5),
-                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
-                widget.Clock(
-                    format="%d %b",
-                    foreground=FG,
-                    # Click → calendario (gsimplecal)
-                    mouse_callbacks={
-                        "Button1": lazy.spawn("gsimplecal"),
+                widget.WindowName(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
                     },
+                    name_transform=lambda name: name.upper(),
                 ),
-                widget.Clock(format="%I:%M %p", foreground=FG),
-                ext_widget.Sep(linewidth=1, foreground=SEP_FG),
-                widget.QuickExit(
-                    default_text="⏻",
-                    foreground=FG,
-                    countdown_start=5,
-                    shutdown_command="systemctl poweroff",
-                    restart_command="systemctl reboot",
-                    logout_command="qtile cmd-obj -o cmd -f shutdown",
-                    lock_command="slock",
-                    suspend_command="systemctl suspend",
-                ),
+                widget.TextBox("default config", name="default"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.QuickExit(),
             ],
-            26,
-            background=PANEL_BG,
-        )
+            24,
+        ),
+        background="#000000",
+        wallpaper=logo,
+        wallpaper_mode="center",
     ),
 ]
 
