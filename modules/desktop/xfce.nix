@@ -34,17 +34,13 @@
     xfce4-weather-plugin
     xfce4-xkb-plugin
 
-    # -- System Tray & Audio --
+    # -- System Tray (pavucontrol/xdg-utils vienen de packages.nix) --
     networkmanagerapplet
-    pavucontrol
 
     # -- Archive Manager --
     xarchiver
     p7zip
     zip
-
-    # -- Utilities --
-    xdg-utils
 
     # -- Calendar & Online Accounts --
     gnome-online-accounts

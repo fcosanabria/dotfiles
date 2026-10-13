@@ -20,7 +20,6 @@
     # Quick directories
     nn = "cd ~/nix/";
     homelab = "cd ~/git/homelab/";
-    notes = "cd ~/vault/";
     repos = "cd ~/git/";
   };
 
@@ -78,8 +77,7 @@
     end
   '';
 
-  # Integraciones nativas de NixOS: añaden su init a fish automáticamente.
-  # (starship se configura en modules/user/starship.nix)
+# init declarations
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;

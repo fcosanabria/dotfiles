@@ -33,28 +33,8 @@
 
         os.symbols = {
           NixOS = "";
-          Windows = "󰍲";
-          Ubuntu = "󰕈";
-          SUSE = "";
-          Raspbian = "󰐿";
-          Mint = "󰣭";
-          Macos = "󰀵";
-          Manjaro = "";
-          Linux = "";
-          Gentoo = "󰣨";
           Fedora = "󰣛";
-          Alpine = "";
-          Amazon = "";
-          Android = "";
-          AOSC = "";
-          Arch = "󰣇";
-          Artix = "󰣇";
-          EndeavourOS = "";
-          CentOS = "";
           Debian = "󰣚";
-          Redhat = "󱄛";
-          RedHatEnterprise = "󱄛";
-          Pop = "";
         };
 
         username = {
@@ -74,10 +54,9 @@
 
         directory.substitutions = {
           "Documents" = "󰈙 ";
-          "Downloads" = " ";
+          "Downloads" = "󰦗 ";
           "Music" = "󰝚 ";
-          "Pictures" = " ";
-          "Developer" = "󰲋 ";
+          "Pictures" = "󰉏 ";
         };
 
         git_branch = {
@@ -103,7 +82,7 @@
         };
 
         rust = {
-          symbol = "";
+          symbol = " ";
           style = "bold fg:#08bdba";
           format = "[$symbol($version)]($style)";
         };

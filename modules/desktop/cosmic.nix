@@ -41,52 +41,6 @@
     X-KDE-autostart-phase=1
   '';
 
-  # ── System packages ──────────────────────────────────────────────────
-  environment.systemPackages = with pkgs; [
-    # -- Screenshots & Screen Recording --
-    grim
-    slurp
-    wf-recorder
-
-    # -- Clipboard --
-    cliphist # Clipboard history manager (usa wl-clipboard de packages.nix)
-
-    # -- Display & Brightness --
-    brightnessctl # Backlight / LED control
-    cosmic-randr # CLI para layout de displays
-
-    # -- Media Keys --
-    playerctl # MPRIS media player control
-
-    # -- File Manager / Apps --
-    thunar
-    thunar-volman
-    thunar-archive-plugin
-    tumbler
-    ristretto
-    zathura
-    kdePackages.kate
-    kdePackages.ark
-    samba
-    cifs-utils
-
-    # -- Authentication (polkit agent; autostart arriba) --
-    kdePackages.polkit-kde-agent-1
-
-    # -- System Tray & Audio --
-    networkmanagerapplet
-    pavucontrol
-    pamixer
-
-    # -- Keyring / Secrets --
-    gnome-keyring # Credential storage (Wi-Fi, SSH, GPG)
-    libsecret # Secret service API
-
-    # -- Misc Wayland Utilities --
-    wev # Wayland event viewer (debug keybinds)
-    xdg-utils # xdg-open and friends
-  ];
-
   # ── Variables de entorno Wayland ─────────────────────────────────────
   environment.sessionVariables = {
     # Permite clipboard managers (ej. cliphist). NOTA: da acceso global

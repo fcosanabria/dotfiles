@@ -1,6 +1,7 @@
 {
   imports = [
-    ./hardware-configuration.nix
+    # Generado por nixos-generate-config en cada máquina; vive fuera de git.
+    /etc/nixos/hardware-configuration.nix
     ./kanata.nix
     ../../modules/desktop/xfce.nix
   ];

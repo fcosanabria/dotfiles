@@ -85,7 +85,6 @@
     ollama-rocm # LLMs locales (ROCm/AMD)
 
     # ── Productivity & Notes ────────────────────────────────────────────
-    siyuan
     trilium-desktop
     thunderbird
     obs-studio
@@ -125,10 +124,27 @@
     shellcheck # Bash linter
     shfmt # Bash formatter
     nixfmt # Nix formatter
-  ];
 
-  # Firefox
-  programs.firefox.enable = true;
+    # ── Desktop Utilities (compartidas) ─────────────────────────────────
+    zathura # visor PDF ligero (COSMIC ya trae cosmic-reader; opción liviana)
+    brightnessctl # backlight/LED (CLI)
+    playerctl # control MPRIS (media keys)
+    pavucontrol # control fino de streams por aplicación
+    pamixer # CLI de volumen
+    samba # cliente SMB (montajes vía GVFS)
+    cifs-utils
+    gnome-keyring # Credential storage (Wi-Fi, SSH, GPG)
+    libsecret # Secret service API
+    xdg-utils # xdg-open and friends
+  ] ++ lib.optionals config.services.desktopManager.cosmic.enable [
+    # ── COSMIC / Wayland-only (en XFCE/X11 serían peso muerto) ──────────
+    grim # screenshot CLI (protocolos wlr)
+    slurp # selección de región en pantalla
+    wf-recorder # grabación de pantalla Wayland
+    cliphist # clipboard history (wl-clipboard; COSMIC_DATA_CONTROL_ENABLED=1)
+    wev # Wayland event viewer (debug keybinds)
+    kdePackages.polkit-kde-agent-1 # COSMIC no trae agente polkit propio (autostart en cosmic.nix)
+  ];
 
   # LocalSend (envío de archivos entre dispositivos en la red local).
   # openFirewall abre el puerto 53317 (TCP/UDP) para descubrimiento y transferencia.
