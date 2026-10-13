@@ -1,7 +1,8 @@
 # Cheatsheet de mantenimiento NixOS (flakes)
 
-Config en `~/nix`. Hosts disponibles: `synnax` (desktop), `zbook` (laptop), `writing-deck`.
-home-manager está integrado como módulo de NixOS, así que `nixos-rebuild` reconstruye sistema **y** home a la vez.
+Config en `~/nix`. Hosts: `synnax` (desktop, COSMIC) y `zbook` (laptop, XFCE).
+Sin home-manager: los dotfiles (git, fish, starship, tmux) viven en `modules/user/`
+como módulos nativos de NixOS. nvim se gestiona a mano (ver `nvim-config.md`).
 
 ## Actualizar el sistema
 

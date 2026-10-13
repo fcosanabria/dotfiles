@@ -1,67 +1,29 @@
 {
-  description = "Nixos config flake";
+  description = "NixOS config";
 
   inputs = {
-    # Nota: usar COSMIC 1.8.0 requiere el PR NixOS/nixpkgs#562003 (sin cache
-    # binaria). Con nixos-unstable obtenemos 1.6.0 desde cache.nixos.org
-    # (cero compilación). Cuando el PR se mergee, acá ya estará 1.8.0 cacheada.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    lazyvim-nix = {
-      url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    cosmic-manager = {
-      url = "github:HeitorAugustoLN/cosmic-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-    kineticwe = {
-      url = "gitlab:theblackdon/kineticwe";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, ... }:
+    let
+      mkHost =
+        name:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/core
+            ./modules/system
+            ./modules/user
+            ./hosts/${name}
+          ];
+        };
+    in
     {
-      nixosConfigurations.synnax = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/desktop/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-      nixosConfigurations.zbook = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/laptop/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-      nixosConfigurations.writing-deck = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/writing-deck/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-      nixosConfigurations.synnax-dev = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/synnax-dev/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
+      nixosConfigurations = {
+        synnax = mkHost "synnax";
+        zbook = mkHost "zbook";
       };
     };
 }
