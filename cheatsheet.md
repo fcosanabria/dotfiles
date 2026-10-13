@@ -71,3 +71,37 @@ cd ~/nix && git status && git add -A && git commit -m "update"
 
 > Con flakes, los archivos **no rastreados por git** se ignoran en el build.
 > Recuerda hacer `git add` de los archivos nuevos antes de reconstruir.
+
+## Instalación desde cero (fresh install)
+
+El flake importa `/etc/nixos/hardware-configuration.nix` por **path absoluto**:
+ese archivo debe existir en el entorno donde se evalúa (el instalador).
+
+```bash
+# 1. Bootear el ISO minimal, red arriba, preparar discos y montar.
+#    synnax: NO tocar el ESP de Windows (nvme0n1p1, UUID 6243-2DC7);
+#    formatear solo las particiones de NixOS (ext4 /, vfat /boot, swap).
+mount /dev/<raiz> /mnt
+mount /dev/<esp> /mnt/boot
+swapon /dev/<swap>
+
+# 2. Generar el hardware config (UUIDs nuevos) y hacerlo visible al flake:
+nixos-generate-config --root /mnt
+mkdir -p /etc/nixos                                        # en el instalador (tmpfs)
+cp /mnt/etc/nixos/hardware-configuration.nix /etc/nixos/   # el flake lee ESTE path
+# (el configuration.nix template que genera no se usa; se puede borrar)
+
+# 3. Traer el repo CON .git (el flake exige archivos trackeados por git):
+git clone <tu-remote> /mnt/root/nix    # o copiar por scp/USB incluyendo .git
+
+# 4. Instalar:
+nixos-install --flake /mnt/root/nix#synnax --impure
+
+# 5. Rebootear sin el ISO. El usuario fsanabria ya viene declarado en
+#    modules/core/users.nix. En el sistema instalado, /etc/nixos/... ya
+#    existe → los rebuilds normales (con --impure) funcionan igual que aquí.
+```
+
+> En un fresh install **no hay inhibidores**: el sistema arranca directo en la
+> config nueva (dbus-broker incluido). Los inhibidores (`dbus → broker`) solo
+> saltan al migrar un sistema corriendo: ahí usa `nixos-rebuild boot` + reboot.

@@ -1,7 +1,4 @@
 {
-  # D-Bus (implementación clásica)
-  services.dbus.implementation = "dbus";
-
   # Nix-LD (ejecutar binarios Linux estándar no parcheados)
   programs.nix-ld.enable = true;
 

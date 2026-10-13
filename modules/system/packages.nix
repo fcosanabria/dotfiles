@@ -106,7 +106,18 @@
 
     # ── Language Servers (LSPs) ─────────────────────────────────────────
     pyright # Python
-    typescript-language-server # TypeScript / JavaScript
+    # TypeScript / JavaScript — TODO(quitar-override): nixos-unstable 7fd4004
+    # trae mal el hash de pnpmDeps del bump a 6.0.2; el fix ya está en master
+    # (hash de abajo = el de master). Borrar este override tras un flake update
+    # que lo traiga y dejar `typescript-language-server` a secas.
+    (typescript-language-server.overrideAttrs (old: {
+      pnpmDeps = fetchPnpmDeps {
+        inherit (old) pname version src;
+        pnpm = pnpm_12;
+        fetcherVersion = 4;
+        hash = "sha256-xR/EF60lVBsITKgH7wCM2wHM46PFQevD51KfCENSUH4=";
+      };
+    }))
     eslint_d # TypeScript / JavaScript
     bash-language-server # Bash
     marksman # Markdown
