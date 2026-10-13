@@ -5,9 +5,6 @@
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
 
-  # Excluir apps core que no usamos (cosmic-edit: ya hay neovim/vscode/zed).
-  environment.cosmic.excludePackages = with pkgs; [ cosmic-edit ];
-
   # Rendimiento: scheduler de System76 (recomendado por la wiki de NixOS)
   services.system76-scheduler.enable = true;
 
