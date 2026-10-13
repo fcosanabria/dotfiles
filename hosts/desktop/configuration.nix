@@ -9,7 +9,7 @@
   imports = [
     ../../modules/system/syncthing.nix
     /etc/nixos/hardware-configuration.nix
-    ../../modules/des/sway.nix
+    ../../modules/des/cosmic.nix
     ../../modules/system
     ../../modules/home
   ];
@@ -94,6 +94,9 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "hm-backup-1";
+  # Sobrescribe backups previos en vez de fallar si ya existe
+  # p.ej. mimeapps.list.hm-backup-1 (lo reescriben las apps/DEs).
+  home-manager.overwriteBackup = true;
   home-manager.users.fsanabria = {
     home.username = "fsanabria";
     home.homeDirectory = "/home/fsanabria";

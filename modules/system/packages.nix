@@ -107,14 +107,9 @@ in
     obs-studio
     uhk-agent
     thunderbird
-    gnome-calendar
-    gnome-online-accounts
     trilium-desktop
 
-    # -- Media & Communication --
-    cider-2
     discord
-    concord-tui
 
     # -- Keyboard & Input --
     kanata
