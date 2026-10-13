@@ -40,21 +40,6 @@
     "input"
   ];
 
-  # Steam + Proton
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
-  };
-
-  # GameMode (optimizaciones del OS mientras se juega)
-  programs.gamemode.enable = true;
-
-  # Graphics (libs 32-bit para compatibilidad con Proton)
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   # EPSON L6270 (USB). Cola CUPS declarativa con el driver ESC/P-R 2.
   # El driver (epson-escpr2) se instala en modules/system/services/printing.nix.
   hardware.printers = {
