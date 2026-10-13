@@ -1,50 +1,35 @@
-# Configuración de Neovim (lazyvim-nix)
+# Configuración de Neovim (manual)
 
-Los archivos de configuración viven en `modules/home/nvim/`.
+Desde la reescritura, **nvim ya no se gestiona con Nix** (antes usaba lazyvim-nix
+vía home-manager). Nix solo instala el paquete `neovim`
+(`modules/system/packages.nix`).
 
-## Agregar plugins
+Los archivos Lua de referencia viven en `dotfiles/nvim/` (versionados, pero **no**
+cableados al build). Úsalos como base para tu `~/.config/nvim`.
 
-Crear un archivo `.lua` en `modules/home/nvim/plugins/`:
+## Setup (una vez, a mano)
 
-```lua
--- modules/home/nvim/plugins/mi-plugin.lua
-return {
-  "autor/mi-plugin.nvim",
-  event = "VeryLazy",
-  opts = {},
-}
-```
-
-Luego: `sudo nixos-rebuild switch`.
-
-## Agregar extras de LazyVim
-
-Editar `modules/home/nvim.nix`, sección `extras`:
-
-```nix
-extras = {
-  lang.rust = {
-    enable = true;
-    installDependencies = true;
-  };
-};
-```
-
-Lista de extras disponibles: <https://github.com/pfassina/lazyvim-nix/blob/main/data/extras.json>
+1. Bootstrapea LazyVim en `~/.config/nvim` (ver <https://www.lazyvim.org/>):
+   copia el `init.lua` y `lua/config/lazy.lua` del starter de LazyVim.
+2. Copia o enlaza tus archivos desde `dotfiles/nvim/`:
+   - `dotfiles/nvim/config/*.lua`  → `~/.config/nvim/lua/config/`
+   - `dotfiles/nvim/plugins/*.lua` → `~/.config/nvim/lua/plugins/`
+3. lazy.nvim instala los plugins solo al abrir nvim.
 
 ## Referencia rápida
 
-| Qué cambiar                    | Dónde                                    |
-| ------------------------------ | ---------------------------------------- |
-| Plugin nuevo                   | `modules/home/nvim/plugins/<nombre>.lua` |
-| Extra de LazyVim               | `extras.*` en `modules/home/nvim.nix`    |
-| Opciones de nvim               | `modules/home/nvim/config/options.lua`   |
-| Keymaps globales               | `modules/home/nvim/config/keymaps.lua`   |
-| Autocmds                       | `modules/home/nvim/config/autocmds.lua`  |
-| Paquete de sistema (LSP, etc.) | `modules/system/packages.nix`            |
+| Qué              | Dónde                               |
+| ---------------- | ----------------------------------- |
+| Opciones de nvim | `dotfiles/nvim/config/options.lua`  |
+| Keymaps globales | `dotfiles/nvim/config/keymaps.lua`  |
+| Autocmds         | `dotfiles/nvim/config/autocmds.lua` |
+| Plugins          | `dotfiles/nvim/plugins/<nombre>.lua`|
+| Paquete neovim   | `modules/system/packages.nix`       |
+| LSPs/formatters  | `modules/system/packages.nix`       |
 
 ## Notas
 
-- `plugins/extras.lua` y `config/lazy.lua` **no van** en el directorio — los gestiona `lazyvim-nix`.
-- El toggle `<leader>uw` (wrap) funciona por sesión; el valor por defecto se fija en `config/options.lua`.
-- Plugins no disponibles en nixpkgs (teide, line-numbers, vim-tmux-navigator) se descargan en runtime — los warnings `Could not resolve plugin` en `nix flake check` son esperados.
+- `~/.config/nvim` ya **no** lo gestiona Nix: edítalo directamente o sincronízalo
+  a mano desde `dotfiles/nvim/`.
+- Los LSPs y formatters de sistema (pyright, ruff, nil, marksman, etc.) siguen en
+  `modules/system/packages.nix`, disponibles globalmente para nvim.

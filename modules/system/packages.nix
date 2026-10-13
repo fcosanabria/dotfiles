@@ -5,126 +5,98 @@
   ...
 }:
 
-let
-  isKde = config.services.desktopManager.plasma6.enable;
-
-  # uhk-agent copies smart-macro docs from the Nix store into
-  # ~/.config/uhk-agent/smart-macro-docs. Node's fs.cp preserves the store's
-  # read-only modes (0444/0555), so the next launch fails with EACCES on
-  # unlink and never opens the window. Fix perms before every start.
-  # Upstream: https://github.com/NixOS/nixpkgs/issues/423634
-  # PR (not landed yet): https://github.com/NixOS/nixpkgs/pull/473167
-  uhk-agent = pkgs.symlinkJoin {
-    name = "uhk-agent";
-    paths = [ pkgs.uhk-agent ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram "$out/bin/uhk-agent" \
-        --run 'docs="$HOME/.config/uhk-agent/smart-macro-docs"; if [ -d "$docs" ]; then chmod -R u+w "$docs" 2>/dev/null || true; fi'
-    '';
-  };
-in
 {
-  # Allow unfree packages
+  # Paquetes unfree permitidos (terraform/BSL, proton-ge-bin, etc.)
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
-    # nixpkgs marks EOL. documentation.man.man-db.manualPages forces
-    # evaluation of every system package, so the build fails unless we
-    # explicitly allow it.
-    "electron-40.10.5"
-  ];
 
   environment.systemPackages = with pkgs; [
 
-    # -- Editors & IDEs --
+    # ── Editors & IDEs ──────────────────────────────────────────────────
     neovim
     jetbrains.pycharm
 
-    # -- Terminal & Shell --
-    ghostty
-    starship
-    fish
+    # ── Terminal & Shell ────────────────────────────────────────────────
+    kitty
     tmux
+    smug # tmux session manager (configs manuales en ~/.config/smug)
 
-    # -- CLI Utilities --
-    wl-clipboard # Wayland: wl-copy/wl-paste (pass -c)
-    xclip # X11: xclip (pass -c)
-    yubikey-manager
-    openssl
+    # ── CLI Utilities ───────────────────────────────────────────────────
+    bat # better cat
+    eza # better ls
+    fd # better find
+    fzf # fuzzy finder
+    ripgrep # better grep
+    btop # monitor de sistema
+    fastfetch # info del sistema
+    tealdeer # páginas tldr
+    tree
     curl
     wget
     unzip
-    bat
-    eza
-    fd
-    fzf
-    ripgrep
-    zoxide
-    btop
-    fastfetch
-    tealdeer
-    tree
-    bitwarden-cli
+    openssl
     ffmpeg
     imagemagick
+    wl-clipboard # Wayland: wl-copy/wl-paste (pass -c)
+    xclip # X11: xclip (pass -c)
+    bitwarden-cli
+    yubikey-manager
     codecrafters-cli
     lazysql
 
-    # -- Git & Version Control --
+    # ── Git & Version Control ───────────────────────────────────────────
     git
     lazygit
     gh
     bazaar
 
-    # -- Dev Tools --
-    # Ver también: ./devops-aws.nix — paquetes del proyecto DevOps AWS
-    # (opentofu, terraform-ls, terraform-docs, tfsec, awscli2,
-    #  ssm-session-manager-plugin, kubernetes-helm, jq, yq-go)
-    gcc
-    devcontainer
-    devpod
+    # ── Containers & Kubernetes ─────────────────────────────────────────
+    docker
     podman
     podman-compose
     podman-tui
-    docker
-    freerdp
-    winboat
-    ollama-rocm
-    opencode
+    devcontainer
+    devpod
     kubectl
-    freelens-bin
     k9s
+    freelens-bin # GUI de Kubernetes (fork de Lens)
+    fluxcd # GitOps para Kubernetes
+
+    # ── DevOps / AWS / IaC ──────────────────────────────────────────────
+    # AWS DevOps implementation
+    terraform # HashiCorp Terraform
+    opentofu # Fork open-source de Terraform
+    terraform-ls # HashiCorp Language Server (LSP para editores)
+    terraform-docs # Genera documentación desde módulos .tf
+    tfsec # Escáner de seguridad para código Terraform
+    awscli2 # AWS CLI v2
+    ssm-session-manager-plugin # AWS SSM Session Manager (acceso a EKS/nodos)
+    kubernetes-helm # Helm 3 — gestor de paquetes para Kubernetes
+    jq # Procesamiento JSON (outputs de Terraform, respuestas AWS)
+    yq-go # Procesamiento YAML (valores Helm, manifests k8s)
+
+    # ── Dev Tools ───────────────────────────────────────────────────────
+    gcc
+    opencode
     lfk
-    fluxcd
     cloudflared
-    sops
-    age
-    tailscale
+    sops # secrets cifrados
+    age # cifrado moderno
+    freerdp # cliente RDP
+    ollama-rocm # LLMs locales (ROCm/AMD)
 
-    # -- Productivity & Notes --
-    siyuan
-    obs-studio
-    uhk-agent
-    thunderbird
-    gnome-calendar
-    gnome-online-accounts
+    # ── Productivity & Notes ────────────────────────────────────────────
     trilium-desktop
-
-    # -- Media & Communication --
-    cider-2
+    thunderbird
+    obs-studio
     discord
-    concord-tui
 
-    # -- Keyboard & Input --
+    # ── Keyboard & Input ────────────────────────────────────────────────
     kanata
 
-    # -- WebKit --
+    # ── WebKit ──────────────────────────────────────────────────────────
     webkitgtk_4_1
 
-    # ═══════════════════════════════════════
-    # Languages (runtimes & interpreters)
-    # ═══════════════════════════════════════
+    # ── Languages (runtimes & interpreters) ─────────────────────────────
     python3
     nodejs
     lua
@@ -132,52 +104,50 @@ in
     bun
     cargo
 
-    # ═══════════════════════════════════════
-    # Language Servers (LSPs)
-    # ═══════════════════════════════════════
+    # ── Language Servers (LSPs) ─────────────────────────────────────────
+    pyright # Python
+    typescript-language-server # TypeScript / JavaScript
+    eslint_d # TypeScript / JavaScript
+    bash-language-server # Bash
+    marksman # Markdown
+    nil # Nix
+    statix # Nix
+    deadnix # Nix
+    dockerfile-language-server # Docker
+    docker-compose-language-service # Docker
+    yaml-language-server # archivos de configuración
+    taplo # TOML
 
-    # Python
-    pyright
-
-    # TypeScript / JavaScript
-    typescript-language-server
-    eslint_d
-
-    # Bash
-    bash-language-server
-
-    # Markdown
-    marksman
-
-    # Nix
-    nil
-    statix
-    deadnix
-
-    # Docker / Containers
-    dockerfile-language-server
-    docker-compose-language-service
-
-    # Config files
-    yaml-language-server
-    taplo
-
-    # ═══════════════════════════════════════
-    # Linters & Formatters
-    # ═══════════════════════════════════════
+    # ── Linters & Formatters ────────────────────────────────────────────
     ruff # Python linter + formatter
     prettier # TS/JS/JSON/CSS formatter
     shellcheck # Bash linter
     shfmt # Bash formatter
     nixfmt # Nix formatter
 
+    # ── Desktop Utilities (compartidas) ─────────────────────────────────
+    zathura # visor PDF ligero (COSMIC ya trae cosmic-reader; opción liviana)
+    brightnessctl # backlight/LED (CLI)
+    playerctl # control MPRIS (media keys)
+    pavucontrol # control fino de streams por aplicación
+    pamixer # CLI de volumen
+    samba # cliente SMB (montajes vía GVFS)
+    cifs-utils
+    gnome-keyring # Credential storage (Wi-Fi, SSH, GPG)
+    libsecret # Secret service API
+    xdg-utils # xdg-open and friends
+  ] ++ lib.optionals config.services.desktopManager.cosmic.enable [
+    # ── COSMIC / Wayland-only (en XFCE/X11 serían peso muerto) ──────────
+    grim # screenshot CLI (protocolos wlr)
+    slurp # selección de región en pantalla
+    wf-recorder # grabación de pantalla Wayland
+    cliphist # clipboard history (wl-clipboard; COSMIC_DATA_CONTROL_ENABLED=1)
+    wev # Wayland event viewer (debug keybinds)
+    kdePackages.polkit-kde-agent-1 # COSMIC no trae agente polkit propio (autostart en cosmic.nix)
   ];
 
-  # Firefox
-  programs.firefox.enable = true;
-
   # LocalSend (envío de archivos entre dispositivos en la red local).
-  # openFirewall abre el puerto 53317 (TCP/UDP) que usa para descubrimiento y transferencia.
+  # openFirewall abre el puerto 53317 (TCP/UDP) para descubrimiento y transferencia.
   programs.localsend = {
     enable = true;
     openFirewall = true;
@@ -187,34 +157,22 @@ in
   fonts.packages = with pkgs; [
     adwaita-fonts
     nerd-fonts.symbols-only
-    # symbola # Currently failing due to archive.org 503
   ];
 
   # Enable Flatpak
   services.flatpak.enable = true;
 
+  # XDG Desktop Portal (backend GTK; mkDefault permite que un DE lo sobrescriba)
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ]
-    ++ (if isKde then [ pkgs.kdePackages.xdg-desktop-portal-kde ] else [ ]);
-    config.common.default = lib.mkDefault (
-      if isKde then
-        [
-          "kde"
-          "gtk"
-        ]
-      else
-        [ "gtk" ]
-    );
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = lib.mkDefault [ "gtk" ];
   };
 
   # Create /etc/timezone so Chromium-based apps (e.g. AppImages) can detect
   # the correct IANA timezone name. NixOS only creates /etc/localtime, but
   # Chromium's ICU library looks for /etc/timezone first; without it, ICU
-  # falls back to offset matching and incorrectly picks America/Chicago
-  # (same UTC-6 offset as America/Costa_Rica but with DST).
+  # falls back to offset matching and incorrectly picks America/Chicago.
   environment.etc."timezone".text = "${config.time.timeZone}\n";
 
   # Enable AppImages
