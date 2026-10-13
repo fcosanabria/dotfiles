@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   lib,
   ...
 }:
@@ -28,9 +27,6 @@ in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    inputs.llm-agents.overlays.shared-nixpkgs
-  ];
   nixpkgs.config.permittedInsecurePackages = [
     # winboat (modules/system/packages.nix) pulls in electron_40-bin, which
     # nixpkgs marks EOL. documentation.man.man-db.manualPages forces
@@ -43,7 +39,6 @@ in
 
     # -- Editors & IDEs --
     neovim
-    zed-editor
     jetbrains.pycharm
 
     # -- Terminal & Shell --
@@ -53,7 +48,6 @@ in
     tmux
 
     # -- CLI Utilities --
-    pass
     wl-clipboard # Wayland: wl-copy/wl-paste (pass -c)
     xclip # X11: xclip (pass -c)
     yubikey-manager
@@ -74,9 +68,7 @@ in
     bitwarden-cli
     ffmpeg
     imagemagick
-    zeal
     codecrafters-cli
-    exercism
     lazysql
 
     # -- Git & Version Control --
@@ -100,10 +92,6 @@ in
     winboat
     ollama-rocm
     opencode
-    opencode-desktop
-    llm-agents.junie # JetBrains Junie CLI — AI coding agent
-    llm-agents.herdr # Terminal workspace manager for AI coding agents
-    llm-agents.agent-deck # AI agent command center
     kubectl
     freelens-bin
     k9s
@@ -116,7 +104,6 @@ in
 
     # -- Productivity & Notes --
     siyuan
-    super-productivity
     obs-studio
     uhk-agent
     thunderbird

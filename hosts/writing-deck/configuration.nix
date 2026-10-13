@@ -7,7 +7,6 @@
 {
   imports = [
     ../../modules/system/syncthing.nix
-    ../../modules/system/openscreen.nix
     /etc/nixos/hardware-configuration.nix
     ../../modules/home/tmux.nix
     ../../modules/home/nvim.nix

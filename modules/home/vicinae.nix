@@ -13,7 +13,7 @@
           // Fuente de la interfaz
           "font": {
             "normal": {
-              "family": "Adwaita Sans"
+              "family": "Berkeley Mono"
             }
           },
 

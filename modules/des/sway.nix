@@ -27,14 +27,17 @@
     };
   };
 
-  # ── Sway Window Manager ─────────────────────────────────────────────
+  # ── Sway (SwayFX: blur, shadows, rounded corners) ───────────────────
+  # The compositor is SwayFX; per-user config (islands waybar, matugen
+  # theming, 12 workspaces, scripts) lives in modules/home/sway.nix.
   programs.sway = {
     enable = true;
+    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       swaylock        # Screen locker
       swayidle        # Idle management (lock/suspend)
-      swaybg          # Wallpaper setter
+      swaybg          # Wallpaper setter (fallback when awww is off)
     ];
   };
 
@@ -44,33 +47,39 @@
     config.common.default = [ "wlr" "gtk" ];
   };
 
-  # ── Sway ecosystem packages ─────────────────────────────────────────
+  # ── Sway ecosystem packages (no bundled apps — bring your own) ──────
   environment.systemPackages = with pkgs; [
+    # -- Bar, launcher, notifications, power menu --
+    waybar
+    fuzzel              # dmenu-style picker (launcher, clipboard, wallpaper)
+    swaynotificationcenter
+    wlogout             # Power menu
+    swayr               # MRU window switcher (Alt+Tab)
+
+    # -- Terminal --
+    foot
+
     # -- Clipboard --
     wl-clipboard        # wl-copy / wl-paste
     cliphist            # Clipboard history manager
-    fuzzel              # dmenu-style picker (cliphist history)
 
     # -- Screenshots & Screen Recording --
     grim
     slurp
-    wf-recorder
+    swappy              # Annotate screenshots
+    wf-recorder         # Screen recording (clips)
+    wshowkeys           # Keystroke overlay for recordings
 
-    # -- File Manager (Dolphin) --
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins
-    kdePackages.ark                      # Archive extraction
-    kdePackages.kio-extras               # SMB/network browsing, thumbnails
-    kdePackages.kio-fuse                 # Mount remote locations via FUSE
-    kdePackages.ffmpegthumbs             # Video thumbnails
-    kdePackages.kdegraphics-thumbnailers # Image thumbnails
+    # -- Wallpaper & dynamic theming --
+    matugen             # Wallpaper-driven colors
+    awww                # Smooth wallpaper daemon (renamed from swww)
 
-    # -- Samba / CIFS --
-    samba
-    cifs-utils
+    # -- Night light & display profiles --
+    gammastep
+    kanshi
 
     # -- Display & Brightness --
-    brightnessctl       # Backlight / LED control
+    brightnessctl
 
     # -- Media Keys --
     playerctl           # MPRIS media player control
@@ -90,16 +99,27 @@
     gnome-keyring       # Credential storage (Wi-Fi, SSH, GPG)
     libsecret           # Secret service API
 
-    # -- Authentication --
-    kdePackages.polkit-kde-agent-1
+    # -- Auth & notifications --
+    polkit_gnome        # Polkit authentication agent (GUI prompts)
+    libnotify           # notify-send
 
-    # -- Notification sound --
-    libcanberra-gtk3    # canberra-gtk-play
-    sound-theme-freedesktop
+    # -- File Manager (Dolphin) --
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.ark                      # Archive extraction
+    kdePackages.kio-extras               # SMB/network browsing, thumbnails
+    kdePackages.kio-fuse                 # Mount remote locations via FUSE
+    kdePackages.ffmpegthumbs             # Video thumbnails
+    kdePackages.kdegraphics-thumbnailers # Image thumbnails
+
+    # -- Samba / CIFS --
+    samba
+    cifs-utils
 
     # -- Misc Wayland Utilities --
     wev                 # Wayland event viewer (debug keybinds)
     xdg-utils           # xdg-open and friends
+    procps              # pgrep/pkill (used by the sway scripts)
   ];
 
   # ── Security: allow swaylock to verify passwords ────────────────────

@@ -7,6 +7,5 @@
     ./openrazer.nix
     ./samba-mount.nix
     ./devops-aws.nix
-    ./openscreen.nix
   ];
 }
