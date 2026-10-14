@@ -39,38 +39,35 @@
   '';
 
   # ── GTK/Qt Theme Synchronization (Dark/Light mode) ────────────────────
-  # Portal para que GTK4/libadwaita y Qt sigan el tema del sistema
-  services.xdg-desktop-portal = {
-    enable = true;
-    cosmic.enable = true;
-    gtk.enable = true;
-  };
+  # El módulo de COSMIC ya habilita xdg.portal (cosmic + gtk), programs.dconf
+  # y qt.enable con platformTheme = "qt5ct". No duplicar: las opciones
+  # `services.xdg-desktop-portal` y `gnome.gsettings` no existen en NixOS.
+  #
+  # La sincronización real la hace cosmic-settings-daemon cuando activas en
+  # COSMIC Settings → Desktop → Appearance el toggle
+  # "Apply current theme to GNOME apps" (apply_theme_global):
+  #   - escribe gtk-theme/color-scheme en dconf (perfil `cosmic`)
+  #   - exporta ~/.config/gtk-4.0/gtk.css
+  #   - genera paletas Qt para qt5ct/qt6ct y kdeglobals
+  #   - aplica `flatpak override` para exponer gtk-3.0/gtk-4.0/kdeglobals
+  #
+  # nixpkgs parchea el daemon para usar adw-gtk3 desde el store, pero el
+  # tema debe estar en XDG_DATA_DIRS para que las apps GTK3 lo encuentren.
 
-  # GTK: forzar preferencia de tema oscuro/claro vía gsettings
-  # Esto se sincroniza automáticamente con COSMIC
-  gnome.gsettings = {
-    "org.gnome.desktop.interface.color-scheme" = "prefer-dark";
-    "org.gnome.desktop.interface.gtk-theme" = "Adwaita";
-    "org.gnome.desktop.interface.icon-theme" = "Adwaita";
-    "org.gnome.desktop.interface.cursor-theme" = "Adwaita";
-  };
-
-  # Qt: usar kvantum como platform theme para respetar tema del sistema
-  qt = {
-    enable = true;
-    platformTheme = "kvantum";
-    style = "kvantum";
-  };
-
-  # Kvantum theme que sigue el tema del sistema (cosmic/kde)
+  # adw-gtk3: tema GTK3 con look libadwaita (dark/light automático)
   environment.systemPackages = with pkgs; [
-    kvantum
-    kvantum-theme-materia
-    qt5ct
-    qt6ct
+    adw-gtk3
   ];
 
-  # Variables de entorno Wayland + theme sync
+  # Qt: qt5ct/qt6ct es lo que COSMIC sabe sincronizar. Kvantum no es un
+  # platformTheme válido en nixpkgs y sus env vars bloquean el sync.
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+  };
+
+  # Variables de entorno Wayland (sin QT_QPA_PLATFORMTHEME/QT_STYLE_OVERRIDE:
+  # los gestiona el módulo `qt` para que COSMIC pueda alternar dark/light)
   environment.sessionVariables = {
     # Permite clipboard managers (ej. cliphist). NOTA: da acceso global
     # al portapapeles a todas las ventanas (trade-off de seguridad).
@@ -81,9 +78,5 @@
     QT_QPA_PLATFORM = "wayland"; # Qt apps en Wayland
     SDL_VIDEODRIVER = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
-    # Qt theme sync
-    QT_QPA_PLATFORMTHEME = "kvantum";
-    QT_STYLE_OVERRIDE = "kvantum";
-    # GTK theme sync (deja que xdg-desktop-portal + gsettings manejen dark/light)
   };
 }
