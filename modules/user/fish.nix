@@ -86,5 +86,12 @@
   programs.atuin = {
     enable = true;
     enableFishIntegration = true;
+    # El módulo de NixOS fija ATUIN_CONFIG_DIR=/etc/atuin, pero solo crea
+    # /etc/atuin/config.toml si settings no está vacío. Sin esto, atuin
+    # intenta crear el archivo en /etc (no escribible) y falla al arrancar.
+    settings = {
+      auto_sync = false;
+      update_check = false;
+    };
   };
 }
