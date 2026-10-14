@@ -17,7 +17,7 @@
   ];
 
   fileSystems."/mnt/nas" = {
-    device = "//192.168.31.7/AS5402T";
+    device = "//192.168.31.7/Home";
     fsType = "cifs";
     options = [
       "credentials=/etc/samba/credentials/nas"
@@ -33,7 +33,7 @@
       "nofail"
       # Visible en la barra lateral de COSMIC Files
       "x-gvfs-show"
-      "x-gvfs-name=NAS"
+      "x-gvfs-name=NAS Home"
     ];
   };
 }
