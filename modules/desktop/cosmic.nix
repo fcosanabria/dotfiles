@@ -57,6 +57,20 @@
   # adw-gtk3: tema GTK3 con look libadwaita (dark/light automático)
   environment.systemPackages = with pkgs; [
     adw-gtk3
+
+    # Default de sistema para cosmic-files: fija "NAS" en la barra lateral
+    # apuntando al root SMB (lista de shares), no a un share concreto.
+    # cosmic-config lo lee de XDG_DATA_DIRS; si algún día editas los
+    # favoritos desde la GUI, tu config de usuario (~/.config/cosmic) gana.
+    (writeTextDir "share/cosmic/com.system76.CosmicFiles/v1/favorites" ''
+      [
+          Network(
+              uri: "smb://192.168.31.7/",
+              name: "NAS",
+              path: "/run/user/1000/gvfs/smb-share:server=192.168.31.7/",
+          ),
+      ]
+    '')
   ];
 
   # Qt: qt5ct/qt6ct es lo que COSMIC sabe sincronizar. Kvantum no es un
