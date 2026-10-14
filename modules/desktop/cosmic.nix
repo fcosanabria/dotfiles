@@ -38,7 +38,39 @@
     X-KDE-autostart-phase=1
   '';
 
-  # ── Variables de entorno Wayland ─────────────────────────────────────
+  # ── GTK/Qt Theme Synchronization (Dark/Light mode) ────────────────────
+  # Portal para que GTK4/libadwaita y Qt sigan el tema del sistema
+  services.xdg-desktop-portal = {
+    enable = true;
+    cosmic.enable = true;
+    gtk.enable = true;
+  };
+
+  # GTK: forzar preferencia de tema oscuro/claro vía gsettings
+  # Esto se sincroniza automáticamente con COSMIC
+  gnome.gsettings = {
+    "org.gnome.desktop.interface.color-scheme" = "prefer-dark";
+    "org.gnome.desktop.interface.gtk-theme" = "Adwaita";
+    "org.gnome.desktop.interface.icon-theme" = "Adwaita";
+    "org.gnome.desktop.interface.cursor-theme" = "Adwaita";
+  };
+
+  # Qt: usar kvantum como platform theme para respetar tema del sistema
+  qt = {
+    enable = true;
+    platformTheme = "kvantum";
+    style = "kvantum";
+  };
+
+  # Kvantum theme que sigue el tema del sistema (cosmic/kde)
+  environment.systemPackages = with pkgs; [
+    kvantum
+    kvantum-theme-materia
+    qt5ct
+    qt6ct
+  ];
+
+  # Variables de entorno Wayland + theme sync
   environment.sessionVariables = {
     # Permite clipboard managers (ej. cliphist). NOTA: da acceso global
     # al portapapeles a todas las ventanas (trade-off de seguridad).
@@ -49,5 +81,9 @@
     QT_QPA_PLATFORM = "wayland"; # Qt apps en Wayland
     SDL_VIDEODRIVER = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
+    # Qt theme sync
+    QT_QPA_PLATFORMTHEME = "kvantum";
+    QT_STYLE_OVERRIDE = "kvantum";
+    # GTK theme sync (deja que xdg-desktop-portal + gsettings manejen dark/light)
   };
 }
